@@ -10,7 +10,7 @@ const block = (selector) => {
   return Object.fromEntries([...body.matchAll(/--([\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
 };
 const light = block(':root');
-const themes = { light, dark: { ...light, ...block(':root[data-theme="dark"]') }, 'high contrast': { ...light, ...block(':root[data-theme="hc"]') } };
+const themes = { light, dark: { ...light, ...block(':root[data-theme="dark"], [data-theme="dark"]') }, 'high contrast': { ...light, ...block(':root[data-theme="hc"], [data-theme="hc"]') } };
 const TEXT = [
   ['foreground', 'background'], ['foreground', 'surface'], ['foreground', 'popover'], ['foreground', 'sidebar'], ['foreground', 'muted'],
   ['muted-foreground', 'background'], ['muted-foreground', 'surface'], ['muted-foreground', 'muted'], ['muted-foreground', 'table-head'],

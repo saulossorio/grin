@@ -47,11 +47,18 @@ ${fixed}
 ${block()}
 }
 
-/* Densidade confortável: controles de 40 px e texto de 15 px */
-:root[data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
+/* Densidade. Vale na raiz ou numa seção (data-density em qualquer elemento) */
+:root[data-density="comfortable"], [data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
+[data-density="compact"] { --control-h: var(--size-control-compact); --control-text: var(--text-md); }
 
-/* Tema escuro: escolhido pela pessoa, ou pelo sistema quando não há escolha */
-:root[data-theme="dark"] {
+/* Tema claro numa seção, dentro de uma página escura */
+[data-theme="light"]:not(:root) {
+  color-scheme: light;
+${block()}
+}
+
+/* Tema escuro: escolhido pela pessoa, pelo sistema quando não há escolha, ou numa seção */
+:root[data-theme="dark"], [data-theme="dark"] {
   color-scheme: dark;
 ${block(themes.dark)}
 }
@@ -62,8 +69,8 @@ ${block(themes.dark, '    ')}
   }
 }
 
-/* Alto contraste: escolhido pela pessoa, ou pedido pelo sistema */
-:root[data-theme="hc"] {
+/* Alto contraste: escolhido pela pessoa, pedido pelo sistema, ou numa seção */
+:root[data-theme="hc"], [data-theme="hc"] {
   color-scheme: light;
 ${block(themes.hc)}
 }

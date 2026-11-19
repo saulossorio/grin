@@ -120,11 +120,70 @@
   --shadow-lg: 0 20px 48px -12px oklch(0.2 0.01 160 / 0.22), 0 4px 12px oklch(0.2 0.01 160 / 0.06);
 }
 
-/* Densidade confortável: controles de 40 px e texto de 15 px */
-:root[data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
+/* Densidade. Vale na raiz ou numa seção (data-density em qualquer elemento) */
+:root[data-density="comfortable"], [data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
+[data-density="compact"] { --control-h: var(--size-control-compact); --control-text: var(--text-md); }
 
-/* Tema escuro: escolhido pela pessoa, ou pelo sistema quando não há escolha */
-:root[data-theme="dark"] {
+/* Tema claro numa seção, dentro de uma página escura */
+[data-theme="light"]:not(:root) {
+  color-scheme: light;
+  --background: #ffffff;
+  --surface: #ffffff;
+  --popover: #ffffff;
+  --sidebar: #f7f9f7;
+  --muted: #eff2f0;
+  --accent: #eff2f0;
+  --foreground: #171c19;
+  --muted-foreground: #565d58;
+  --sidebar-foreground: #565d58;
+  --border-soft: #e8ebe9;
+  --border: #d8ddd9;
+  --border-strong: #ccd2ce;
+  --input: #808782;
+  --field: #ffffff;
+  --ring: #4d7002;
+  --primary: #8dc63f;
+  --primary-hover: #87b930;
+  --primary-foreground: #171c19;
+  --link: #4d7002;
+  --brand-fg: #4d7002;
+  --brand-bg: #f1fbe7;
+  --brand-border: #bcde93;
+  --sidebar-active: #e5f6d3;
+  --highlight: #d8f0bd;
+  --row-hover: #f7f9f7;
+  --row-selected: #f1fbe7;
+  --table-head: #f7f9f7;
+  --crit-fg: #b02b27;
+  --crit-bg: #fef6f4;
+  --crit-border: #fec1ba;
+  --crit-solid: #d5322f;
+  --crit-on: #ffffff;
+  --warn-fg: #915b03;
+  --warn-bg: #fff6ed;
+  --warn-border: #f3cb9d;
+  --warn-solid: #f5a32f;
+  --info-fg: #145ec1;
+  --info-bg: #f4f8fe;
+  --info-border: #b9d5fe;
+  --ok-fg: #04736a;
+  --ok-bg: #edfbf9;
+  --ok-border: #99e3d9;
+  --ok-solid: #059488;
+  --chart-1: #4d7002;
+  --chart-2: #0a6ce5;
+  --chart-band: #d8f0bd;
+  --chart-grid: #e8ebe9;
+  --overlay: oklch(0.18 0.01 160 / 0.32);
+  --hover: oklch(0.18 0.01 160 / 0.05);
+  --shadow-xs: 0 1px 2px oklch(0.2 0.01 160 / 0.06);
+  --shadow-sm: 0 1px 3px oklch(0.2 0.01 160 / 0.08), 0 1px 2px oklch(0.2 0.01 160 / 0.04);
+  --shadow-md: 0 6px 16px -4px oklch(0.2 0.01 160 / 0.12), 0 2px 4px oklch(0.2 0.01 160 / 0.05);
+  --shadow-lg: 0 20px 48px -12px oklch(0.2 0.01 160 / 0.22), 0 4px 12px oklch(0.2 0.01 160 / 0.06);
+}
+
+/* Tema escuro: escolhido pela pessoa, pelo sistema quando não há escolha, ou numa seção */
+:root[data-theme="dark"], [data-theme="dark"] {
   color-scheme: dark;
   --background: #0e100f;
   --surface: #131615;
@@ -239,8 +298,8 @@
   }
 }
 
-/* Alto contraste: escolhido pela pessoa, ou pedido pelo sistema */
-:root[data-theme="hc"] {
+/* Alto contraste: escolhido pela pessoa, pedido pelo sistema, ou numa seção */
+:root[data-theme="hc"], [data-theme="hc"] {
   color-scheme: light;
   --background: #ffffff;
   --surface: #ffffff;

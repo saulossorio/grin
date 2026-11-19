@@ -5,7 +5,7 @@ import { icon, paintIcons } from './utils.js';
 import { sync } from './theme.js';
 
 const PAGES = [
-  { heading: null, items: [['index', 'index.html', 'Visão geral', 'book'], ['start', 'docs/getting-started.html', 'Começar', 'play']] },
+  { heading: null, items: [['index', 'index.html', 'Início', 'book'], ['start', 'docs/getting-started.html', 'Começar', 'play']] },
   { heading: 'Guia', items: [
     ['foundations', 'docs/foundations.html', 'Fundamentos', 'palette'],
     ['components', 'docs/components.html', 'Componentes', 'layout-grid'],
@@ -18,12 +18,13 @@ const PAGES = [
     ['ex-landing', 'examples/landing.html', 'Página de apresentação', 'monitor'],
   ] },
 ];
-export const VERSION = '1.1';
+export const VERSION = '1.1.1';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
   const here = nav.dataset.here;
   nav.setAttribute('aria-label', 'Navegação da documentação');
+  nav.id = 'docs-nav';
   nav.innerHTML = `<a class="app-logo" href="${base}index.html"><span class="app-logo-mark" aria-hidden="true">G</span><span>Grin</span><span class="tag">${VERSION}</span></a>`
     + PAGES.map(({ heading, items }) => (heading ? `<div class="nav-heading">${heading}</div>` : '') + items.map(([id, href, label, ic]) =>
       `<a class="nav-item" href="${base}${href}"${id === here ? ' aria-current="page"' : ''}>${icon(ic)}<span class="label">${label}</span></a>`).join('')).join('')
@@ -32,7 +33,7 @@ function buildNav(nav) {
 }
 
 function buildTop(top) {
-  top.innerHTML = `<span class="docs-crumb">${top.dataset.title ?? ''}</span><span class="spacer"></span><div class="docs-controls">
+  top.innerHTML = `<button type="button" class="btn icon ghost docs-menu-button" id="docs-menu-button" aria-expanded="false" aria-controls="docs-nav" aria-label="Abrir navegação">${icon('sidebar')}</button><span class="docs-crumb">${top.dataset.title ?? ''}</span><span class="spacer"></span><div class="docs-controls">
     <label class="sr-only" for="docs-theme">Tema</label>
     <select class="select" id="docs-theme" data-theme-select><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
     <div class="segmented" role="radiogroup" aria-label="Densidade">
@@ -71,6 +72,21 @@ document.addEventListener('click', async (e) => {
   catch { const r = document.createRange(); r.selectNodeContents(code); getSelection().removeAllRanges(); getSelection().addRange(r); label.textContent = 'Selecionado'; }
   setTimeout(() => { label.textContent = 'Copiar'; }, 1600);
 });
+
+// Phones: the sidebar becomes a drawer opened from the top bar
+function toggleNav(open) {
+  const nav = document.getElementById('docs-nav'), button = document.getElementById('docs-menu-button');
+  if (!nav || !button) return;
+  nav.classList.toggle('open', open);
+  document.body.classList.toggle('docs-nav-open', open);
+  button.setAttribute('aria-expanded', String(open));
+  button.setAttribute('aria-label', open ? 'Fechar navegação' : 'Abrir navegação');
+}
+document.addEventListener('click', (e) => {
+  if (e.target.closest('#docs-menu-button')) toggleNav(!document.getElementById('docs-nav').classList.contains('open'));
+  else if (document.body.classList.contains('docs-nav-open') && !e.target.closest('#docs-nav')) toggleNav(false);
+});
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('docs-nav-open')) { toggleNav(false); document.getElementById('docs-menu-button')?.focus(); } });
 
 function init() {
   // Code panels read the markup before icons are painted, so samples show <i data-icon> and not raw SVG

@@ -34,6 +34,8 @@ Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 | `data-density="comfortable"` | Controles de 40 px |
 | `data-scale="112"` ou `"125"` | Fonte em 112,5% ou 125% |
 
+`data-theme` e `data-density` também valem numa seção (qualquer elemento), por exemplo para mostrar um painel escuro dentro de uma página clara.
+
 Comportamento opcional: `components/dialog/dialog.js` (diálogo e gaveta), `components/tabs/tabs.js`, `components/toast/toast.js`. Ícones: `<i data-icon="search"></i>` e `paintIcons()` de `scripts/utils.js`.
 
 Ferramenta de arquivo único: cole o CSS num `<style>`, troque o `url()` das fontes por `data:font/woff2;base64,…` e cole os scripts num `<script type="module">`.
@@ -54,6 +56,7 @@ styles/
   global.css            reset, tipografia, foco, utilitários, animações
   components.css        importa o CSS de cada componente
   docs.css              só das páginas de documentação
+  home.css              só da página inicial
 components/<nome>/      <nome>.html (exemplo comentado), <nome>.css, <nome>.js quando há comportamento
                         ("input" guarda os campos e "sidebar" guarda a casca do app)
 scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js (só documentação)

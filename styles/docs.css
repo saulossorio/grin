@@ -7,7 +7,7 @@
 
 /* Page and section headings */
 .docs-hero { display: flex; flex-direction: column; gap: 14px; max-width: 72ch; }
-.docs-hero h1 { font-size: var(--text-4xl); letter-spacing: var(--tracking-display); line-height: 1.1; }
+.docs-hero h1 { font-size: clamp(2.25rem, 5vw, 3rem); letter-spacing: var(--tracking-display); line-height: 1.1; }
 .docs-hero .lead { font-size: var(--text-lg); line-height: var(--leading-body); color: var(--muted-foreground); }
 .docs-section { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--size-topbar) + 16px); }
 .docs-section > header { display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
@@ -87,7 +87,17 @@
 
 .docs-footer { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: var(--text-md); }
 
+/* Phones: sidebar as a drawer, opened by the menu button in the top bar */
+.docs-menu-button { display: none; }
 @media (max-width: 760px) {
+  .docs-menu-button { display: inline-flex; margin-left: -8px; }
+  .app > .sidebar[data-docs-nav] { position: fixed; inset: 0 auto 0 0; z-index: 60; flex-direction: column; flex-wrap: nowrap; align-items: stretch; width: min(300px, 86vw); height: 100vh; padding: 14px 12px; border-right: 1px solid var(--border); border-bottom: 0; box-shadow: var(--shadow-lg); transform: translateX(-102%); transition: transform var(--dur-slow) var(--ease); }
+  .app > .sidebar[data-docs-nav].open { transform: none; }
+  .app > .sidebar[data-docs-nav] .nav-item { width: 100%; height: 40px; }
+  .app > .sidebar[data-docs-nav] .nav-heading, .app > .sidebar[data-docs-nav] .sidebar-footer { display: flex; }
+  .app > .sidebar[data-docs-nav] .app-logo { margin: 0 0 12px; }
+  body.docs-nav-open::after { content: ''; position: fixed; inset: 0; z-index: 55; background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
+  .docs-crumb { font-weight: var(--weight-medium); color: var(--foreground); }
   .docs-main { padding: 24px 16px 56px; gap: 48px; }
   .docs-hero h1 { font-size: var(--text-3xl); }
   .token-row { grid-template-columns: 96px minmax(0, 1fr); }

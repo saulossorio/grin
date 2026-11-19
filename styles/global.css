@@ -19,6 +19,9 @@ svg { display: block; flex-shrink: 0; }
 img { display: block; max-width: 100%; }
 [hidden] { display: none !important; }
 
+/* A section with its own theme repaints its text and background */
+[data-theme]:not(:root) { background: var(--background); color: var(--foreground); }
+
 /* Font size chosen by the person: 100% (default), 112.5% and 125%. Everything in rem follows. */
 :root[data-scale="112"] { font-size: 112.5%; }
 :root[data-scale="125"] { font-size: 125%; }
