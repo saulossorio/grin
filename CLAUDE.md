@@ -7,4 +7,5 @@ Design system das ferramentas da família Canis (Canis, Laika/Canis Lite, Vezen)
 - Componentes só usam tokens semânticos. Nada de cor escrita direto em `components/`.
 - Componente novo: siga "Como criar um componente novo" em `docs/components.html`.
 - Antes de mudar fonte, cor da marca ou outra escolha central, proponha opções e pergunte.
-- Esta pasta (Proton Drive) não tem `.git`; a publicação é feita por um clone temporário. Depois de publicar, espere o GitHub Pages atualizar e confira a página antes de avisar.
+- Sincronização igual aos outros projetos: a cópia com git fica em `~/OpenClaw/OpenClawWorkspace-Lerdo/repos/canis-design-system`; os commits ali vão sozinhos para esta pasta do Proton (`~/.openclaw/bin/proton-sync.sh`). Mudanças feitas direto no Proton sobem para o GitHub só com o "sim" do dono (`proton-sync.sh --subir`).
+- Depois de publicar, espere o GitHub Pages atualizar e confira a página antes de avisar.
