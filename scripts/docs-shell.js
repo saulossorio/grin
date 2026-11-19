@@ -1,52 +1,83 @@
-// Casca das páginas de documentação: barra lateral, topo com tema/densidade/fonte e ícones.
-// Uso: <nav class="side" data-ds-nav data-base="../" data-here="foundations"></nav> e <header class="top" data-ds-top></header>.
-import { ic, pintarIcones, mostrarCodigo } from './utils.js';
-import './theme.js';
+// Grin documentation shell: sidebar, top bar with theme / density / font controls, icons and code samples.
+// Only for the documentation pages. Markup: <nav class="sidebar" data-docs-nav data-base="../" data-here="foundations"></nav>
+// and <header class="topbar" data-docs-top data-title="Fundamentos"></header>.
+import { icon, paintIcons } from './utils.js';
+import { sync } from './theme.js';
 
-const PAGINAS = [
-  { grupo: null, itens: [['index', 'index.html', 'Visão geral', 'livro']] },
-  { grupo: 'Guia', itens: [
-    ['foundations', 'docs/foundations.html', 'Fundamentos', 'paleta'],
-    ['components', 'docs/components.html', 'Componentes', 'componentes'],
-    ['patterns', 'docs/patterns.html', 'Padrões', 'colunas'],
-    ['accessibility', 'docs/accessibility.html', 'Acessibilidade', 'acesso'],
+const PAGES = [
+  { heading: null, items: [['index', 'index.html', 'Visão geral', 'book'], ['start', 'docs/getting-started.html', 'Começar', 'play']] },
+  { heading: 'Guia', items: [
+    ['foundations', 'docs/foundations.html', 'Fundamentos', 'palette'],
+    ['components', 'docs/components.html', 'Componentes', 'layout-grid'],
+    ['patterns', 'docs/patterns.html', 'Padrões', 'workflow'],
+    ['accessibility', 'docs/accessibility.html', 'Acessibilidade', 'accessibility'],
   ] },
-  { grupo: 'Exemplos', itens: [
-    ['ex-dashboard', 'examples/dashboard.html', 'Lista de dados', 'tabela'],
-    ['ex-form', 'examples/form.html', 'Formulário', 'lapis'],
-    ['ex-landing', 'examples/landing.html', 'Página de apresentação', 'exemplo'],
+  { heading: 'Exemplos', items: [
+    ['ex-dashboard', 'examples/dashboard.html', 'Lista de dados', 'table'],
+    ['ex-form', 'examples/form.html', 'Formulário', 'pencil'],
+    ['ex-landing', 'examples/landing.html', 'Página de apresentação', 'monitor'],
   ] },
 ];
+export const VERSION = '1.1';
 
-function montar() {
-  const nav = document.querySelector('[data-ds-nav]');
-  if (nav) {
-    const base = nav.dataset.base ?? '';
-    const aqui = nav.dataset.here;
-    nav.setAttribute('aria-label', 'Navegação do design system');
-    nav.innerHTML = `<a class="logo" href="${base}index.html"><span class="logo-c" aria-hidden="true">G</span><span>Grin</span><span class="tag">1.0</span></a>`
-      + PAGINAS.map(({ grupo, itens }) => (grupo ? `<div class="nav-group">${grupo}</div>` : '') + itens.map(([id, href, rot, icone]) =>
-        `<a class="nav" href="${base}${href}"${id === aqui ? ' aria-current="page"' : ''}>${ic(icone)}<span class="lbl">${rot}</span></a>`).join('')).join('')
-      + `<div class="side-foot"><a class="nav small" href="https://github.com/saulossorio/grin">${ic('exportar')}<span class="lbl">Repositório</span></a>`
-      + `<button type="button" class="nav small" data-theme-toggle>${ic('contraste')}<span class="lbl">Tema escuro</span></button></div>`;
-  }
-  const top = document.querySelector('[data-ds-top]');
-  if (top) {
-    top.innerHTML = `<span class="sub">${top.dataset.title ?? ''}</span><div class="sp"></div><div class="ds-top-tools">
-      <label class="vh" for="ds-tema">Tema</label>
-      <select class="select" id="ds-tema" data-theme-select><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
-      <div class="seg" role="radiogroup" aria-label="Densidade">
-        <label><input type="radio" name="ds-dens" value="compact" data-set-density><span>Compacta</span></label>
-        <label><input type="radio" name="ds-dens" value="comfortable" data-set-density><span>Confortável</span></label>
-      </div>
-      <div class="seg" role="radiogroup" aria-label="Tamanho da fonte">
-        <label><input type="radio" name="ds-esc" value="100" data-set-scale><span>A</span></label>
-        <label><input type="radio" name="ds-esc" value="112" data-set-scale><span style="font-size:1.06em">A</span></label>
-        <label><input type="radio" name="ds-esc" value="125" data-set-scale><span style="font-size:1.14em">A</span></label>
-      </div></div>`;
-  }
-  pintarIcones();
-  mostrarCodigo();
-  document.dispatchEvent(new Event('DOMContentLoaded')); // ressincroniza os controles de tema recém-criados
+function buildNav(nav) {
+  const base = nav.dataset.base ?? '';
+  const here = nav.dataset.here;
+  nav.setAttribute('aria-label', 'Navegação da documentação');
+  nav.innerHTML = `<a class="app-logo" href="${base}index.html"><span class="app-logo-mark" aria-hidden="true">G</span><span>Grin</span><span class="tag">${VERSION}</span></a>`
+    + PAGES.map(({ heading, items }) => (heading ? `<div class="nav-heading">${heading}</div>` : '') + items.map(([id, href, label, ic]) =>
+      `<a class="nav-item" href="${base}${href}"${id === here ? ' aria-current="page"' : ''}>${icon(ic)}<span class="label">${label}</span></a>`).join('')).join('')
+    + `<div class="sidebar-footer"><a class="nav-item small" href="https://github.com/saulossorio/grin">${icon('external-link')}<span class="label">Repositório</span></a>`
+    + `<button type="button" class="nav-item small" data-theme-toggle>${icon('contrast')}<span class="label">Tema escuro</span></button></div>`;
 }
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', montar, { once: true }); else montar();
+
+function buildTop(top) {
+  top.innerHTML = `<span class="docs-crumb">${top.dataset.title ?? ''}</span><span class="spacer"></span><div class="docs-controls">
+    <label class="sr-only" for="docs-theme">Tema</label>
+    <select class="select" id="docs-theme" data-theme-select><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
+    <div class="segmented" role="radiogroup" aria-label="Densidade">
+      <label><input type="radio" name="docs-density" value="compact" data-set-density><span>Compacta</span></label>
+      <label><input type="radio" name="docs-density" value="comfortable" data-set-density><span>Confortável</span></label>
+    </div>
+    <div class="segmented" role="radiogroup" aria-label="Tamanho da fonte">
+      <label><input type="radio" name="docs-scale" value="100" data-set-scale><span aria-label="100%">A</span></label>
+      <label><input type="radio" name="docs-scale" value="112" data-set-scale><span aria-label="112,5%" style="font-size:1.07em">A</span></label>
+      <label><input type="radio" name="docs-scale" value="125" data-set-scale><span aria-label="125%" style="font-size:1.15em">A</span></label>
+    </div></div>`;
+}
+
+/* Every .demo[data-code] gets a "Ver código" panel with its own HTML and a copy button. */
+const escapeHtml = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+function dedent(html) {
+  const lines = html.replace(/^\n+|\s+$/g, '').split('\n');
+  const min = Math.min(...lines.filter((l) => l.trim()).map((l) => l.match(/^\s*/)[0].length));
+  return lines.map((l) => l.slice(min)).join('\n');
+}
+export function showCode(root = document) {
+  root.querySelectorAll('.demo[data-code]').forEach((demo) => {
+    const stage = demo.querySelector('.demo-stage') ?? demo;
+    const box = document.createElement('details');
+    box.className = 'demo-code';
+    box.innerHTML = `<summary>Ver código</summary><div class="demo-code-body"><button type="button" class="btn xs copy-code">${icon('copy', 14)}<span>Copiar</span></button><pre><code>${escapeHtml(dedent(stage.innerHTML))}</code></pre></div>`;
+    demo.append(box);
+  });
+}
+document.addEventListener('click', async (e) => {
+  const b = e.target.closest('.copy-code');
+  if (!b) return;
+  const code = b.parentElement.querySelector('code');
+  const label = b.querySelector('span');
+  try { await navigator.clipboard.writeText(code.textContent); label.textContent = 'Copiado'; }
+  catch { const r = document.createRange(); r.selectNodeContents(code); getSelection().removeAllRanges(); getSelection().addRange(r); label.textContent = 'Selecionado'; }
+  setTimeout(() => { label.textContent = 'Copiar'; }, 1600);
+});
+
+function init() {
+  // Code panels read the markup before icons are painted, so samples show <i data-icon> and not raw SVG
+  showCode();
+  const nav = document.querySelector('[data-docs-nav]'); if (nav) buildNav(nav);
+  const top = document.querySelector('[data-docs-top]'); if (top) buildTop(top);
+  paintIcons();
+  sync();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();

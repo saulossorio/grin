@@ -1,9 +1,11 @@
-<dialog class="drawer" id="dr-pessoa" aria-labelledby="dr-pessoa-t">
-  <div class="dr-h"><div><h2 id="dr-pessoa-t">Ana Lima</h2><span class="sub">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close>✕</button></div>
-  <div class="dr-b">
-    <div class="fld"><label for="dr-nome">Nome</label><input class="input" id="dr-nome" value="Ana Lima"></div>
-    <div class="fld"><label for="dr-email">E-mail</label><input class="input" id="dr-email" value="ana.lima@nortesul.com.br"></div>
+<!-- Grin drawer. Same open/close hooks as the dialog (dialog.js). -->
+<button type="button" class="btn" data-open="drawer-person">Abrir registro</button>
+<dialog class="drawer" id="drawer-person" aria-labelledby="drawer-person-title">
+  <div class="drawer-header"><div class="drawer-heading"><h2 id="drawer-person-title">Ana Lima</h2><span class="text-secondary">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="drawer-body">
+    <div class="field-row"><label class="field-label" for="dp-name">Nome</label><input class="input" id="dp-name" value="Ana Lima"></div>
+    <div class="field-row"><label class="field-label" for="dp-email">E-mail</label><input class="input" id="dp-email" value="ana.lima@nortesul.com.br"></div>
   </div>
-  <div class="dr-f"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
+  <div class="drawer-footer"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
 </dialog>
-<button type="button" class="btn" data-open="dr-pessoa">Abrir registro</button>
+<script type="module" src="../dialog/dialog.js"></script>

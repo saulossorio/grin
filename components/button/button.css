@@ -1,35 +1,42 @@
-/* Botão. Uma altura por densidade (--control-h), quatro variantes, três tamanhos. Só tokens semânticos. */
+/* Grin button. Height follows the density (--control-h). Variants: default (secondary), primary, danger, ghost, dashed.
+   Sizes: xs, default, lg. Shape: .icon for icon-only buttons (always with aria-label). */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px; flex-shrink: 0;
   height: var(--control-h); padding: 0 12px; border-radius: var(--radius-sm);
-  border: 1px solid var(--border-strong); background: var(--background); color: var(--foreground);
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-xs);
   font-size: var(--control-text); font-weight: var(--weight-medium); line-height: 1; white-space: nowrap; text-decoration: none;
-  transition: background-color var(--dur), color var(--dur), border-color var(--dur);
+  transition: background-color var(--dur-fast), border-color var(--dur-fast), color var(--dur-fast);
 }
 .btn:hover { background: var(--accent); }
-.btn.primary { background: var(--primary); color: var(--primary-foreground); border-color: transparent; }
+.btn:active { transform: translateY(0.5px); }
+.btn svg { width: 16px; height: 16px; }
+.btn.primary { background: var(--primary); border-color: transparent; color: var(--primary-foreground); }
 .btn.primary:hover { background: var(--primary-hover); }
-.btn.danger { background: var(--crit-solid); color: var(--crit-on); border-color: transparent; }
+.btn.danger { background: var(--crit-solid); border-color: transparent; color: var(--crit-on); }
 .btn.danger:hover { background-image: linear-gradient(var(--hover), var(--hover)); }
-.btn.ghost { background: transparent; border-color: transparent; }
-.btn.ghost:hover { background: var(--accent); }
-.btn.dashed { border-style: dashed; }
-.btn.lg { height: calc(var(--control-h) + 4px); padding: 0 16px; font-size: var(--text-base); }
-.btn.xs { height: var(--size-control-xs); padding: 0 8px; font-size: var(--text-sm); }
+.btn.ghost { background: transparent; border-color: transparent; box-shadow: none; color: var(--muted-foreground); }
+.btn.ghost:hover { background: var(--accent); color: var(--foreground); }
+.btn.dashed { border-style: dashed; box-shadow: none; }
+.btn.xs { height: var(--size-control-xs); padding: 0 8px; gap: 4px; font-size: var(--text-sm); }
+.btn.xs svg { width: 14px; height: 14px; }
+.btn.lg { height: calc(var(--control-h) + 6px); padding: 0 16px; font-size: var(--text-base); }
 .btn.icon { width: var(--control-h); padding: 0; }
 .btn.icon.xs { width: var(--size-control-xs); }
-.btn .n { font-variant-numeric: tabular-nums; font-weight: var(--weight-semibold); opacity: 0.85; }
-.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
-.btn[aria-busy="true"] .spinner { width: 14px; height: 14px; }
+.btn .count-inline { font-variant-numeric: tabular-nums; color: var(--muted-foreground); }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; pointer-events: none; box-shadow: none; }
 
-/* Link com aparência de texto, para ações secundárias dentro de frases e tabelas */
+/* Button group: related actions side by side */
+.btn-group { display: inline-flex; }
+.btn-group > .btn:not(:first-child) { border-top-left-radius: 0; border-bottom-left-radius: 0; margin-left: -1px; }
+.btn-group > .btn:not(:last-child) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+/* Text link styled as an action, for secondary actions inside sentences and tables */
 .link {
-  border: 0; background: transparent; color: var(--link); padding: 0 2px; min-height: var(--size-target-min);
-  font-size: inherit; font-weight: var(--weight-medium); text-decoration: underline; text-underline-offset: 2px;
+  display: inline-flex; align-items: center; gap: 4px; min-height: var(--size-target-min); padding: 0 2px; border: 0; background: transparent;
+  color: var(--link); font-size: inherit; font-weight: var(--weight-medium); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
 }
+.link:hover { text-decoration-thickness: 2px; }
 .link.danger { color: var(--crit-fg); }
 
-.spinner {
-  width: 18px; height: 18px; border-radius: var(--radius-pill); flex-shrink: 0;
-  border: 2px solid var(--border-strong); border-top-color: var(--primary); animation: grin-spin 0.8s linear infinite;
-}
+/* Loading indicator, inside a button or next to a status message */
+.spinner { width: 16px; height: 16px; flex-shrink: 0; border-radius: var(--radius-pill); border: 2px solid var(--border); border-top-color: var(--ring); animation: grin-spin 0.7s linear infinite; }

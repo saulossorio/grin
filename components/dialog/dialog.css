@@ -1,8 +1,8 @@
-/* Diálogo: confirmação e escolhas curtas. Usa <dialog> nativo, que já prende o foco e fecha com Esc. */
-.dlg { width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); }
-.dlg[open] { display: flex; flex-direction: column; animation: grin-rise var(--dur) var(--ease); }
-.dlg::backdrop { background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
-.dlg-h { padding: 16px 16px 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
-.dlg-h h2 { flex: 1 1 auto; }
-.dlg-b { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 16px 24px; display: flex; flex-direction: column; gap: 16px; font-size: var(--text-base); line-height: var(--leading-body); }
-.dlg-f { padding: 12px 24px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+/* Grin dialog: short decisions and destructive confirmations. Native <dialog> traps focus and closes with Esc. */
+.dialog { width: min(480px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); }
+.dialog[open] { display: flex; flex-direction: column; animation: grin-scale-in var(--dur) var(--ease); }
+.dialog::backdrop { background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
+.dialog-header { display: flex; align-items: flex-start; gap: 12px; padding: 18px 16px 4px 20px; }
+.dialog-header h2 { flex: 1 1 auto; font-size: var(--text-lg); }
+.dialog-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 14px; padding: 4px 20px 16px; color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
+.dialog-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; padding: 12px 20px; border-top: 1px solid var(--border-soft); background: var(--surface); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }

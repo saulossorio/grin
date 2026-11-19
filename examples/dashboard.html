@@ -4,197 +4,202 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Exemplo: lista de pessoas · Grin</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="Exemplo do Grin: lista de dados com indicadores, busca, filtros, tabela, ações em massa, gaveta e diálogo.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
 <link rel="stylesheet" href="../styles/global.css">
 <link rel="stylesheet" href="../styles/components.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <style>
-  /* Só o que é deste exemplo; o resto vem do design system */
-  .levels { display: flex; gap: 10px; flex-wrap: wrap; }
-  .table td.nome { font-weight: var(--weight-medium); }
-  .bulk-wrap { position: sticky; bottom: 16px; display: flex; justify-content: center; pointer-events: none; }
-  .bulk-wrap .bulk { pointer-events: auto; }
-  .stats { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  /* Only what is specific to this example; everything else comes from Grin */
+  .table td.name { font-weight: var(--weight-medium); }
+  .table tbody tr { cursor: pointer; }
+  .bulk-bar-wrap { position: sticky; bottom: 16px; display: flex; justify-content: center; pointer-events: none; }
+  .bulk-bar-wrap .bulk-bar { pointer-events: auto; }
+  .file-chip { display: inline-flex; align-items: center; gap: 6px; min-width: 0; font-size: var(--text-md); font-weight: var(--weight-medium); }
+  .file-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 </style>
 <script type="module" src="../components/dialog/dialog.js"></script>
 </head>
 <body>
 <div class="brand-bar"></div>
 <div class="app">
-  <nav class="side" id="side" aria-label="Navegação principal">
-    <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span><span class="sp"></span></a>
-    <a class="nav" href="#" aria-current="page"><i data-ic="pessoas"></i><span class="lbl">Pessoas</span><span class="qtd">1.284</span></a>
-    <a class="nav" href="#"><i data-ic="empresa"></i><span class="lbl">Empresas</span><span class="qtd">318</span></a>
-    <a class="nav" href="#"><i data-ic="revisao"></i><span class="lbl">Revisão</span><span class="count">12</span></a>
-    <a class="nav" href="#"><i data-ic="colunas"></i><span class="lbl">Duplicados</span><span class="qtd">7</span></a>
-    <div class="side-foot">
-      <a class="nav small" href="../index.html"><i data-ic="livro"></i><span class="lbl">Design system</span></a>
-      <button type="button" class="nav small" data-theme-toggle><i data-ic="contraste"></i><span class="lbl">Tema escuro</span></button>
-      <button type="button" class="nav small" id="b-recolher" aria-expanded="true"><i data-ic="painel"></i><span class="lbl">Recolher barra</span></button>
+  <nav class="sidebar" id="sidebar" aria-label="Navegação principal">
+    <a class="app-logo" href="../index.html"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
+    <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></a>
+    <a class="nav-item" href="#"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
+    <a class="nav-item" href="#"><i data-icon="merge"></i><span class="label">Duplicados</span><span class="nav-count">7</span></a>
+    <div class="sidebar-footer">
+      <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
+      <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
+      <button type="button" class="nav-item small" id="collapse" aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
     </div>
   </nav>
-  <div class="body">
-    <header class="top">
-      <span class="sub row" style="gap:6px;flex-wrap:nowrap;min-width:0"><i data-ic="tabela" data-size="14"></i><b style="color:var(--foreground);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">convidados-novembro.xlsx</b></span>
-      <span class="status small"><span class="dot ok"></span>Salvo agora</span>
-      <span class="sp"></span>
-      <label class="vh" for="tema">Tema</label>
-      <select class="select" id="tema" data-theme-select style="width:auto"><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
+  <div class="app-main">
+    <header class="topbar">
+      <span class="file-chip"><i data-icon="table" data-size="14"></i><span>convidados-novembro.xlsx</span></span>
+      <span class="status"><span class="dot ok"></span>Salvo agora</span>
+      <span class="spacer"></span>
+      <label class="sr-only" for="theme">Tema</label>
+      <select class="select" id="theme" data-theme-select style="width:auto"><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
     </header>
-    <div class="head">
-      <div class="title-row">
-        <div class="row" style="align-items:baseline;gap:12px"><h1>Pessoas</h1><span class="sub">1.284 na planilha · dados fictícios</span></div>
-        <div class="row"><button type="button" class="btn"><i data-ic="importar"></i>Importar</button><button type="button" class="btn"><i data-ic="exportar"></i>Exportar</button><button type="button" class="btn primary"><i data-ic="check"></i>Importar para a agenda</button></div>
+    <div class="page-header">
+      <div class="page-title-row">
+        <div class="page-title"><h1>Pessoas</h1><span class="text-secondary tabular" id="total">1.284 na planilha</span></div>
+        <div class="row"><button type="button" class="btn"><i data-icon="upload"></i>Importar</button><button type="button" class="btn"><i data-icon="download"></i>Exportar</button><button type="button" class="btn primary"><i data-icon="check"></i>Importar para a agenda</button></div>
       </div>
-      <div class="stats">
-        <div class="stat"><span class="k">Prontas para enviar</span><span class="v">1.207</span><span class="d fg-ok"><i data-ic="ok" data-size="14"></i>94% da planilha</span></div>
-        <div class="stat"><span class="k">Com problema crítico</span><span class="v">8</span><span class="d fg-crit"><i data-ic="crit" data-size="14"></i>Não podem ser importadas</span></div>
-        <div class="stat"><span class="k">Com atenção</span><span class="v">69</span><span class="d fg-warn"><i data-ic="warn" data-size="14"></i>Aceitas, mas incompletas</span></div>
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-label">Prontas</span><span class="stat-value">1.207</span><span class="stat-delta text-ok"><i data-icon="check-circle"></i>94% da planilha</span></div>
+        <div class="stat"><span class="stat-label">Com problema crítico</span><span class="stat-value">8</span><span class="stat-delta text-crit"><i data-icon="alert-circle"></i>Não podem ser importadas</span></div>
+        <div class="stat"><span class="stat-label">Com atenção</span><span class="stat-value">69</span><span class="stat-delta text-warn"><i data-icon="alert-triangle"></i>Podem ser importadas</span></div>
       </div>
       <div class="toolbar">
-        <div class="search"><i data-ic="busca"></i><input class="input" id="busca" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome, e-mail ou empresa"></div>
-        <button type="button" class="btn"><i data-ic="filtro"></i>Filtrar</button>
-        <button type="button" class="btn"><i data-ic="colunas"></i>Colunas</button>
-        <span class="sp"></span>
-        <div class="seg" role="radiogroup" aria-label="Densidade">
-          <label><input type="radio" name="dens" value="compact" data-set-density><span>Compacta</span></label>
-          <label><input type="radio" name="dens" value="comfortable" data-set-density><span>Confortável</span></label>
+        <div class="search"><i data-icon="search"></i><input class="input" id="search" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome, e-mail ou empresa"></div>
+        <button type="button" class="btn"><i data-icon="filter"></i>Filtrar</button>
+        <button type="button" class="btn"><i data-icon="columns"></i>Colunas</button>
+        <span class="spacer"></span>
+        <div class="segmented" role="radiogroup" aria-label="Densidade">
+          <label><input type="radio" name="density" value="compact" data-set-density><span>Compacta</span></label>
+          <label><input type="radio" name="density" value="comfortable" data-set-density><span>Confortável</span></label>
         </div>
       </div>
-      <div class="chips" id="chips">
-        <span class="chip"><button type="button">Situação: Crítico, Atenção</button><button type="button" class="x" aria-label="Remover filtro Situação" data-chip><i data-ic="x" data-size="14"></i></button></span>
+      <div class="chip-group" id="chips">
+        <span class="chip"><button type="button" class="chip-label">Situação: Crítico, Atenção</button><button type="button" class="chip-remove" aria-label="Remover filtro Situação" data-remove-filter><i data-icon="x"></i></button></span>
       </div>
     </div>
-    <main class="content">
+    <main class="page-content">
       <div class="table-wrap">
-        <table class="table" id="tab">
-          <thead><tr><th scope="col" style="width:40px"><input type="checkbox" id="todas" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-ic="baixo" data-size="14"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Cargo</th><th scope="col">Situação</th><th scope="col" class="num">Eventos</th></tr></thead>
+        <table class="table" id="people">
+          <thead><tr><th scope="col" class="select-col"><input type="checkbox" id="select-all" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Cargo</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
-      <div class="pager"><span id="resumo"></span><div class="row"><button type="button" class="btn xs icon" aria-label="Página anterior" disabled><i data-ic="dir" data-size="14" style="transform:scaleX(-1)"></i></button><span>Página 1 de 1</span><button type="button" class="btn xs icon" aria-label="Próxima página" disabled><i data-ic="dir" data-size="14"></i></button></div></div>
-      <div class="bulk-wrap" id="bulk-wrap" hidden><div class="bulk" role="toolbar" aria-label="Ações para as linhas marcadas"><strong id="bulk-n"></strong><div class="vsep"></div><button type="button" class="btn xs"><i data-ic="lapis" data-size="14"></i>Editar em massa</button><button type="button" class="btn xs"><i data-ic="exportar" data-size="14"></i>Exportar</button><button type="button" class="btn xs danger" data-open="dlg-excluir"><i data-ic="lixo" data-size="14"></i><span id="bulk-del">Excluir</span></button></div></div>
+      <div class="pagination"><span id="summary"></span><div class="row"><button type="button" class="btn xs icon" aria-label="Página anterior" disabled><i data-icon="chevron-left"></i></button><span>Página 1 de 1</span><button type="button" class="btn xs icon" aria-label="Próxima página" disabled><i data-icon="chevron-right"></i></button></div></div>
+      <div class="bulk-bar-wrap" id="bulk" hidden><div class="bulk-bar" role="toolbar" aria-label="Ações para as linhas marcadas"><span class="bulk-bar-count" id="bulk-count"></span><span class="divider-v"></span><button type="button" class="btn xs"><i data-icon="pencil"></i>Editar em massa</button><button type="button" class="btn xs"><i data-icon="download"></i>Exportar</button><button type="button" class="btn xs danger" data-open="confirm-delete"><i data-icon="trash"></i><span id="bulk-delete">Excluir</span></button></div></div>
     </main>
   </div>
 </div>
 
-<dialog class="dlg" id="dlg-excluir" aria-labelledby="dlg-t">
-  <div class="dlg-h"><h2 id="dlg-t">Excluir?</h2><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
-  <div class="dlg-b"><p id="dlg-txt"></p></div>
-  <div class="dlg-f"><button type="button" class="btn" data-close autofocus>Cancelar</button><button type="button" class="btn danger" id="confirmar" data-close>Excluir</button></div>
+<dialog class="dialog" id="confirm-delete" aria-labelledby="confirm-title">
+  <div class="dialog-header"><h2 id="confirm-title">Excluir?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="dialog-body"><p id="confirm-text"></p></div>
+  <div class="dialog-footer"><button type="button" class="btn" data-close autofocus>Cancelar</button><button type="button" class="btn danger" id="confirm" data-close>Excluir</button></div>
 </dialog>
 
-<dialog class="drawer" id="dr" aria-labelledby="dr-t">
-  <div class="dr-h"><div><h2 id="dr-t"></h2><span class="sub" id="dr-sub"></span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
-  <div class="dr-b" id="dr-b"></div>
-  <div class="dr-f"><button type="button" class="btn primary" id="dr-salvar" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
+<dialog class="drawer" id="record" aria-labelledby="record-title">
+  <div class="drawer-header"><div class="drawer-heading"><h2 id="record-title"></h2><span class="text-secondary" id="record-sub"></span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="drawer-body" id="record-body"></div>
+  <div class="drawer-footer"><button type="button" class="btn primary" id="record-save" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
 </dialog>
 
 <script type="module">
 import '../scripts/theme.js';
-import { ic, pintarIcones } from '../scripts/utils.js';
-import { destacar } from '../scripts/animations.js';
+import { icon, paintIcons } from '../scripts/utils.js';
+import { flash } from '../scripts/animations.js';
 import { toast } from '../components/toast/toast.js';
 
-// Dados fictícios
-let pessoas = [
-  { nome: 'Ana Lima', emp: 'Norte Sul', email: 'ana.lima@nortesul.com.br', cargo: 'Diretora de TI', sit: 'ok', ev: 4 },
-  { nome: 'Bruno Reis', emp: 'Hospital Vida', email: '', cargo: 'Gerente de Infraestrutura', sit: 'crit', prob: 'Sem e-mail', ev: 1 },
-  { nome: 'Carla Souza', emp: 'Varejo Sul', email: 'carla@varejosul', cargo: 'CIO', sit: 'warn', prob: 'E-mail sem domínio completo', ev: 12 },
-  { nome: 'Diego Martins', emp: 'Banco Horizonte', email: 'diego.martins@bancohorizonte.com.br', cargo: 'Head de Dados', sit: 'ok', ev: 6 },
-  { nome: 'Elisa Prado', emp: 'Agro Cerrado', email: 'elisa.prado@gmail.com', cargo: 'Coordenadora de Sistemas', sit: 'warn', prob: 'E-mail pessoal', ev: 2 },
-  { nome: 'Fábio Nunes', emp: '', email: 'fabio@logmax.com.br', cargo: 'CTO', sit: 'crit', prob: 'Sem empresa', ev: 3 },
-  { nome: 'Gabriela Tavares', emp: 'Seguros Atlântico', email: 'gabriela.tavares@atlantico.com.br', cargo: 'VP de Tecnologia', sit: 'ok', ev: 9 },
-  { nome: 'Hugo Almeida', emp: 'Educa Mais', email: 'hugo.almeida@educamais.org', cargo: 'Gerente de TI', sit: 'info', prob: 'Cargo novo na agenda', ev: 0 },
-  { nome: 'Isabela Rocha', emp: 'Mineração Serra', email: 'isabela.rocha@mserra.com.br', cargo: 'Diretora de Segurança', sit: 'ok', ev: 5 },
-  { nome: 'João Pedro Costa', emp: 'Farma Bem', email: 'jp.costa@farmabem.com.br', cargo: 'CISO', sit: 'warn', prob: 'Telefone com 8 dígitos', ev: 7 },
+// Fictitious data
+let people = [
+  { name: 'Ana Lima', company: 'Norte Sul', email: 'ana.lima@nortesul.com.br', role: 'Diretora de TI', state: 'ok', events: 4 },
+  { name: 'Bruno Reis', company: 'Hospital Vida', email: '', role: 'Gerente de Infraestrutura', state: 'crit', problem: 'Sem e-mail', events: 1 },
+  { name: 'Carla Souza', company: 'Varejo Sul', email: 'carla@varejosul', role: 'CIO', state: 'warn', problem: 'E-mail sem domínio completo', events: 12 },
+  { name: 'Diego Martins', company: 'Banco Horizonte', email: 'diego.martins@bancohorizonte.com.br', role: 'Head de Dados', state: 'ok', events: 6 },
+  { name: 'Elisa Prado', company: 'Agro Cerrado', email: 'elisa.prado@gmail.com', role: 'Coordenadora de Sistemas', state: 'warn', problem: 'E-mail pessoal', events: 2 },
+  { name: 'Fábio Nunes', company: '', email: 'fabio@logmax.com.br', role: 'CTO', state: 'crit', problem: 'Sem empresa', events: 3 },
+  { name: 'Gabriela Tavares', company: 'Seguros Atlântico', email: 'gabriela.tavares@atlantico.com.br', role: 'VP de Tecnologia', state: 'ok', events: 9 },
+  { name: 'Hugo Almeida', company: 'Educa Mais', email: 'hugo.almeida@educamais.org', role: 'Gerente de TI', state: 'info', problem: 'Cargo novo na agenda', events: 0 },
+  { name: 'Isabela Rocha', company: 'Mineração Serra', email: 'isabela.rocha@mserra.com.br', role: 'Diretora de Segurança', state: 'ok', events: 5 },
+  { name: 'João Pedro Costa', company: 'Farma Bem', email: 'jp.costa@farmabem.com.br', role: 'CISO', state: 'warn', problem: 'Telefone com 8 dígitos', events: 7 },
 ];
-const SIT = { ok: ['t-ok', 'ok', 'Pronta'], crit: ['t-crit', 'crit', 'Crítico'], warn: ['t-warn', 'warn', 'Atenção'], info: ['t-info', 'info', 'Informação'] };
-const marcadas = new Set();
-let filtroSit = true;
+const STATE = { ok: ['ok', 'check-circle', 'Pronta'], crit: ['crit', 'alert-circle', 'Crítico'], warn: ['warn', 'alert-triangle', 'Atenção'], info: ['info', 'info', 'Informação'] };
+const selected = new Set();
+let filterBySeverity = true;
+const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-function linhas() {
-  const q = document.getElementById('busca').value.trim().toLowerCase();
-  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const marca = (s) => (q && s.toLowerCase().includes(q) ? esc(s).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig'), (m) => `<mark>${m}</mark>`) : esc(s));
-  const lista = pessoas.filter((p) => (!filtroSit || p.sit === 'crit' || p.sit === 'warn') && (!q || [p.nome, p.emp, p.email].some((v) => v.toLowerCase().includes(q))));
-  const corpo = document.querySelector('#tab tbody');
-  if (!lista.length) {
-    corpo.innerHTML = `<tr><td colspan="7" style="padding:0;border:0"><div class="empty" style="border:0;border-radius:0"><i data-ic="busca" data-size="28"></i><h3>Nenhuma pessoa corresponde à busca.</h3><p>Procure por outro nome, e-mail ou empresa.</p><div class="row"><button type="button" class="btn" id="limpar-busca">Limpar busca</button></div></div></td></tr>`;
-  } else corpo.innerHTML = lista.map((p) => {
-    const i = pessoas.indexOf(p); const [cls, icone, rot] = SIT[p.sit];
-    const vazio = (v, nome) => (v ? marca(v) : `<span class="empty-cell">sem ${nome}</span>`);
-    const fEmail = p.sit !== 'ok' && /e-mail/i.test(p.prob ?? '') ? (p.sit === 'crit' ? ' f-crit' : ' f-warn') : '';
-    const fEmp = !p.emp ? ' f-crit' : '';
-    return `<tr data-i="${i}" aria-selected="${marcadas.has(i)}"><td><input type="checkbox" ${marcadas.has(i) ? 'checked' : ''} aria-label="Marcar ${esc(p.nome)}"></td><td class="nome">${marca(p.nome)}</td><td class="${fEmp}">${vazio(p.emp, 'empresa')}</td><td class="${fEmail}${p.editado ? ' edited' : ''}">${vazio(p.email, 'e-mail')}</td><td>${esc(p.cargo)}</td><td><span class="badge ${cls}" ${p.prob ? `title="${esc(p.prob)}"` : ''}>${ic(icone, 13)}${rot}</span></td><td class="num">${p.ev}</td></tr>`;
-  }).join('');
-  document.getElementById('resumo').textContent = `${lista.length} de ${pessoas.length} pessoas`;
-  const n = marcadas.size;
-  document.getElementById('bulk-wrap').hidden = n === 0;
-  document.getElementById('bulk-n').textContent = n === 1 ? '1 marcada' : `${n} marcadas`;
-  document.getElementById('bulk-del').textContent = `Excluir ${n}`;
-  document.getElementById('todas').checked = n > 0 && n === pessoas.length;
-  pintarIcones(corpo);
+function render() {
+  const q = document.getElementById('search').value.trim().toLowerCase();
+  const mark = (s) => (q && s.toLowerCase().includes(q) ? esc(s).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig'), (m) => `<mark>${m}</mark>`) : esc(s));
+  const list = people.filter((p) => (!filterBySeverity || p.state === 'crit' || p.state === 'warn') && (!q || [p.name, p.company, p.email].some((v) => v.toLowerCase().includes(q))));
+  const body = document.querySelector('#people tbody');
+  if (!list.length) {
+    body.innerHTML = `<tr><td colspan="7" style="height:auto;padding:16px"><div class="empty-state" style="border:0"><span class="empty-state-icon">${icon('search')}</span><h3>Nenhuma pessoa corresponde à busca.</h3><p>Procure por outro nome, e-mail ou empresa.</p><div class="row"><button type="button" class="btn" id="clear-search">Limpar busca</button></div></div></td></tr>`;
+  } else {
+    body.innerHTML = list.map((p) => {
+      const i = people.indexOf(p); const [tone, ic, label] = STATE[p.state];
+      const value = (v, what) => (v ? mark(v) : `<span class="cell-empty">sem ${what}</span>`);
+      const emailState = p.state !== 'ok' && /e-mail/i.test(p.problem ?? '') ? ` cell-${p.state === 'crit' ? 'crit' : 'warn'}` : '';
+      return `<tr data-i="${i}" aria-selected="${selected.has(i)}"><td class="select-col"><input type="checkbox" ${selected.has(i) ? 'checked' : ''} aria-label="Marcar ${esc(p.name)}"></td><td class="name">${mark(p.name)}</td><td class="${p.company ? '' : 'cell-crit'}">${value(p.company, 'empresa')}</td><td class="${emailState}${p.edited ? ' cell-edited' : ''}">${value(p.email, 'e-mail')}</td><td>${esc(p.role)}</td><td><span class="badge ${tone}"${p.problem ? ` title="${esc(p.problem)}"` : ''}>${icon(ic, 12)}${label}</span></td><td class="numeric">${p.events}</td></tr>`;
+    }).join('');
+  }
+  document.getElementById('summary').textContent = `${list.length} de ${people.length} pessoas`;
+  const n = selected.size;
+  document.getElementById('bulk').hidden = n === 0;
+  document.getElementById('bulk-count').textContent = n === 1 ? '1 marcada' : `${n} marcadas`;
+  document.getElementById('bulk-delete').textContent = `Excluir ${n}`;
+  document.getElementById('select-all').checked = n > 0 && n === people.length;
 }
 
-document.getElementById('busca').addEventListener('input', linhas);
-document.querySelector('#tab').addEventListener('change', (e) => {
-  if (e.target.id === 'todas') { if (e.target.checked) pessoas.forEach((_, i) => marcadas.add(i)); else marcadas.clear(); return linhas(); }
+function openRecord(i) {
+  const p = people[i];
+  document.getElementById('record').dataset.i = i;
+  document.getElementById('record-title').textContent = p.name;
+  document.getElementById('record-sub').textContent = [p.role, p.company].filter(Boolean).join(' · ');
+  const tone = STATE[p.state][0];
+  const alert = p.problem ? `<div class="alert ${tone === 'ok' ? '' : tone}">${icon(STATE[p.state][1])}<div class="alert-body"><span class="alert-title">${esc(p.problem)}.</span> ${p.state === 'crit' ? 'Esta linha não pode ser importada. Complete o campo.' : 'Pode ser importada, mas vale conferir.'}</div></div>` : '';
+  const invalidEmail = p.state !== 'ok' && /e-mail/i.test(p.problem ?? '');
+  document.getElementById('record-body').innerHTML = `${alert}<div>
+    <div class="field-row"><label class="field-label" for="f-name">Nome</label><input class="input" id="f-name" value="${esc(p.name)}"></div>
+    <div class="field-row"><label class="field-label" for="f-company">Empresa</label><input class="input" id="f-company" value="${esc(p.company)}"${p.company ? '' : ' aria-invalid="true"'}></div>
+    <div class="field-row"><label class="field-label" for="f-email">E-mail</label><input class="input" id="f-email" type="email" value="${esc(p.email)}"${invalidEmail ? ' aria-invalid="true"' : ''}></div>
+    <div class="field-row"><label class="field-label" for="f-role">Cargo</label><input class="input" id="f-role" value="${esc(p.role)}"></div></div>`;
+  document.getElementById('record').showModal();
+}
+
+document.getElementById('search').addEventListener('input', render);
+document.getElementById('people').addEventListener('change', (e) => {
+  if (e.target.id === 'select-all') { if (e.target.checked) people.forEach((_, i) => selected.add(i)); else selected.clear(); render(); return; }
   const tr = e.target.closest('tr[data-i]'); if (!tr) return;
-  const i = +tr.dataset.i; e.target.checked ? marcadas.add(i) : marcadas.delete(i); linhas();
+  const i = +tr.dataset.i; if (e.target.checked) selected.add(i); else selected.delete(i); render();
 });
-document.querySelector('#tab').addEventListener('click', (e) => {
-  if (e.target.id === 'limpar-busca') { document.getElementById('busca').value = ''; return linhas(); }
-  const tr = e.target.closest('tr[data-i]'); if (!tr || e.target.closest('input')) return;
-  abrir(+tr.dataset.i);
+document.getElementById('people').addEventListener('click', (e) => {
+  if (e.target.id === 'clear-search') { document.getElementById('search').value = ''; render(); return; }
+  const tr = e.target.closest('tr[data-i]');
+  if (tr && !e.target.closest('input, .select-col')) openRecord(+tr.dataset.i);
 });
-let aberta = -1;
-function abrir(i) {
-  aberta = i; const p = pessoas[i];
-  document.getElementById('dr-t').textContent = p.nome;
-  document.getElementById('dr-sub').textContent = [p.cargo, p.emp].filter(Boolean).join(' · ');
-  const aviso = p.prob ? `<div class="note ${p.sit === 'crit' ? 'crit' : p.sit === 'warn' ? 'warn' : ''}">${ic(SIT[p.sit][1])}<div><b>${p.prob}.</b> ${p.sit === 'crit' ? 'Não podem ser importadas esta linha. Complete o campo para enviar.' : 'Pode ser importada, mas vale conferir.'}</div></div>` : '';
-  document.getElementById('dr-b').innerHTML = `${aviso}<div>
-    <div class="fld"><label for="f-nome">Nome</label><input class="input" id="f-nome" value="${p.nome}"></div>
-    <div class="fld"><label for="f-emp">Empresa</label><input class="input" id="f-emp" value="${p.emp}" ${!p.emp ? 'aria-invalid="true"' : ''}></div>
-    <div class="fld"><label for="f-email">E-mail</label><input class="input" id="f-email" type="email" value="${p.email}" ${p.sit !== 'ok' && /e-mail/i.test(p.prob ?? '') ? 'aria-invalid="true"' : ''}></div>
-    <div class="fld"><label for="f-cargo">Cargo</label><input class="input" id="f-cargo" value="${p.cargo}"></div></div>`;
-  document.getElementById('dr').showModal();
-}
-document.getElementById('dr-salvar').addEventListener('click', () => {
-  const p = pessoas[aberta];
-  const novo = { nome: document.getElementById('f-nome').value, emp: document.getElementById('f-emp').value, email: document.getElementById('f-email').value, cargo: document.getElementById('f-cargo').value };
-  const mudouEmail = novo.email !== p.email;
-  Object.assign(p, novo, mudouEmail ? { editado: true } : {});
-  if (p.emp && p.email && /@[^@]+\.[a-z]{2,}$/i.test(p.email) && !/gmail|hotmail|yahoo/.test(p.email)) { p.sit = 'ok'; p.prob = undefined; }
-  linhas();
-  destacar(document.querySelector(`tr[data-i="${aberta}"]`));
-  toast(`${p.nome} salva.`);
+document.getElementById('record-save').addEventListener('click', () => {
+  const i = +document.getElementById('record').dataset.i; const p = people[i];
+  const next = { name: document.getElementById('f-name').value, company: document.getElementById('f-company').value, email: document.getElementById('f-email').value, role: document.getElementById('f-role').value };
+  if (next.email !== p.email) p.edited = true;
+  Object.assign(p, next);
+  if (p.company && /@[^@]+\.[a-z]{2,}$/i.test(p.email) && !/gmail|hotmail|yahoo/.test(p.email)) { p.state = 'ok'; p.problem = undefined; }
+  render();
+  flash(document.querySelector(`tr[data-i="${i}"]`));
+  toast(`${p.name}: alterações salvas.`);
 });
 document.addEventListener('click', (e) => {
-  if (e.target.closest('[data-open="dlg-excluir"]')) {
-    const n = marcadas.size;
-    document.getElementById('dlg-t').textContent = n === 1 ? 'Excluir 1 pessoa?' : `Excluir ${n} pessoas?`;
-    document.getElementById('dlg-txt').textContent = `${n === 1 ? 'A pessoa sai' : `As ${n} pessoas saem`} da importação. A planilha original não muda.`;
-    document.getElementById('confirmar').textContent = n === 1 ? 'Excluir 1 pessoa' : `Excluir ${n} pessoas`;
+  if (e.target.closest('[data-open="confirm-delete"]')) {
+    const n = selected.size;
+    document.getElementById('confirm-title').textContent = n === 1 ? 'Excluir 1 pessoa?' : `Excluir ${n} pessoas?`;
+    document.getElementById('confirm-text').textContent = `${n === 1 ? 'A pessoa sai' : `As ${n} pessoas saem`} da importação. A planilha original não muda.`;
+    document.getElementById('confirm').textContent = n === 1 ? 'Excluir 1 pessoa' : `Excluir ${n} pessoas`;
   }
-  if (e.target.closest('[data-chip]')) { filtroSit = false; e.target.closest('.chip').remove(); toast('Filtro removido.', { tipo: 'info' }); }
+  if (e.target.closest('[data-remove-filter]')) { filterBySeverity = false; e.target.closest('.chip').remove(); render(); toast('Filtro removido.', { type: 'info' }); }
 });
-document.getElementById('confirmar').addEventListener('click', () => {
-  const antes = pessoas.slice(); const n = marcadas.size;
-  pessoas = pessoas.filter((_, i) => !marcadas.has(i)); marcadas.clear(); linhas();
-  toast(n === 1 ? '1 pessoa excluída.' : `${n} pessoas excluídas.`, { acao: 'Desfazer', aoAgir: () => { pessoas = antes; linhas(); } });
+document.getElementById('confirm').addEventListener('click', () => {
+  const before = people.slice(); const n = selected.size;
+  people = people.filter((_, i) => !selected.has(i)); selected.clear(); render();
+  toast(n === 1 ? '1 pessoa excluída.' : `${n} pessoas excluídas.`, { action: 'Desfazer', onAction: () => { people = before; render(); } });
 });
-document.getElementById('b-recolher').addEventListener('click', (e) => {
-  const side = document.getElementById('side'); const min = side.classList.toggle('min');
-  e.currentTarget.setAttribute('aria-expanded', String(!min));
-  e.currentTarget.querySelector('.lbl').textContent = min ? 'Expandir barra' : 'Recolher barra';
+document.getElementById('collapse').addEventListener('click', (e) => {
+  const collapsed = document.getElementById('sidebar').classList.toggle('collapsed');
+  e.currentTarget.setAttribute('aria-expanded', String(!collapsed));
+  e.currentTarget.querySelector('.label').textContent = collapsed ? 'Expandir barra' : 'Recolher barra';
 });
-linhas(); pintarIcones();
+render();
+paintIcons();
 </script>
 </body>
 </html>

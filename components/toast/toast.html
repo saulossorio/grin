@@ -1,6 +1,7 @@
+<!-- Grin toast. Usually created from JS: import { toast } from './toast.js'; toast('3 pessoas excluídas.', { action: 'Desfazer', onAction: undo }) -->
 <div class="toast ok" role="status">
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-  <div>3 pessoas excluídas.</div>
+  <i data-icon="check-circle"></i>
+  <div class="toast-text">3 pessoas excluídas.</div>
   <button type="button" class="link">Desfazer</button>
-  <button type="button" class="btn icon xs ghost" aria-label="Fechar aviso">✕</button>
+  <button type="button" class="btn icon xs ghost" aria-label="Fechar aviso"><i data-icon="x"></i></button>
 </div>

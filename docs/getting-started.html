@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Começar · Grin</title>
+<meta name="description" content="Como instalar e usar o Grin numa ferramenta: arquivos, tema, densidade, estrutura e convenções.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/docs.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="../scripts/docs-shell.js"></script>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="app">
+  <nav class="sidebar" data-docs-nav data-base="../" data-here="start"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Começar"></header>
+    <main class="docs-main" id="content">
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Começar</h1><p class="lead">O Grin é CSS e um pouco de JavaScript, sem framework. Funciona numa página estática, num app grande ou numa ferramenta de arquivo único.</p>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#install">Instalar</a><a href="#theme">Tema</a><a href="#density">Densidade e fonte</a><a href="#single-file">Arquivo único</a><a href="#structure">Estrutura</a><a href="#conventions">Convenções</a><a href="#tokens">Mudar um token</a></nav>
+      </section>
+
+      <section class="docs-section" id="install" aria-labelledby="t-install">
+        <header><h2 id="t-install">Instalar</h2><p>Copie as pastas <code>styles/</code>, <code>scripts/</code>, <code>components/</code> e <code>assets/</code> para a ferramenta e ponha isto no <code>&lt;head&gt;</code>, nesta ordem.</p></header>
+<pre class="code-block"><code>&lt;link rel="stylesheet" href="styles/fonts.css"&gt;       &lt;!-- Geist e Geist Mono --&gt;
+&lt;link rel="stylesheet" href="styles/variables.css"&gt;   &lt;!-- tokens (gerado) --&gt;
+&lt;link rel="stylesheet" href="styles/global.css"&gt;      &lt;!-- base e utilitários --&gt;
+&lt;link rel="stylesheet" href="styles/components.css"&gt;  &lt;!-- todos os componentes --&gt;
+&lt;script type="module" src="scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
+        <p class="text-secondary">Os componentes com comportamento têm o próprio script: <code>components/dialog/dialog.js</code> (diálogo e gaveta), <code>components/tabs/tabs.js</code> e <code>components/toast/toast.js</code>. Os ícones vêm de <code>scripts/utils.js</code>: <code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code> e depois <code>paintIcons()</code>.</p>
+      </section>
+
+      <section class="docs-section" id="theme" aria-labelledby="t-theme">
+        <header><h2 id="t-theme">Tema</h2><p>Sem atributo, o Grin segue o sistema (claro, escuro ou alto contraste). <code>data-theme</code> na tag <code>&lt;html&gt;</code> fixa a escolha. <code>scripts/theme.js</code> guarda a escolha da pessoa e liga os controles.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Atributo</th><th scope="col">Efeito</th></tr></thead>
+          <tbody>
+            <tr><td>nenhum</td><td>Segue o sistema: <code>prefers-color-scheme</code> e <code>prefers-contrast</code>.</td></tr>
+            <tr><td><code>data-theme="light"</code></td><td>Claro.</td></tr>
+            <tr><td><code>data-theme="dark"</code></td><td>Escuro.</td></tr>
+            <tr><td><code>data-theme="hc"</code></td><td>Alto contraste: texto a 7:1, bordas pretas, foco de 3 px.</td></tr>
+          </tbody></table></div>
+        <p class="text-secondary">Controles prontos, sem JavaScript extra: <code>&lt;select data-theme-select&gt;</code>, <code>&lt;button data-set-theme="dark"&gt;</code> e <code>&lt;button data-theme-toggle&gt;</code>. Para não piscar o tema errado na carga, cole no <code>&lt;head&gt;</code> o trecho de uma linha que está no README.</p>
+      </section>
+
+      <section class="docs-section" id="density" aria-labelledby="t-density">
+        <header><h2 id="t-density">Densidade e tamanho da fonte</h2></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Atributo</th><th scope="col">Efeito</th><th scope="col">Controle</th></tr></thead>
+          <tbody>
+            <tr><td>nenhum</td><td>Densidade compacta: controles de 32 px, texto de 13 px.</td><td rowspan="2"><code>&lt;input type="radio" data-set-density value="compact|comfortable"&gt;</code></td></tr>
+            <tr><td><code>data-density="comfortable"</code></td><td>Controles de 40 px, texto de 15 px.</td></tr>
+            <tr><td><code>data-scale="112"</code> ou <code>"125"</code></td><td>Fonte em 112,5% ou 125%. Tudo é medido em rem e cresce junto.</td><td><code>&lt;input type="radio" data-set-scale value="100|112|125"&gt;</code></td></tr>
+          </tbody></table></div>
+      </section>
+
+      <section class="docs-section" id="single-file" aria-labelledby="t-single">
+        <header><h2 id="t-single">Ferramenta de arquivo único</h2><p>Para um HTML que precisa funcionar sozinho, sem servidor: cole o conteúdo de <code>fonts.css</code>, <code>variables.css</code>, <code>global.css</code> e dos componentes usados num <code>&lt;style&gt;</code>, troque o <code>url()</code> das fontes por <code>data:font/woff2;base64,…</code> e cole os scripts num <code>&lt;script type="module"&gt;</code>.</p></header>
+      </section>
+
+      <section class="docs-section" id="structure" aria-labelledby="t-structure">
+        <header><h2 id="t-structure">Estrutura do repositório</h2></header>
+<pre class="code-block"><code>index.html              visão geral
+docs/                   guias: getting-started, foundations, components, patterns, accessibility
+examples/               telas completas: dashboard, form, landing
+tokens/
+  core/                 valores brutos: colors.json (escalas de 12 passos), spacing.json, typography.json
+  semantic/colors.json  o significado de cada cor; os componentes só usam estes
+  themes/               light.json, dark.json, high-contrast.json
+styles/
+  fonts.css             @font-face de Geist e Geist Mono
+  variables.css         todos os tokens em CSS (gerado por tools/build-tokens.mjs)
+  global.css            reset, tipografia, foco, utilitários, animações
+  components.css        importa o CSS de todos os componentes
+  docs.css              só das páginas de documentação
+components/&lt;nome&gt;/      &lt;nome&gt;.html (exemplo comentado), &lt;nome&gt;.css e, se precisar, &lt;nome&gt;.js
+scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js
+assets/                 fontes (com a licença OFL) e favicon
+tools/                  build-tokens.mjs, check-contrast.mjs</code></pre>
+      </section>
+
+      <section class="docs-section" id="conventions" aria-labelledby="t-conventions">
+        <header><h2 id="t-conventions">Convenções</h2></header>
+        <ul class="docs-list">
+          <li><b>Código em inglês, textos em português.</b> Classes, variáveis, nomes de ícones e funções JavaScript em inglês; documentação e textos de interface em português do Brasil.</li>
+          <li><b>Classes:</b> o bloco tem um nome (<code>.card</code>), as partes usam hífen (<code>.card-header</code>, <code>.card-body</code>) e as variações são uma classe a mais (<code>.btn.primary</code>, <code>.btn.xs</code>).</li>
+          <li><b>Tons de estado</b> são sempre os mesmos nomes: <code>crit</code>, <code>warn</code>, <code>info</code>, <code>ok</code> e <code>brand</code> (<code>.badge.crit</code>, <code>.alert.warn</code>, <code>.toast.ok</code>, <code>.dot.info</code>).</li>
+          <li><b>Estado no HTML, não em classe:</b> <code>aria-current="page"</code>, <code>aria-selected</code>, <code>aria-pressed</code>, <code>aria-invalid</code>, <code>disabled</code>, <code>hidden</code>.</li>
+          <li><b>Cor só por token semântico.</b> Nenhuma cor escrita direto num componente.</li>
+          <li><b>Medidas em rem</b> para texto e em px só para bordas, raios e alturas de controle.</li>
+        </ul>
+      </section>
+
+      <section class="docs-section" id="tokens" aria-labelledby="t-tokens">
+        <header><h2 id="t-tokens">Mudar um token</h2></header>
+        <ol class="docs-list">
+          <li>Edite o JSON em <code>tokens/</code>. Nunca edite <code>styles/variables.css</code>.</li>
+          <li>Rode <code>node tools/build-tokens.mjs</code> para gerar <code>styles/variables.css</code>.</li>
+          <li>Rode <code>node tools/check-contrast.mjs</code>. Ele confere texto e interface nos três temas e falha se algum par ficar abaixo do mínimo.</li>
+          <li>Abra a documentação nos três temas e anote a mudança em <code>CHANGELOG.md</code>.</li>
+        </ol>
+      </section>
+
+      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

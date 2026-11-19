@@ -1,6 +1,8 @@
-<dialog class="dlg" id="dlg-excluir" aria-labelledby="dlg-excluir-t">
-  <div class="dlg-h"><h2 id="dlg-excluir-t">Excluir 3 pessoas?</h2><button type="button" class="btn icon ghost" aria-label="Fechar" data-close>✕</button></div>
-  <div class="dlg-b"><p>As 3 pessoas saem das listas e dos eventos. Você pode desfazer por 30 dias em Lixeira.</p></div>
-  <div class="dlg-f"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn danger" data-close>Excluir 3 pessoas</button></div>
+<!-- Grin dialog. The title and the destructive button repeat what will happen and how many items. Focus starts on "Cancelar". -->
+<button type="button" class="btn danger" data-open="dlg-delete">Excluir</button>
+<dialog class="dialog" id="dlg-delete" aria-labelledby="dlg-delete-title">
+  <div class="dialog-header"><h2 id="dlg-delete-title">Excluir 3 pessoas?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="dialog-body"><p>As 3 pessoas saem das listas e dos eventos. Você pode desfazer por 30 dias na Lixeira.</p></div>
+  <div class="dialog-footer"><button type="button" class="btn" data-close autofocus>Cancelar</button><button type="button" class="btn danger" data-close>Excluir 3 pessoas</button></div>
 </dialog>
-<button type="button" class="btn danger" data-open="dlg-excluir">Excluir</button>
+<script type="module" src="dialog.js"></script>

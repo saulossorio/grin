@@ -1,8 +1,9 @@
-// Abre e fecha diálogos e gavetas: [data-open="id"] abre, [data-close] fecha o <dialog> onde está. Esc e o clique no véu também fecham.
+// Grin dialog and drawer behavior, for any <dialog class="dialog|drawer">.
+// [data-open="id"] opens it as modal, [data-close] closes the dialog it is in. Esc and a click on the backdrop also close.
 document.addEventListener('click', (e) => {
-  const abrir = e.target.closest('[data-open]');
-  if (abrir) { document.getElementById(abrir.dataset.open)?.showModal(); return; }
-  const fechar = e.target.closest('[data-close]');
-  if (fechar) { fechar.closest('dialog')?.close(); return; }
-  if (e.target.tagName === 'DIALOG') e.target.close(); // clique no véu
+  const opener = e.target.closest('[data-open]');
+  if (opener) { document.getElementById(opener.dataset.open)?.showModal(); return; }
+  const closer = e.target.closest('[data-close]');
+  if (closer) { closer.closest('dialog')?.close(); return; }
+  if (e.target.tagName === 'DIALOG') e.target.close(); // click on the backdrop
 });

@@ -1,9 +1,13 @@
+<!-- Grin table. th scope="col"; the sorted column has aria-sort. Numbers: .numeric (right-aligned, tabular).
+     Cell states: .cell-crit, .cell-warn, .cell-edited; missing value: <span class="cell-empty">. -->
 <div class="table-wrap">
   <table class="table">
-    <thead><tr><th scope="col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome ▲</button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col" class="num">Eventos</th></tr></thead>
+    <thead><tr><th scope="col" class="select-col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">E-mail</th><th scope="col" class="numeric">Eventos</th></tr></thead>
     <tbody>
-      <tr aria-selected="true"><td><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td>Norte Sul</td><td>ana.lima@nortesul.com.br</td><td class="num">4</td></tr>
-      <tr><td><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td>Bruno Reis</td><td>Hospital Vida</td><td class="f-crit"><span class="empty-cell">sem e-mail</span></td><td class="num">1</td></tr>
+      <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td class="cell-edited">ana.lima@nortesul.com.br</td><td class="numeric">4</td></tr>
+      <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td>Bruno Reis</td><td class="cell-crit"><span class="cell-empty">sem e-mail</span></td><td class="numeric">1</td></tr>
     </tbody>
   </table>
 </div>
+<div class="pagination"><span>2 de 2 pessoas</span></div>
+<div class="bulk-bar" role="toolbar" aria-label="Ações para 1 linha marcada"><span class="bulk-bar-count">1 marcada</span><span class="divider-v"></span><button type="button" class="btn xs danger"><i data-icon="trash"></i>Excluir 1</button></div>

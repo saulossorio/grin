@@ -1,34 +1,50 @@
 {
-  "$description": "Uma família para tudo (Public Sans) e uma monoespaçada para códigos e identificadores. Tamanhos em rem; a pessoa escolhe 100%, 112,5% ou 125%.",
+  "$description": "Uma família para toda a interface (Geist) e uma monoespaçada para códigos, identificadores e números alinhados (Geist Mono). As duas estão em assets/fonts (licença SIL OFL). Tamanhos em rem: a pessoa escolhe 100%, 112,5% ou 125% e tudo acompanha.",
   "font": {
     "family": {
-      "sans": { "$value": "'Public Sans', system-ui, -apple-system, 'Segoe UI', sans-serif" },
-      "mono": { "$value": "'JetBrains Mono', ui-monospace, monospace" }
+      "sans": { "$value": "'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif" },
+      "mono": { "$value": "'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace" }
     },
     "size": {
-      "2xs": { "$value": "0.625rem", "$description": "10 px. Contador sobre ícone recolhido." },
-      "xs":  { "$value": "0.6875rem", "$description": "11 px. Selo pequeno, dica de atalho." },
-      "sm":  { "$value": "0.75rem", "$description": "12 px. Selos, cabeçalho de tabela, legendas." },
-      "md":  { "$value": "0.8125rem", "$description": "13 px. Botões, campos, menus (densidade compacta)." },
-      "base":{ "$value": "0.875rem", "$description": "14 px. Texto de interface e células." },
-      "body":{ "$value": "1rem", "$description": "16 px. Texto corrido; abaixo disso, só texto secundário." },
-      "lg":  { "$value": "1.125rem", "$description": "18 px. Número em destaque." },
-      "xl":  { "$value": "1.25rem", "$description": "20 px. Título de diálogo e gaveta." },
-      "2xl": { "$value": "1.375rem", "$description": "22 px. Título da página (h1)." },
-      "3xl": { "$value": "2rem", "$description": "32 px. Título de página de apresentação." }
+      "2xs": { "$value": "0.625rem", "$description": "10 px. Contador sobre ícone na barra recolhida." },
+      "xs":  { "$value": "0.6875rem", "$description": "11 px. Rótulo de grupo, tecla de atalho." },
+      "sm":  { "$value": "0.75rem", "$description": "12 px. Selos, cabeçalho de tabela, legendas, dicas." },
+      "md":  { "$value": "0.8125rem", "$description": "13 px. Botões, campos e menus na densidade compacta." },
+      "base":{ "$value": "0.875rem", "$description": "14 px. Texto da interface e células de tabela." },
+      "body":{ "$value": "1rem", "$description": "16 px. Texto corrido. Abaixo disso, só texto de interface ou secundário." },
+      "lg":  { "$value": "1.125rem", "$description": "18 px. Subtítulo, título de cartão grande." },
+      "xl":  { "$value": "1.25rem", "$description": "20 px. Título de diálogo e de gaveta." },
+      "2xl": { "$value": "1.5rem", "$description": "24 px. Título da página." },
+      "3xl": { "$value": "1.875rem", "$description": "30 px. Número em destaque (indicador)." },
+      "4xl": { "$value": "2.5rem", "$description": "40 px. Título de página de apresentação." }
     },
     "weight": {
-      "regular": { "$value": "400" }, "medium": { "$value": "500" }, "semibold": { "$value": "600" },
-      "title": { "$value": "650", "$description": "Títulos h1 e h2." }, "bold": { "$value": "700" }
+      "regular": { "$value": "400", "$description": "Texto." },
+      "medium": { "$value": "500", "$description": "Botões, rótulos, itens de navegação." },
+      "semibold": { "$value": "600", "$description": "Títulos e números em destaque." },
+      "bold": { "$value": "700", "$description": "Raramente: logotipo e contadores." }
     },
     "tracking": {
-      "tight": { "$value": "-0.015em", "$description": "Títulos." },
-      "caps": { "$value": "0.06em", "$description": "Rótulos em maiúsculas." }
+      "display": { "$value": "-0.025em", "$description": "Títulos de 24 px para cima." },
+      "tight": { "$value": "-0.011em", "$description": "Títulos de 16 a 20 px." },
+      "normal": { "$value": "0" },
+      "caps": { "$value": "0.05em", "$description": "Rótulos em maiúsculas." }
     },
-    "line-height": { "tight": { "$value": "1.25" }, "ui": { "$value": "1.4" }, "body": { "$value": "1.5" } }
+    "line-height": {
+      "tight": { "$value": "1.2", "$description": "Títulos." },
+      "ui": { "$value": "1.45", "$description": "Interface." },
+      "body": { "$value": "1.6", "$description": "Texto corrido." }
+    }
   },
   "motion": {
-    "duration": { "base": { "$value": "160ms" }, "slow": { "$value": "200ms" } },
-    "easing": { "out": { "$value": "cubic-bezier(.22, .8, .3, 1)" } }
+    "duration": {
+      "fast": { "$value": "120ms", "$description": "Hover e troca de cor." },
+      "base": { "$value": "160ms", "$description": "Menus, toasts, diálogos." },
+      "slow": { "$value": "220ms", "$description": "Gaveta." }
+    },
+    "easing": {
+      "out": { "$value": "cubic-bezier(0.22, 0.8, 0.3, 1)", "$description": "Entradas: começa rápido e assenta." },
+      "in-out": { "$value": "cubic-bezier(0.4, 0, 0.2, 1)", "$description": "Mudanças de tamanho ou posição." }
+    }
   }
 }

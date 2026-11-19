@@ -1,0 +1,9 @@
+/* Grin tabs: switch between views of the same object. Underline style, keyboard with arrow keys (tabs.js). */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); overflow-x: auto; }
+.tab { position: relative; display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 10px; border: 0; background: transparent; color: var(--muted-foreground); font-size: var(--text-base); font-weight: var(--weight-medium); white-space: nowrap; }
+.tab:hover { color: var(--foreground); }
+.tab[aria-selected="true"] { color: var(--foreground); }
+.tab[aria-selected="true"]::after { content: ''; position: absolute; left: 6px; right: 6px; bottom: -1px; height: 2px; border-radius: 2px; background: var(--foreground); }
+.tab:focus-visible { outline-offset: -2px; }
+.tab .nav-count { font-size: var(--text-sm); }
+.tab-panel { padding-top: 16px; }

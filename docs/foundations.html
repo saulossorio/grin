@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundamentos · Grin</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="Cor, tipografia, espaço, raio, sombra, movimento e ícones do Grin, com valores ao vivo.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
 <link rel="stylesheet" href="../styles/global.css">
 <link rel="stylesheet" href="../styles/components.css">
@@ -18,67 +18,177 @@
 <body>
 <div class="brand-bar"></div>
 <div class="app">
-  <nav class="side" data-ds-nav data-base="../" data-here="foundations"></nav>
-  <div class="body">
-    <header class="top" data-ds-top data-title="Fundamentos"></header>
-    <main class="ds-main" id="conteudo">
-      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Fundamentos</h1><p class="ds-lead">Como os tokens se organizam, como funcionam os temas e a densidade, e como a cor de marca é usada.</p></section>
+  <nav class="sidebar" data-docs-nav data-base="../" data-here="foundations"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Fundamentos"></header>
+    <main class="docs-main" id="content">
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Fundamentos</h1><p class="lead">Os valores de base do Grin. Tudo nesta página é lido dos tokens ao vivo: troque o tema no topo e as amostras e os contrastes se recalculam.</p>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#tokens">Camadas de tokens</a><a href="#color">Cor</a><a href="#brand">Cor da marca</a><a href="#scales">Escalas</a><a href="#type">Tipografia</a><a href="#space">Espaço</a><a href="#radius">Raio e sombra</a><a href="#motion">Movimento</a><a href="#icons">Ícones</a><a href="#themes">Temas e densidade</a></nav>
+      </section>
 
-      <section class="ds-sec" aria-labelledby="t-camadas">
-        <header><h2 id="t-camadas">Três camadas de tokens</h2><p>Os arquivos em <code>tokens/</code> são a fonte de verdade. <code>styles/variables.css</code> é gerado a partir deles por <code>node tools/build-tokens.mjs</code> e nunca se edita à mão.</p></header>
-        <div class="table-wrap"><table class="table ds-table">
+      <section class="docs-section" id="tokens" aria-labelledby="t-tokens">
+        <header><h2 id="t-tokens">Três camadas de tokens</h2><p>Os JSON em <code>tokens/</code> são a fonte de verdade. <code>styles/variables.css</code> é gerado a partir deles.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Camada</th><th scope="col">Arquivo</th><th scope="col">O que guarda</th><th scope="col">Quem usa</th></tr></thead>
           <tbody>
-            <tr><td><b>Core</b></td><td><code>tokens/core/*.json</code></td><td>Valores brutos: <code>color.brand.green-400</code> = #8dc63f, <code>space.4</code> = 16 px, <code>font.size.base</code> = 0,875 rem.</td><td>Só os tokens semânticos.</td></tr>
-            <tr><td><b>Semântica</b></td><td><code>tokens/semantic/colors.json</code></td><td>O significado: <code>primary</code>, <code>crit-fg</code>, <code>border-strong</code>. Os valores são os do tema claro.</td><td>Todos os componentes. Nenhum componente usa cor escrita direto.</td></tr>
-            <tr><td><b>Temas</b></td><td><code>tokens/themes/*.json</code></td><td>Troca só os valores dos tokens semânticos: escuro e alto contraste.</td><td>O atributo <code>data-theme</code> na raiz.</td></tr>
+            <tr><td><b>Core</b></td><td><code>tokens/core/*.json</code></td><td>Valores brutos: escalas de cor de 12 passos, espaços, raios, sombras, tipos, durações.</td><td>Só os tokens semânticos.</td></tr>
+            <tr><td><b>Semântica</b></td><td><code>tokens/semantic/colors.json</code></td><td>O papel de cada cor: <code>primary</code>, <code>muted-foreground</code>, <code>crit-fg</code>. Valores do tema claro.</td><td>Todos os componentes.</td></tr>
+            <tr><td><b>Temas</b></td><td><code>tokens/themes/*.json</code></td><td>Trocam só os valores dos tokens semânticos: escuro e alto contraste.</td><td>O atributo <code>data-theme</code>.</td></tr>
           </tbody></table></div>
-        <div class="demo"><div class="demo-stage col"><pre class="mono" style="margin:0;white-space:pre-wrap">/* certo: o componente diz o que a cor significa */
-.badge.t-crit { color: var(--crit-fg); background: var(--crit-bg); }
+<pre class="code-block"><code>/* certo: o componente diz o papel da cor e funciona nos três temas */
+.badge.crit { color: var(--crit-fg); background: var(--crit-bg); }
 
 /* errado: cor escrita direto, quebra no tema escuro */
-.badge.t-crit { color: #b91c1c; background: #fef2f2; }</pre></div></div>
+.badge.crit { color: #b02b27; background: #fef6f4; }</code></pre>
       </section>
 
-      <section class="ds-sec" aria-labelledby="t-temas">
-        <header><h2 id="t-temas">Temas</h2><p>Quatro escolhas para a pessoa: seguir o sistema (padrão), claro, escuro e alto contraste. Seguir o sistema significa não pôr atributo nenhum; o CSS lê <code>prefers-color-scheme</code> e <code>prefers-contrast</code>.</p></header>
-        <div class="table-wrap"><table class="table ds-table">
-          <thead><tr><th scope="col">Tema</th><th scope="col">Atributo</th><th scope="col">Fundo</th><th scope="col">Texto</th><th scope="col">Regra de contraste</th></tr></thead>
-          <tbody>
-            <tr><td>Claro</td><td><code>data-theme="light"</code></td><td><code>#ffffff</code></td><td><code>#1e2324</code></td><td>Texto 4,5:1, interface 3:1</td></tr>
-            <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td><code>#1e2324</code></td><td><code>#e8ecea</code></td><td>Texto 4,5:1, interface 3:1</td></tr>
-            <tr><td>Alto contraste</td><td><code>data-theme="hc"</code></td><td><code>#ffffff</code></td><td><code>#000000</code></td><td>Texto 7:1, bordas pretas, foco de 3 px</td></tr>
-          </tbody></table></div>
-        <p class="sub">O alto contraste entra sozinho quando o sistema operacional pede mais contraste.</p>
+      <section class="docs-section" id="color" aria-labelledby="t-color">
+        <header><h2 id="t-color">Cor</h2><p>Tokens semânticos, agrupados por papel. Os pares de texto mostram o contraste medido no tema atual.</p></header>
+        <div id="swatches" class="stack" style="gap:28px"></div>
       </section>
 
-      <section class="ds-sec" aria-labelledby="t-marca">
-        <header><h2 id="t-marca">A cor da marca</h2><p>O verde do Grin é #8dc63f. Sobre branco ele dá 2,04:1, abaixo dos 3:1 exigidos para um elemento de interface e dos 4,5:1 para texto. Por isso ele aparece de três jeitos:</p></header>
-        <div class="table-wrap"><table class="table ds-table">
-          <thead><tr><th scope="col">Uso</th><th scope="col">Token</th><th scope="col">Claro</th><th scope="col">Escuro</th></tr></thead>
+      <section class="docs-section" id="brand" aria-labelledby="t-brand">
+        <header><h2 id="t-brand">A cor da marca</h2><p>O verde do Grin é <code>#8dc63f</code>. Sobre branco ele dá 2,04:1, abaixo dos 3:1 que um elemento de interface pede e dos 4,5:1 do texto. Por isso ele aparece de três jeitos.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Uso</th><th scope="col">Token</th><th scope="col">Passo da escala</th></tr></thead>
           <tbody>
-            <tr><td>Preenchimento, com texto escuro em cima</td><td><code>--primary</code></td><td><code>#8dc63f</code> com <code>#1e2324</code> (7,8:1)</td><td>igual</td></tr>
-            <tr><td>Texto e link de marca</td><td><code>--link</code>, <code>--brand-fg</code></td><td><code>#4d7c0f</code> (5,0:1)</td><td><code>#8dc63f</code> (7,8:1)</td></tr>
-            <tr><td>Ícone, contorno e foco</td><td><code>--ring</code></td><td><code>#5c8f22</code> (3,9:1)</td><td><code>#8dc63f</code> (7,8:1)</td></tr>
+            <tr><td>Preenchimento, sempre com texto escuro em cima</td><td><code>--primary</code>, <code>--primary-foreground</code></td><td>green 9 com gray 12</td></tr>
+            <tr><td>Texto, link, ícone de item atual e foco</td><td><code>--link</code>, <code>--brand-fg</code>, <code>--ring</code></td><td>green 11 no claro; no escuro, green-dark 11 e 9</td></tr>
+            <tr><td>Fundos discretos de seleção</td><td><code>--brand-bg</code>, <code>--sidebar-active</code>, <code>--row-selected</code></td><td>green 2 e 3</td></tr>
           </tbody></table></div>
-        <div class="dodont">
-          <div class="do"><h4 class="fg-ok"><i data-ic="check" data-size="14"></i>Faça</h4><p>Use o verde em áreas pequenas: barra de 6 px no topo, item de menu ativo, chip de filtro ativo, botão primário, anel de foco, triângulo de célula editada.</p></div>
-          <div class="dont"><h4 class="fg-crit"><i data-ic="x" data-size="14"></i>Não faça</h4><p>Não pinte fundos de tela, cabeçalhos de tabela ou cartões inteiros de verde, e não use verde para dizer "deu certo": sucesso é azul petróleo (<code>--ok-fg</code>).</p></div>
+        <div class="usage">
+          <div class="do"><h4><i data-icon="check"></i>Faça</h4><p>Use o verde em áreas pequenas: botão primário, item atual da navegação, chip de filtro, foco, célula editada, a faixa de 3 px no topo.</p></div>
+          <div class="dont"><h4><i data-icon="x"></i>Não faça</h4><p>Não pinte fundos, cabeçalhos ou cartões inteiros de verde, e não use verde para dizer "deu certo": sucesso é azul petróleo (<code>--ok-fg</code>).</p></div>
         </div>
       </section>
 
-      <section class="ds-sec" aria-labelledby="t-dens">
-        <header><h2 id="t-dens">Densidade e tamanho da fonte</h2><p>Duas densidades, escolhidas pela ferramenta e trocáveis pela pessoa. A fonte tem três tamanhos (100%, 112,5% e 125%); como tudo é medido em rem, a interface inteira cresce junto.</p></header>
-        <div class="table-wrap"><table class="table ds-table">
-          <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Botão e campo</th><th scope="col">Texto dos controles</th><th scope="col">Para</th></tr></thead>
+      <section class="docs-section" id="scales" aria-labelledby="t-scales">
+        <header><h2 id="t-scales">Escalas</h2><p>Cada cor tem 12 passos, gerados em OKLCH para que a mesma posição tenha o mesmo peso visual em todas as cores. Os passos têm papéis fixos.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Passos</th><th scope="col">Papel</th></tr></thead>
           <tbody>
-            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px</td><td>13 px</td><td>Trabalhar horas numa tabela</td></tr>
-            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px</td><td>15 px</td><td>Ler e analisar</td></tr>
+            <tr><td>1 e 2</td><td>Fundo do app e de áreas discretas (barra lateral, cabeçalho de tabela).</td></tr>
+            <tr><td>3, 4 e 5</td><td>Fundo de componente: normal, hover e ativo.</td></tr>
+            <tr><td>6, 7 e 8</td><td>Bordas: suave, normal e forte.</td></tr>
+            <tr><td>9 e 10</td><td>Preenchimento sólido e seu hover. O verde 9 é a cor da marca.</td></tr>
+            <tr><td>11 e 12</td><td>Texto: secundário e principal.</td></tr>
+          </tbody></table></div>
+        <div class="docs-sub"><h3>Tema claro</h3><div class="scales" id="scales-light"></div></div>
+        <div class="docs-sub"><h3>Tema escuro</h3><div class="scales" id="scales-dark"></div></div>
+      </section>
+
+      <section class="docs-section" id="type" aria-labelledby="t-type">
+        <header><h2 id="t-type">Tipografia</h2><p>Geist para toda a interface e Geist Mono para códigos e identificadores. Números de tabela e indicadores usam algarismos tabulares, que alinham na coluna. Texto corrido tem 16 px; abaixo disso, só texto de interface.</p></header>
+        <div id="type-scale"></div>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Peso</th><th scope="col">Uso</th></tr></thead>
+          <tbody>
+            <tr><td><span style="font-weight:400">400 Regular</span></td><td>Texto.</td></tr>
+            <tr><td><span style="font-weight:500">500 Medium</span></td><td>Botões, rótulos, itens de navegação, cabeçalho de tabela.</td></tr>
+            <tr><td><span style="font-weight:600">600 Semibold</span></td><td>Títulos e números em destaque.</td></tr>
           </tbody></table></div>
       </section>
-      <footer class="ds-foot"><span>Grin 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+
+      <section class="docs-section" id="space" aria-labelledby="t-space">
+        <header><h2 id="t-space">Espaço</h2><p>Base de 4 px, com meios passos (2, 6, 10, 14) para ajustes finos dentro de componentes. Entre blocos irmãos, use <code>gap</code> e não margens.</p></header>
+        <div id="space-scale"></div>
+      </section>
+
+      <section class="docs-section" id="radius" aria-labelledby="t-radius">
+        <header><h2 id="t-radius">Raio e sombra</h2><p>Quatro raios: 4 px para peças pequenas, 6 px para controles, 8 px para avisos e menus e 12 px para cartões, tabelas e diálogos. A sombra marca elevação, não decoração: quanto mais alto o objeto, maior a sombra.</p></header>
+        <div class="row" style="gap:24px" id="radius-scale"></div>
+        <div class="docs-grid">
+          <div class="shadow-box" style="box-shadow:var(--shadow-xs)">shadow-xs · botões</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-sm)">shadow-sm · selecionado</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-md)">shadow-md · menus</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-lg)">shadow-lg · diálogos</div>
+        </div>
+      </section>
+
+      <section class="docs-section" id="motion" aria-labelledby="t-motion">
+        <header><h2 id="t-motion">Movimento</h2><p>Curto e só como resposta a uma ação. <code>--dur-fast</code> 120 ms para hover e cor, <code>--dur</code> 160 ms para menus, toasts e diálogos, <code>--dur-slow</code> 220 ms para a gaveta. A curva <code>--ease</code> começa rápida e assenta.</p></header>
+        <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="motion-demo">Salvar linha</button><span id="motion-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@nortesul.com.br</span></div></div>
+      </section>
+
+      <section class="docs-section" id="icons" aria-labelledby="t-icons">
+        <header><h2 id="t-icons">Ícones</h2><p>Traço de 2 px e cantos arredondados, no desenho do Lucide. 16 px em botões e menus, 14 px em botões pequenos e mensagens, 12 px em selos. São decorativos (<code>aria-hidden</code>): o significado vem do texto ao lado. Uso: <code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code>.</p></header>
+        <div class="icon-grid" id="icon-grid"></div>
+      </section>
+
+      <section class="docs-section" id="themes" aria-labelledby="t-themes">
+        <header><h2 id="t-themes">Temas e densidade</h2></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Tema</th><th scope="col">Atributo</th><th scope="col">Caráter</th><th scope="col">Contraste mínimo</th></tr></thead>
+          <tbody>
+            <tr><td>Claro</td><td><code>data-theme="light"</code></td><td>Fundo branco, barra lateral em cinza 2, bordas finas.</td><td>Texto 4,5:1, interface 3:1</td></tr>
+            <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td>Quase preto com leve viés verde; cada elevação um passo mais clara.</td><td>Texto 4,5:1, interface 3:1</td></tr>
+            <tr><td>Alto contraste</td><td><code>data-theme="hc"</code></td><td>Preto sobre branco, bordas escuras, estados sem fundo colorido, foco de 3 px.</td><td>Texto 7:1</td></tr>
+          </tbody></table></div>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Controles</th><th scope="col">Para</th></tr></thead>
+          <tbody>
+            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px, texto de 13 px</td><td>Trabalhar horas numa tabela.</td></tr>
+            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px, texto de 15 px</td><td>Ler, analisar, telas de apresentação.</td></tr>
+          </tbody></table></div>
+      </section>
+
+      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
+<script type="module">
+import { icon, ICONS, contrast, toHex, token, paintIcons } from '../scripts/utils.js';
+import { flash } from '../scripts/animations.js';
+
+const GROUPS = [
+  ['Superfícies', [['background', 'Fundo do conteúdo'], ['surface', 'Cartões e painéis'], ['popover', 'Camadas flutuantes'], ['sidebar', 'Barra lateral'], ['muted', 'Fundo discreto e hover']]],
+  ['Texto', [['foreground', 'Texto principal'], ['muted-foreground', 'Texto secundário'], ['link', 'Link e texto da marca']]],
+  ['Marca', [['primary', 'Preenchimento da marca', 'primary-foreground'], ['primary-hover', 'Primário com hover', 'primary-foreground'], ['brand-bg', 'Filtro ativo', 'brand-fg'], ['sidebar-active', 'Item atual', 'foreground'], ['ring', 'Foco']]],
+  ['Bordas e campos', [['border-soft', 'Linha de tabela'], ['border', 'Borda padrão'], ['border-strong', 'Borda de botão'], ['input', 'Borda de campo'], ['field', 'Fundo de campo']]],
+  ['Estados', [['crit-bg', 'Crítico', 'crit-fg'], ['warn-bg', 'Atenção', 'warn-fg'], ['info-bg', 'Informação', 'info-fg'], ['ok-bg', 'Sucesso', 'ok-fg'], ['crit-solid', 'Crítico sólido', 'crit-on']]],
+  ['Tabela', [['row-hover', 'Linha com hover'], ['row-selected', 'Linha marcada', 'foreground'], ['highlight', 'Seleção e busca', 'foreground']]],
+  ['Gráficos', [['chart-1', 'Série principal'], ['chart-2', 'Série de comparação'], ['chart-band', 'Faixa de intervalo'], ['chart-grid', 'Linhas de grade']]],
+];
+const UI = new Set(['ring', 'input', 'chart-1', 'chart-2']);
+const TEXT = new Set(['foreground', 'muted-foreground', 'link']);
+const isHc = () => document.documentElement.dataset.theme === 'hc' || (!document.documentElement.dataset.theme && matchMedia('(prefers-contrast: more)').matches);
+
+function drawSwatches() {
+  const bg = token('background');
+  document.getElementById('swatches').innerHTML = GROUPS.map(([group, items]) => `<div class="docs-sub"><h3>${group}</h3><div class="swatch-grid">${items.map(([name, use, on]) => {
+    const value = token(name);
+    let ratio = null, min = 0, label = '';
+    if (on) { ratio = contrast(token(on), value); min = isHc() ? 7 : 4.5; label = `--${on} sobre ela`; }
+    else if (TEXT.has(name)) { ratio = contrast(value, bg); min = isHc() ? 7 : 4.5; label = 'sobre o fundo'; }
+    else if (UI.has(name)) { ratio = contrast(value, bg); min = 3; label = 'sobre o fundo'; }
+    const ratioHtml = ratio ? `<span class="ratio ${ratio >= min ? 'pass' : 'fail'}">${icon(ratio >= min ? 'check' : 'x', 12)}${ratio.toFixed(1).replace('.', ',')}:1 ${label}</span>` : '';
+    return `<div class="swatch"><div class="swatch-color" style="background:var(--${name});color:var(--${on ?? 'foreground'})">${on ? 'Aa' : ''}</div><div class="swatch-meta"><code>--${name}</code><span>${use}</span><span class="text-mono">${toHex(value)}</span>${ratioHtml}</div></div>`;
+  }).join('')}</div></div>`).join('');
+}
+
+async function drawScales() {
+  const data = await (await fetch('../tokens/core/colors.json')).json();
+  const head = `<div class="scale-row head"><span></span>${Array.from({ length: 12 }, (_, i) => `<span>${i + 1}</span>`).join('')}</div>`;
+  const row = (name) => `<div class="scale-row"><span>${name}</span>${Array.from({ length: 12 }, (_, i) => { const v = data.color[name][i + 1].$value; return `<div class="scale-chip" style="background:${v}" title="${name}.${i + 1} ${v}"></div>`; }).join('')}</div>`;
+  const names = ['gray', 'green', 'teal', 'blue', 'amber', 'red'];
+  document.getElementById('scales-light').innerHTML = head + names.map(row).join('');
+  document.getElementById('scales-dark').innerHTML = head + names.map((n) => row(`${n}-dark`)).join('');
+}
+
+const TYPE = [['4xl', 600, 'Título de apresentação', 'display'], ['3xl', 600, '1.284', 'display'], ['2xl', 600, 'Título da página', 'display'], ['xl', 600, 'Título de diálogo', 'tight'], ['lg', 600, 'Subtítulo e título de cartão', 'tight'], ['body', 400, 'Texto corrido para ler com calma, como esta frase.', 'normal'], ['base', 400, 'Texto de interface e células de tabela', 'normal'], ['md', 500, 'Botões, campos e menus', 'normal'], ['sm', 500, 'Selos, cabeçalho de tabela e legendas', 'normal'], ['xs', 500, 'Rótulo de grupo e tecla de atalho', 'normal']];
+document.getElementById('type-scale').innerHTML = TYPE.map(([size, weight, sample, track]) => `<div class="token-row"><code>--text-${size}</code><code>${token('text-' + size)}</code><span class="sample" style="font-size:var(--text-${size});font-weight:${weight};letter-spacing:var(--tracking-${track});${size === '3xl' ? 'font-variant-numeric:tabular-nums' : ''}">${sample}</span></div>`).join('')
+  + `<div class="token-row"><code>--font-mono</code><code>Geist Mono</code><span class="sample text-mono">ERR-7F3A · 12.345.678/0001-90</span></div>`;
+const SPACE = ['0-5', '1', '1-5', '2', '2-5', '3', '3-5', '4', '5', '6', '8', '10', '12', '16', '20'];
+document.getElementById('space-scale').innerHTML = SPACE.map((s) => `<div class="token-row"><code>--space-${s}</code><code>${token('space-' + s)}</code><div class="space-bar" style="width:var(--space-${s})"></div></div>`).join('');
+document.getElementById('radius-scale').innerHTML = ['xs', 'sm', 'md', 'lg'].map((r) => `<div class="stack" style="gap:8px;align-items:center"><div class="radius-box" style="border-radius:var(--radius-${r})"></div><code>--radius-${r} · ${token('radius-' + r)}</code></div>`).join('');
+document.getElementById('icon-grid').innerHTML = Object.keys(ICONS).map((n) => `<div class="icon-cell">${icon(n, 20)}${n}</div>`).join('');
+document.getElementById('motion-demo').addEventListener('click', () => flash(document.getElementById('motion-row')));
+
+drawSwatches();
+drawScales();
+paintIcons();
+new MutationObserver(() => requestAnimationFrame(drawSwatches)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+document.documentElement.addEventListener('grin:theme', () => requestAnimationFrame(drawSwatches));
+</script>
 </body>
 </html>

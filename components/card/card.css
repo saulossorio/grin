@@ -1,19 +1,25 @@
-/* Cartão: separa um objeto do fundo. Use com critério; numa tela de dados, a maioria dos blocos não precisa de borda. */
-.card { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
-.card-h { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 14px 16px 0; }
-.card-h h3 { font-size: var(--text-base); }
-.card-h p { color: var(--muted-foreground); font-size: var(--text-md); margin-top: 2px; }
-.card-b { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
-.card-f { padding: 10px 16px; border-top: 1px solid var(--border-soft); display: flex; gap: 8px; align-items: center; }
-.panel { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: 20px 22px; }
+/* Grin card: sets an object apart from the background. Use it when the block is a thing of its own;
+   on a data screen most blocks need no border. */
+.card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 16px 0; }
+.card-title { font-size: var(--text-base); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); }
+.card-description { margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-md); }
+.card-body { display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px; }
+.card-footer { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--border-soft); }
+a.card { color: inherit; text-decoration: none; transition: border-color var(--dur-fast), box-shadow var(--dur-fast); }
+a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
 
-/* Número em destaque: só quando o número é o assunto da tela */
-.stat { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); min-width: 0; }
-.stat .k { font-size: var(--text-sm); color: var(--muted-foreground); font-weight: var(--weight-medium); }
-.stat .v { font-size: var(--text-2xl); font-weight: var(--weight-title); letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; }
-.stat .d { font-size: var(--text-sm); display: inline-flex; align-items: center; gap: 4px; }
+/* Stat: a number that is the point of the screen */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: var(--space-3); }
+.stat { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.stat-label { font-size: var(--text-md); color: var(--muted-foreground); font-weight: var(--weight-medium); }
+.stat-value { font-size: var(--text-3xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat-delta { display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-sm); font-weight: var(--weight-medium); }
+.stat-delta svg { width: 14px; height: 14px; }
 
-/* Nível clicável (filtro por gravidade): Crítico, Atenção, Informação */
-.level { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid; font-size: var(--text-base); font-weight: var(--weight-semibold); background: transparent; }
-.level .n { font-size: var(--text-lg); font-variant-numeric: tabular-nums; margin-left: 4px; }
-.level[aria-pressed="true"] { box-shadow: 0 0 0 2px currentColor inset; }
+/* Severity filter: Crítico, Atenção, Informação, with counts. A toggle button (aria-pressed). */
+.severity-group { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.severity { display: inline-flex; align-items: center; gap: 8px; height: calc(var(--control-h) + 6px); padding: 0 14px; border-radius: var(--radius-md); border: 1px solid; background: transparent; font-size: var(--text-base); font-weight: var(--weight-medium); }
+.severity svg { width: 16px; height: 16px; }
+.severity .severity-count { font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+.severity[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; }

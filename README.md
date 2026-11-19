@@ -1,71 +1,95 @@
 # Grin
 
-**Grin** é um design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e revisão. Uma família tipográfica (Public Sans), um verde usado só como acento (`#8dc63f`), cinzas com leve viés de verde, três temas (claro, escuro e alto contraste) e duas densidades.
+Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros, revisão e indicadores. Sóbrio, denso quando precisa e acessível por padrão. HTML, CSS e um pouco de JavaScript, sem framework e sem dependências.
 
 **Documentação ao vivo:** https://saulossorio.github.io/grin/
 
-## Como usar numa ferramenta
+## O que tem
+
+- **Tokens** em três camadas (core, semântica, temas), em JSON, com gerador de CSS.
+- **Temas** claro, escuro e alto contraste; **densidades** compacta (32 px) e confortável (40 px); fonte em 100%, 112,5% e 125%.
+- **Cor:** seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro. Marca: `#8dc63f`, usada só como acento.
+- **Tipografia:** Geist e Geist Mono, servidas pelo próprio repositório (`assets/fonts`, licença OFL).
+- **16 componentes:** botão, campo, seleção, interruptor, controle segmentado, chip de filtro, selo, aviso, toast, cartão e indicador, tabela, abas, menu, diálogo, gaveta, estado vazio e a casca do app (barra lateral e topo).
+- **Guias:** começar, fundamentos, componentes, padrões e acessibilidade. **Exemplos:** lista de dados, formulário e página de apresentação.
+- **Verificações:** contraste nos três temas e coerência entre HTML, CSS e ícones.
+
+## Usar numa ferramenta
+
+Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 
 ```html
+<script>/* evita piscar o tema errado: aplica a escolha salva antes de pintar */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
 <link rel="stylesheet" href="styles/global.css">
 <link rel="stylesheet" href="styles/components.css">
+<script type="module" src="scripts/theme.js"></script>
 ```
 
-- **Tema:** sem atributo, segue o sistema. `data-theme="light"`, `"dark"` ou `"hc"` (alto contraste) na tag `<html>` fixa a escolha. `scripts/theme.js` cuida disso e guarda a escolha.
-- **Densidade:** compacta (32 px) é o padrão; `data-density="comfortable"` passa para 40 px.
-- **Tamanho da fonte:** `data-scale="112"` ou `"125"`.
-- **Ferramentas de arquivo único:** cole o conteúdo das três folhas dentro de um `<style>` e embuta a fonte em base64.
+| Atributo na tag `<html>` | Efeito |
+|---|---|
+| nenhum | Segue o sistema (claro, escuro ou alto contraste) |
+| `data-theme="light"`, `"dark"`, `"hc"` | Fixa o tema |
+| `data-density="comfortable"` | Controles de 40 px |
+| `data-scale="112"` ou `"125"` | Fonte em 112,5% ou 125% |
+
+Comportamento opcional: `components/dialog/dialog.js` (diálogo e gaveta), `components/tabs/tabs.js`, `components/toast/toast.js`. Ícones: `<i data-icon="search"></i>` e `paintIcons()` de `scripts/utils.js`.
+
+Ferramenta de arquivo único: cole o CSS num `<style>`, troque o `url()` das fontes por `data:font/woff2;base64,…` e cole os scripts num `<script type="module">`.
 
 ## Estrutura
 
 ```
-index.html            documentação visual com exemplos ao vivo e troca de tema
-styles/
-  variables.css       todos os tokens em CSS (gerado; não edite à mão)
-  global.css          base: reset, tipografia, foco, utilitários, animações
-  components.css      importa o CSS de todos os componentes
-  docs.css            estilos só das páginas de documentação
-scripts/
-  theme.js            tema (sistema, claro, escuro, alto contraste), densidade e fonte
-  animations.js       destacar, entrar, rolar; respeita "reduzir movimento"
-  utils.js            ícones, cálculo de contraste (inclusive oklch), trechos de código
-  docs-shell.js       casca das páginas de documentação
+index.html              visão geral
+docs/                   getting-started, foundations, components, patterns, accessibility
+examples/               dashboard, form, landing
 tokens/
-  core/               valores brutos: colors.json, spacing.json, typography.json
-  semantic/colors.json  o significado de cada cor (usado pelos componentes)
-  themes/             light.json, dark.json, high-contrast.json
-components/<nome>/    <nome>.html (estrutura), <nome>.css e, se precisar, <nome>.js
-examples/             form.html, dashboard.html, landing.html
-docs/                 foundations.html, components.html, patterns.html, accessibility.html
-design/figma-link.txt
-tools/                build-tokens.mjs e check-contrast.mjs
+  core/                 colors.json (escalas), spacing.json (espaço, raio, medidas, sombras), typography.json (fontes, tipos, movimento)
+  semantic/colors.json  o papel de cada cor; os componentes só usam estes
+  themes/               light.json, dark.json, high-contrast.json
+styles/
+  fonts.css             @font-face de Geist e Geist Mono
+  variables.css         GERADO a partir de tokens/; não edite
+  global.css            reset, tipografia, foco, utilitários, animações
+  components.css        importa o CSS de cada componente
+  docs.css              só das páginas de documentação
+components/<nome>/      <nome>.html (exemplo comentado), <nome>.css, <nome>.js quando há comportamento
+                        ("input" guarda os campos e "sidebar" guarda a casca do app)
+scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js (só documentação)
+assets/                 fonts/ (Geist, Geist Mono, OFL.txt) e favicon.svg
+tools/                  build-tokens.mjs, check-contrast.mjs, check-markup.mjs
+design/figma-link.txt   link do Figma, quando existir
 ```
 
-## Mudar um token
+## Convenções
 
-1. Edite o JSON em `tokens/` (nunca o `variables.css`).
-2. `node tools/build-tokens.mjs` gera `styles/variables.css`.
-3. `node tools/check-contrast.mjs` confere os pares de texto e interface nos três temas; sai com erro se algum ficar abaixo do mínimo.
+- **Código em inglês, textos em português do Brasil.** Classes, variáveis, ícones e funções em inglês; documentação e textos de interface em português.
+- **Classes:** bloco (`.card`), partes com hífen (`.card-header`), variações como classe a mais (`.btn.primary`, `.btn.xs`).
+- **Tons:** sempre `crit`, `warn`, `info`, `ok`, `brand` (`.badge.crit`, `.alert.warn`, `.dot.ok`).
+- **Estados no HTML:** `aria-current`, `aria-selected`, `aria-pressed`, `aria-invalid`, `disabled`, `hidden`.
+- **Cor só por token semântico.** Nenhuma cor escrita direto num componente.
 
-Componentes usam só tokens semânticos (`var(--primary)`, `var(--crit-fg)`). Cor escrita direto num componente é erro.
+## Mudar algo
 
-## Regras principais
+| Para | Faça |
+|---|---|
+| Mudar uma cor, medida ou fonte | Edite o JSON em `tokens/`, rode `node tools/build-tokens.mjs` e `node tools/check-contrast.mjs` |
+| Criar um componente | Siga "Criar um componente" em `docs/components.html` |
+| Conferir antes de publicar | `node tools/check-contrast.mjs && node tools/check-markup.mjs` |
 
-- Verde só como acento: barra de 6 px no topo, item de menu ativo, chip de filtro ativo, botão primário e foco.
-- Nunca só cor: todo estado tem texto, e ícone quando pede atenção.
-- Sucesso é azul petróleo (`--ok-fg`), não o verde da marca.
-- Texto a 4,5:1 nos temas claro e escuro, 7:1 no alto contraste; bordas de campo e foco a 3:1.
-- Movimento de 160 a 200 ms, só como resposta a uma ação; nada com "reduzir movimento".
-
-Detalhes em `docs/foundations.html`.
+Anote cada mudança em `CHANGELOG.md`.
 
 ## Ver localmente
 
-Os scripts são módulos ES, que o navegador não carrega por `file://`. Sirva a pasta:
+Os scripts são módulos ES, que o navegador não carrega por `file://`:
 
 ```
 python3 -m http.server 8000
 ```
 
-e abra http://localhost:8000.
+e abra http://localhost:8000. Para abrir num tema: `?theme=dark` (ou `light`, `hc`).
+
+## Licença das fontes
+
+Geist e Geist Mono: SIL Open Font License 1.1, em `assets/fonts/OFL.txt`.

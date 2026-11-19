@@ -1,65 +1,479 @@
 {
-  "$description": "Valores brutos da paleta. Nenhum componente usa estes tokens direto: eles só alimentam os tokens semânticos (tokens/semantic) e os temas (tokens/themes).",
+  "$description": "Paleta bruta do Grin. Cada escala tem 12 passos, gerados em OKLCH com claridade crescente e croma controlado (método inspirado nas escalas do Radix). Papel dos passos: 1-2 fundos de app; 3-5 fundos de componente (normal, hover, ativo); 6-8 bordas (suave, normal, forte); 9-10 preenchimento sólido e seu hover; 11 texto de baixo contraste; 12 texto de alto contraste. Os componentes nunca usam estes valores direto: só os tokens de tokens/semantic.",
   "color": {
-    "brand": {
-      "$description": "Verde do Grin (#8dc63f) e um azul petróleo de apoio.",
-      "green-50":  { "$value": "oklch(0.968 0.032 128)" },
-      "green-100": { "$value": "oklch(0.92 0.06 128)" },
-      "green-150": { "$value": "oklch(0.93 0.07 128)" },
-      "green-200": { "$value": "oklch(0.85 0.09 128)" },
-      "green-400": { "$value": "#8dc63f", "$description": "A cor da marca. Só como preenchimento, com texto escuro em cima (2,04:1 sobre branco)." },
-      "green-450": { "$value": "oklch(0.72 0.17 128)" },
-      "green-500": { "$value": "#62982a" },
-      "green-600": { "$value": "#5c8f22", "$description": "Ícone, contorno e foco no tema claro (3,9:1)." },
-      "green-700": { "$value": "#4d7c0f", "$description": "Texto e link de marca no tema claro (5,0:1)." },
-      "green-800": { "$value": "#2f5206" },
-      "green-dark-200": { "$value": "oklch(0.46 0.1 128)" },
-      "green-dark-300": { "$value": "oklch(0.45 0.09 128)" },
-      "green-dark-500": { "$value": "oklch(0.34 0.05 135)" },
-      "green-dark-600": { "$value": "oklch(0.32 0.06 128)" },
-      "green-dark-700": { "$value": "oklch(0.32 0.04 140)" },
-      "petroleum": { "$value": "#084c51", "$description": "Azul petróleo de apoio. Reservado; ainda não usado em componente." }
+    "white": {
+      "$value": "#ffffff"
     },
-    "neutral": {
-      "$description": "Cinzas com leve viés para o matiz do verde (125) no claro e para o petróleo (208) no escuro.",
-      "0":   { "$value": "#ffffff" },
-      "25":  { "$value": "oklch(0.98 0.005 125)" },
-      "40":  { "$value": "oklch(0.976 0.007 125)" },
-      "50":  { "$value": "#f6f8f3" },
-      "60":  { "$value": "oklch(0.966 0.024 128)" },
-      "75":  { "$value": "oklch(0.965 0.007 125)" },
-      "100": { "$value": "oklch(0.952 0.01 125)" },
-      "150": { "$value": "oklch(0.938 0.007 125)" },
-      "200": { "$value": "oklch(0.905 0.008 125)" },
-      "300": { "$value": "oklch(0.84 0.01 125)" },
-      "500": { "$value": "oklch(0.6 0.012 180)" },
-      "700": { "$value": "#4a5250" },
-      "900": { "$value": "#1e2324" },
-      "1000": { "$value": "#000000" }
+    "black": {
+      "$value": "#000000"
     },
-    "slate": {
-      "$description": "Neutros do tema escuro.",
-      "50":  { "$value": "#e8ecea" },
-      "200": { "$value": "#a8b2ae" },
-      "400": { "$value": "oklch(0.62 0.014 190)" },
-      "600": { "$value": "oklch(0.44 0.012 208)" },
-      "700": { "$value": "oklch(0.36 0.01 208)" },
-      "750": { "$value": "oklch(0.33 0.01 208)" },
-      "775": { "$value": "oklch(0.31 0.009 208)" },
-      "800": { "$value": "oklch(0.285 0.009 208)" },
-      "825": { "$value": "oklch(0.27 0.009 208)" },
-      "850": { "$value": "#262c2d" },
-      "875": { "$value": "#232929" },
-      "900": { "$value": "oklch(0.225 0.008 210)" },
-      "950": { "$value": "#1e2324" }
+    "gray": {
+      "$description": "Neutro do tema claro. Cinza com leve viés verde (matiz 155).",
+      "1": {
+        "$value": "#fcfdfc"
+      },
+      "2": {
+        "$value": "#f7f9f7"
+      },
+      "3": {
+        "$value": "#eff2f0"
+      },
+      "4": {
+        "$value": "#e8ebe9"
+      },
+      "5": {
+        "$value": "#e0e4e1"
+      },
+      "6": {
+        "$value": "#d8ddd9"
+      },
+      "7": {
+        "$value": "#ccd2ce"
+      },
+      "8": {
+        "$value": "#b4bbb6"
+      },
+      "9": {
+        "$value": "#808782"
+      },
+      "10": {
+        "$value": "#737974"
+      },
+      "11": {
+        "$value": "#565d58"
+      },
+      "12": {
+        "$value": "#171c19"
+      }
     },
-    "red":   { "fg": { "$value": "#b91c1c" }, "bg": { "$value": "oklch(0.965 0.025 27)" }, "bd": { "$value": "oklch(0.86 0.07 27)" }, "solid": { "$value": "oklch(0.52 0.2 27)" },
-               "fg-dark": { "$value": "#fca5a5" }, "bg-dark": { "$value": "oklch(0.31 0.06 25)" }, "bd-dark": { "$value": "oklch(0.47 0.11 25)" }, "solid-dark": { "$value": "oklch(0.52 0.19 27)" }, "fg-hc": { "$value": "#8a0f0f" } },
-    "amber": { "fg": { "$value": "#b45309" }, "bg": { "$value": "oklch(0.97 0.04 85)" }, "bd": { "$value": "oklch(0.86 0.09 80)" }, "solid": { "$value": "oklch(0.72 0.15 70)" },
-               "fg-dark": { "$value": "#fcd34d" }, "bg-dark": { "$value": "oklch(0.32 0.05 70)" }, "bd-dark": { "$value": "oklch(0.5 0.09 70)" }, "solid-dark": { "$value": "oklch(0.75 0.14 70)" }, "fg-hc": { "$value": "#7a3500" } },
-    "blue":  { "fg": { "$value": "#1d4ed8" }, "bg": { "$value": "oklch(0.965 0.02 250)" }, "bd": { "$value": "oklch(0.86 0.05 250)" }, "chart": { "$value": "#2563eb" },
-               "fg-dark": { "$value": "#93c5fd" }, "bg-dark": { "$value": "oklch(0.31 0.05 250)" }, "bd-dark": { "$value": "oklch(0.47 0.08 250)" }, "chart-dark": { "$value": "#4a8be3" }, "fg-hc": { "$value": "#0b2f8f" } },
-    "teal":  { "fg": { "$value": "#0f766e" }, "bg": { "$value": "oklch(0.965 0.025 186)" }, "bd": { "$value": "oklch(0.85 0.06 186)" },
-               "fg-dark": { "$value": "#5eead4" }, "bg-dark": { "$value": "oklch(0.31 0.05 186)" }, "bd-dark": { "$value": "oklch(0.47 0.08 186)" }, "fg-hc": { "$value": "#004a44" } }
+    "gray-dark": {
+      "$description": "Neutro do tema escuro (matiz 175).",
+      "1": {
+        "$value": "#0e100f"
+      },
+      "2": {
+        "$value": "#131615"
+      },
+      "3": {
+        "$value": "#1a1d1c"
+      },
+      "4": {
+        "$value": "#1f2423"
+      },
+      "5": {
+        "$value": "#252b29"
+      },
+      "6": {
+        "$value": "#2c3230"
+      },
+      "7": {
+        "$value": "#383f3d"
+      },
+      "8": {
+        "$value": "#4e5653"
+      },
+      "9": {
+        "$value": "#717a77"
+      },
+      "10": {
+        "$value": "#808886"
+      },
+      "11": {
+        "$value": "#b8c0bd"
+      },
+      "12": {
+        "$value": "#edf1f0"
+      }
+    },
+    "green": {
+      "$description": "Verde Grin. O passo 9 (#8dc63f) é a cor da marca.",
+      "1": {
+        "$value": "#fafef6"
+      },
+      "2": {
+        "$value": "#f1fbe7"
+      },
+      "3": {
+        "$value": "#e5f6d3"
+      },
+      "4": {
+        "$value": "#d8f0bd"
+      },
+      "5": {
+        "$value": "#cbe8a8"
+      },
+      "6": {
+        "$value": "#bcde93"
+      },
+      "7": {
+        "$value": "#a9cf78"
+      },
+      "8": {
+        "$value": "#8fbc4c"
+      },
+      "9": {
+        "$value": "#8dc63f"
+      },
+      "10": {
+        "$value": "#87b930"
+      },
+      "11": {
+        "$value": "#4d7002"
+      },
+      "12": {
+        "$value": "#233403"
+      }
+    },
+    "green-dark": {
+      "$description": "Verde Grin no tema escuro. O passo 9 é a cor da marca.",
+      "1": {
+        "$value": "#12170d"
+      },
+      "2": {
+        "$value": "#181e0f"
+      },
+      "3": {
+        "$value": "#1f2b0f"
+      },
+      "4": {
+        "$value": "#27360f"
+      },
+      "5": {
+        "$value": "#2f420f"
+      },
+      "6": {
+        "$value": "#395014"
+      },
+      "7": {
+        "$value": "#48641a"
+      },
+      "8": {
+        "$value": "#5d8025"
+      },
+      "9": {
+        "$value": "#93c642"
+      },
+      "10": {
+        "$value": "#9fd34f"
+      },
+      "11": {
+        "$value": "#a8d666"
+      },
+      "12": {
+        "$value": "#def2c7"
+      }
+    },
+    "red": {
+      "$description": "Erro e ações destrutivas.",
+      "1": {
+        "$value": "#fefcfc"
+      },
+      "2": {
+        "$value": "#fef6f4"
+      },
+      "3": {
+        "$value": "#ffebe8"
+      },
+      "4": {
+        "$value": "#ffe0db"
+      },
+      "5": {
+        "$value": "#ffd2cc"
+      },
+      "6": {
+        "$value": "#fec1ba"
+      },
+      "7": {
+        "$value": "#f8a9a0"
+      },
+      "8": {
+        "$value": "#ee897e"
+      },
+      "9": {
+        "$value": "#d5322f"
+      },
+      "10": {
+        "$value": "#c72122"
+      },
+      "11": {
+        "$value": "#b02b27"
+      },
+      "12": {
+        "$value": "#55110f"
+      }
+    },
+    "red-dark": {
+      "$description": "Erro no tema escuro.",
+      "1": {
+        "$value": "#1d1110"
+      },
+      "2": {
+        "$value": "#281614"
+      },
+      "3": {
+        "$value": "#381c19"
+      },
+      "4": {
+        "$value": "#46221e"
+      },
+      "5": {
+        "$value": "#552a25"
+      },
+      "6": {
+        "$value": "#67342f"
+      },
+      "7": {
+        "$value": "#81413b"
+      },
+      "8": {
+        "$value": "#a7544c"
+      },
+      "9": {
+        "$value": "#d5322f"
+      },
+      "10": {
+        "$value": "#dd3a36"
+      },
+      "11": {
+        "$value": "#ffa196"
+      },
+      "12": {
+        "$value": "#fee0dc"
+      }
+    },
+    "amber": {
+      "$description": "Atenção.",
+      "1": {
+        "$value": "#fffcfa"
+      },
+      "2": {
+        "$value": "#fff6ed"
+      },
+      "3": {
+        "$value": "#feeddb"
+      },
+      "4": {
+        "$value": "#fce3c8"
+      },
+      "5": {
+        "$value": "#f8d8b4"
+      },
+      "6": {
+        "$value": "#f3cb9d"
+      },
+      "7": {
+        "$value": "#e9b67c"
+      },
+      "8": {
+        "$value": "#db9a48"
+      },
+      "9": {
+        "$value": "#f5a32f"
+      },
+      "10": {
+        "$value": "#e89719"
+      },
+      "11": {
+        "$value": "#915b03"
+      },
+      "12": {
+        "$value": "#422701"
+      }
+    },
+    "amber-dark": {
+      "$description": "Atenção no tema escuro.",
+      "1": {
+        "$value": "#1b130b"
+      },
+      "2": {
+        "$value": "#25190c"
+      },
+      "3": {
+        "$value": "#33210a"
+      },
+      "4": {
+        "$value": "#3f280a"
+      },
+      "5": {
+        "$value": "#4d310b"
+      },
+      "6": {
+        "$value": "#5e3d0f"
+      },
+      "7": {
+        "$value": "#764c12"
+      },
+      "8": {
+        "$value": "#986316"
+      },
+      "9": {
+        "$value": "#f5a32f"
+      },
+      "10": {
+        "$value": "#feb75f"
+      },
+      "11": {
+        "$value": "#eeb066"
+      },
+      "12": {
+        "$value": "#fee3c4"
+      }
+    },
+    "blue": {
+      "$description": "Informação e série de comparação em gráficos.",
+      "1": {
+        "$value": "#fcfdfe"
+      },
+      "2": {
+        "$value": "#f4f8fe"
+      },
+      "3": {
+        "$value": "#e8f1fe"
+      },
+      "4": {
+        "$value": "#dbe9fe"
+      },
+      "5": {
+        "$value": "#cbe0fe"
+      },
+      "6": {
+        "$value": "#b9d5fe"
+      },
+      "7": {
+        "$value": "#9bc3fe"
+      },
+      "8": {
+        "$value": "#77abf7"
+      },
+      "9": {
+        "$value": "#0a6ce5"
+      },
+      "10": {
+        "$value": "#0161d1"
+      },
+      "11": {
+        "$value": "#145ec1"
+      },
+      "12": {
+        "$value": "#062b5f"
+      }
+    },
+    "blue-dark": {
+      "$description": "Informação no tema escuro.",
+      "1": {
+        "$value": "#0f151e"
+      },
+      "2": {
+        "$value": "#131c2a"
+      },
+      "3": {
+        "$value": "#17263b"
+      },
+      "4": {
+        "$value": "#1c2e49"
+      },
+      "5": {
+        "$value": "#223859"
+      },
+      "6": {
+        "$value": "#2b456d"
+      },
+      "7": {
+        "$value": "#365788"
+      },
+      "8": {
+        "$value": "#4670af"
+      },
+      "9": {
+        "$value": "#1673ec"
+      },
+      "10": {
+        "$value": "#237cf6"
+      },
+      "11": {
+        "$value": "#96c0fe"
+      },
+      "12": {
+        "$value": "#dbe9fe"
+      }
+    },
+    "teal": {
+      "$description": "Sucesso.",
+      "1": {
+        "$value": "#f9fefd"
+      },
+      "2": {
+        "$value": "#edfbf9"
+      },
+      "3": {
+        "$value": "#dbf7f3"
+      },
+      "4": {
+        "$value": "#c7f2ec"
+      },
+      "5": {
+        "$value": "#b2ece3"
+      },
+      "6": {
+        "$value": "#99e3d9"
+      },
+      "7": {
+        "$value": "#73d5c9"
+      },
+      "8": {
+        "$value": "#1ec2b3"
+      },
+      "9": {
+        "$value": "#059488"
+      },
+      "10": {
+        "$value": "#09877c"
+      },
+      "11": {
+        "$value": "#04736a"
+      },
+      "12": {
+        "$value": "#013631"
+      }
+    },
+    "teal-dark": {
+      "$description": "Sucesso no tema escuro.",
+      "1": {
+        "$value": "#0a1816"
+      },
+      "2": {
+        "$value": "#09201e"
+      },
+      "3": {
+        "$value": "#022c28"
+      },
+      "4": {
+        "$value": "#003631"
+      },
+      "5": {
+        "$value": "#02423c"
+      },
+      "6": {
+        "$value": "#05504a"
+      },
+      "7": {
+        "$value": "#01655c"
+      },
+      "8": {
+        "$value": "#008277"
+      },
+      "9": {
+        "$value": "#179a8e"
+      },
+      "10": {
+        "$value": "#28a497"
+      },
+      "11": {
+        "$value": "#81cfc4"
+      },
+      "12": {
+        "$value": "#cef0eb"
+      }
+    }
   }
 }

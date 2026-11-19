@@ -1,35 +1,40 @@
-// Gera styles/variables.css a partir de tokens/. Rode: node tools/build-tokens.mjs
-// Os tokens em JSON são a fonte de verdade; variables.css nunca se edita à mão.
+// Gera styles/variables.css a partir de tokens/. Rode na raiz do projeto: node tools/build-tokens.mjs
+// Os JSON em tokens/ são a fonte de verdade; variables.css é gerado e nunca se edita à mão.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const ler = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
-const core = { ...ler('tokens/core/colors.json'), ...ler('tokens/core/spacing.json'), ...ler('tokens/core/typography.json') };
-const semantic = ler('tokens/semantic/colors.json');
-const temas = { dark: ler('tokens/themes/dark.json'), hc: ler('tokens/themes/high-contrast.json') };
+const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
+const core = { ...read('tokens/core/colors.json'), ...read('tokens/core/spacing.json'), ...read('tokens/core/typography.json') };
+const semantic = read('tokens/semantic/colors.json');
+const themes = { dark: read('tokens/themes/dark.json'), hc: read('tokens/themes/high-contrast.json') };
 
-const busca = (caminho) => {
-  const v = caminho.split('.').reduce((o, k) => (o ? o[k] : undefined), core);
-  if (!v || v.$value === undefined) throw new Error(`Token inexistente: {${caminho}}`);
-  return v.$value;
+// {color.gray.11} -> valor do token core
+const lookup = (path) => {
+  const node = path.split('.').reduce((o, k) => (o ? o[k] : undefined), core);
+  if (!node || node.$value === undefined) throw new Error(`Token inexistente: {${path}}`);
+  return node.$value;
 };
-const resolver = (v) => String(v).replace(/\{([^}]+)\}/g, (_, c) => resolver(busca(c)));
-const folhas = (obj, prefixo) => Object.entries(obj)
+const resolve = (v) => String(v).replace(/\{([^}]+)\}/g, (_, p) => resolve(lookup(p)));
+const leaves = (obj, prefix) => Object.entries(obj)
   .filter(([k]) => !k.startsWith('$'))
-  .flatMap(([k, v]) => (v && typeof v === 'object' && !('$value' in v) ? folhas(v, `${prefixo}-${k}`) : [[`${prefixo}-${k}`, v.$value]]));
+  .flatMap(([k, v]) => (v && typeof v === 'object' && !('$value' in v) ? leaves(v, `${prefix}-${k}`) : [[`${prefix}-${k}`, v.$value]]));
 
-const cores = Object.entries(semantic).filter(([k]) => !k.startsWith('$'));
-const bloco = (sobre) => cores.map(([k, v]) => `  --${k}: ${resolver(sobre?.[k] ?? v.$value)};`).join('\n');
-for (const [nome, t] of Object.entries(temas)) for (const k of Object.keys(t)) if (!k.startsWith('$') && !semantic[k]) throw new Error(`Tema ${nome}: token ${k} não existe em semantic`);
+const names = Object.keys(semantic).filter((k) => !k.startsWith('$'));
+for (const [theme, t] of Object.entries(themes)) {
+  for (const k of Object.keys(t)) if (!k.startsWith('$') && !semantic[k]) throw new Error(`Tema ${theme}: "${k}" não existe em tokens/semantic/colors.json`);
+  for (const k of names) if (!(k in t)) throw new Error(`Tema ${theme}: falta "${k}"`);
+}
+const block = (override, indent = '  ') => names.map((k) => `${indent}--${k}: ${resolve(override?.[k] ?? semantic[k].$value)};`).join('\n');
 
-const fixos = [
-  ...folhas(core.space, '--space'), ...folhas(core.radius, '--radius'), ...folhas(core.size, '--size'),
+const fixed = [
+  ...leaves(core.space, '--space'), ...leaves(core.radius, '--radius'), ...leaves(core.size, '--size'),
   ['--font-sans', core.font.family.sans.$value], ['--font-mono', core.font.family.mono.$value],
-  ...folhas(core.font.size, '--text'), ...folhas(core.font.weight, '--weight'), ...folhas(core.font.tracking, '--tracking'),
-  ...folhas(core.font['line-height'], '--leading'),
-  ['--dur', core.motion.duration.base.$value], ['--dur-slow', core.motion.duration.slow.$value], ['--ease', core.motion.easing.out.$value],
+  ...leaves(core.font.size, '--text'), ...leaves(core.font.weight, '--weight'), ...leaves(core.font.tracking, '--tracking'),
+  ...leaves(core.font['line-height'], '--leading'),
+  ['--dur-fast', core.motion.duration.fast.$value], ['--dur', core.motion.duration.base.$value], ['--dur-slow', core.motion.duration.slow.$value],
+  ['--ease', core.motion.easing.out.$value], ['--ease-in-out', core.motion.easing['in-out'].$value],
   ['--control-h', 'var(--size-control-compact)'], ['--control-text', 'var(--text-md)'],
 ].map(([k, v]) => `  ${k}: ${v};`).join('\n');
 
@@ -38,36 +43,36 @@ const css = `/* Grin: variáveis geradas por tools/build-tokens.mjs a partir de 
 /* Tema claro (padrão) e tokens que não mudam com o tema */
 :root {
   color-scheme: light;
-${fixos}
-${bloco()}
+${fixed}
+${block()}
 }
 
 /* Densidade confortável: controles de 40 px e texto de 15 px */
 :root[data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
 
-/* Tema escuro: escolhido pela pessoa ou pelo sistema (quando não há escolha) */
+/* Tema escuro: escolhido pela pessoa, ou pelo sistema quando não há escolha */
 :root[data-theme="dark"] {
   color-scheme: dark;
-${bloco(temas.dark)}
+${block(themes.dark)}
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme]) {
     color-scheme: dark;
-${bloco(temas.dark).replace(/^/gm, '  ')}
+${block(themes.dark, '    ')}
   }
 }
 
-/* Alto contraste: escolhido pela pessoa ou pedido pelo sistema */
+/* Alto contraste: escolhido pela pessoa, ou pedido pelo sistema */
 :root[data-theme="hc"] {
   color-scheme: light;
-${bloco(temas.hc)}
+${block(themes.hc)}
 }
 @media (prefers-contrast: more) {
   :root:not([data-theme]) {
     color-scheme: light;
-${bloco(temas.hc).replace(/^/gm, '  ')}
+${block(themes.hc, '    ')}
   }
 }
 `;
 writeFileSync(join(root, 'styles/variables.css'), css);
-console.log(`styles/variables.css: ${cores.length} cores semânticas, 3 temas`);
+console.log(`styles/variables.css: ${names.length} tokens semânticos em 3 temas`);

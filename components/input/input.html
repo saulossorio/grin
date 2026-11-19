@@ -1,11 +1,19 @@
-<!-- Campo: rótulo visível ligado ao campo, dica opcional e mensagem de erro ligada por aria-describedby. -->
+<!-- Grin field. The label is always visible and tied to the control (for/id).
+     Error: aria-invalid="true" on the control + .field-message linked by aria-describedby.
+     Message format: what happened, why, what to do. -->
 <div class="field">
-  <label for="email">E-mail corporativo<span class="req" aria-hidden="true">*</span></label>
-  <input class="input" id="email" type="email" value="ana@gmail.com" aria-invalid="true" aria-describedby="email-msg" required>
-  <p class="msg" id="email-msg">Use o e-mail corporativo. gmail.com é um provedor pessoal.</p>
+  <label class="field-label" for="email">E-mail corporativo<span class="required" aria-hidden="true">*</span></label>
+  <input class="input" id="email" type="email" value="ana@gmail.com" required aria-invalid="true" aria-describedby="email-msg">
+  <p class="field-message" id="email-msg"><i data-icon="alert-circle"></i>Use o e-mail corporativo. gmail.com é um provedor pessoal.</p>
 </div>
 <div class="field">
-  <label for="setor">Setor</label>
-  <select class="select" id="setor"><option>Tecnologia</option><option>Saúde</option><option>Varejo</option></select>
+  <label class="field-label" for="sector">Setor</label>
+  <select class="select" id="sector" aria-describedby="sector-hint"><option>Tecnologia</option><option>Saúde</option><option>Varejo</option></select>
+  <p class="field-hint" id="sector-hint">Usado para agrupar as empresas nos relatórios.</p>
 </div>
-<label class="check"><input type="checkbox" checked> Avisar quando alguém alterar</label>
+<div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome ou e-mail"></div>
+<div class="choices">
+  <label class="choice"><input type="radio" name="merge" checked><span><span class="choice-title">Mesclar</span><span class="choice-description">Junta os dois registros e guarda o histórico.</span></span></label>
+  <label class="choice"><input type="radio" name="merge"><span><span class="choice-title">Manter os dois</span><span class="choice-description">Marca como pessoas diferentes.</span></span></label>
+</div>
+<label class="checkbox"><input type="checkbox" checked> Avisar quando alguém alterar</label>

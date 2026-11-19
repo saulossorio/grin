@@ -1,45 +1,52 @@
-/* Campos: texto, lista, área de texto, busca, caixa de seleção e o par rótulo + campo + mensagem. */
+/* Grin fields: text input, select, textarea, search, checkbox, choice cards and the label + control + message group. */
 .input, .select, .textarea {
   width: 100%; min-width: 0; height: var(--control-h); padding: 0 10px;
-  border: 1px solid var(--input); border-radius: var(--radius-sm); background: var(--field); color: var(--foreground);
+  border: 1px solid var(--input); border-radius: var(--radius-sm); background: var(--field); color: var(--foreground); box-shadow: var(--shadow-xs);
   font-size: var(--control-text);
+  transition: border-color var(--dur-fast);
 }
+.input:hover, .select:hover, .textarea:hover { border-color: var(--foreground); }
 .textarea { height: auto; min-height: 96px; padding: 8px 10px; line-height: var(--leading-body); resize: vertical; }
 .select {
   appearance: none; -webkit-appearance: none; padding-right: 32px; cursor: pointer; text-overflow: ellipsis;
   background-image: linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%), linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
-  background-position: calc(100% - 17px) 52%, calc(100% - 12px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
+  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
 }
-.input:disabled, .select:disabled, .textarea:disabled { opacity: 0.6; cursor: not-allowed; }
+.input:disabled, .select:disabled, .textarea:disabled { background: var(--muted); color: var(--muted-foreground); cursor: not-allowed; box-shadow: none; }
 .input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--crit-fg); }
+.input[aria-invalid="true"]:focus-visible { outline-color: var(--crit-fg); }
 
-/* Campo com rótulo em cima. Rótulo sempre visível e ligado ao campo (for/id). */
+/* Field: label on top, control, then hint or message. The label is always visible and tied to the control (for/id). */
 .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.field > label, .field .label { font-size: var(--text-md); font-weight: var(--weight-semibold); }
-.field .req { color: var(--crit-fg); margin-left: 3px; }
-.field .hint { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
-.field .msg { font-size: var(--text-sm); line-height: var(--leading-ui); color: var(--crit-fg); display: flex; gap: 6px; align-items: flex-start; }
-.field .msg.warn { color: var(--warn-fg); }
-.field .msg svg { margin-top: 1px; }
-.fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-4); }
+.field-label { font-size: var(--text-md); font-weight: var(--weight-medium); color: var(--foreground); }
+.required { color: var(--crit-fg); margin-left: 2px; }
+.field-hint { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
+.field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-sm); line-height: var(--leading-ui); color: var(--crit-fg); }
+.field-message.warn { color: var(--warn-fg); }
+.field-message svg { width: 14px; height: 14px; margin-top: 1px; }
+.field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--space-4); }
 
-/* Campo em linha, rótulo à esquerda: formulário de detalhe dentro da gaveta */
-.fld { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 4px 12px; padding: 6px 0; align-items: start; }
-.fld > label { padding-top: 8px; font-size: var(--text-md); color: var(--muted-foreground); overflow-wrap: anywhere; }
-@media (max-width: 520px) { .fld { grid-template-columns: 1fr; } .fld > label { padding-top: 0; } }
+/* Field row: label on the left. For record detail inside a drawer. Stacks on narrow screens. */
+.field-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 4px 12px; padding: 6px 0; align-items: start; }
+.field-row > .field-label { padding-top: calc((var(--control-h) - 1.45em) / 2); font-weight: var(--weight-regular); color: var(--muted-foreground); overflow-wrap: anywhere; }
+@media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } .field-row > .field-label { padding-top: 0; } }
 
-/* Busca com ícone e botão de limpar */
-.search { position: relative; width: min(340px, 100%); }
-.search > svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted-foreground); pointer-events: none; }
+/* Search: leading icon and optional clear button */
+.search { position: relative; width: min(320px, 100%); }
+.search > svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--muted-foreground); pointer-events: none; }
 .search .input { padding: 0 32px 0 32px; }
-.search .btn { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; color: var(--muted-foreground); }
+.search .btn { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); }
 
-/* Caixa de seleção e opção com descrição */
-.check { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-base); cursor: pointer; line-height: 1.35; min-height: var(--size-target-min); }
-.checks { display: flex; flex-direction: column; gap: 10px; }
-.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: var(--space-2); }
-.opt { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--background); cursor: pointer; }
-.opt:has(input:checked) { border-color: var(--brand-border); background: var(--brand-bg); }
-.opt input { margin-top: 1px; }
-.opt b { display: block; font-weight: var(--weight-medium); font-size: var(--text-base); }
-.opt small { display: block; color: var(--muted-foreground); font-size: var(--text-sm); margin-top: 3px; line-height: var(--leading-ui); }
+/* Checkbox and radio with text */
+.checkbox { display: inline-flex; align-items: center; gap: 8px; min-height: var(--size-target-min); font-size: var(--text-base); line-height: 1.35; cursor: pointer; }
+.checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+
+/* Choice card: a radio or checkbox with a title and a description */
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: var(--space-2); }
+.choice { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); cursor: pointer; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
+.choice:hover { border-color: var(--border-strong); }
+.choice:has(input:checked) { border-color: var(--brand-border); background: var(--brand-bg); }
+.choice:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
+.choice input { margin-top: 2px; }
+.choice-title { display: block; font-weight: var(--weight-medium); font-size: var(--text-base); }
+.choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }

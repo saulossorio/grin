@@ -1,7 +1,8 @@
-/* Controle segmentado: escolher uma entre 2 a 5 opções curtas, todas visíveis (tema, densidade, período). Rádios por baixo. */
-.seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: var(--radius-md); background: var(--muted); border: 1px solid var(--border); flex-wrap: wrap; }
-.seg label { position: relative; display: inline-flex; }
-.seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.seg span { display: inline-flex; align-items: center; gap: 6px; min-height: calc(var(--control-h) - 8px); padding: 0 12px; border-radius: var(--radius-sm); font-size: var(--control-text); font-weight: var(--weight-medium); color: var(--muted-foreground); white-space: nowrap; transition: background-color var(--dur), color var(--dur); }
-.seg input:checked + span { background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-sm); }
-.seg input:focus-visible + span { outline: 2px solid var(--ring); outline-offset: 1px; }
+/* Grin segmented control: one choice among 2 to 5 short options, all visible (density, period, view). Radios underneath. */
+.segmented { display: inline-flex; width: fit-content; max-width: 100%; flex-wrap: wrap; gap: 2px; padding: 2px; border-radius: var(--radius-md); background: var(--muted); border: 1px solid var(--border-soft); }
+.segmented label { position: relative; display: inline-flex; }
+.segmented input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.segmented span { display: inline-flex; align-items: center; gap: 6px; height: calc(var(--control-h) - 6px); padding: 0 10px; border-radius: 6px; color: var(--muted-foreground); font-size: var(--control-text); font-weight: var(--weight-medium); white-space: nowrap; transition: background-color var(--dur-fast), color var(--dur-fast); }
+.segmented label:hover span { color: var(--foreground); }
+.segmented input:checked + span { background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-sm); }
+.segmented input:focus-visible + span { outline: 2px solid var(--ring); outline-offset: 1px; }

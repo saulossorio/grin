@@ -1,0 +1,8 @@
+<!-- Grin tabs. Only the selected tab is in the tab order (tabindex 0); arrows move between tabs. -->
+<div class="tabs" role="tablist" aria-label="Seções da pessoa">
+  <button type="button" class="tab" role="tab" id="tab-data" aria-selected="true" aria-controls="panel-data">Dados</button>
+  <button type="button" class="tab" role="tab" id="tab-events" aria-selected="false" aria-controls="panel-events" tabindex="-1">Eventos <span class="nav-count">4</span></button>
+</div>
+<div class="tab-panel" role="tabpanel" id="panel-data" aria-labelledby="tab-data">…</div>
+<div class="tab-panel" role="tabpanel" id="panel-events" aria-labelledby="tab-events" hidden>…</div>
+<script type="module" src="tabs.js"></script>

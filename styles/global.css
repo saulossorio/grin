@@ -1,68 +1,74 @@
-/* Grin: base. Reset curto, tipografia e utilitários. Só usa tokens de styles/variables.css. */
+/* Grin: base. Short reset, typography, focus, utilities and keyframes. Uses only tokens from variables.css. */
 
+/* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 html, body { margin: 0; background: var(--background); color: var(--foreground); }
 body {
   font-family: var(--font-sans);
   font-size: var(--text-base);
   line-height: var(--leading-ui);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+h1, h2, h3, h4, p, figure, blockquote, dl, dd { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; letter-spacing: inherit; }
+button { cursor: pointer; }
+svg { display: block; flex-shrink: 0; }
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
 
-/* Tamanho da fonte escolhido pela pessoa: 100%, 112,5% e 125%. Tudo em rem acompanha. */
+/* Font size chosen by the person: 100% (default), 112.5% and 125%. Everything in rem follows. */
 :root[data-scale="112"] { font-size: 112.5%; }
 :root[data-scale="125"] { font-size: 125%; }
 
-h1, h2, h3, h4 { margin: 0; text-wrap: balance; letter-spacing: var(--tracking-tight); }
-h1 { font-size: var(--text-2xl); font-weight: var(--weight-title); }
-h2 { font-size: var(--text-xl); font-weight: var(--weight-title); }
-h3 { font-size: var(--text-body); font-weight: var(--weight-semibold); letter-spacing: 0; }
-p { margin: 0; }
-a { color: var(--link); text-underline-offset: 2px; }
-code, kbd, pre { font-family: var(--font-mono); font-size: 0.8em; }
-button, input, select, textarea { font: inherit; color: inherit; }
-button { cursor: pointer; }
-svg { display: block; flex-shrink: 0; }
-img { max-width: 100%; }
-mark { background: var(--highlight); color: inherit; border-radius: 2px; }
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 { font-weight: var(--weight-semibold); line-height: var(--leading-tight); text-wrap: balance; }
+h1 { font-size: var(--text-2xl); letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
+h3 { font-size: var(--text-body); letter-spacing: var(--tracking-tight); }
+h4 { font-size: var(--text-base); }
+p { text-wrap: pretty; }
+a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+strong, b { font-weight: var(--weight-semibold); }
+code, kbd, samp, pre { font-family: var(--font-mono); font-size: 0.92em; }
+:not(pre) > code { padding: 1px 5px; border-radius: var(--radius-xs); background: var(--muted); border: 1px solid var(--border-soft); font-size: 0.85em; }
+kbd { display: inline-flex; align-items: center; min-width: 20px; height: 20px; padding: 0 5px; border: 1px solid var(--border); border-bottom-width: 2px; border-radius: var(--radius-xs); background: var(--surface); color: var(--muted-foreground); font-size: var(--text-xs); line-height: 1; }
+mark { background: var(--highlight); color: inherit; border-radius: 2px; padding: 0 1px; }
 ::selection { background: var(--highlight); }
-::placeholder { color: var(--muted-foreground); opacity: 0.85; }
-[hidden] { display: none !important; }
+::placeholder { color: var(--muted-foreground); opacity: 0.8; }
 
-/* Foco sempre visível; nos campos o anel fica colado à borda */
+/* ---------- Focus: always visible; in fields the ring hugs the border ---------- */
 :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
-input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: 0; border-color: var(--ring); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: -1px; }
 :root[data-theme="hc"] :focus-visible { outline-width: 3px; }
 
-input[type="checkbox"], input[type="radio"] {
-  width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: var(--primary);
-}
+input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: var(--primary); }
 
-/* Barra verde de 6 px no topo da tela: a marca entra como acento, nunca como área grande */
+/* ---------- Brand bar: 3 px of brand green across the top of the screen ---------- */
 .brand-bar { height: var(--size-brand-bar); background: var(--primary); }
 
-/* Utilitários */
-.sp { flex: 1 1 auto; }
+/* ---------- Layout utilities ---------- */
 .row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 .stack { display: flex; flex-direction: column; gap: var(--space-3); }
-.muted { color: var(--muted-foreground); }
-.mono { font-family: var(--font-mono); font-size: var(--text-sm); }
-.num { font-variant-numeric: tabular-nums; }
-.small { font-size: var(--text-sm); }
-.sub { color: var(--muted-foreground); font-size: var(--text-base); font-variant-numeric: tabular-nums; }
-.sec-t {
-  margin: 0 0 var(--space-2); font-size: var(--text-sm); font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--muted-foreground);
-}
-.fg-crit { color: var(--crit-fg); } .fg-warn { color: var(--warn-fg); } .fg-info { color: var(--info-fg); } .fg-ok { color: var(--ok-fg); }
-.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.spacer { flex: 1 1 auto; }
 
-/* Movimento: curto e só como resposta a uma ação. Com "reduzir movimento", nada se mexe. */
+/* ---------- Text utilities ---------- */
+.text-secondary { color: var(--muted-foreground); }
+.text-sm { font-size: var(--text-sm); }
+.text-mono { font-family: var(--font-mono); font-size: 0.92em; }
+.tabular { font-variant-numeric: tabular-nums; }
+.overline { font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--muted-foreground); }
+.text-crit { color: var(--crit-fg); } .text-warn { color: var(--warn-fg); } .text-info { color: var(--info-fg); } .text-ok { color: var(--ok-fg); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---------- Motion: short, and only in response to an action. "Reduce motion" turns it off. ---------- */
 @keyframes grin-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes grin-slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes grin-pop { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%); } }
 @keyframes grin-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes grin-scale-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+@keyframes grin-slide-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
 @keyframes grin-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }

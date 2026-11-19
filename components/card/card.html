@@ -1,6 +1,13 @@
-<!-- Cartão com cabeçalho, corpo e rodapé. O rodapé é opcional. -->
+<!-- Grin card, stat and severity filter. -->
 <article class="card">
-  <header class="card-h"><div><h3>Norte Sul Eventos</h3><p>CNPJ 12.345.678/0001-90 · São Paulo</p></div><span class="badge t-ok">Ativa</span></header>
-  <div class="card-b"><p class="sub">32 pessoas vinculadas · 4 eventos em 2026</p></div>
-  <footer class="card-f"><button type="button" class="btn xs">Abrir</button></footer>
+  <header class="card-header"><div><h3 class="card-title">Norte Sul Eventos</h3><p class="card-description">São Paulo · 32 pessoas</p></div><span class="badge ok">Ativa</span></header>
+  <div class="card-body"><p class="text-secondary">4 eventos em 2026.</p></div>
+  <footer class="card-footer"><button type="button" class="btn xs">Abrir</button></footer>
 </article>
+<div class="stat-grid">
+  <div class="stat"><span class="stat-label">Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+46 neste mês</span></div>
+</div>
+<div class="severity-group">
+  <button type="button" class="severity crit" aria-pressed="true"><i data-icon="alert-circle"></i>Crítico <span class="severity-count">8</span></button>
+  <button type="button" class="severity warn" aria-pressed="false"><i data-icon="alert-triangle"></i>Atenção <span class="severity-count">23</span></button>
+</div>

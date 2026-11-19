@@ -1,27 +1,34 @@
 {
-  "$description": "Espaços, raios e alturas. Base de 2 px; os passos usados de fato nas três ferramentas.",
+  "$description": "Espaço, raio e medidas fixas. Base de 4 px, com meios passos (2, 6, 10, 14) para ajustes finos dentro de componentes.",
   "space": {
     "0": { "$value": "0" }, "0-5": { "$value": "2px" }, "1": { "$value": "4px" }, "1-5": { "$value": "6px" }, "2": { "$value": "8px" },
     "2-5": { "$value": "10px" }, "3": { "$value": "12px" }, "3-5": { "$value": "14px" }, "4": { "$value": "16px" }, "5": { "$value": "20px" },
-    "6": { "$value": "24px" }, "8": { "$value": "32px" }, "10": { "$value": "40px" }, "12": { "$value": "48px" }, "14": { "$value": "56px" }, "18": { "$value": "72px" }
+    "6": { "$value": "24px" }, "8": { "$value": "32px" }, "10": { "$value": "40px" }, "12": { "$value": "48px" }, "16": { "$value": "64px" }, "20": { "$value": "80px" }
   },
   "radius": {
-    "xs": { "$value": "5px", "$description": "Botões dentro de chips e células." },
-    "sm": { "$value": "7px", "$description": "Botões, campos, itens de menu e de navegação." },
-    "md": { "$value": "10px", "$description": "Cartões, avisos, popovers, toasts." },
-    "lg": { "$value": "14px", "$description": "Diálogos, painéis e a barra de ações em massa." },
+    "xs": { "$value": "4px", "$description": "Elementos pequenos dentro de outros: botão do chip, tecla, marcador." },
+    "sm": { "$value": "6px", "$description": "Controles: botão, campo, item de menu, item de navegação." },
+    "md": { "$value": "8px", "$description": "Avisos, menus, popovers, toasts." },
+    "lg": { "$value": "12px", "$description": "Cartões, painéis, tabelas, diálogos." },
     "pill": { "$value": "999px", "$description": "Selos, contadores e pontos de estado." }
   },
   "size": {
-    "control-compact": { "$value": "32px", "$description": "Altura de botão e campo na densidade compacta." },
-    "control-comfortable": { "$value": "40px", "$description": "Altura na densidade confortável." },
-    "control-xs": { "$value": "28px" },
-    "nav-item": { "$value": "34px" },
-    "topbar": { "$value": "56px" },
-    "sidebar": { "$value": "232px" },
-    "sidebar-collapsed": { "$value": "56px" },
-    "drawer": { "$value": "580px" },
-    "brand-bar": { "$value": "6px", "$description": "Barra verde no topo da tela." },
+    "control-compact": { "$value": "32px", "$description": "Altura de botão e campo na densidade compacta (padrão)." },
+    "control-comfortable": { "$value": "40px", "$description": "Altura de botão e campo na densidade confortável." },
+    "control-xs": { "$value": "28px", "$description": "Botão pequeno dentro de tabelas e barras." },
+    "nav-item": { "$value": "32px", "$description": "Item da barra lateral." },
+    "topbar": { "$value": "56px", "$description": "Barra superior." },
+    "sidebar": { "$value": "240px", "$description": "Barra lateral aberta." },
+    "sidebar-collapsed": { "$value": "56px", "$description": "Barra lateral recolhida, só ícones." },
+    "drawer": { "$value": "560px", "$description": "Largura máxima da gaveta." },
+    "brand-bar": { "$value": "3px", "$description": "Faixa verde no topo da tela." },
     "target-min": { "$value": "24px", "$description": "Menor alvo de clique permitido (WCAG 2.5.8)." }
+  },
+  "shadow": {
+    "$description": "Sombras do tema claro. O tema escuro troca os valores (tokens/themes/dark.json) porque sombra em fundo escuro precisa de mais opacidade.",
+    "xs": { "$value": "0 1px 2px oklch(0.2 0.01 160 / 0.06)", "$description": "Botões e campos." },
+    "sm": { "$value": "0 1px 3px oklch(0.2 0.01 160 / 0.08), 0 1px 2px oklch(0.2 0.01 160 / 0.04)", "$description": "Controle segmentado marcado, cartão em destaque." },
+    "md": { "$value": "0 6px 16px -4px oklch(0.2 0.01 160 / 0.12), 0 2px 4px oklch(0.2 0.01 160 / 0.05)", "$description": "Menus, popovers, toasts." },
+    "lg": { "$value": "0 20px 48px -12px oklch(0.2 0.01 160 / 0.22), 0 4px 12px oklch(0.2 0.01 160 / 0.06)", "$description": "Diálogos e gaveta." }
   }
 }

@@ -1,7 +1,21 @@
 # Mudanças
 
+## 1.1 · 19/11/2026
+Revisão completa de design e de organização.
+
+**Visual**
+- Tipografia: Geist e Geist Mono (variáveis, com algarismos tabulares), servidas do próprio repositório em `assets/fonts`. Saiu a Public Sans.
+- Cor: seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro, com papéis fixos por passo. Neutros quase cinza com leve viés verde. Tema escuro quase preto. A marca continua `#8dc63f`.
+- Raios 4, 6, 8 e 12 px; quatro níveis de sombra; três durações de movimento.
+- Componentes refinados: botões com sombra leve e hover mais claro, campos com hover, chips em pílula, selos menores, tabela com linhas de 40 px e números tabulares, diálogo com rodapé destacado, menus e toasts mais compactos. Faixa da marca de 6 para 3 px.
+- Novos componentes: abas (com teclado) e interruptor. Novos: grupo de botões, opção com descrição, filtro de gravidade, barra de paginação.
+
+**Organização**
+- Classes renomeadas para um padrão único em inglês (bloco, partes com hífen, variações como classe extra; tons `crit`, `warn`, `info`, `ok`, `brand`).
+- JavaScript e nomes de ícones em inglês (`icon()`, `paintIcons()`, `setTheme()`, `toast(text, { type, action, onAction })`). Tema guardado em `grin-theme`; `?theme=` na URL.
+- Documentação reorganizada: visão geral, Começar (novo), Fundamentos com valores ao vivo e escalas, Componentes com exemplo, código, classes e quando usar, Padrões e Acessibilidade.
+- Nova verificação `tools/check-markup.mjs`: toda classe usada existe no CSS e todo ícone existe.
+- `AGENTS.md` com as regras para agentes de IA; `CLAUDE.md` passa a apontar para ele.
+
 ## 1.0 · 19/11/2026
-- Primeira versão.
-- Tokens em três camadas (core, semântica, temas) com gerador de CSS e verificação de contraste.
-- Temas claro, escuro e o novo alto contraste; densidades compacta e confortável; fonte em 100%, 112,5% e 125%.
-- 14 componentes, 3 exemplos completos e 4 páginas de guia.
+- Primeira versão: tokens em três camadas, temas claro, escuro e alto contraste, duas densidades, 14 componentes, 3 exemplos e 4 guias.

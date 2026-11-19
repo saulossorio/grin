@@ -1,0 +1,17 @@
+/* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
+   (github.com/vercel/geist-font, v1.9.2, SIL Open Font License 1.1: assets/fonts/OFL.txt).
+   Served from assets/fonts, so tools work offline and without third-party requests. */
+@font-face {
+  font-family: 'Geist';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../assets/fonts/geist.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Geist Mono';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../assets/fonts/geist-mono.woff2') format('woff2');
+}

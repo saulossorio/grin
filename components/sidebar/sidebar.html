@@ -1,7 +1,17 @@
-<nav class="side" aria-label="Navegação principal">
-  <a class="logo" href="#"><span class="logo-c" aria-hidden="true">A</span><span>Agenda</span></a>
-  <a class="nav" href="#" aria-current="page"><span class="lbl">Pessoas</span><span class="qtd">1.284</span></a>
-  <a class="nav" href="#"><span class="lbl">Empresas</span></a>
-  <a class="nav" href="#"><span class="lbl">Revisão</span><span class="count">12</span></a>
-  <div class="side-foot"><button type="button" class="nav small" data-theme-toggle><span class="lbl">Tema escuro</span></button></div>
-</nav>
+<!-- Grin app shell. The current page uses aria-current="page". Collapsed: add .collapsed to the sidebar
+     and an aria-label to each item (the label is hidden). -->
+<div class="brand-bar"></div>
+<div class="app">
+  <nav class="sidebar" aria-label="Navegação principal">
+    <a class="app-logo" href="#"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
+    <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span></a>
+    <a class="nav-item" href="#"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
+    <div class="sidebar-footer"><button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button></div>
+  </nav>
+  <div class="app-main">
+    <header class="topbar">…</header>
+    <div class="page-header"><div class="page-title-row"><div class="page-title"><h1>Pessoas</h1><span class="text-secondary">1.284</span></div></div></div>
+    <main class="page-content">…</main>
+  </div>
+</div>

@@ -4,341 +4,93 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grin Design System</title>
-<meta name="description" content="Grin: tokens, componentes e regras de interface para ferramentas de trabalho com dados.">
-<script>/* aplica tema, densidade e fonte antes de pintar a tela */try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<meta name="description" content="Grin: design system para ferramentas de trabalho com dados. Tokens, componentes, padrões e acessibilidade.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
 <link rel="stylesheet" href="styles/global.css">
 <link rel="stylesheet" href="styles/components.css">
 <link rel="stylesheet" href="styles/docs.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script type="module" src="scripts/docs-shell.js"></script>
-<script type="module" src="components/dialog/dialog.js"></script>
 </head>
 <body>
 <div class="brand-bar"></div>
 <div class="app">
-  <nav class="side" data-ds-nav data-base="" data-here="index"></nav>
-  <div class="body">
-    <header class="top" data-ds-top data-title="Visão geral"></header>
-    <main class="ds-main" id="conteudo">
+  <nav class="sidebar" data-docs-nav data-base="" data-here="index"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Visão geral"></header>
+    <main class="docs-main" id="content">
 
-      <section class="ds-hero" aria-labelledby="t-hero">
-        <span class="eyebrow">Design system · versão 1.0</span>
+      <section class="docs-hero" aria-labelledby="t-hero">
+        <span class="overline">Design system · versão 1.1</span>
         <h1 id="t-hero">Grin</h1>
-        <p class="ds-lead">Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e revisão. Uma família tipográfica, um verde usado só como acento, cinzas com leve viés de verde, três temas e duas densidades. Tudo em tokens, com contraste medido.</p>
+        <p class="lead">Um design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros, revisão e indicadores. Sóbrio, denso quando precisa e acessível por padrão.</p>
         <div class="row">
-          <a class="btn primary lg" href="#comecar">Começar a usar</a>
-          <a class="btn lg" href="docs/foundations.html">Ler os fundamentos</a>
-          <a class="btn ghost lg" href="examples/dashboard.html">Ver um exemplo</a>
+          <a class="btn primary lg" href="docs/getting-started.html">Começar</a>
+          <a class="btn lg" href="docs/components.html">Ver componentes</a>
+          <a class="btn ghost lg" href="examples/dashboard.html">Abrir um exemplo</a>
         </div>
       </section>
 
-      <section class="ds-sec" id="principios" aria-labelledby="t-princ">
-        <header><h2 id="t-princ">Princípios</h2><p>Seis regras que explicam quase todas as decisões. Na dúvida, volte a elas.</p></header>
-        <div class="ds-grid wide">
-          <div class="card"><div class="card-b"><h3>Verde só como acento</h3><p class="sub">Barra de 6 px no topo, item de menu ativo, chip de filtro, botão primário e foco. Fundos e tabelas ficam neutros: numa tela cheia de dados, verde em área grande cansa e rouba a atenção dos estados.</p></div></div>
-          <div class="card"><div class="card-b"><h3>Nunca só cor</h3><p class="sub">Todo estado tem texto, e ícone ou ponto quando pede atenção. Quem não distingue vermelho de verde lê a mesma informação.</p></div></div>
-          <div class="card"><div class="card-b"><h3>Sucesso não é a marca</h3><p class="sub">Com a marca verde, "deu certo" fica em azul petróleo. Assim identidade e estado não se confundem.</p></div></div>
-          <div class="card"><div class="card-b"><h3>Contraste medido</h3><p class="sub">Texto a 4,5:1 ou mais nos temas claro e escuro, 7:1 no alto contraste; bordas de campo e foco a 3:1. O verde da marca (2,04:1 sobre branco) nunca vira texto.</p></div></div>
-          <div class="card"><div class="card-b"><h3>Densidade conforme a tarefa</h3><p class="sub">Compacta (32 px) para quem trabalha horas numa tabela; confortável (40 px) para leitura e análise. A pessoa pode trocar.</p></div></div>
-          <div class="card"><div class="card-b"><h3>Movimento curto</h3><p class="sub">160 a 200 ms, só como resposta a uma ação. Com "reduzir movimento" no sistema, nada se mexe.</p></div></div>
+      <section class="docs-section" aria-labelledby="t-inside">
+        <header><h2 id="t-inside">O que tem</h2></header>
+        <div class="stat-grid">
+          <div class="stat"><span class="stat-label">Tokens semânticos</span><span class="stat-value">53</span><span class="stat-delta text-secondary">Em 3 temas</span></div>
+          <div class="stat"><span class="stat-label">Componentes</span><span class="stat-value">16</span><span class="stat-delta text-secondary">HTML e CSS, sem framework</span></div>
+          <div class="stat"><span class="stat-label">Escalas de cor</span><span class="stat-value">6</span><span class="stat-delta text-secondary">12 passos, claro e escuro</span></div>
+          <div class="stat"><span class="stat-label">Contraste</span><span class="stat-value">AA</span><span class="stat-delta text-ok"><i data-icon="check-circle"></i>Verificado por script</span></div>
+        </div>
+        <div class="docs-grid wide">
+          <a class="card" href="docs/getting-started.html"><div class="card-body"><h3 class="card-title">Começar</h3><p class="text-secondary">Instalar, escolher tema e densidade, estrutura dos arquivos e convenções.</p></div></a>
+          <a class="card" href="docs/foundations.html"><div class="card-body"><h3 class="card-title">Fundamentos</h3><p class="text-secondary">Cor, tipografia, espaço, raio, sombra, movimento e ícones, com valores ao vivo.</p></div></a>
+          <a class="card" href="docs/components.html"><div class="card-body"><h3 class="card-title">Componentes</h3><p class="text-secondary">Cada componente com exemplo, código, classes e quando usar ou não.</p></div></a>
+          <a class="card" href="docs/patterns.html"><div class="card-body"><h3 class="card-title">Padrões</h3><p class="text-secondary">Estrutura de tela, filtros, formulários, mensagens, confirmar ou desfazer.</p></div></a>
+          <a class="card" href="docs/accessibility.html"><div class="card-body"><h3 class="card-title">Acessibilidade</h3><p class="text-secondary">Checklist por tela e contraste medido nos três temas.</p></div></a>
+          <a class="card" href="examples/dashboard.html"><div class="card-body"><h3 class="card-title">Exemplos</h3><p class="text-secondary">Uma lista de dados, um formulário e uma página de apresentação completos.</p></div></a>
         </div>
       </section>
 
-      <section class="ds-sec" id="comecar" aria-labelledby="t-comecar">
-        <header><h2 id="t-comecar">Como usar</h2><p>Três folhas de estilo, nesta ordem. Os componentes usam só os tokens semânticos, então trocar o tema é trocar um atributo na raiz.</p></header>
-        <div class="demo"><div class="demo-stage col"><p class="sub">Copie para o &lt;head&gt; da ferramenta:</p>
-<pre class="mono" data-demo-only style="margin:0;white-space:pre-wrap">&lt;link rel="stylesheet" href="styles/variables.css"&gt;
-&lt;link rel="stylesheet" href="styles/global.css"&gt;
-&lt;link rel="stylesheet" href="styles/components.css"&gt;
-&lt;!-- tema: nada (segue o sistema), data-theme="light", "dark" ou "hc" --&gt;
-&lt;!-- densidade: data-density="comfortable" --&gt;
-&lt;!-- fonte: data-scale="112" ou "125" --&gt;</pre></div></div>
-        <div class="note neutral"><i data-ic="info"></i><div>Para uma ferramenta de arquivo único, cole o conteúdo das três folhas dentro de um &lt;style&gt; e embuta a fonte em base64. Nesta documentação a fonte vem do Google Fonts.</div></div>
-      </section>
-
-      <!-- ===================== FUNDAMENTOS ===================== -->
-      <section class="ds-sec" id="cores" aria-labelledby="t-cores">
-        <header><h2 id="t-cores">Cores</h2><p>Os componentes só usam tokens semânticos, que dizem para que a cor serve. Troque o tema no topo: as amostras e as razões de contraste se recalculam ao vivo.</p></header>
-        <div id="swatches" class="stack"></div>
-        <div class="ds-sub"><h3>Paleta bruta</h3><p>Valores de base em <code>tokens/core/colors.json</code>. Nenhum componente usa estes direto.</p><div class="core-strip" id="core-strip"></div></div>
-      </section>
-
-      <section class="ds-sec" id="tipografia" aria-labelledby="t-tipo">
-        <header><h2 id="t-tipo">Tipografia</h2><p>Public Sans para tudo e JetBrains Mono para códigos e identificadores. Tamanhos em rem: com a fonte em 112,5% ou 125%, tudo cresce junto. Texto corrido tem 16 px; abaixo disso, só texto secundário.</p></header>
-        <div id="type-scale"></div>
-      </section>
-
-      <section class="ds-sec" id="espaco" aria-labelledby="t-esp">
-        <header><h2 id="t-esp">Espaço, raio e sombra</h2><p>Passos de 2 px que as três ferramentas já usavam. Três raios: 7 px para controles, 10 px para cartões e 14 px para camadas grandes.</p></header>
-        <div class="ds-grid wide">
-          <div class="ds-sub"><h3>Espaços</h3><div id="space-scale"></div></div>
-          <div class="ds-sub"><h3>Raios</h3><div class="row" style="gap:16px" id="radius-scale"></div>
-            <h3 style="margin-top:12px">Sombras</h3><div class="ds-grid"><div class="shadow-box" style="box-shadow:var(--shadow-sm)">shadow-sm</div><div class="shadow-box" style="box-shadow:var(--shadow-lg)">shadow-lg</div></div></div>
+      <section class="docs-section" id="principles" aria-labelledby="t-principles">
+        <header><h2 id="t-principles">Princípios</h2><p>Seis regras que explicam quase todas as decisões. Na dúvida, volte a elas.</p></header>
+        <div class="docs-grid wide">
+          <div class="card"><div class="card-body"><h3 class="card-title">Os dados em primeiro plano</h3><p class="text-secondary">A interface é neutra para que os números e os estados se destaquem. Bordas finas, poucas sombras, nada decorativo dentro das áreas de trabalho.</p></div></div>
+          <div class="card"><div class="card-body"><h3 class="card-title">Verde só como acento</h3><p class="text-secondary">A cor da marca aparece em áreas pequenas: botão primário, item atual, filtro ativo, foco e a faixa do topo. Nunca em fundos grandes.</p></div></div>
+          <div class="card"><div class="card-body"><h3 class="card-title">Nunca só cor</h3><p class="text-secondary">Todo estado tem texto, e ícone quando pede atenção. Sucesso é azul petróleo, não o verde da marca, para identidade e estado não se confundirem.</p></div></div>
+          <div class="card"><div class="card-body"><h3 class="card-title">Contraste medido</h3><p class="text-secondary">Texto a 4,5:1 nos temas claro e escuro e a 7:1 no alto contraste; bordas de campo e foco a 3:1. Um script confere a cada mudança.</p></div></div>
+          <div class="card"><div class="card-body"><h3 class="card-title">Densidade conforme a tarefa</h3><p class="text-secondary">Compacta (32 px) para trabalhar horas numa tabela; confortável (40 px) para ler e analisar. A pessoa pode trocar.</p></div></div>
+          <div class="card"><div class="card-body"><h3 class="card-title">Movimento curto</h3><p class="text-secondary">120 a 220 ms, só como resposta a uma ação. Com "reduzir movimento" ligado no sistema, nada se mexe.</p></div></div>
         </div>
       </section>
 
-      <section class="ds-sec" id="movimento" aria-labelledby="t-mov">
-        <header><h2 id="t-mov">Movimento</h2><p><code>--dur</code> 160 ms para respostas pequenas, <code>--dur-slow</code> 200 ms para a gaveta, curva <code>--ease</code> que desacelera no fim.</p></header>
-        <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="mov-demo">Salvar linha</button><span class="sub" id="mov-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@nortesul.com.br</span></div></div>
-      </section>
-
-      <section class="ds-sec" id="icones" aria-labelledby="t-ic">
-        <header><h2 id="t-ic">Ícones</h2><p>Traço de 2 px, cantos arredondados, desenho do Lucide. 16 px dentro de botões e menus, 14 px em selos. Sempre com <code>aria-hidden</code>; o significado vem do texto ao lado.</p></header>
-        <div class="icon-grid" id="icon-grid"></div>
-      </section>
-
-      <!-- ===================== COMPONENTES ===================== -->
-      <section class="ds-sec" id="botoes" aria-labelledby="t-btn">
-        <header><h2 id="t-btn">Botões</h2><p>Um primário por área. A altura acompanha a densidade. Botão de excluir diz quantos itens vai excluir.</p></header>
-        <div class="demo" data-code><div class="demo-stage">
-<button type="button" class="btn primary">Salvar</button>
-<button type="button" class="btn">Cancelar</button>
-<button type="button" class="btn ghost">Limpar filtros</button>
-<button type="button" class="btn dashed"><i data-ic="mais"></i>Adicionar coluna</button>
-<button type="button" class="btn danger">Excluir 3 linhas</button>
-<button type="button" class="btn icon" aria-label="Exportar"><i data-ic="exportar"></i></button>
-<button type="button" class="btn" aria-busy="true" disabled><span class="spinner" aria-hidden="true"></span>Importando</button>
-<button type="button" class="link">Ver detalhes</button>
+      <section class="docs-section" aria-labelledby="t-preview">
+        <header><h2 id="t-preview">Como fica</h2><p>Alguns componentes juntos. Troque o tema e a densidade no topo para ver tudo mudar.</p></header>
+        <div class="demo"><div class="demo-stage column dotted">
+          <div class="toolbar">
+            <div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome ou e-mail"></div>
+            <button type="button" class="btn"><i data-icon="filter"></i>Filtrar</button>
+            <span class="spacer"></span>
+            <button type="button" class="btn"><i data-icon="download"></i>Exportar</button>
+            <button type="button" class="btn primary"><i data-icon="plus"></i>Nova pessoa</button>
+          </div>
+          <div class="chip-group"><span class="chip"><button type="button" class="chip-label">Situação: Crítico, Atenção</button><button type="button" class="chip-remove" aria-label="Remover filtro Situação"><i data-icon="x"></i></button></span></div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th scope="col">Nome</th><th scope="col">E-mail</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
+              <tbody>
+                <tr><td>Ana Lima</td><td>ana.lima@nortesul.com.br</td><td><span class="badge ok"><i data-icon="check-circle"></i>Pronta</span></td><td class="numeric">4</td></tr>
+                <tr><td>Bruno Reis</td><td class="cell-crit"><span class="cell-empty">sem e-mail</span></td><td><span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span></td><td class="numeric">1</td></tr>
+                <tr><td>Carla Souza</td><td class="cell-warn">carla@varejosul</td><td><span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span></td><td class="numeric">12</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div></div>
       </section>
 
-      <section class="ds-sec" id="campos" aria-labelledby="t-campos">
-        <header><h2 id="t-campos">Campos</h2><p>Rótulo sempre visível, em cima ou à esquerda. Erro ligado ao campo por <code>aria-describedby</code>, no formato "o que aconteceu, por quê, o que fazer".</p></header>
-        <div class="demo" data-code><div class="demo-stage col">
-<div class="fields">
-  <div class="field">
-    <label for="ex-nome">Nome<span class="req" aria-hidden="true">*</span></label>
-    <input class="input" id="ex-nome" value="Ana Lima" required>
-  </div>
-  <div class="field">
-    <label for="ex-email">E-mail corporativo<span class="req" aria-hidden="true">*</span></label>
-    <input class="input" id="ex-email" type="email" value="ana@gmail.com" aria-invalid="true" aria-describedby="ex-email-msg" required>
-    <p class="msg" id="ex-email-msg"><i data-ic="crit" data-size="14"></i>Use o e-mail corporativo. gmail.com é um provedor pessoal.</p>
-  </div>
-  <div class="field">
-    <label for="ex-setor">Setor</label>
-    <select class="select" id="ex-setor"><option>Tecnologia</option><option>Saúde</option><option>Varejo</option></select>
-    <p class="hint">Usado para agrupar as empresas nos relatórios.</p>
-  </div>
-</div>
-<div class="search"><i data-ic="busca"></i><input class="input" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome, e-mail ou empresa"></div>
-<div class="opts">
-  <label class="opt"><input type="radio" name="ex-mod" checked><span><b>Mesclar</b><small>Junta os dois registros e guarda o histórico.</small></span></label>
-  <label class="opt"><input type="radio" name="ex-mod"><span><b>Manter os dois</b><small>Marca como pessoas diferentes.</small></span></label>
-</div>
-<label class="check"><input type="checkbox" checked> Avisar quando alguém alterar este registro</label>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="selos" aria-labelledby="t-selos">
-        <header><h2 id="t-selos">Selos, contadores e estado</h2><p>O texto diz o estado; a cor só reforça. Contador vermelho só para pendências que pedem ação.</p></header>
-        <div class="demo" data-code><div class="demo-stage">
-<span class="badge t-crit"><i data-ic="crit" data-size="13"></i>Crítico</span>
-<span class="badge t-warn"><i data-ic="warn" data-size="13"></i>Atenção</span>
-<span class="badge t-info"><i data-ic="info" data-size="13"></i>Informação</span>
-<span class="badge t-ok"><i data-ic="ok" data-size="13"></i>Importada</span>
-<span class="badge t-brand">Calibrado</span>
-<span class="badge">Rascunho</span>
-<span class="tag">Lite</span>
-<span class="count">12</span>
-<span class="qtd">1.284</span>
-<span class="status"><span class="dot ok"></span>Salvo agora</span>
-<span class="status"><span class="dot warn"></span>Com pendências</span>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="chips" aria-labelledby="t-chips">
-        <header><h2 id="t-chips">Chips de filtro e controle segmentado</h2><p>O chip mostra o filtro ativo: clicar no texto edita, no X tira. O controle segmentado escolhe entre 2 a 5 opções curtas, todas à vista.</p></header>
-        <div class="demo" data-code><div class="demo-stage">
-<div class="chips">
-  <span class="chip"><button type="button">Setor: Tecnologia, Saúde</button><button type="button" class="x" aria-label="Remover filtro Setor"><i data-ic="x" data-size="14"></i></button></span>
-  <span class="chip"><button type="button">Sem e-mail</button><button type="button" class="x" aria-label="Remover filtro Sem e-mail"><i data-ic="x" data-size="14"></i></button></span>
-  <button type="button" class="btn ghost xs">Limpar filtros</button>
-</div>
-<div class="seg" role="radiogroup" aria-label="Período">
-  <label><input type="radio" name="ex-per" checked><span>2026</span></label>
-  <label><input type="radio" name="ex-per"><span>2025</span></label>
-  <label><input type="radio" name="ex-per"><span>Últimos 3 anos</span></label>
-</div>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="avisos" aria-labelledby="t-avisos">
-        <header><h2 id="t-avisos">Avisos</h2><p>Avisos ficam na página, perto do que explicam. Toasts confirmam o que já aconteceu e oferecem desfazer.</p></header>
-        <div class="demo" data-code><div class="demo-stage col">
-<div class="note"><i data-ic="info"></i><div>A planilha tem 1.284 linhas. As colunas foram reconhecidas pelo cabeçalho.</div></div>
-<div class="note warn"><i data-ic="warn"></i><div><b>14 linhas sem e-mail.</b> A pessoa entra no cadastro, mas não recebe os convites. Complete o e-mail ou siga mesmo assim.</div></div>
-<div class="note crit"><i data-ic="crit"></i><div><b>Não foi possível salvar agora.</b> Seus dados continuam no formulário. Tente de novo em instantes. Código: ERR-7F3A</div></div>
-<div class="note ok"><i data-ic="ok"></i><div>Importação concluída: 1.270 pessoas novas e 14 atualizadas.</div></div>
-        </div></div>
-        <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="toast-demo">Excluir e mostrar toast</button></div></div>
-      </section>
-
-      <section class="ds-sec" id="cartoes" aria-labelledby="t-cartoes">
-        <header><h2 id="t-cartoes">Cartões e números</h2><p>Cartão separa um objeto do fundo; use quando o bloco é uma coisa própria. Número grande só quando o número é o assunto.</p></header>
-        <div class="demo" data-code><div class="demo-stage col">
-<div class="ds-grid">
-  <div class="stat"><span class="k">Pessoas</span><span class="v">1.284</span><span class="d fg-ok"><i data-ic="grafico" data-size="14"></i>+46 neste mês</span></div>
-  <div class="stat"><span class="k">Com pendência</span><span class="v">12</span><span class="d fg-crit"><i data-ic="crit" data-size="14"></i>8 críticas</span></div>
-  <div class="stat"><span class="k">Empresas</span><span class="v">318</span><span class="d muted">Sem mudança</span></div>
-</div>
-<article class="card">
-  <header class="card-h"><div><h3>Norte Sul Eventos</h3><p>CNPJ 12.345.678/0001-90 · São Paulo</p></div><span class="badge t-ok">Ativa</span></header>
-  <div class="card-b"><p class="sub">32 pessoas vinculadas · 4 eventos em 2026</p></div>
-  <footer class="card-f"><button type="button" class="btn xs">Abrir</button><button type="button" class="btn xs ghost">Ver pessoas</button></footer>
-</article>
-<div class="levels row">
-  <button type="button" class="level t-crit" aria-pressed="true"><i data-ic="crit"></i>Crítico<span class="n">8</span></button>
-  <button type="button" class="level t-warn" aria-pressed="false"><i data-ic="warn"></i>Atenção<span class="n">23</span></button>
-  <button type="button" class="level t-info" aria-pressed="false"><i data-ic="info"></i>Informação<span class="n">41</span></button>
-</div>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="tabela" aria-labelledby="t-tab">
-        <header><h2 id="t-tab">Tabela</h2><p>Cabeçalho fixo, números alinhados à direita, linha marcada em verde-claro, célula com problema na cor do problema. O triângulo verde no canto marca célula editada.</p></header>
-        <div class="demo" data-code><div class="demo-stage col">
-<div class="table-wrap">
-  <table class="table">
-    <thead><tr><th scope="col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-ic="baixo" data-size="14"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Situação</th><th scope="col" class="num">Eventos</th></tr></thead>
-    <tbody>
-      <tr aria-selected="true"><td><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td>Norte Sul</td><td class="edited">ana.lima@nortesul.com.br</td><td><span class="badge t-ok">Revisada</span></td><td class="num">4</td></tr>
-      <tr><td><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td>Bruno Reis</td><td>Hospital Vida</td><td class="f-crit"><span class="empty-cell">sem e-mail</span></td><td><span class="badge t-crit">Crítico</span></td><td class="num">1</td></tr>
-      <tr><td><input type="checkbox" aria-label="Marcar Carla Souza"></td><td>Carla Souza</td><td>Varejo Sul</td><td class="f-warn">carla@varejosul</td><td><span class="badge t-warn">Atenção</span></td><td class="num">12</td></tr>
-    </tbody>
-  </table>
-</div>
-<div class="bulk" role="toolbar" aria-label="Ações para 1 linha marcada"><strong>1 marcada</strong><div class="vsep"></div><button type="button" class="btn xs"><i data-ic="lapis" data-size="14"></i>Editar</button><button type="button" class="btn xs"><i data-ic="exportar" data-size="14"></i>Exportar</button><button type="button" class="btn xs danger"><i data-ic="lixo" data-size="14"></i>Excluir</button></div>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="camadas" aria-labelledby="t-camadas">
-        <header><h2 id="t-camadas">Diálogo, gaveta e menu</h2><p>Diálogo para decidir algo curto; gaveta para ver e editar um registro sem perder a lista; menu para ações sobre um item. Os dois primeiros usam &lt;dialog&gt;, que prende o foco e fecha com Esc.</p></header>
-        <div class="demo" data-code><div class="demo-stage">
-<button type="button" class="btn danger" data-open="dlg-excluir">Excluir 3 pessoas</button>
-<button type="button" class="btn" data-open="dr-pessoa">Abrir registro</button>
-<dialog class="dlg" id="dlg-excluir" aria-labelledby="dlg-excluir-t">
-  <div class="dlg-h"><h2 id="dlg-excluir-t">Excluir 3 pessoas?</h2><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
-  <div class="dlg-b"><p>As 3 pessoas saem das listas e dos eventos. Você pode desfazer por 30 dias em Lixeira.</p></div>
-  <div class="dlg-f"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn danger" data-close>Excluir 3 pessoas</button></div>
-</dialog>
-<dialog class="drawer" id="dr-pessoa" aria-labelledby="dr-pessoa-t">
-  <div class="dr-h"><div><h2 id="dr-pessoa-t">Ana Lima</h2><span class="sub">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
-  <div class="dr-b">
-    <div class="note warn"><i data-ic="warn"></i><div>O telefone tem só 8 dígitos. Confira o DDD.</div></div>
-    <div><div class="fld"><label for="dr-nome">Nome</label><input class="input" id="dr-nome" value="Ana Lima"></div>
-    <div class="fld"><label for="dr-email">E-mail</label><input class="input" id="dr-email" value="ana.lima@nortesul.com.br"></div>
-    <div class="fld"><label for="dr-tel">Telefone</label><input class="input" id="dr-tel" value="3456-7890" aria-invalid="true"></div></div>
-  </div>
-  <div class="dr-f"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
-</dialog>
-<div class="pop" role="menu" aria-label="Ações da linha" style="position:static">
-  <div class="pop-h">Ana Lima</div>
-  <button type="button" class="mi" role="menuitem"><i data-ic="lapis"></i><span class="tl">Editar</span><kbd>Enter</kbd></button>
-  <button type="button" class="mi" role="menuitem"><i data-ic="colunas"></i><span class="tl">Mesclar com…</span></button>
-  <div class="pop-sep" role="separator"></div>
-  <button type="button" class="mi danger" role="menuitem"><i data-ic="lixo"></i><span class="tl">Excluir</span><kbd>⌫</kbd></button>
-</div>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="vazio" aria-labelledby="t-vazio">
-        <header><h2 id="t-vazio">Estado vazio e carregamento</h2><p>O vazio diz o que vai aparecer e qual é o próximo passo. Carregamento mostra o que está acontecendo, não só um círculo girando.</p></header>
-        <div class="demo" data-code><div class="demo-stage col">
-<div class="empty">
-  <i data-ic="busca" data-size="28"></i>
-  <h3>Nenhuma pessoa corresponde aos filtros.</h3>
-  <p>Tire um filtro ou procure por outro nome.</p>
-  <div class="row"><button type="button" class="btn">Limpar filtros</button></div>
-</div>
-<div class="row"><span class="spinner" aria-hidden="true"></span><span role="status">Lendo a planilha: 640 de 1.284 linhas</span></div>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="navegacao" aria-labelledby="t-nav">
-        <header><h2 id="t-nav">Navegação</h2><p>Barra lateral de 232 px que recolhe para 56 px só com ícones. O item atual usa <code>aria-current="page"</code> e o verde-claro. No celular vira uma faixa no topo.</p></header>
-        <div class="demo" data-code><div class="demo-stage tinted" style="align-items:stretch">
-<nav class="side" aria-label="Exemplo de navegação" style="height:auto;position:static">
-  <a class="logo" href="#navegacao"><span class="logo-c" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
-  <a class="nav" href="#navegacao" aria-current="page"><i data-ic="pessoas"></i><span class="lbl">Pessoas</span><span class="qtd">1.284</span></a>
-  <a class="nav" href="#navegacao"><i data-ic="empresa"></i><span class="lbl">Empresas</span><span class="qtd">318</span></a>
-  <a class="nav" href="#navegacao"><i data-ic="revisao"></i><span class="lbl">Revisão</span><span class="count">12</span></a>
-</nav>
-<nav class="side min" aria-label="Navegação recolhida" style="height:auto;position:static">
-  <a class="logo" href="#navegacao"><span class="logo-c" aria-hidden="true">C</span></a>
-  <a class="nav" href="#navegacao" aria-current="page" aria-label="Pessoas"><i data-ic="pessoas"></i></a>
-  <a class="nav" href="#navegacao" aria-label="Empresas"><i data-ic="empresa"></i></a>
-  <a class="nav" href="#navegacao" aria-label="Revisão, 12 pendências"><i data-ic="revisao"></i><span class="count">12</span></a>
-</nav>
-        </div></div>
-      </section>
-
-      <section class="ds-sec" id="mais" aria-labelledby="t-mais">
-        <header><h2 id="t-mais">Para continuar</h2></header>
-        <div class="ds-grid">
-          <a class="card ds-tool" href="docs/foundations.html"><div class="card-b"><h3>Fundamentos</h3><p>Tokens, temas, densidade e as diferenças entre as ferramentas que foram decididas.</p></div></a>
-          <a class="card ds-tool" href="docs/components.html"><div class="card-b"><h3>Componentes</h3><p>Quando usar cada um, quando não usar e as classes disponíveis.</p></div></a>
-          <a class="card ds-tool" href="docs/patterns.html"><div class="card-b"><h3>Padrões</h3><p>Filtros, formulários, mensagens de erro, confirmar ou desfazer.</p></div></a>
-          <a class="card ds-tool" href="docs/accessibility.html"><div class="card-b"><h3>Acessibilidade</h3><p>Checklist por tela e a tabela de contraste dos três temas.</p></div></a>
-        </div>
-      </section>
-
-      <footer class="ds-foot"><span>Grin 1.0 · novembro de 2026</span><span>Public Sans · ícones no estilo Lucide</span></footer>
+      <footer class="docs-footer"><span>Grin 1.1 · novembro de 2026</span><span>Geist e Geist Mono · ícones no estilo Lucide</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a></footer>
     </main>
   </div>
 </div>
-
-<script type="module">
-import { ic, ICONES, contraste, hexDe, token, pintarIcones } from './scripts/utils.js';
-import { destacar } from './scripts/animations.js';
-import { toast } from './components/toast/toast.js';
-
-const GRUPOS = [
-  ['Superfícies', [['background', 'Fundo da tela'], ['surface', 'Painéis e cartões'], ['popover', 'Camadas flutuantes'], ['muted', 'Fundo discreto'], ['sidebar', 'Barra lateral'], ['table-head', 'Cabeçalho de tabela']]],
-  ['Texto', [['foreground', 'Texto principal'], ['muted-foreground', 'Texto secundário'], ['link', 'Link e texto de marca'], ['sidebar-foreground', 'Texto da navegação']]],
-  ['Marca', [['primary', 'Preenchimento de marca', 'primary-foreground'], ['primary-hover', 'Primário com hover', 'primary-foreground'], ['sidebar-active', 'Item atual'], ['brand-bg', 'Chip ativo', 'brand-fg'], ['ring', 'Foco']]],
-  ['Bordas e campos', [['border', 'Borda padrão'], ['border-soft', 'Linha de tabela'], ['border-strong', 'Borda de botão'], ['input', 'Borda de campo'], ['field', 'Fundo de campo']]],
-  ['Estados', [['crit-bg', 'Crítico', 'crit-fg'], ['warn-bg', 'Atenção', 'warn-fg'], ['info-bg', 'Informação', 'info-fg'], ['ok-bg', 'Sucesso', 'ok-fg'], ['crit-solid', 'Crítico sólido', 'crit-on'], ['warn-solid', 'Ponto de atenção']]],
-  ['Tabela e gráficos', [['row-hover', 'Linha com hover'], ['row-selected', 'Linha marcada'], ['highlight', 'Seleção e busca'], ['chart-1', 'Série principal'], ['chart-2', 'Série de comparação'], ['chart-band', 'Faixa de intervalo']]],
-];
-const UI = new Set(['ring', 'input', 'chart-1', 'chart-2', 'warn-solid']);
-
-function amostras() {
-  const bg = token('background');
-  document.getElementById('swatches').innerHTML = GRUPOS.map(([g, itens]) => `<div class="ds-sub"><h3>${g}</h3><div class="ds-grid">${itens.map(([nome, uso, texto]) => {
-    const v = token(nome);
-    const sobre = texto ? token(texto) : null;
-    const r = texto ? contraste(sobre, v) : contraste(v, bg);
-    const min = texto || !UI.has(nome) ? (document.documentElement.dataset.theme === 'hc' ? 7 : 4.5) : 3;
-    const mostra = texto || UI.has(nome) || ['foreground', 'muted-foreground', 'link', 'sidebar-foreground'].includes(nome);
-    const rotulo = texto ? `--${texto} sobre ela` : 'sobre o fundo';
-    return `<div class="sw"><div class="sw-color" style="background:var(--${nome});color:var(--${texto ?? 'foreground'})">${texto ? 'Aa' : ''}</div><div class="sw-meta"><b>--${nome}</b><span>${uso}</span><span class="mono">${hexDe(v)}</span>${mostra && r ? `<span class="ratio ${r >= min ? 'ok' : 'bad'}">${ic(r >= min ? 'check' : 'x', 12)}${r.toFixed(1).replace('.', ',')}:1 ${rotulo}</span>` : ''}</div></div>`;
-  }).join('')}</div></div>`).join('');
-}
-const CORE = ['#8dc63f', 'oklch(0.72 0.17 128)', '#5c8f22', '#4d7c0f', 'oklch(0.968 0.032 128)', 'oklch(0.85 0.09 128)', '#084c51', '#ffffff', '#f6f8f3', 'oklch(0.905 0.008 125)', 'oklch(0.6 0.012 180)', '#4a5250', '#1e2324', '#262c2d', '#a8b2ae', '#e8ecea', '#b91c1c', '#b45309', '#1d4ed8', '#0f766e'];
-document.getElementById('core-strip').innerHTML = CORE.map((c) => {
-  const claro = contraste(c, '#ffffff') < 4.5;
-  return `<div style="background:${c};color:${claro ? '#1e2324' : '#ffffff'}">${hexDe(c)}</div>`;
-}).join('');
-
-const TIPOS = [['3xl', 650, 'Título de apresentação'], ['2xl', 650, 'Título da página'], ['xl', 650, 'Título de diálogo'], ['lg', 600, '1.284 pessoas'], ['body', 400, 'Texto corrido para ler com calma, como esta frase.'], ['base', 400, 'Texto de interface e células de tabela'], ['md', 500, 'Botões, campos e menus'], ['sm', 600, 'CABEÇALHO DE TABELA · selos'], ['xs', 600, 'Dica de atalho']];
-document.getElementById('type-scale').innerHTML = TIPOS.map(([t, w, s]) => `<div class="scale-row"><code>--text-${t}</code><code>${token('text-' + t)}</code><span class="sample" style="font-size:var(--text-${t});font-weight:${w}">${s}</span></div>`).join('')
-  + `<div class="scale-row"><code>--font-mono</code><code>mono</code><span class="sample mono">CNPJ 12.345.678/0001-90 · ERR-7F3A</span></div>`;
-const ESP = ['0-5', '1', '1-5', '2', '2-5', '3', '3-5', '4', '5', '6', '8', '10', '12', '14', '18'];
-document.getElementById('space-scale').innerHTML = ESP.map((s) => `<div class="scale-row"><code>--space-${s}</code><code>${token('space-' + s)}</code><div class="space-bar" style="width:var(--space-${s})"></div></div>`).join('');
-document.getElementById('radius-scale').innerHTML = ['xs', 'sm', 'md', 'lg'].map((r) => `<div class="stack" style="gap:6px;align-items:center"><div class="radius-box" style="border-radius:var(--radius-${r})"></div><code class="small">--radius-${r} · ${token('radius-' + r)}</code></div>`).join('');
-document.getElementById('icon-grid').innerHTML = Object.keys(ICONES).map((n) => `<div class="icon-cell">${ic(n, 20)}${n}</div>`).join('');
-
-amostras();
-document.documentElement.addEventListener('tema', () => requestAnimationFrame(amostras));
-new MutationObserver(() => requestAnimationFrame(amostras)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-document.getElementById('mov-demo').addEventListener('click', () => destacar(document.getElementById('mov-row')));
-document.getElementById('toast-demo').addEventListener('click', () => toast('3 pessoas excluídas.', { acao: 'Desfazer', aoAgir: () => toast('Exclusão desfeita.', { tipo: 'info' }) }));
-pintarIcones();
-</script>
 </body>
 </html>
