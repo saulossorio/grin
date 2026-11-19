@@ -24,10 +24,10 @@ function montar() {
     const base = nav.dataset.base ?? '';
     const aqui = nav.dataset.here;
     nav.setAttribute('aria-label', 'Navegação do design system');
-    nav.innerHTML = `<a class="logo" href="${base}index.html"><span class="logo-c" aria-hidden="true">C</span><span>Canis DS</span><span class="tag">1.0</span></a>`
+    nav.innerHTML = `<a class="logo" href="${base}index.html"><span class="logo-c" aria-hidden="true">G</span><span>Grin</span><span class="tag">1.0</span></a>`
       + PAGINAS.map(({ grupo, itens }) => (grupo ? `<div class="nav-group">${grupo}</div>` : '') + itens.map(([id, href, rot, icone]) =>
         `<a class="nav" href="${base}${href}"${id === aqui ? ' aria-current="page"' : ''}>${ic(icone)}<span class="lbl">${rot}</span></a>`).join('')).join('')
-      + `<div class="side-foot"><a class="nav small" href="https://github.com/saulossorio/canis-design-system">${ic('exportar')}<span class="lbl">Repositório</span></a>`
+      + `<div class="side-foot"><a class="nav small" href="https://github.com/saulossorio/grin">${ic('exportar')}<span class="lbl">Repositório</span></a>`
       + `<button type="button" class="nav small" data-theme-toggle>${ic('contraste')}<span class="lbl">Tema escuro</span></button></div>`;
   }
   const top = document.querySelector('[data-ds-top]');

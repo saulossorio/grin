@@ -1,7 +1,7 @@
 // Tema, densidade e tamanho da fonte. Guarda a escolha da pessoa no navegador.
 // Tema: 'system' (sem atributo, segue o sistema), 'light', 'dark' ou 'hc' (alto contraste).
 // Uso: <button data-set-theme="dark">, <button data-theme-toggle>, <select data-theme-select>, <input type="radio" name="..." data-set-density value="comfortable">.
-const CHAVE = 'canis-ds';
+const CHAVE = 'grin';
 const ler = (k, padrao) => { try { return localStorage.getItem(`${CHAVE}-${k}`) ?? padrao; } catch { return padrao; } };
 const gravar = (k, v) => { try { localStorage.setItem(`${CHAVE}-${k}`, v); } catch { /* navegação privada: vale só nesta visita */ } };
 const raiz = document.documentElement;

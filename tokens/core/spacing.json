@@ -13,8 +13,8 @@
     "pill": { "$value": "999px", "$description": "Selos, contadores e pontos de estado." }
   },
   "size": {
-    "control-compact": { "$value": "32px", "$description": "Altura de botão e campo na densidade compacta (Canis, Laika)." },
-    "control-comfortable": { "$value": "40px", "$description": "Altura na densidade confortável (Vezen)." },
+    "control-compact": { "$value": "32px", "$description": "Altura de botão e campo na densidade compacta." },
+    "control-comfortable": { "$value": "40px", "$description": "Altura na densidade confortável." },
     "control-xs": { "$value": "28px" },
     "nav-item": { "$value": "34px" },
     "topbar": { "$value": "56px" },

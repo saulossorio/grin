@@ -33,7 +33,7 @@ const fixos = [
   ['--control-h', 'var(--size-control-compact)'], ['--control-text', 'var(--text-md)'],
 ].map(([k, v]) => `  ${k}: ${v};`).join('\n');
 
-const css = `/* Canis Design System: variáveis geradas por tools/build-tokens.mjs a partir de tokens/. Não edite à mão. */
+const css = `/* Grin: variáveis geradas por tools/build-tokens.mjs a partir de tokens/. Não edite à mão. */
 
 /* Tema claro (padrão) e tokens que não mudam com o tema */
 :root {
@@ -42,7 +42,7 @@ ${fixos}
 ${bloco()}
 }
 
-/* Densidade confortável (Vezen): controles de 40 px e texto de 15 px */
+/* Densidade confortável: controles de 40 px e texto de 15 px */
 :root[data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
 
 /* Tema escuro: escolhido pela pessoa ou pelo sistema (quando não há escolha) */

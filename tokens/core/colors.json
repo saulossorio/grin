@@ -2,7 +2,7 @@
   "$description": "Valores brutos da paleta. Nenhum componente usa estes tokens direto: eles só alimentam os tokens semânticos (tokens/semantic) e os temas (tokens/themes).",
   "color": {
     "brand": {
-      "$description": "Verde da 4Network (#8dc63f), conferido em 4network.com, e o azul petróleo do mesmo site.",
+      "$description": "Verde do Grin (#8dc63f) e um azul petróleo de apoio.",
       "green-50":  { "$value": "oklch(0.968 0.032 128)" },
       "green-100": { "$value": "oklch(0.92 0.06 128)" },
       "green-150": { "$value": "oklch(0.93 0.07 128)" },
@@ -18,7 +18,7 @@
       "green-dark-500": { "$value": "oklch(0.34 0.05 135)" },
       "green-dark-600": { "$value": "oklch(0.32 0.06 128)" },
       "green-dark-700": { "$value": "oklch(0.32 0.04 140)" },
-      "petroleum": { "$value": "#084c51", "$description": "Azul petróleo da 4Network. Reservado; ainda não usado em componente." }
+      "petroleum": { "$value": "#084c51", "$description": "Azul petróleo de apoio. Reservado; ainda não usado em componente." }
     },
     "neutral": {
       "$description": "Cinzas com leve viés para o matiz do verde (125) no claro e para o petróleo (208) no escuro.",

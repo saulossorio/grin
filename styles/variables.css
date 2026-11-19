@@ -1,4 +1,4 @@
-/* Canis Design System: variáveis geradas por tools/build-tokens.mjs a partir de tokens/. Não edite à mão. */
+/* Grin: variáveis geradas por tools/build-tokens.mjs a partir de tokens/. Não edite à mão. */
 
 /* Tema claro (padrão) e tokens que não mudam com o tema */
 :root {
@@ -113,7 +113,7 @@
   --shadow-lg: 0 16px 48px oklch(0.2 0.01 210 / 0.16), 0 2px 6px oklch(0.2 0.01 210 / 0.08);
 }
 
-/* Densidade confortável (Vezen): controles de 40 px e texto de 15 px */
+/* Densidade confortável: controles de 40 px e texto de 15 px */
 :root[data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
 
 /* Tema escuro: escolhido pela pessoa ou pelo sistema (quando não há escolha) */

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Exemplo: Vezen · Canis Design System</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<title>Exemplo: página de apresentação · Grin</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="../styles/components.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <style>
-  /* Página de apresentação: densidade confortável e texto corrido de 16 px, como no Vezen */
+  /* Página de apresentação: densidade confortável e texto corrido de 16 px */
   :root { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
   body { font-size: var(--text-body); line-height: var(--leading-body); }
   .wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, 4vw); padding-right: max(16px, 4vw); }
@@ -46,8 +46,8 @@
 <body>
 <div class="brand-bar"></div>
 <header class="wrap nav-top">
-  <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">V</span><span>Vezen</span></a>
-  <span class="tag">Família Canis</span>
+  <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">P</span><span>Prumo</span></a>
+  <span class="tag">Exemplo</span>
   <span class="sp"></span>
   <a class="btn ghost" href="../index.html">Design system</a>
   <button type="button" class="btn icon ghost" data-theme-toggle aria-label="Trocar tema"><i data-ic="contraste"></i><span class="lbl vh">Tema escuro</span></button>
@@ -57,10 +57,10 @@
     <div class="stack" style="gap:16px">
       <span class="eyebrow">Investimento em TI</span>
       <h1>Quanto uma empresa brasileira investe em tecnologia, num único arquivo</h1>
-      <p>O Vezen estima o investimento anual em TI a partir de dados públicos: receita, setor e porte. Abre no navegador, sem instalar nada e sem mandar dados para fora.</p>
-      <div class="row"><a class="btn primary lg" href="#como">Ver como funciona</a><a class="btn lg" href="https://github.com/saulossorio/vezen">Código no GitHub</a></div>
+      <p>O Prumo estima o investimento anual em TI a partir de dados públicos: receita, setor e porte. Abre no navegador, sem instalar nada e sem mandar dados para fora.</p>
+      <div class="row"><a class="btn primary lg" href="#como">Ver como funciona</a><a class="btn lg" href="#conf">Ver a confiança</a></div>
     </div>
-    <figure class="preview" style="margin:0" aria-label="Exemplo de resultado do Vezen com dados fictícios">
+    <figure class="preview" style="margin:0" aria-label="Exemplo de resultado com dados fictícios">
       <div class="row" style="justify-content:space-between"><span class="k">Banco Horizonte · exemplo fictício</span><span class="badge t-ok"><i data-ic="ok" data-size="13"></i>Confiança alta</span></div>
       <div><div class="k">Investimento estimado em TI, 2026</div><div class="big">R$ 412 mi</div><div class="k">Faixa provável: R$ 360 mi a R$ 470 mi · 7,9% da receita</div></div>
       <svg class="chart" viewBox="0 0 400 160" role="img" aria-label="Estimativa do modelo de 2022 a 2026 subindo de 310 para 412 milhões, com o valor real de 2024 em 355 milhões">
@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <section class="band" aria-labelledby="t-conf">
+  <section class="band" id="conf" aria-labelledby="t-conf">
     <div class="wrap">
       <h2 id="t-conf">Cada número diz de onde veio</h2>
       <p>A confiança aparece sempre em texto e ícone, não só em cor.</p>
@@ -100,7 +100,7 @@
     </div>
   </section>
 </main>
-<footer class="wrap foot"><span>Exemplo de página de apresentação do Canis Design System. Números fictícios.</span><a href="../index.html">Voltar ao design system</a></footer>
+<footer class="wrap foot"><span>Exemplo de página de apresentação do Grin. Números fictícios.</span><a href="../index.html">Voltar ao design system</a></footer>
 <script type="module">
 import '../scripts/theme.js';
 import { pintarIcones } from '../scripts/utils.js';

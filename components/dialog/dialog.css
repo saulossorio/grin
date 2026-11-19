@@ -1,7 +1,7 @@
 /* Diálogo: confirmação e escolhas curtas. Usa <dialog> nativo, que já prende o foco e fecha com Esc. */
 .dlg { width: min(520px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); }
-.dlg[open] { display: flex; flex-direction: column; animation: canis-rise var(--dur) var(--ease); }
-.dlg::backdrop { background: var(--overlay); animation: canis-fade var(--dur) ease-out; }
+.dlg[open] { display: flex; flex-direction: column; animation: grin-rise var(--dur) var(--ease); }
+.dlg::backdrop { background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
 .dlg-h { padding: 16px 16px 14px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 12px; }
 .dlg-h h2 { flex: 1 1 auto; }
 .dlg-b { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 16px 24px; display: flex; flex-direction: column; gap: 16px; font-size: var(--text-base); line-height: var(--leading-body); }

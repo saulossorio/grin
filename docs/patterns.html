@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Padrões · Canis Design System</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<title>Padrões · Grin</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -22,7 +22,7 @@
   <div class="body">
     <header class="top" data-ds-top data-title="Padrões"></header>
     <main class="ds-main" id="conteudo">
-      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Padrões</h1><p class="ds-lead">Como os componentes trabalham juntos nas situações que se repetem nas três ferramentas.</p></section>
+      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Padrões</h1><p class="ds-lead">Como os componentes trabalham juntos nas situações que mais se repetem.</p></section>
       <section class="ds-sec" aria-labelledby="t-tela">
         <header><h2 id="t-tela">Estrutura de uma tela</h2><p>Barra verde de 6 px, barra lateral, topo de 56 px e a área principal com título, barra de ferramentas e conteúdo. Veja o <a href="../examples/dashboard.html">exemplo de lista</a>.</p></header>
         <ol class="ds-list"><li><b>Título e contagem</b>: "Pessoas" e, ao lado, "1.284" em texto secundário.</li><li><b>Barra de ferramentas</b>: busca, filtros, colunas, depois ações (importar, exportar) e por último o primário.</li><li><b>Chips</b> dos filtros ativos, logo abaixo.</li><li><b>Conteúdo</b>: tabela ou painéis.</li><li><b>Rodapé</b>: paginação e o resumo da seleção.</li></ol>
@@ -53,13 +53,13 @@
       </section>
       <section class="ds-sec" aria-labelledby="t-estados">
         <header><h2 id="t-estados">Estados de tela</h2></header>
-        <ul class="ds-list"><li><b>Vazio de verdade</b>: diga o que vai aparecer e dê o primeiro passo ("Importe uma planilha do Sirius").</li><li><b>Vazio por filtro</b>: ofereça limpar os filtros.</li><li><b>Carregando</b>: até 1 segundo, nada; depois, diga o que está acontecendo e o progresso ("Lendo a planilha: 640 de 1.284 linhas").</li><li><b>Erro</b>: aviso crítico no topo da área afetada, com a ação para tentar de novo.</li></ul>
+        <ul class="ds-list"><li><b>Vazio de verdade</b>: diga o que vai aparecer e dê o primeiro passo ("Importe uma planilha").</li><li><b>Vazio por filtro</b>: ofereça limpar os filtros.</li><li><b>Carregando</b>: até 1 segundo, nada; depois, diga o que está acontecendo e o progresso ("Lendo a planilha: 640 de 1.284 linhas").</li><li><b>Erro</b>: aviso crítico no topo da área afetada, com a ação para tentar de novo.</li></ul>
       </section>
       <section class="ds-sec" aria-labelledby="t-graf">
         <header><h2 id="t-graf">Gráficos</h2></header>
         <ul class="ds-list"><li>Série principal em <code>--chart-1</code> (verde escuro), comparação em <code>--chart-2</code> (azul). As duas foram validadas para daltonismo, mas sempre levam rótulo.</li><li>Grade em <code>--chart-grid</code>, faixa de intervalo em <code>--chart-band</code>.</li><li>Texto do gráfico usa os tokens de texto, para funcionar nos três temas.</li></ul>
       </section>
-      <footer class="ds-foot"><span>Canis Design System 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="ds-foot"><span>Grin 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

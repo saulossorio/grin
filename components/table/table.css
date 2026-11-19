@@ -23,7 +23,7 @@
 .pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 8px 4px; font-size: var(--text-md); color: var(--muted-foreground); }
 
 /* Barra de ações em massa, aparece quando há linhas marcadas */
-.bulk { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: max-content; max-width: 100%; padding: 8px 8px 8px 14px; border-radius: var(--radius-lg); background: var(--popover); border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg); animation: canis-rise var(--dur) var(--ease); }
+.bulk { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: max-content; max-width: 100%; padding: 8px 8px 8px 14px; border-radius: var(--radius-lg); background: var(--popover); border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg); animation: grin-rise var(--dur) var(--ease); }
 .bulk strong { font-size: var(--text-md); white-space: nowrap; }
 .vsep { width: 1px; height: 20px; background: var(--border); }
 /* Alto contraste: o fundo do problema é branco, então a célula ganha uma borda na cor do estado */

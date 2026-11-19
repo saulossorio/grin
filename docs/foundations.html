@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Fundamentos · Canis Design System</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<title>Fundamentos · Grin</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -22,7 +22,7 @@
   <div class="body">
     <header class="top" data-ds-top data-title="Fundamentos"></header>
     <main class="ds-main" id="conteudo">
-      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Fundamentos</h1><p class="ds-lead">Como os tokens se organizam, como funcionam os temas e a densidade, e o que foi decidido onde Canis, Laika e Vezen eram diferentes.</p></section>
+      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Fundamentos</h1><p class="ds-lead">Como os tokens se organizam, como funcionam os temas e a densidade, e como a cor de marca é usada.</p></section>
 
       <section class="ds-sec" aria-labelledby="t-camadas">
         <header><h2 id="t-camadas">Três camadas de tokens</h2><p>Os arquivos em <code>tokens/</code> são a fonte de verdade. <code>styles/variables.css</code> é gerado a partir deles por <code>node tools/build-tokens.mjs</code> e nunca se edita à mão.</p></header>
@@ -49,11 +49,11 @@
             <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td><code>#1e2324</code></td><td><code>#e8ecea</code></td><td>Texto 4,5:1, interface 3:1</td></tr>
             <tr><td>Alto contraste</td><td><code>data-theme="hc"</code></td><td><code>#ffffff</code></td><td><code>#000000</code></td><td>Texto 7:1, bordas pretas, foco de 3 px</td></tr>
           </tbody></table></div>
-        <p class="sub">O alto contraste é novo: nenhuma das três ferramentas tinha. Ele entra sozinho quando o sistema operacional pede mais contraste.</p>
+        <p class="sub">O alto contraste entra sozinho quando o sistema operacional pede mais contraste.</p>
       </section>
 
       <section class="ds-sec" aria-labelledby="t-marca">
-        <header><h2 id="t-marca">A cor da marca</h2><p>O verde da 4Network, #8dc63f, foi conferido na folha de estilo de 4network.com. Sobre branco ele dá 2,04:1, abaixo dos 3:1 exigidos para um elemento de interface e dos 4,5:1 para texto. Por isso ele aparece de três jeitos:</p></header>
+        <header><h2 id="t-marca">A cor da marca</h2><p>O verde do Grin é #8dc63f. Sobre branco ele dá 2,04:1, abaixo dos 3:1 exigidos para um elemento de interface e dos 4,5:1 para texto. Por isso ele aparece de três jeitos:</p></header>
         <div class="table-wrap"><table class="table ds-table">
           <thead><tr><th scope="col">Uso</th><th scope="col">Token</th><th scope="col">Claro</th><th scope="col">Escuro</th></tr></thead>
           <tbody>
@@ -72,57 +72,11 @@
         <div class="table-wrap"><table class="table ds-table">
           <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Botão e campo</th><th scope="col">Texto dos controles</th><th scope="col">Para</th></tr></thead>
           <tbody>
-            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px</td><td>13 px</td><td>Trabalhar horas numa tabela: Canis e Laika</td></tr>
-            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px</td><td>15 px</td><td>Ler e analisar: Vezen</td></tr>
+            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px</td><td>13 px</td><td>Trabalhar horas numa tabela</td></tr>
+            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px</td><td>15 px</td><td>Ler e analisar</td></tr>
           </tbody></table></div>
       </section>
-
-      <section class="ds-sec" id="diferencas" aria-labelledby="t-dif">
-        <header><h2 id="t-dif">Diferenças entre as ferramentas e o que ficou decidido</h2><p>As cores já eram as mesmas. O que divergia era o nome dos tokens e alguns tamanhos.</p></header>
-        <div class="table-wrap"><table class="table ds-table">
-          <thead><tr><th scope="col">Assunto</th><th scope="col">Canis e Laika</th><th scope="col">Vezen</th><th scope="col">Decisão</th></tr></thead>
-          <tbody>
-            <tr><td>Nome dos tokens</td><td>Em inglês, no padrão shadcn (<code>--primary</code>, <code>--muted-foreground</code>)</td><td>Em português (<code>--marca</code>, <code>--cinza</code>)</td><td>Inglês, como no Canis, que usa shadcn/ui. A tabela abaixo traduz os do Vezen.</td></tr>
-            <tr><td>Altura de controles</td><td>32 px</td><td>40 px</td><td>As duas, como densidades.</td></tr>
-            <tr><td>Texto corrido</td><td>14 px na interface</td><td>16 px</td><td>16 px para texto corrido, 14 px para interface e tabela.</td></tr>
-            <tr><td>Fundo de painel</td><td>Igual ao fundo</td><td><code>--superficie</code> separado no escuro (#232929)</td><td>Novo token <code>--surface</code>.</td></tr>
-            <tr><td>Hover do primário</td><td>Camada escura por cima</td><td>Verde mais forte, oklch(0.72 0.17 128)</td><td><code>--primary-hover</code>, do Vezen: não escurece o texto.</td></tr>
-            <tr><td>Foco de campo</td><td>Contorno de 2 px</td><td>Sombra de 3 px</td><td>Contorno de 2 px (3 px no alto contraste): aparece no modo de cores forçadas do Windows.</td></tr>
-            <tr><td>Gráficos</td><td>Não tinham</td><td>Verde e azul validados para daltonismo</td><td>Tokens <code>--chart-1</code>, <code>--chart-2</code>, <code>--chart-band</code>, <code>--chart-grid</code>, sempre com rótulo.</td></tr>
-            <tr><td>Alto contraste</td><td>Não tinham</td><td>Não tinha</td><td>Novo tema <code>hc</code>.</td></tr>
-          </tbody></table></div>
-      </section>
-
-      <section class="ds-sec" aria-labelledby="t-map">
-        <header><h2 id="t-map">Tradução dos tokens antigos</h2><p>Para migrar o Laika e o Vezen sem refazer o CSS de uma vez: declare os nomes antigos apontando para os novos.</p></header>
-        <div class="table-wrap"><table class="table ds-table">
-          <thead><tr><th scope="col">Design system</th><th scope="col">Laika e Canis Lite</th><th scope="col">Vezen</th></tr></thead>
-          <tbody>
-            <tr><td><code>--background</code></td><td><code>--background</code></td><td><code>--fundo</code></td></tr>
-            <tr><td><code>--surface</code></td><td>(não tinha)</td><td><code>--superficie</code></td></tr>
-            <tr><td><code>--foreground</code></td><td><code>--foreground</code></td><td><code>--tinta</code></td></tr>
-            <tr><td><code>--muted</code></td><td><code>--muted</code></td><td><code>--suave</code></td></tr>
-            <tr><td><code>--muted-foreground</code></td><td><code>--muted-foreground</code></td><td><code>--cinza</code></td></tr>
-            <tr><td><code>--input</code></td><td><code>--input</code></td><td><code>--cinza2</code></td></tr>
-            <tr><td><code>--border</code> / <code>-soft</code> / <code>-strong</code></td><td><code>--border</code> / <code>-soft</code> / <code>-strong</code></td><td><code>--linha</code> / <code>-suave</code> / <code>-forte</code></td></tr>
-            <tr><td><code>--hover</code></td><td><code>--hov</code></td><td><code>--hover</code></td></tr>
-            <tr><td><code>--highlight</code></td><td><code>--hl</code></td><td>(não tinha)</td></tr>
-            <tr><td><code>--row-selected</code></td><td><code>--row-sel</code></td><td><code>--sel</code></td></tr>
-            <tr><td><code>--sidebar</code></td><td><code>--sidebar</code></td><td><code>--lateral</code></td></tr>
-            <tr><td><code>--primary</code> / <code>--primary-foreground</code></td><td><code>--primary</code> / <code>--primary-foreground</code></td><td><code>--marca</code> / <code>--marca-texto</code></td></tr>
-            <tr><td><code>--brand-bg</code> / <code>--brand-border</code></td><td><code>--brand-bg</code> / <code>--brand-bd</code></td><td><code>--marca-f</code> / <code>--marca-b</code></td></tr>
-            <tr><td><code>--sidebar-active</code></td><td><code>--sidebar-active</code></td><td><code>--marca-ativa</code></td></tr>
-            <tr><td><code>--ring</code></td><td><code>--ring</code></td><td><code>--foco</code></td></tr>
-            <tr><td><code>--crit-fg</code> / <code>-bg</code> / <code>-border</code> / <code>-solid</code></td><td><code>--crit-fg</code> / <code>-bg</code> / <code>-bd</code> / <code>-solid</code></td><td><code>--crit</code> / <code>-f</code> / <code>-b</code> / <code>-forte</code></td></tr>
-            <tr><td><code>--warn-*</code></td><td><code>--warn-*</code></td><td><code>--aviso</code>, <code>--aviso-f</code>, <code>--aviso-b</code></td></tr>
-            <tr><td><code>--shadow-sm</code> / <code>--shadow-lg</code></td><td>iguais</td><td><code>--sombra-p</code> / <code>--sombra-g</code></td></tr>
-            <tr><td><code>--overlay</code></td><td><code>--overlay</code></td><td><code>--veu</code></td></tr>
-            <tr><td><code>--radius-sm</code> / <code>-md</code> / <code>-lg</code></td><td><code>--radius-sm</code> / <code>--radius</code> / <code>--radius-lg</code></td><td><code>--raio-p</code> / <code>--raio</code> / <code>--raio-g</code></td></tr>
-            <tr><td><code>--chart-1</code> / <code>--chart-2</code></td><td>(não tinha)</td><td><code>--mod</code> / <code>--real</code></td></tr>
-            <tr><td><code>--control-h</code></td><td>32 px fixo</td><td><code>--alt</code></td></tr>
-          </tbody></table></div>
-      </section>
-      <footer class="ds-foot"><span>Canis Design System 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="ds-foot"><span>Grin 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canis Design System</title>
-<meta name="description" content="Tokens, componentes e regras de interface do Canis, do Laika e do Vezen.">
-<script>/* aplica tema, densidade e fonte antes de pintar a tela */try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<title>Grin Design System</title>
+<meta name="description" content="Grin: tokens, componentes e regras de interface para ferramentas de trabalho com dados.">
+<script>/* aplica tema, densidade e fonte antes de pintar a tela */try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -26,22 +26,13 @@
     <main class="ds-main" id="conteudo">
 
       <section class="ds-hero" aria-labelledby="t-hero">
-        <span class="eyebrow">Design system da família Canis</span>
-        <h1 id="t-hero">Uma interface para Canis, Laika e Vezen</h1>
-        <p class="ds-lead">As três ferramentas nasceram com o mesmo visual: a fonte Public Sans, o verde da 4Network, cinzas levemente esverdeados e tema escuro. Este design system junta o que elas já tinham em comum, decide as diferenças e documenta tudo num lugar só: tokens, componentes e regras de uso.</p>
+        <span class="eyebrow">Design system · versão 1.0</span>
+        <h1 id="t-hero">Grin</h1>
+        <p class="ds-lead">Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e revisão. Uma família tipográfica, um verde usado só como acento, cinzas com leve viés de verde, três temas e duas densidades. Tudo em tokens, com contraste medido.</p>
         <div class="row">
           <a class="btn primary lg" href="#comecar">Começar a usar</a>
           <a class="btn lg" href="docs/foundations.html">Ler os fundamentos</a>
           <a class="btn ghost lg" href="examples/dashboard.html">Ver um exemplo</a>
-        </div>
-      </section>
-
-      <section class="ds-sec" aria-labelledby="t-origem">
-        <header><h2 id="t-origem">De onde vem</h2><p>Cada ferramenta contribuiu com uma parte. Onde divergiam, a decisão está em <a href="docs/foundations.html#diferencas">Fundamentos</a>.</p></header>
-        <div class="ds-grid wide">
-          <article class="card"><div class="card-h"><div><h3>Canis</h3><p>Banco de dados de eventos</p></div><span class="badge t-brand">Origem</span></div><div class="card-b"><p class="sub">Definiu as cores da 4Network com contraste medido, a regra "nunca só cor", os estados (crítico, atenção, informação, sucesso) e o alvo WCAG 2.2 AA.</p></div></article>
-          <article class="card"><div class="card-h"><div><h3>Laika</h3><p>Revisão de planilhas do Sirius</p></div><span class="badge">Canis Lite</span></div><div class="card-b"><p class="sub">Trouxe os componentes de dados: tabela com cabeçalho fixo, filtros em chips, barra de ações em massa, gaveta, diálogo e toast, na densidade compacta.</p></div></article>
-          <article class="card"><div class="card-h"><div><h3>Vezen</h3><p>Investimento em TI</p></div><span class="badge">Família Canis</span></div><div class="card-b"><p class="sub">Trouxe a densidade confortável (40 px), o texto corrido de 16 px, o controle segmentado, os selos de confiança e as cores de gráfico validadas para daltonismo.</p></div></article>
         </div>
       </section>
 
@@ -66,7 +57,7 @@
 &lt;!-- tema: nada (segue o sistema), data-theme="light", "dark" ou "hc" --&gt;
 &lt;!-- densidade: data-density="comfortable" --&gt;
 &lt;!-- fonte: data-scale="112" ou "125" --&gt;</pre></div></div>
-        <div class="note neutral"><i data-ic="info"></i><div>Ferramentas de arquivo único (como o Laika e o Vezen) colam o conteúdo das três folhas dentro de um &lt;style&gt;. A fonte vem embutida em base64 para funcionar sem internet; nesta documentação ela vem do Google Fonts.</div></div>
+        <div class="note neutral"><i data-ic="info"></i><div>Para uma ferramenta de arquivo único, cole o conteúdo das três folhas dentro de um &lt;style&gt; e embuta a fonte em base64. Nesta documentação a fonte vem do Google Fonts.</div></div>
       </section>
 
       <!-- ===================== FUNDAMENTOS ===================== -->
@@ -92,7 +83,7 @@
 
       <section class="ds-sec" id="movimento" aria-labelledby="t-mov">
         <header><h2 id="t-mov">Movimento</h2><p><code>--dur</code> 160 ms para respostas pequenas, <code>--dur-slow</code> 200 ms para a gaveta, curva <code>--ease</code> que desacelera no fim.</p></header>
-        <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="mov-demo">Salvar linha</button><span class="sub" id="mov-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@4network.com.br</span></div></div>
+        <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="mov-demo">Salvar linha</button><span class="sub" id="mov-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@nortesul.com.br</span></div></div>
       </section>
 
       <section class="ds-sec" id="icones" aria-labelledby="t-ic">
@@ -180,7 +171,7 @@
         <header><h2 id="t-avisos">Avisos</h2><p>Avisos ficam na página, perto do que explicam. Toasts confirmam o que já aconteceu e oferecem desfazer.</p></header>
         <div class="demo" data-code><div class="demo-stage col">
 <div class="note"><i data-ic="info"></i><div>A planilha tem 1.284 linhas. As colunas foram reconhecidas pelo cabeçalho.</div></div>
-<div class="note warn"><i data-ic="warn"></i><div><b>14 linhas sem e-mail.</b> O Canis aceita a pessoa, mas não consegue avisá-la dos eventos. Complete o e-mail ou siga mesmo assim.</div></div>
+<div class="note warn"><i data-ic="warn"></i><div><b>14 linhas sem e-mail.</b> A pessoa entra no cadastro, mas não recebe os convites. Complete o e-mail ou siga mesmo assim.</div></div>
 <div class="note crit"><i data-ic="crit"></i><div><b>Não foi possível salvar agora.</b> Seus dados continuam no formulário. Tente de novo em instantes. Código: ERR-7F3A</div></div>
 <div class="note ok"><i data-ic="ok"></i><div>Importação concluída: 1.270 pessoas novas e 14 atualizadas.</div></div>
         </div></div>
@@ -196,7 +187,7 @@
   <div class="stat"><span class="k">Empresas</span><span class="v">318</span><span class="d muted">Sem mudança</span></div>
 </div>
 <article class="card">
-  <header class="card-h"><div><h3>4Network Eventos</h3><p>CNPJ 12.345.678/0001-90 · São Paulo</p></div><span class="badge t-ok">Ativa</span></header>
+  <header class="card-h"><div><h3>Norte Sul Eventos</h3><p>CNPJ 12.345.678/0001-90 · São Paulo</p></div><span class="badge t-ok">Ativa</span></header>
   <div class="card-b"><p class="sub">32 pessoas vinculadas · 4 eventos em 2026</p></div>
   <footer class="card-f"><button type="button" class="btn xs">Abrir</button><button type="button" class="btn xs ghost">Ver pessoas</button></footer>
 </article>
@@ -215,7 +206,7 @@
   <table class="table">
     <thead><tr><th scope="col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-ic="baixo" data-size="14"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Situação</th><th scope="col" class="num">Eventos</th></tr></thead>
     <tbody>
-      <tr aria-selected="true"><td><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td>4Network</td><td class="edited">ana.lima@4network.com.br</td><td><span class="badge t-ok">Revisada</span></td><td class="num">4</td></tr>
+      <tr aria-selected="true"><td><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td>Norte Sul</td><td class="edited">ana.lima@nortesul.com.br</td><td><span class="badge t-ok">Revisada</span></td><td class="num">4</td></tr>
       <tr><td><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td>Bruno Reis</td><td>Hospital Vida</td><td class="f-crit"><span class="empty-cell">sem e-mail</span></td><td><span class="badge t-crit">Crítico</span></td><td class="num">1</td></tr>
       <tr><td><input type="checkbox" aria-label="Marcar Carla Souza"></td><td>Carla Souza</td><td>Varejo Sul</td><td class="f-warn">carla@varejosul</td><td><span class="badge t-warn">Atenção</span></td><td class="num">12</td></tr>
     </tbody>
@@ -236,11 +227,11 @@
   <div class="dlg-f"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn danger" data-close>Excluir 3 pessoas</button></div>
 </dialog>
 <dialog class="drawer" id="dr-pessoa" aria-labelledby="dr-pessoa-t">
-  <div class="dr-h"><div><h2 id="dr-pessoa-t">Ana Lima</h2><span class="sub">Diretora de TI · 4Network</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
+  <div class="dr-h"><div><h2 id="dr-pessoa-t">Ana Lima</h2><span class="sub">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-ic="x"></i></button></div>
   <div class="dr-b">
     <div class="note warn"><i data-ic="warn"></i><div>O telefone tem só 8 dígitos. Confira o DDD.</div></div>
     <div><div class="fld"><label for="dr-nome">Nome</label><input class="input" id="dr-nome" value="Ana Lima"></div>
-    <div class="fld"><label for="dr-email">E-mail</label><input class="input" id="dr-email" value="ana.lima@4network.com.br"></div>
+    <div class="fld"><label for="dr-email">E-mail</label><input class="input" id="dr-email" value="ana.lima@nortesul.com.br"></div>
     <div class="fld"><label for="dr-tel">Telefone</label><input class="input" id="dr-tel" value="3456-7890" aria-invalid="true"></div></div>
   </div>
   <div class="dr-f"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
@@ -272,7 +263,7 @@
         <header><h2 id="t-nav">Navegação</h2><p>Barra lateral de 232 px que recolhe para 56 px só com ícones. O item atual usa <code>aria-current="page"</code> e o verde-claro. No celular vira uma faixa no topo.</p></header>
         <div class="demo" data-code><div class="demo-stage tinted" style="align-items:stretch">
 <nav class="side" aria-label="Exemplo de navegação" style="height:auto;position:static">
-  <a class="logo" href="#navegacao"><span class="logo-c" aria-hidden="true">C</span><span>Canis</span><span class="tag">Lite</span></a>
+  <a class="logo" href="#navegacao"><span class="logo-c" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
   <a class="nav" href="#navegacao" aria-current="page"><i data-ic="pessoas"></i><span class="lbl">Pessoas</span><span class="qtd">1.284</span></a>
   <a class="nav" href="#navegacao"><i data-ic="empresa"></i><span class="lbl">Empresas</span><span class="qtd">318</span></a>
   <a class="nav" href="#navegacao"><i data-ic="revisao"></i><span class="lbl">Revisão</span><span class="count">12</span></a>
@@ -296,7 +287,7 @@
         </div>
       </section>
 
-      <footer class="ds-foot"><span>Canis Design System 1.0 · novembro de 2026</span><span>Cores da 4Network · Public Sans · ícones no estilo Lucide</span></footer>
+      <footer class="ds-foot"><span>Grin 1.0 · novembro de 2026</span><span>Public Sans · ícones no estilo Lucide</span></footer>
     </main>
   </div>
 </div>

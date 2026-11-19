@@ -1,10 +1,8 @@
-# Canis Design System
+# Grin
 
-Tokens, componentes e regras de interface das ferramentas da família Canis: **Canis** (banco de dados de eventos), **Laika** (revisão de planilhas do Sirius, também chamado Canis Lite) e **Vezen** (estimativa do investimento em TI).
+**Grin** é um design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e revisão. Uma família tipográfica (Public Sans), um verde usado só como acento (`#8dc63f`), cinzas com leve viés de verde, três temas (claro, escuro e alto contraste) e duas densidades.
 
-As três nasceram com o mesmo visual: a fonte Public Sans, o verde da 4Network (`#8dc63f`), cinzas levemente esverdeados e tema escuro. Este repositório junta o que já era comum, decide as diferenças e documenta tudo.
-
-**Documentação ao vivo:** https://saulossorio.github.io/canis-design-system/
+**Documentação ao vivo:** https://saulossorio.github.io/grin/
 
 ## Como usar numa ferramenta
 
@@ -17,7 +15,7 @@ As três nasceram com o mesmo visual: a fonte Public Sans, o verde da 4Network (
 - **Tema:** sem atributo, segue o sistema. `data-theme="light"`, `"dark"` ou `"hc"` (alto contraste) na tag `<html>` fixa a escolha. `scripts/theme.js` cuida disso e guarda a escolha.
 - **Densidade:** compacta (32 px) é o padrão; `data-density="comfortable"` passa para 40 px.
 - **Tamanho da fonte:** `data-scale="112"` ou `"125"`.
-- **Ferramentas de arquivo único** (Laika, Vezen): cole o conteúdo das três folhas dentro de um `<style>` e embuta a fonte em base64.
+- **Ferramentas de arquivo único:** cole o conteúdo das três folhas dentro de um `<style>` e embuta a fonte em base64.
 
 ## Estrutura
 
@@ -60,7 +58,7 @@ Componentes usam só tokens semânticos (`var(--primary)`, `var(--crit-fg)`). Co
 - Texto a 4,5:1 nos temas claro e escuro, 7:1 no alto contraste; bordas de campo e foco a 3:1.
 - Movimento de 160 a 200 ms, só como resposta a uma ação; nada com "reduzir movimento".
 
-Detalhes, a tradução dos tokens antigos do Laika e do Vezen e as decisões estão em `docs/foundations.html`.
+Detalhes em `docs/foundations.html`.
 
 ## Ver localmente
 

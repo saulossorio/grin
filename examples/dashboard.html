@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Exemplo: lista de pessoas · Canis Design System</title>
-<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<title>Exemplo: lista de pessoas · Grin</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('grin-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('grin-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -26,7 +26,7 @@
 <div class="brand-bar"></div>
 <div class="app">
   <nav class="side" id="side" aria-label="Navegação principal">
-    <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">C</span><span>Canis</span><span class="tag">Lite</span><span class="sp"></span></a>
+    <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span><span class="sp"></span></a>
     <a class="nav" href="#" aria-current="page"><i data-ic="pessoas"></i><span class="lbl">Pessoas</span><span class="qtd">1.284</span></a>
     <a class="nav" href="#"><i data-ic="empresa"></i><span class="lbl">Empresas</span><span class="qtd">318</span></a>
     <a class="nav" href="#"><i data-ic="revisao"></i><span class="lbl">Revisão</span><span class="count">12</span></a>
@@ -39,7 +39,7 @@
   </nav>
   <div class="body">
     <header class="top">
-      <span class="sub row" style="gap:6px;flex-wrap:nowrap;min-width:0"><i data-ic="tabela" data-size="14"></i><b style="color:var(--foreground);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">sirius-pessoas-novembro.xlsx</b></span>
+      <span class="sub row" style="gap:6px;flex-wrap:nowrap;min-width:0"><i data-ic="tabela" data-size="14"></i><b style="color:var(--foreground);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">convidados-novembro.xlsx</b></span>
       <span class="status small"><span class="dot ok"></span>Salvo agora</span>
       <span class="sp"></span>
       <label class="vh" for="tema">Tema</label>
@@ -48,11 +48,11 @@
     <div class="head">
       <div class="title-row">
         <div class="row" style="align-items:baseline;gap:12px"><h1>Pessoas</h1><span class="sub">1.284 na planilha · dados fictícios</span></div>
-        <div class="row"><button type="button" class="btn"><i data-ic="importar"></i>Importar</button><button type="button" class="btn"><i data-ic="exportar"></i>Exportar</button><button type="button" class="btn primary"><i data-ic="check"></i>Enviar ao Canis</button></div>
+        <div class="row"><button type="button" class="btn"><i data-ic="importar"></i>Importar</button><button type="button" class="btn"><i data-ic="exportar"></i>Exportar</button><button type="button" class="btn primary"><i data-ic="check"></i>Importar para a agenda</button></div>
       </div>
       <div class="stats">
         <div class="stat"><span class="k">Prontas para enviar</span><span class="v">1.207</span><span class="d fg-ok"><i data-ic="ok" data-size="14"></i>94% da planilha</span></div>
-        <div class="stat"><span class="k">Com problema crítico</span><span class="v">8</span><span class="d fg-crit"><i data-ic="crit" data-size="14"></i>O Canis recusaria</span></div>
+        <div class="stat"><span class="k">Com problema crítico</span><span class="v">8</span><span class="d fg-crit"><i data-ic="crit" data-size="14"></i>Não podem ser importadas</span></div>
         <div class="stat"><span class="k">Com atenção</span><span class="v">69</span><span class="d fg-warn"><i data-ic="warn" data-size="14"></i>Aceitas, mas incompletas</span></div>
       </div>
       <div class="toolbar">
@@ -102,14 +102,14 @@ import { toast } from '../components/toast/toast.js';
 
 // Dados fictícios
 let pessoas = [
-  { nome: 'Ana Lima', emp: '4Network', email: 'ana.lima@4network.com.br', cargo: 'Diretora de TI', sit: 'ok', ev: 4 },
+  { nome: 'Ana Lima', emp: 'Norte Sul', email: 'ana.lima@nortesul.com.br', cargo: 'Diretora de TI', sit: 'ok', ev: 4 },
   { nome: 'Bruno Reis', emp: 'Hospital Vida', email: '', cargo: 'Gerente de Infraestrutura', sit: 'crit', prob: 'Sem e-mail', ev: 1 },
   { nome: 'Carla Souza', emp: 'Varejo Sul', email: 'carla@varejosul', cargo: 'CIO', sit: 'warn', prob: 'E-mail sem domínio completo', ev: 12 },
   { nome: 'Diego Martins', emp: 'Banco Horizonte', email: 'diego.martins@bancohorizonte.com.br', cargo: 'Head de Dados', sit: 'ok', ev: 6 },
   { nome: 'Elisa Prado', emp: 'Agro Cerrado', email: 'elisa.prado@gmail.com', cargo: 'Coordenadora de Sistemas', sit: 'warn', prob: 'E-mail pessoal', ev: 2 },
   { nome: 'Fábio Nunes', emp: '', email: 'fabio@logmax.com.br', cargo: 'CTO', sit: 'crit', prob: 'Sem empresa', ev: 3 },
   { nome: 'Gabriela Tavares', emp: 'Seguros Atlântico', email: 'gabriela.tavares@atlantico.com.br', cargo: 'VP de Tecnologia', sit: 'ok', ev: 9 },
-  { nome: 'Hugo Almeida', emp: 'Educa Mais', email: 'hugo.almeida@educamais.org', cargo: 'Gerente de TI', sit: 'info', prob: 'Cargo novo no Canis', ev: 0 },
+  { nome: 'Hugo Almeida', emp: 'Educa Mais', email: 'hugo.almeida@educamais.org', cargo: 'Gerente de TI', sit: 'info', prob: 'Cargo novo na agenda', ev: 0 },
   { nome: 'Isabela Rocha', emp: 'Mineração Serra', email: 'isabela.rocha@mserra.com.br', cargo: 'Diretora de Segurança', sit: 'ok', ev: 5 },
   { nome: 'João Pedro Costa', emp: 'Farma Bem', email: 'jp.costa@farmabem.com.br', cargo: 'CISO', sit: 'warn', prob: 'Telefone com 8 dígitos', ev: 7 },
 ];
@@ -157,7 +157,7 @@ function abrir(i) {
   aberta = i; const p = pessoas[i];
   document.getElementById('dr-t').textContent = p.nome;
   document.getElementById('dr-sub').textContent = [p.cargo, p.emp].filter(Boolean).join(' · ');
-  const aviso = p.prob ? `<div class="note ${p.sit === 'crit' ? 'crit' : p.sit === 'warn' ? 'warn' : ''}">${ic(SIT[p.sit][1])}<div><b>${p.prob}.</b> ${p.sit === 'crit' ? 'O Canis recusaria esta linha. Complete o campo para enviar.' : 'O Canis aceita, mas vale conferir.'}</div></div>` : '';
+  const aviso = p.prob ? `<div class="note ${p.sit === 'crit' ? 'crit' : p.sit === 'warn' ? 'warn' : ''}">${ic(SIT[p.sit][1])}<div><b>${p.prob}.</b> ${p.sit === 'crit' ? 'Não podem ser importadas esta linha. Complete o campo para enviar.' : 'Pode ser importada, mas vale conferir.'}</div></div>` : '';
   document.getElementById('dr-b').innerHTML = `${aviso}<div>
     <div class="fld"><label for="f-nome">Nome</label><input class="input" id="f-nome" value="${p.nome}"></div>
     <div class="fld"><label for="f-emp">Empresa</label><input class="input" id="f-emp" value="${p.emp}" ${!p.emp ? 'aria-invalid="true"' : ''}></div>
@@ -179,7 +179,7 @@ document.addEventListener('click', (e) => {
   if (e.target.closest('[data-open="dlg-excluir"]')) {
     const n = marcadas.size;
     document.getElementById('dlg-t').textContent = n === 1 ? 'Excluir 1 pessoa?' : `Excluir ${n} pessoas?`;
-    document.getElementById('dlg-txt').textContent = `${n === 1 ? 'A pessoa sai' : `As ${n} pessoas saem`} da planilha que vai para o Canis. A planilha original não muda.`;
+    document.getElementById('dlg-txt').textContent = `${n === 1 ? 'A pessoa sai' : `As ${n} pessoas saem`} da importação. A planilha original não muda.`;
     document.getElementById('confirmar').textContent = n === 1 ? 'Excluir 1 pessoa' : `Excluir ${n} pessoas`;
   }
   if (e.target.closest('[data-chip]')) { filtroSit = false; e.target.closest('.chip').remove(); toast('Filtro removido.', { tipo: 'info' }); }

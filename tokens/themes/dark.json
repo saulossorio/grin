@@ -1,5 +1,5 @@
 {
-  "$description": "Tema escuro. Fundo #1e2324, o quase preto da 4Network. A marca continua #8dc63f, que no escuro também serve para texto e foco (7,8:1).",
+  "$description": "Tema escuro. Fundo #1e2324, o quase preto do Grin. A marca continua #8dc63f, que no escuro também serve para texto e foco (7,8:1).",
   "background": "{color.slate.950}", "foreground": "{color.slate.50}", "surface": "{color.slate.875}", "popover": "{color.slate.850}",
   "muted": "{color.slate.775}", "muted-foreground": "{color.slate.200}", "accent": "{color.slate.750}",
   "border": "{color.slate.700}", "border-soft": "{color.slate.775}", "border-strong": "{color.slate.600}",

@@ -1,4 +1,4 @@
-/* Canis Design System: base. Reset curto, tipografia e utilitários. Só usa tokens de styles/variables.css. */
+/* Grin: base. Reset curto, tipografia e utilitários. Só usa tokens de styles/variables.css. */
 
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -59,11 +59,11 @@ input[type="checkbox"], input[type="radio"] {
 .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
 /* Movimento: curto e só como resposta a uma ação. Com "reduzir movimento", nada se mexe. */
-@keyframes canis-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes canis-slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes canis-pop { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%); } }
-@keyframes canis-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-@keyframes canis-spin { to { transform: rotate(360deg); } }
+@keyframes grin-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes grin-slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes grin-pop { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%); } }
+@keyframes grin-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes grin-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
