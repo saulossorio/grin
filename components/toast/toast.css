@@ -1,0 +1,6 @@
+/* Toast: confirma uma ação que já aconteceu e oferece desfazer. Some sozinho; o que exige decisão vai num diálogo. */
+.toasts { position: fixed; right: 16px; bottom: 16px; z-index: 99; display: flex; flex-direction: column; gap: 8px; width: min(440px, calc(100vw - 32px)); pointer-events: none; }
+.toast { pointer-events: auto; display: flex; align-items: flex-start; gap: 10px; padding: 12px 10px 12px 14px; border-radius: var(--radius-md); background: var(--popover); border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg); font-size: var(--text-base); color: var(--foreground); animation: canis-rise var(--dur) var(--ease); }
+.toast > svg { margin-top: 1px; }
+.toast > div { flex: 1 1 auto; min-width: 0; }
+.toast.ok > svg { color: var(--ok-fg); } .toast.crit > svg { color: var(--crit-fg); } .toast.warn > svg { color: var(--warn-fg); } .toast.info > svg { color: var(--info-fg); }

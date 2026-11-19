@@ -1,0 +1,6 @@
+/* Estado vazio: diz o que vai aparecer aqui e qual é o próximo passo. */
+.empty { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 56px 24px; text-align: center; color: var(--muted-foreground); border: 1px dashed var(--border-strong); border-radius: var(--radius-lg); background: var(--muted); }
+.empty > svg { color: var(--muted-foreground); }
+.empty h3 { color: var(--foreground); font-size: var(--text-body); }
+.empty p { max-width: 46ch; font-size: var(--text-base); line-height: var(--leading-body); }
+.empty .row { justify-content: center; }

@@ -1,0 +1,27 @@
+{
+  "$description": "Espaços, raios e alturas. Base de 2 px; os passos usados de fato nas três ferramentas.",
+  "space": {
+    "0": { "$value": "0" }, "0-5": { "$value": "2px" }, "1": { "$value": "4px" }, "1-5": { "$value": "6px" }, "2": { "$value": "8px" },
+    "2-5": { "$value": "10px" }, "3": { "$value": "12px" }, "3-5": { "$value": "14px" }, "4": { "$value": "16px" }, "5": { "$value": "20px" },
+    "6": { "$value": "24px" }, "8": { "$value": "32px" }, "10": { "$value": "40px" }, "12": { "$value": "48px" }, "14": { "$value": "56px" }, "18": { "$value": "72px" }
+  },
+  "radius": {
+    "xs": { "$value": "5px", "$description": "Botões dentro de chips e células." },
+    "sm": { "$value": "7px", "$description": "Botões, campos, itens de menu e de navegação." },
+    "md": { "$value": "10px", "$description": "Cartões, avisos, popovers, toasts." },
+    "lg": { "$value": "14px", "$description": "Diálogos, painéis e a barra de ações em massa." },
+    "pill": { "$value": "999px", "$description": "Selos, contadores e pontos de estado." }
+  },
+  "size": {
+    "control-compact": { "$value": "32px", "$description": "Altura de botão e campo na densidade compacta (Canis, Laika)." },
+    "control-comfortable": { "$value": "40px", "$description": "Altura na densidade confortável (Vezen)." },
+    "control-xs": { "$value": "28px" },
+    "nav-item": { "$value": "34px" },
+    "topbar": { "$value": "56px" },
+    "sidebar": { "$value": "232px" },
+    "sidebar-collapsed": { "$value": "56px" },
+    "drawer": { "$value": "580px" },
+    "brand-bar": { "$value": "6px", "$description": "Barra verde no topo da tela." },
+    "target-min": { "$value": "24px", "$description": "Menor alvo de clique permitido (WCAG 2.5.8)." }
+  }
+}

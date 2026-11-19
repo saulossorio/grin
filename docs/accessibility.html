@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Acessibilidade · Canis Design System</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/docs.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="../scripts/docs-shell.js"></script>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="app">
+  <nav class="side" data-ds-nav data-base="../" data-here="accessibility"></nav>
+  <div class="body">
+    <header class="top" data-ds-top data-title="Acessibilidade"></header>
+    <main class="ds-main" id="conteudo">
+      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Acessibilidade</h1><p class="ds-lead">Alvo: WCAG 2.2 nível AA em todas as ferramentas, e AAA de contraste no tema de alto contraste.</p></section>
+      <section class="ds-sec" aria-labelledby="t-check">
+        <header><h2 id="t-check">Checklist por tela</h2></header>
+        <ul class="ds-list" style="list-style:none;padding:0">
+          <li><label class="check"><input type="checkbox"> Toda ação funciona pelo teclado, numa ordem lógica.</label></li>
+          <li><label class="check"><input type="checkbox"> O foco está sempre visível e nunca fica escondido atrás do topo fixo ou de um painel.</label></li>
+          <li><label class="check"><input type="checkbox"> Alvos de clique com pelo menos 24 por 24 px.</label></li>
+          <li><label class="check"><input type="checkbox"> Contraste AA em texto, ícones e bordas de campos, nos temas claro e escuro.</label></li>
+          <li><label class="check"><input type="checkbox"> Nenhuma informação só por cor: estado tem texto, e ícone quando pede atenção.</label></li>
+          <li><label class="check"><input type="checkbox"> Campos com rótulo visível e associado; erros ligados ao campo e anunciados.</label></li>
+          <li><label class="check"><input type="checkbox"> Tabelas com cabeçalho (<code>th scope</code>) e ordenação anunciada (<code>aria-sort</code>).</label></li>
+          <li><label class="check"><input type="checkbox"> Atalhos de uma tecla podem ser desligados; os padrões usam Ctrl ou Cmd.</label></li>
+          <li><label class="check"><input type="checkbox"> A interface funciona com zoom de 200% e com a fonte em 125%.</label></li>
+          <li><label class="check"><input type="checkbox"> Com "reduzir movimento", nada se mexe.</label></li>
+        </ul>
+        <p class="sub">Esta lista não guarda o que você marca; é só para conferir.</p>
+      </section>
+      <section class="ds-sec" aria-labelledby="t-contraste">
+        <header><h2 id="t-contraste">Contraste medido</h2><p>Calculado ao vivo a partir dos tokens do tema escolhido no topo. A mesma conta roda em <code>node tools/check-contrast.mjs</code>.</p></header>
+        <div class="table-wrap"><table class="table ds-table" id="tab-contraste"><thead><tr><th scope="col">Par</th><th scope="col">Amostra</th><th scope="col" class="num">Razão</th><th scope="col">Mínimo</th><th scope="col">Resultado</th></tr></thead><tbody></tbody></table></div>
+      </section>
+      <section class="ds-sec" aria-labelledby="t-teste">
+        <header><h2 id="t-teste">Como testar</h2></header>
+        <ul class="ds-list"><li>Verificação automática com axe em cada teste de ponta a ponta.</li><li>Antes de cada versão: passar a tela inteira só com o teclado e com um leitor de tela (NVDA no Windows, VoiceOver no Mac).</li><li>Conferir os três temas e a fonte em 125%.</li></ul>
+      </section>
+      <script type="module">
+        import { contraste, token, ic } from '../scripts/utils.js';
+        const PARES = [['foreground', 'background', 'Texto principal'], ['muted-foreground', 'background', 'Texto secundário'], ['link', 'background', 'Link'], ['primary-foreground', 'primary', 'Texto sobre a marca'], ['crit-fg', 'crit-bg', 'Crítico'], ['warn-fg', 'warn-bg', 'Atenção'], ['info-fg', 'info-bg', 'Informação'], ['ok-fg', 'ok-bg', 'Sucesso'], ['crit-on', 'crit-solid', 'Botão de excluir'], ['brand-fg', 'brand-bg', 'Chip de filtro'], ['input', 'background', 'Borda de campo', 3], ['ring', 'background', 'Anel de foco', 3]];
+        function desenhar() {
+          const hc = document.documentElement.dataset.theme === 'hc' || (!document.documentElement.dataset.theme && matchMedia('(prefers-contrast: more)').matches);
+          document.querySelector('#tab-contraste tbody').innerHTML = PARES.map(([a, b, nome, ui]) => {
+            const r = contraste(token(a), token(b)); const min = ui ?? (hc ? 7 : 4.5); const ok = r >= min;
+            return `<tr><td>${nome}<br><code class="small">--${a} sobre --${b}</code></td><td><span style="display:inline-flex;padding:4px 10px;border-radius:var(--radius-sm);background:var(--${b});color:var(--${a});${ui ? `border:2px solid var(--${a})` : ''}">Aa 123</span></td><td class="num">${r.toFixed(2).replace('.', ',')}:1</td><td>${String(min).replace('.', ',')}:1</td><td><span class="badge ${ok ? 't-ok' : 't-crit'}">${ic(ok ? 'check' : 'x', 13)}${ok ? 'Passa' : 'Não passa'}</span></td></tr>`;
+          }).join('');
+        }
+        desenhar();
+        new MutationObserver(() => requestAnimationFrame(desenhar)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      </script>
+      <footer class="ds-foot"><span>Canis Design System 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

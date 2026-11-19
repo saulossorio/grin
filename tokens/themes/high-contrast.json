@@ -1,0 +1,18 @@
+{
+  "$description": "Alto contraste, novo neste design system (não existia nas ferramentas). Texto a 7:1 ou mais (WCAG AAA), bordas pretas, estados com cor escura sobre branco. Entra sozinho quando o sistema pede mais contraste.",
+  "background": "{color.neutral.0}", "foreground": "{color.neutral.1000}", "surface": "{color.neutral.0}", "popover": "{color.neutral.0}",
+  "muted": "#f1f3ee", "muted-foreground": "#262b2a", "accent": "#e6edda",
+  "border": "#3c4341", "border-soft": "#6c7472", "border-strong": "{color.neutral.1000}",
+  "input": "{color.neutral.1000}", "field": "{color.neutral.0}", "ring": "{color.neutral.1000}",
+  "primary": "{color.brand.green-400}", "primary-foreground": "{color.neutral.1000}", "primary-hover": "{color.brand.green-450}", "link": "{color.brand.green-800}",
+  "overlay": "oklch(0 0 0 / 0.55)", "hover": "oklch(0 0 0 / 0.1)", "highlight": "{color.brand.green-100}",
+  "row-hover": "#eef3e6", "row-selected": "{color.brand.green-100}", "table-head": "#f1f3ee",
+  "sidebar": "{color.neutral.0}", "sidebar-foreground": "{color.neutral.1000}", "sidebar-active": "{color.brand.green-200}",
+  "brand-fg": "{color.brand.green-800}", "brand-bg": "{color.brand.green-50}", "brand-border": "{color.brand.green-800}",
+  "crit-fg": "{color.red.fg-hc}", "crit-bg": "{color.neutral.0}", "crit-border": "{color.red.fg-hc}", "crit-solid": "{color.red.fg-hc}",
+  "warn-fg": "{color.amber.fg-hc}", "warn-bg": "{color.neutral.0}", "warn-border": "{color.amber.fg-hc}", "warn-solid": "{color.amber.fg-hc}",
+  "info-fg": "{color.blue.fg-hc}", "info-bg": "{color.neutral.0}", "info-border": "{color.blue.fg-hc}",
+  "ok-fg": "{color.teal.fg-hc}", "ok-bg": "{color.neutral.0}", "ok-border": "{color.teal.fg-hc}",
+  "chart-1": "{color.brand.green-800}", "chart-2": "{color.blue.fg-hc}", "chart-band": "{color.brand.green-100}", "chart-grid": "#6c7472",
+  "shadow-sm": "0 0 0 1px #000000", "shadow-lg": "0 0 0 2px #000000"
+}

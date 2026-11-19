@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exemplo: cadastro de pessoa · Canis Design System</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+  .form-page { max-width: 760px; width: 100%; }
+  .form-sec { display: flex; flex-direction: column; gap: 16px; padding: 20px 0; border-top: 1px solid var(--border); }
+  .form-sec:first-of-type { border-top: 0; padding-top: 4px; }
+  .form-sec > header p { color: var(--muted-foreground); margin-top: 2px; }
+  .w-sm { max-width: 200px; } .w-md { max-width: 360px; }
+  .form-actions { display: flex; gap: 8px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="app">
+  <nav class="side" aria-label="Navegação principal">
+    <a class="logo" href="../index.html"><span class="logo-c" aria-hidden="true">C</span><span>Canis</span></a>
+    <a class="nav" href="#" aria-current="page"><i data-ic="pessoas"></i><span class="lbl">Pessoas</span></a>
+    <a class="nav" href="#"><i data-ic="empresa"></i><span class="lbl">Empresas</span></a>
+    <div class="side-foot">
+      <a class="nav small" href="../index.html"><i data-ic="livro"></i><span class="lbl">Design system</span></a>
+      <button type="button" class="nav small" data-theme-toggle><i data-ic="contraste"></i><span class="lbl">Tema escuro</span></button>
+    </div>
+  </nav>
+  <div class="body">
+    <header class="top"><a class="link" href="dashboard.html">Pessoas</a><i data-ic="dir" data-size="14"></i><span class="sub">Nova pessoa</span></header>
+    <div class="head"><h1>Nova pessoa</h1><p class="sub">Campos com <span class="fg-crit">*</span> são obrigatórios. Exemplo com dados fictícios: nada é enviado.</p></div>
+    <main class="content">
+      <form class="form-page" id="form" novalidate>
+        <div class="note crit" id="resumo-erros" role="alert" hidden tabindex="-1"><i data-ic="crit"></i><div><b id="resumo-t"></b> Corrija os campos marcados e tente de novo.</div></div>
+
+        <section class="form-sec" aria-labelledby="s1">
+          <header><h3 id="s1">Identificação</h3><p>Como a pessoa aparece nas listas e nos crachás.</p></header>
+          <div class="fields">
+            <div class="field"><label for="nome">Nome completo<span class="req" aria-hidden="true">*</span></label><input class="input" id="nome" name="nome" autocomplete="name" required aria-describedby="nome-msg"><p class="msg" id="nome-msg" hidden></p></div>
+            <div class="field"><label for="cracha">Nome no crachá</label><input class="input" id="cracha" name="cracha" aria-describedby="cracha-hint"><p class="hint" id="cracha-hint">Se ficar vazio, usamos o primeiro e o último nome.</p></div>
+          </div>
+        </section>
+
+        <section class="form-sec" aria-labelledby="s2">
+          <header><h3 id="s2">Contato</h3></header>
+          <div class="field w-md" style="max-width:none"><label for="email">E-mail corporativo<span class="req" aria-hidden="true">*</span></label><input class="input" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-msg"><p class="msg" id="email-msg" hidden></p></div>
+          <div class="fields">
+            <div class="field"><label for="tel">Telefone</label><input class="input w-md" id="tel" name="tel" type="tel" inputmode="tel" placeholder="(11) 98765-4321" aria-describedby="tel-msg"><p class="msg warn" id="tel-msg" hidden></p></div>
+            <div class="field"><label for="cep">CEP</label><input class="input w-sm" id="cep" name="cep" inputmode="numeric" placeholder="01310-100"></div>
+          </div>
+        </section>
+
+        <section class="form-sec" aria-labelledby="s3">
+          <header><h3 id="s3">Empresa</h3></header>
+          <div class="fields">
+            <div class="field"><label for="empresa">Empresa<span class="req" aria-hidden="true">*</span></label><select class="select" id="empresa" name="empresa" required aria-describedby="empresa-msg"><option value="">Escolha uma empresa</option><option>4Network Eventos</option><option>Banco Horizonte</option><option>Hospital Vida</option><option>Varejo Sul</option></select><p class="msg" id="empresa-msg" hidden></p></div>
+            <div class="field"><label for="cargo">Cargo</label><input class="input" id="cargo" name="cargo" autocomplete="organization-title"></div>
+          </div>
+          <div class="field"><span class="label" id="nivel-l">Nível</span>
+            <div class="seg" role="radiogroup" aria-labelledby="nivel-l">
+              <label><input type="radio" name="nivel" value="c" checked><span>C-level</span></label>
+              <label><input type="radio" name="nivel" value="d"><span>Diretoria</span></label>
+              <label><input type="radio" name="nivel" value="g"><span>Gerência</span></label>
+              <label><input type="radio" name="nivel" value="o"><span>Outro</span></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-sec" aria-labelledby="s4">
+          <header><h3 id="s4">Comunicação</h3></header>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="convite" value="todos" checked><span><b>Todos os eventos</b><small>Recebe convite de todos os eventos da comunidade.</small></span></label>
+            <label class="opt"><input type="radio" name="convite" value="setor"><span><b>Só do setor</b><small>Só eventos do setor da empresa.</small></span></label>
+            <label class="opt"><input type="radio" name="convite" value="nenhum"><span><b>Nenhum</b><small>Fica no cadastro, sem convites.</small></span></label>
+          </div>
+          <div class="checks"><label class="check"><input type="checkbox" name="lgpd" checked> A pessoa autorizou o uso dos dados para convites (LGPD)</label></div>
+          <div class="field"><label for="obs">Observações</label><textarea class="textarea" id="obs" name="obs" placeholder="Ex.: prefere contato por e-mail"></textarea></div>
+        </section>
+
+        <div class="form-actions"><button type="submit" class="btn primary lg">Cadastrar pessoa</button><a class="btn lg" href="dashboard.html">Cancelar</a></div>
+      </form>
+    </main>
+  </div>
+</div>
+<script type="module">
+import '../scripts/theme.js';
+import { ic, pintarIcones } from '../scripts/utils.js';
+import { toast } from '../components/toast/toast.js';
+pintarIcones();
+const PESSOAIS = ['gmail.com', 'hotmail.com', 'outlook.com', 'yahoo.com', 'yahoo.com.br', 'bol.com.br', 'uol.com.br'];
+const regras = {
+  nome: (v) => (!v.trim() ? 'Informe o nome da pessoa.' : v.trim().split(/\s+/).length < 2 ? 'Informe nome e sobrenome.' : ''),
+  email: (v) => {
+    if (!v.trim()) return 'Informe o e-mail. Sem ele, a pessoa não recebe convites.';
+    if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(v.trim())) return 'O e-mail está incompleto. Confira o que vem depois do @.';
+    const dom = v.trim().split('@')[1].toLowerCase();
+    return PESSOAIS.includes(dom) ? `Use o e-mail corporativo. ${dom} é um provedor pessoal.` : '';
+  },
+  empresa: (v) => (!v ? 'Escolha a empresa. Crie a empresa antes, se ela ainda não existir.' : ''),
+};
+const avisos = { tel: (v) => { const d = v.replace(/\D/g, ''); return d && d.length < 10 ? 'O telefone tem só ' + d.length + ' dígitos. Confira o DDD.' : ''; } };
+function mostrar(id, texto, tipo = 'crit') {
+  const campo = document.getElementById(id), msg = document.getElementById(`${id}-msg`);
+  if (tipo === 'crit') campo.setAttribute('aria-invalid', String(!!texto));
+  msg.hidden = !texto;
+  msg.innerHTML = texto ? `${ic(tipo === 'crit' ? 'crit' : 'warn', 14)}<span></span>` : '';
+  if (texto) msg.querySelector('span').textContent = texto;
+}
+// Valida ao sair do campo, não a cada tecla
+for (const id of Object.keys(regras)) document.getElementById(id).addEventListener('blur', (e) => mostrar(id, regras[id](e.target.value)));
+for (const id of Object.keys(regras)) document.getElementById(id).addEventListener('input', (e) => { if (e.target.getAttribute('aria-invalid') === 'true' && !regras[id](e.target.value)) mostrar(id, ''); });
+document.getElementById('tel').addEventListener('blur', (e) => mostrar('tel', avisos.tel(e.target.value), 'warn'));
+document.getElementById('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const erros = Object.entries(regras).map(([id, f]) => { const m = f(document.getElementById(id).value); mostrar(id, m); return m ? id : null; }).filter(Boolean);
+  const resumo = document.getElementById('resumo-erros');
+  if (erros.length) {
+    resumo.hidden = false;
+    document.getElementById('resumo-t').textContent = erros.length === 1 ? '1 campo precisa de correção.' : `${erros.length} campos precisam de correção.`;
+    document.getElementById(erros[0]).focus();
+    return;
+  }
+  resumo.hidden = true;
+  toast(`${document.getElementById('nome').value.trim()} cadastrada. (Exemplo: nada foi enviado.)`);
+  e.target.reset();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!-- Campo: rótulo visível ligado ao campo, dica opcional e mensagem de erro ligada por aria-describedby. -->
+<div class="field">
+  <label for="email">E-mail corporativo<span class="req" aria-hidden="true">*</span></label>
+  <input class="input" id="email" type="email" value="ana@gmail.com" aria-invalid="true" aria-describedby="email-msg" required>
+  <p class="msg" id="email-msg">Use o e-mail corporativo. gmail.com é um provedor pessoal.</p>
+</div>
+<div class="field">
+  <label for="setor">Setor</label>
+  <select class="select" id="setor"><option>Tecnologia</option><option>Saúde</option><option>Varejo</option></select>
+</div>
+<label class="check"><input type="checkbox" checked> Avisar quando alguém alterar</label>

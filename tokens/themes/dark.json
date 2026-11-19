@@ -1,0 +1,18 @@
+{
+  "$description": "Tema escuro. Fundo #1e2324, o quase preto da 4Network. A marca continua #8dc63f, que no escuro também serve para texto e foco (7,8:1).",
+  "background": "{color.slate.950}", "foreground": "{color.slate.50}", "surface": "{color.slate.875}", "popover": "{color.slate.850}",
+  "muted": "{color.slate.775}", "muted-foreground": "{color.slate.200}", "accent": "{color.slate.750}",
+  "border": "{color.slate.700}", "border-soft": "{color.slate.775}", "border-strong": "{color.slate.600}",
+  "input": "{color.slate.400}", "field": "{color.slate.825}", "ring": "{color.brand.green-400}",
+  "primary": "{color.brand.green-400}", "primary-foreground": "{color.neutral.900}", "primary-hover": "{color.brand.green-450}", "link": "{color.brand.green-400}",
+  "overlay": "oklch(0.05 0.01 210 / 0.6)", "hover": "oklch(1 0 0 / 0.07)", "highlight": "{color.brand.green-dark-300}",
+  "row-hover": "{color.slate.800}", "row-selected": "{color.brand.green-dark-700}", "table-head": "{color.slate.825}",
+  "sidebar": "{color.slate.900}", "sidebar-foreground": "oklch(0.88 0.006 170)", "sidebar-active": "{color.brand.green-dark-500}",
+  "brand-fg": "{color.brand.green-400}", "brand-bg": "{color.brand.green-dark-600}", "brand-border": "{color.brand.green-dark-200}",
+  "crit-fg": "{color.red.fg-dark}", "crit-bg": "{color.red.bg-dark}", "crit-border": "{color.red.bd-dark}", "crit-solid": "{color.red.solid-dark}",
+  "warn-fg": "{color.amber.fg-dark}", "warn-bg": "{color.amber.bg-dark}", "warn-border": "{color.amber.bd-dark}", "warn-solid": "{color.amber.solid-dark}",
+  "info-fg": "{color.blue.fg-dark}", "info-bg": "{color.blue.bg-dark}", "info-border": "{color.blue.bd-dark}",
+  "ok-fg": "{color.teal.fg-dark}", "ok-bg": "{color.teal.bg-dark}", "ok-border": "{color.teal.bd-dark}",
+  "chart-1": "{color.brand.green-500}", "chart-2": "{color.blue.chart-dark}", "chart-band": "oklch(0.36 0.06 130)", "chart-grid": "{color.slate.775}",
+  "shadow-sm": "0 1px 2px oklch(0 0 0 / 0.4)", "shadow-lg": "0 16px 48px oklch(0 0 0 / 0.5), 0 2px 6px oklch(0 0 0 / 0.3)"
+}

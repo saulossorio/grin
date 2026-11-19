@@ -1,0 +1,31 @@
+/* Tabela de dados: cabeçalho fixo, linhas com hover e seleção, células com estado. */
+.table-wrap { overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--background); max-width: 100%; }
+.table { border-collapse: separate; border-spacing: 0; width: 100%; font-size: var(--text-base); }
+.table th {
+  position: sticky; top: 0; z-index: 2; height: 36px; padding: 0 12px; text-align: left; white-space: nowrap;
+  background: var(--table-head); border-bottom: 1px solid var(--border);
+  font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--muted-foreground);
+}
+.table th button { display: inline-flex; align-items: center; gap: 4px; border: 0; background: none; padding: 0; color: inherit; font: inherit; }
+.table th button:hover { color: var(--foreground); }
+.table td { padding: 10px 12px; border-bottom: 1px solid var(--border-soft); background: var(--background); vertical-align: middle; white-space: nowrap; }
+.table tr:last-child td { border-bottom: 0; }
+.table td.num, .table th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.table tbody tr:hover td { background: var(--row-hover); }
+.table tr[aria-selected="true"] td { background: var(--row-selected); }
+.table td.f-crit, .table tr:hover td.f-crit { background: var(--crit-bg); }
+.table td.f-warn, .table tr:hover td.f-warn { background: var(--warn-bg); }
+.table .empty-cell { color: var(--crit-fg); font-style: italic; font-size: var(--text-sm); }
+.table td.edited { position: relative; }
+.table td.edited::after { content: ''; position: absolute; top: 0; right: 0; border-style: solid; border-width: 0 9px 9px 0; border-color: transparent var(--primary) transparent transparent; }
+.table.compact td { padding: 5px 12px; font-size: var(--text-md); }
+
+.pager { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 8px 4px; font-size: var(--text-md); color: var(--muted-foreground); }
+
+/* Barra de ações em massa, aparece quando há linhas marcadas */
+.bulk { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: max-content; max-width: 100%; padding: 8px 8px 8px 14px; border-radius: var(--radius-lg); background: var(--popover); border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg); animation: canis-rise var(--dur) var(--ease); }
+.bulk strong { font-size: var(--text-md); white-space: nowrap; }
+.vsep { width: 1px; height: 20px; background: var(--border); }
+/* Alto contraste: o fundo do problema é branco, então a célula ganha uma borda na cor do estado */
+:root[data-theme="hc"] .table td.f-crit { box-shadow: inset 3px 0 0 var(--crit-fg); }
+:root[data-theme="hc"] .table td.f-warn { box-shadow: inset 3px 0 0 var(--warn-fg); }

@@ -1,0 +1,24 @@
+/* Selo de estado. Nunca só cor: sempre texto, e ícone ou ponto quando o estado pede atenção. */
+.badge {
+  display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 8px; border-radius: var(--radius-pill);
+  border: 1px solid var(--border); background: var(--muted); color: var(--muted-foreground);
+  font-size: var(--text-sm); font-weight: var(--weight-medium); line-height: 1; white-space: nowrap;
+}
+.badge svg { width: 13px; height: 13px; }
+.t-crit { color: var(--crit-fg); background: var(--crit-bg); border-color: var(--crit-border); }
+.t-warn { color: var(--warn-fg); background: var(--warn-bg); border-color: var(--warn-border); }
+.t-info { color: var(--info-fg); background: var(--info-bg); border-color: var(--info-border); }
+.t-ok   { color: var(--ok-fg);   background: var(--ok-bg);   border-color: var(--ok-border); }
+.t-brand{ color: var(--brand-fg); background: var(--brand-bg); border-color: var(--brand-border); }
+
+/* Etiqueta pequena ao lado do nome do produto (Lite, Beta) */
+.tag { display: inline-flex; align-items: center; height: 20px; padding: 0 7px; border-radius: var(--radius-pill); font-size: var(--text-xs); font-weight: var(--weight-semibold); background: var(--brand-bg); color: var(--brand-fg); border: 1px solid var(--brand-border); }
+
+/* Contador: pendências que pedem ação (vermelho) e quantidades neutras */
+.count { min-width: 22px; height: 20px; padding: 0 6px; border-radius: var(--radius-pill); background: var(--crit-solid); color: var(--crit-on); font-size: var(--text-xs); font-weight: var(--weight-bold); display: inline-flex; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; }
+.qtd { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+
+/* Ponto de estado com texto */
+.status { display: inline-flex; align-items: center; gap: 7px; font-size: var(--text-base); color: var(--muted-foreground); white-space: nowrap; }
+.dot { width: 8px; height: 8px; border-radius: var(--radius-pill); display: inline-block; flex-shrink: 0; background: var(--input); }
+.dot.crit { background: var(--crit-solid); } .dot.warn { background: var(--warn-solid); } .dot.info { background: var(--info-fg); } .dot.ok { background: var(--ok-fg); }

@@ -1,0 +1,7 @@
+/* Controle segmentado: escolher uma entre 2 a 5 opções curtas, todas visíveis (tema, densidade, período). Rádios por baixo. */
+.seg { display: inline-flex; padding: 3px; gap: 2px; border-radius: var(--radius-md); background: var(--muted); border: 1px solid var(--border); flex-wrap: wrap; }
+.seg label { position: relative; display: inline-flex; }
+.seg input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.seg span { display: inline-flex; align-items: center; gap: 6px; min-height: calc(var(--control-h) - 8px); padding: 0 12px; border-radius: var(--radius-sm); font-size: var(--control-text); font-weight: var(--weight-medium); color: var(--muted-foreground); white-space: nowrap; transition: background-color var(--dur), color var(--dur); }
+.seg input:checked + span { background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-sm); }
+.seg input:focus-visible + span { outline: 2px solid var(--ring); outline-offset: 1px; }

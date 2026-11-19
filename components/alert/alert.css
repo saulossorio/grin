@@ -1,0 +1,12 @@
+/* Aviso dentro da página. Formato da mensagem: o que aconteceu, por quê, o que fazer. */
+.note { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); border: 1px solid var(--info-border); background: var(--info-bg); font-size: var(--text-md); line-height: 1.45; color: var(--foreground); }
+.note > svg { margin-top: 1px; color: var(--info-fg); }
+.note b { font-weight: var(--weight-semibold); }
+.note .acts { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.note.warn { border-color: var(--warn-border); background: var(--warn-bg); } .note.warn > svg { color: var(--warn-fg); }
+.note.crit { border-color: var(--crit-border); background: var(--crit-bg); } .note.crit > svg { color: var(--crit-fg); }
+.note.ok { border-color: var(--ok-border); background: var(--ok-bg); } .note.ok > svg { color: var(--ok-fg); }
+.note.neutral { border-color: var(--border); background: var(--muted); } .note.neutral > svg { color: var(--muted-foreground); }
+
+/* Faixa de seleção acima da tabela */
+.selbanner { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 6px 24px; background: var(--brand-bg); border-top: 1px solid var(--brand-border); font-size: var(--text-md); }

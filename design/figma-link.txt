@@ -1,0 +1,3 @@
+Ainda não há arquivo no Figma.
+A fonte de verdade do design é a pasta tokens/ e a documentação em index.html.
+Quando houver um arquivo, cole o link aqui.

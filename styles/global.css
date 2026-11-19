@@ -1,0 +1,69 @@
+/* Canis Design System: base. Reset curto, tipografia e utilitários. Só usa tokens de styles/variables.css. */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; background: var(--background); color: var(--foreground); }
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tamanho da fonte escolhido pela pessoa: 100%, 112,5% e 125%. Tudo em rem acompanha. */
+:root[data-scale="112"] { font-size: 112.5%; }
+:root[data-scale="125"] { font-size: 125%; }
+
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; letter-spacing: var(--tracking-tight); }
+h1 { font-size: var(--text-2xl); font-weight: var(--weight-title); }
+h2 { font-size: var(--text-xl); font-weight: var(--weight-title); }
+h3 { font-size: var(--text-body); font-weight: var(--weight-semibold); letter-spacing: 0; }
+p { margin: 0; }
+a { color: var(--link); text-underline-offset: 2px; }
+code, kbd, pre { font-family: var(--font-mono); font-size: 0.8em; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+svg { display: block; flex-shrink: 0; }
+img { max-width: 100%; }
+mark { background: var(--highlight); color: inherit; border-radius: 2px; }
+::selection { background: var(--highlight); }
+::placeholder { color: var(--muted-foreground); opacity: 0.85; }
+[hidden] { display: none !important; }
+
+/* Foco sempre visível; nos campos o anel fica colado à borda */
+:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: 0; border-color: var(--ring); }
+:root[data-theme="hc"] :focus-visible { outline-width: 3px; }
+
+input[type="checkbox"], input[type="radio"] {
+  width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: var(--primary);
+}
+
+/* Barra verde de 6 px no topo da tela: a marca entra como acento, nunca como área grande */
+.brand-bar { height: var(--size-brand-bar); background: var(--primary); }
+
+/* Utilitários */
+.sp { flex: 1 1 auto; }
+.row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
+.stack { display: flex; flex-direction: column; gap: var(--space-3); }
+.muted { color: var(--muted-foreground); }
+.mono { font-family: var(--font-mono); font-size: var(--text-sm); }
+.num { font-variant-numeric: tabular-nums; }
+.small { font-size: var(--text-sm); }
+.sub { color: var(--muted-foreground); font-size: var(--text-base); font-variant-numeric: tabular-nums; }
+.sec-t {
+  margin: 0 0 var(--space-2); font-size: var(--text-sm); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--muted-foreground);
+}
+.fg-crit { color: var(--crit-fg); } .fg-warn { color: var(--warn-fg); } .fg-info { color: var(--info-fg); } .fg-ok { color: var(--ok-fg); }
+.vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* Movimento: curto e só como resposta a uma ação. Com "reduzir movimento", nada se mexe. */
+@keyframes canis-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes canis-slide { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes canis-pop { from { opacity: 0; transform: translate(-50%, -48%) scale(0.98); } to { opacity: 1; transform: translate(-50%, -50%); } }
+@keyframes canis-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes canis-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}

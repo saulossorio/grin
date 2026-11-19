@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Componentes · Canis Design System</title>
+<script>try{var r=document.documentElement,t=localStorage.getItem('canis-ds-tema');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('canis-ds-densidade')==='comfortable')r.dataset.density='comfortable';var e=localStorage.getItem('canis-ds-escala');if(e&&e!=='100')r.dataset.scale=e;}catch(_){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;650;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/docs.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="../scripts/docs-shell.js"></script>
+</head>
+<body>
+<div class="brand-bar"></div>
+<div class="app">
+  <nav class="side" data-ds-nav data-base="../" data-here="components"></nav>
+  <div class="body">
+    <header class="top" data-ds-top data-title="Componentes"></header>
+    <main class="ds-main" id="conteudo">
+      <section class="ds-hero"><span class="eyebrow">Guia</span><h1>Componentes</h1><p class="ds-lead">Cada componente vive em <code>components/nome/</code>, com a estrutura em HTML, o estilo em CSS e, quando precisa, o comportamento em JS. O CSS usa só tokens semânticos. Os exemplos ao vivo estão na <a href="../index.html#botoes">visão geral</a>.</p></section>
+      <section class="ds-sec" aria-labelledby="t-inv">
+        <header><h2 id="t-inv">Inventário</h2></header>
+        <div class="table-wrap"><table class="table ds-table">
+          <thead><tr><th scope="col">Componente</th><th scope="col">Classes</th><th scope="col">Use para</th><th scope="col">Não use para</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../index.html#botoes">Botão</a></td><td><code>.btn</code> + <code>primary</code>, <code>ghost</code>, <code>danger</code>, <code>dashed</code>, <code>icon</code>, <code>xs</code>, <code>lg</code>; <code>.link</code></td><td>Executar uma ação. Um primário por área.</td><td>Navegar (use link). Excluir sem dizer quantos itens.</td></tr>
+            <tr><td><a href="../index.html#campos">Campo</a></td><td><code>.field</code>, <code>.input</code>, <code>.select</code>, <code>.textarea</code>, <code>.msg</code>, <code>.hint</code>, <code>.fld</code>, <code>.search</code>, <code>.opt</code>, <code>.check</code></td><td>Entrada de dados com rótulo visível.</td><td>Rótulo só como placeholder.</td></tr>
+            <tr><td><a href="../index.html#selos">Selo</a></td><td><code>.badge</code> + <code>t-crit</code>, <code>t-warn</code>, <code>t-info</code>, <code>t-ok</code>, <code>t-brand</code>; <code>.tag</code>, <code>.count</code>, <code>.status</code>, <code>.dot</code></td><td>Estado de um item, sempre com texto.</td><td>Ações clicáveis.</td></tr>
+            <tr><td><a href="../index.html#chips">Chip de filtro</a></td><td><code>.chip</code>, <code>.chips</code></td><td>Mostrar e tirar filtros ativos.</td><td>Categorias estáticas (use selo).</td></tr>
+            <tr><td><a href="../index.html#chips">Controle segmentado</a></td><td><code>.seg</code></td><td>Uma escolha entre 2 a 5 opções curtas.</td><td>Mais de 5 opções (use lista).</td></tr>
+            <tr><td><a href="../index.html#avisos">Aviso</a></td><td><code>.note</code> + <code>warn</code>, <code>crit</code>, <code>ok</code>, <code>neutral</code></td><td>Explicar algo perto de onde acontece.</td><td>Confirmar ações (use toast).</td></tr>
+            <tr><td><a href="../index.html#avisos">Toast</a></td><td><code>.toast</code>, <code>toast()</code> em <code>toast.js</code></td><td>Confirmar o que já aconteceu e oferecer desfazer.</td><td>Pedir decisão (use diálogo).</td></tr>
+            <tr><td><a href="../index.html#cartoes">Cartão e número</a></td><td><code>.card</code>, <code>.card-h/-b/-f</code>, <code>.panel</code>, <code>.stat</code>, <code>.level</code></td><td>Um objeto próprio; números que são o assunto.</td><td>Envolver cada bloco da página.</td></tr>
+            <tr><td><a href="../index.html#tabela">Tabela</a></td><td><code>.table-wrap</code>, <code>.table</code>, <code>.compact</code>, <code>.f-crit</code>, <code>.f-warn</code>, <code>.edited</code>, <code>.pager</code>, <code>.bulk</code></td><td>Listas de registros para comparar e agir.</td><td>Layout de página.</td></tr>
+            <tr><td><a href="../index.html#camadas">Diálogo</a></td><td><code>dialog.dlg</code>, <code>[data-open]</code>, <code>[data-close]</code></td><td>Decisões curtas e confirmações destrutivas.</td><td>Formulários longos (use gaveta).</td></tr>
+            <tr><td><a href="../index.html#camadas">Gaveta</a></td><td><code>dialog.drawer</code>, <code>.dr-h/-b/-f</code></td><td>Ver e editar um registro sem sair da lista.</td><td>Mensagens rápidas.</td></tr>
+            <tr><td><a href="../index.html#camadas">Menu</a></td><td><code>.pop</code>, <code>.mi</code>, <code>.pop-sep</code></td><td>Ações sobre um item, escolhas de coluna.</td><td>Navegação principal.</td></tr>
+            <tr><td><a href="../index.html#vazio">Estado vazio</a></td><td><code>.empty</code>, <code>.spinner</code></td><td>Dizer o que vai aparecer e o próximo passo.</td><td>Esconder erros.</td></tr>
+            <tr><td><a href="../index.html#navegacao">Casca e navegação</a></td><td><code>.app</code>, <code>.side</code>, <code>.side.min</code>, <code>.nav</code>, <code>.top</code>, <code>.head</code>, <code>.content</code></td><td>A estrutura de toda ferramenta da família.</td><td>—</td></tr>
+          </tbody></table></div>
+      </section>
+      <section class="ds-sec" aria-labelledby="t-novo">
+        <header><h2 id="t-novo">Como criar um componente novo</h2></header>
+        <ol class="ds-list">
+          <li>Crie <code>components/nome/</code> com <code>nome.html</code> (estrutura comentada), <code>nome.css</code> e, se precisar, <code>nome.js</code>.</li>
+          <li>No CSS, use só tokens semânticos (<code>var(--…)</code>). Se faltar uma cor, crie o token em <code>tokens/semantic/colors.json</code> e nos temas, e rode <code>node tools/build-tokens.mjs</code>.</li>
+          <li>Acrescente o <code>@import</code> em <code>styles/components.css</code>.</li>
+          <li>Ponha um exemplo ao vivo em <code>index.html</code> e uma linha neste inventário.</li>
+          <li>Rode <code>node tools/check-contrast.mjs</code> se mexeu em cores.</li>
+        </ol>
+      </section>
+      <footer class="ds-foot"><span>Canis Design System 1.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

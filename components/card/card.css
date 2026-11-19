@@ -1,0 +1,19 @@
+/* Cartão: separa um objeto do fundo. Use com critério; numa tela de dados, a maioria dos blocos não precisa de borda. */
+.card { border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.card-h { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 14px 16px 0; }
+.card-h h3 { font-size: var(--text-base); }
+.card-h p { color: var(--muted-foreground); font-size: var(--text-md); margin-top: 2px; }
+.card-b { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 10px; }
+.card-f { padding: 10px 16px; border-top: 1px solid var(--border-soft); display: flex; gap: 8px; align-items: center; }
+.panel { border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); padding: 20px 22px; }
+
+/* Número em destaque: só quando o número é o assunto da tela */
+.stat { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); min-width: 0; }
+.stat .k { font-size: var(--text-sm); color: var(--muted-foreground); font-weight: var(--weight-medium); }
+.stat .v { font-size: var(--text-2xl); font-weight: var(--weight-title); letter-spacing: var(--tracking-tight); font-variant-numeric: tabular-nums; }
+.stat .d { font-size: var(--text-sm); display: inline-flex; align-items: center; gap: 4px; }
+
+/* Nível clicável (filtro por gravidade): Crítico, Atenção, Informação */
+.level { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: var(--radius-md); border: 1px solid; font-size: var(--text-base); font-weight: var(--weight-semibold); background: transparent; }
+.level .n { font-size: var(--text-lg); font-variant-numeric: tabular-nums; margin-left: 4px; }
+.level[aria-pressed="true"] { box-shadow: 0 0 0 2px currentColor inset; }

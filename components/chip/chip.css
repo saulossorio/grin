@@ -1,0 +1,6 @@
+/* Chip de filtro ativo: mostra o filtro e permite editar ou tirar. Verde só aqui, como acento. */
+.chip { display: inline-flex; align-items: center; height: var(--control-h); max-width: 420px; border-radius: var(--radius-sm); background: var(--brand-bg); border: 1px solid var(--brand-border); color: var(--brand-fg); font-size: var(--control-text); font-weight: var(--weight-medium); }
+.chip > button { height: calc(var(--control-h) - 2px); padding: 0 6px 0 10px; border: 0; background: transparent; color: inherit; font-weight: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chip > button.x { width: 26px; height: 26px; padding: 0; margin-right: 2px; border-radius: var(--radius-xs); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.chip > button.x:hover { background: var(--hover); }
+.chips { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
