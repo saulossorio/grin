@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.9 · 20/11/2026
+- Barra lateral com dois níveis de importância: os lugares do produto em cima; ajuda, ajustes e conta embaixo, separados por uma linha, em texto menor e mais discreto (`.sidebar-footer` com `.nav-item.small`).
+- Novos: `.nav-divider` (separa grupos sem título) e `.nav-sub` (subitens com trilho fino e o atual marcado em verde, como Tutoriais › Importar convidados).
+
 ## 2.8 · 20/11/2026
 - Slider com marcas (`data-stops`): o botão acompanha o arraste sem saltos e, ao soltar, desliza em 180 ms até a marca mais próxima; as setas do teclado pulam de marca em marca. Antes ele pulava de 12,5 em 12,5 e o tamanho da fonte mudava a cada movimento, o que travava a página.
 - Tamanho da fonte (menu Aparência) muda uma vez, ao soltar o slider.

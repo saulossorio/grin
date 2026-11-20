@@ -16,8 +16,22 @@
 .nav-item[aria-current="page"] svg { color: var(--brand-fg); }
 .nav-item .label { flex: 1 1 auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .nav-count { font-size: var(--text-sm); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
-.nav-item.small { height: 36px; font-size: var(--text-sm); }
-.sidebar-footer { display: flex; flex-direction: column; gap: 12px; margin-top: auto; padding-top: 16px; }
+/* Two levels of importance: the product's places above; help, settings and account at the bottom, smaller,
+   quieter and set apart by a line. Inside the main list, .nav-divider separates groups without a title. */
+.nav-divider { height: 1px; margin: 12px 8px; background: var(--border); }
+.nav-item.small { height: 36px; gap: 10px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); }
+.nav-item.small svg { width: 18px; height: 18px; }
+.nav-item.small:hover { color: var(--foreground); }
+.sidebar-footer { display: flex; flex-direction: column; gap: 2px; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); }
+.sidebar-footer .account { margin-top: 10px; }
+
+/* Sub-items: places inside a place (Empresas › Nova análise). A thin rail, the current one marked in brand green. */
+.nav-sub { display: flex; flex-direction: column; gap: 2px; margin: 2px 0 6px 21px; padding-left: 12px; border-left: 1px solid var(--border); }
+.nav-sub .nav-item { height: 34px; padding: 0 10px; font-size: var(--text-sm); color: var(--muted-foreground); }
+.nav-sub .nav-item[aria-current="page"] { background: transparent; box-shadow: none; color: var(--foreground); font-weight: var(--weight-semibold); }
+.nav-sub .nav-item[aria-current="page"]::before { content: ''; position: absolute; left: -14px; top: 6px; bottom: 6px; width: 3px; border-radius: 2px; background: var(--primary); }
+.nav-sub .nav-item .dot { margin-left: auto; }
+.sidebar.collapsed .nav-sub { display: none; }
 
 /* Account card at the bottom of the sidebar */
 .account { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); color: inherit; text-decoration: none; }
