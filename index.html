@@ -5,276 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grin Design System</title>
 <meta name="description" content="Grin: design system para ferramentas de trabalho com dados. Tokens, componentes, padrões e acessibilidade.">
-<meta name="theme-color" content="#8dc63f">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
 <link rel="stylesheet" href="styles/global.css">
 <link rel="stylesheet" href="styles/components.css">
-<link rel="stylesheet" href="styles/home.css">
+<link rel="stylesheet" href="styles/docs.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="scripts/docs-shell.js"></script>
 </head>
-<body class="home">
+<body>
 <div class="brand-bar"></div>
+<div class="app">
+  <nav class="sidebar" data-docs-nav data-base="" data-here="index"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Início"></header>
+    <main class="docs-main" id="content">
 
-<header class="site-header" id="site-header">
-  <div class="home-wrap">
-    <a class="app-logo" href="index.html"><span class="app-logo-mark" aria-hidden="true">G</span><span>Grin</span></a>
-    <nav class="site-links" aria-label="Documentação">
-      <a href="docs/getting-started.html">Começar</a>
-      <a href="docs/foundations.html">Fundamentos</a>
-      <a href="docs/components.html">Componentes</a>
-      <a href="docs/patterns.html">Padrões</a>
-      <a href="docs/accessibility.html">Acessibilidade</a>
-    </nav>
-    <div class="site-actions">
-      <a class="btn ghost gh" href="https://github.com/saulossorio/grin"><i data-icon="external-link"></i>GitHub</a>
-      <button type="button" class="btn icon ghost" data-theme-toggle aria-label="Trocar tema"><i data-icon="contrast"></i><span class="label sr-only">Tema escuro</span></button>
-      <button type="button" class="btn icon ghost site-menu-button" id="menu-button" aria-expanded="false" aria-controls="site-sheet" aria-label="Abrir menu"><i data-icon="more-horizontal"></i></button>
-    </div>
-  </div>
-  <nav class="site-sheet" id="site-sheet" aria-label="Documentação" hidden>
-    <a href="docs/getting-started.html">Começar</a>
-    <a href="docs/foundations.html">Fundamentos</a>
-    <a href="docs/components.html">Componentes</a>
-    <a href="docs/patterns.html">Padrões</a>
-    <a href="docs/accessibility.html">Acessibilidade</a>
-    <a href="examples/dashboard.html">Exemplos</a>
-    <a href="https://github.com/saulossorio/grin">GitHub</a>
-  </nav>
-</header>
-
-<main id="content">
-  <section class="hero" aria-labelledby="t-hero">
-    <div class="home-wrap">
-      <div class="hero-text">
-        <a class="hero-pill" href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md"><span class="tag">1.1.1</span><span>Lista de mudanças</span><i data-icon="chevron-right" data-size="14"></i></a>
+      <section class="docs-hero" aria-labelledby="t-hero">
+        <span class="overline">Design system · versão 1.1.1</span>
         <h1 id="t-hero">Grin</h1>
-        <p class="hero-lead">Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e indicadores. Reúne tokens, componentes, padrões de uso e regras de acessibilidade.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="docs/getting-started.html">Começar</a>
-          <a class="btn" href="docs/components.html">Componentes</a>
-        </div>
-        <div class="hero-facts">
-          <span><i data-icon="check"></i>HTML e CSS, sem framework</span>
-          <span><i data-icon="check"></i>Claro, escuro e alto contraste</span>
-          <span><i data-icon="check"></i>Contraste WCAG medido</span>
-        </div>
-      </div>
+        <p class="lead">Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e indicadores. Reúne tokens, componentes, padrões de uso e regras de acessibilidade. HTML, CSS e um pouco de JavaScript, sem framework.</p>
+      </section>
 
-      <div class="shot" id="shot" aria-hidden="true">
-        <div class="shot-frame" id="shot-frame" inert>
-          <div class="shot-bar"><i></i><i></i><i></i><span class="shot-url">agenda.app/pessoas</span></div>
-          <div class="shot-app">
-            <nav class="sidebar">
-              <a class="app-logo" href="#"><span class="app-logo-mark">A</span><span>Agenda</span><span class="tag">Beta</span></a>
-              <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
-              <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></a>
-              <a class="nav-item" href="#"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
-              <a class="nav-item" href="#"><i data-icon="merge"></i><span class="label">Duplicados</span><span class="nav-count">7</span></a>
-              <div class="nav-heading">Relatórios</div>
-              <a class="nav-item" href="#"><i data-icon="trending-up"></i><span class="label">Investimento</span></a>
-              <a class="nav-item" href="#"><i data-icon="table"></i><span class="label">Eventos</span></a>
-            </nav>
-            <div class="app-main">
-              <div class="page-header">
-                <div class="page-title-row">
-                  <div class="page-title"><h1>Pessoas</h1><span class="text-secondary tabular">1.284</span></div>
-                  <div class="row"><button class="btn"><i data-icon="download"></i>Exportar</button><button class="btn primary"><i data-icon="plus"></i>Nova pessoa</button></div>
-                </div>
-                <div class="stat-grid">
-                  <div class="stat"><span class="stat-label">Prontas</span><span class="stat-value">1.207</span><span class="stat-delta text-ok"><i data-icon="check-circle"></i>94% da lista</span></div>
-                  <div class="stat"><span class="stat-label">Críticas</span><span class="stat-value">8</span><span class="stat-delta text-crit"><i data-icon="alert-circle"></i>Precisam de correção</span></div>
-                  <div class="stat"><span class="stat-label">Com atenção</span><span class="stat-value">69</span><span class="stat-delta text-warn"><i data-icon="alert-triangle"></i>Podem seguir</span></div>
-                  <div class="stat"><span class="stat-label">Novas no mês</span><span class="stat-value">+46</span><span class="stat-delta text-secondary">vs. 31 em outubro</span></div>
-                </div>
-                <div class="toolbar">
-                  <div class="search"><i data-icon="search"></i><input class="input" placeholder="Buscar por nome, e-mail ou empresa"></div>
-                  <button class="btn"><i data-icon="filter"></i>Filtrar</button>
-                  <div class="chip-group"><span class="chip"><span class="chip-label">Situação: Crítico, Atenção</span><span class="chip-remove"><i data-icon="x"></i></span></span></div>
-                  <span class="spacer"></span>
-                  <div class="segmented"><label><input type="radio" name="shot-d" checked><span>Compacta</span></label><label><input type="radio" name="shot-d"><span>Confortável</span></label></div>
-                </div>
-              </div>
-              <div class="page-content">
-                <div class="table-wrap">
-                  <table class="table">
-                    <thead><tr><th class="select-col"><input type="checkbox"></th><th>Nome</th><th>Empresa</th><th>E-mail</th><th>Situação</th><th class="numeric">Eventos</th></tr></thead>
-                    <tbody>
-                      <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked></td><td>Ana Lima</td><td>Norte Sul</td><td class="cell-edited">ana.lima@nortesul.com.br</td><td><span class="badge ok"><i data-icon="check-circle"></i>Pronta</span></td><td class="numeric">4</td></tr>
-                      <tr><td class="select-col"><input type="checkbox"></td><td>Bruno Reis</td><td>Hospital Vida</td><td class="cell-crit"><span class="cell-empty">sem e-mail</span></td><td><span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span></td><td class="numeric">1</td></tr>
-                      <tr><td class="select-col"><input type="checkbox"></td><td>Carla Souza</td><td>Varejo Sul</td><td class="cell-warn">carla@varejosul</td><td><span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span></td><td class="numeric">12</td></tr>
-                      <tr><td class="select-col"><input type="checkbox"></td><td>Diego Martins</td><td>Banco Horizonte</td><td>diego.martins@bancohorizonte.com.br</td><td><span class="badge ok"><i data-icon="check-circle"></i>Pronta</span></td><td class="numeric">6</td></tr>
-                      <tr><td class="select-col"><input type="checkbox"></td><td>Gabriela Tavares</td><td>Seguros Atlântico</td><td>gabriela.tavares@atlantico.com.br</td><td><span class="badge info"><i data-icon="info"></i>Nova</span></td><td class="numeric">9</td></tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+      <section class="docs-section" aria-labelledby="t-contents">
+        <header><h2 id="t-contents">Conteúdo</h2></header>
+        <div class="docs-grid wide">
+          <a class="card" href="docs/getting-started.html"><div class="card-body"><h3 class="card-title">Começar</h3><p class="text-secondary">Instalação, tema, densidade, estrutura dos arquivos e convenções.</p></div></a>
+          <a class="card" href="docs/foundations.html"><div class="card-body"><h3 class="card-title">Fundamentos</h3><p class="text-secondary">Tokens, cor e escalas, tipografia, espaço, raio, sombra, movimento e ícones.</p></div></a>
+          <a class="card" href="docs/components.html"><div class="card-body"><h3 class="card-title">Componentes</h3><p class="text-secondary">16 componentes com exemplo, código, classes e regras de uso.</p></div></a>
+          <a class="card" href="docs/patterns.html"><div class="card-body"><h3 class="card-title">Padrões</h3><p class="text-secondary">Estrutura de tela, filtros, formulários, mensagens, confirmação e estados.</p></div></a>
+          <a class="card" href="docs/accessibility.html"><div class="card-body"><h3 class="card-title">Acessibilidade</h3><p class="text-secondary">Checklist por tela e contraste medido nos três temas.</p></div></a>
+          <a class="card" href="examples/dashboard.html"><div class="card-body"><h3 class="card-title">Exemplos</h3><p class="text-secondary">Lista de dados, formulário e página de apresentação montados com os componentes.</p></div></a>
         </div>
-        <div class="shot-fade"></div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="band" aria-labelledby="t-themes">
-    <div class="home-wrap">
-      <div class="band-head">
-        <h2 id="t-themes">Temas</h2>
-        <p>Claro, escuro e alto contraste. Os componentes são os mesmos; cada tema troca só os valores dos tokens. O contraste dos três é conferido por <code>tools/check-contrast.mjs</code>.</p>
-      </div>
-      <div class="theme-trio">
-        <div class="theme-tile" data-theme="light">
-          <span class="overline">Claro</span>
-          <div class="stat"><span class="stat-label">Investimento estimado</span><span class="stat-value">R$ 412 mi</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+8,4% no ano</span></div>
-          <div class="row"><span class="badge ok"><i data-icon="check-circle"></i>Confiança alta</span><span class="badge warn">Revisar</span></div>
-          <div class="row"><button class="btn primary">Salvar</button><button class="btn">Cancelar</button></div>
-        </div>
-        <div class="theme-tile" data-theme="dark">
-          <span class="overline">Escuro</span>
-          <div class="stat"><span class="stat-label">Investimento estimado</span><span class="stat-value">R$ 412 mi</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+8,4% no ano</span></div>
-          <div class="row"><span class="badge ok"><i data-icon="check-circle"></i>Confiança alta</span><span class="badge warn">Revisar</span></div>
-          <div class="row"><button class="btn primary">Salvar</button><button class="btn">Cancelar</button></div>
-        </div>
-        <div class="theme-tile" data-theme="hc">
-          <span class="overline">Alto contraste</span>
-          <div class="stat"><span class="stat-label">Investimento estimado</span><span class="stat-value">R$ 412 mi</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+8,4% no ano</span></div>
-          <div class="row"><span class="badge ok"><i data-icon="check-circle"></i>Confiança alta</span><span class="badge warn">Revisar</span></div>
-          <div class="row"><button class="btn primary">Salvar</button><button class="btn">Cancelar</button></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="t-type">
-    <div class="home-wrap">
-      <div class="band-head">
-        <h2 id="t-type">Tipografia</h2>
-        <p>Geist para a interface e Geist Mono para códigos e identificadores, com algarismos tabulares em tabelas e indicadores. Os arquivos das fontes estão em <code>assets/fonts</code>.</p>
-      </div>
-      <div class="type-grid">
-        <div class="specimen">
-          <div class="specimen-aa">Aa</div>
-          <div class="specimen-meta"><span>Geist · 100 a 900</span><span>Geist Mono</span><span>SIL Open Font License</span></div>
-        </div>
-        <div class="specimen">
-          <div class="specimen-weights"><span style="font-weight:400">Regular para texto</span><span style="font-weight:500">Medium para controles</span><span style="font-weight:600">Semibold para títulos</span></div>
-          <div class="stack" style="gap:10px"><div class="specimen-numbers">1.284 · 7,9% · R$ 412 mi</div><div class="specimen-mono">ERR-7F3A · 12.345.678/0001-90</div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="t-color">
-    <div class="home-wrap">
-      <div class="band-head">
-        <h2 id="t-color">Cor</h2>
-        <p>Seis escalas de 12 passos em OKLCH, com o mesmo papel em cada passo. A cor da marca é usada só em áreas pequenas.</p>
-      </div>
-      <div class="color-grid">
-        <div class="brand-swatch"><span class="overline" style="color:inherit;opacity:.75">Marca</span><div><b>#8dc63f</b><p>Botão primário, item atual, filtro ativo e foco. Nunca em fundos grandes, nunca como texto sobre branco.</p></div></div>
-        <div class="scale-stack" id="scales"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="t-components">
-    <div class="home-wrap">
-      <div class="band-head">
-        <h2 id="t-components">Componentes</h2>
-        <p>16 componentes. Cada um tem exemplo, código, lista de classes e regras de uso, e responde ao tema, à densidade e ao tamanho da fonte.</p>
-      </div>
-      <div class="gallery">
-        <a class="tile" href="docs/components.html#button"><div class="tile-stage"><button class="btn primary">Salvar</button><button class="btn">Cancelar</button><button class="btn danger">Excluir 3</button></div><div class="tile-text"><h3>Botão</h3><p>Primário, secundário, fantasma e destrutivo.</p></div></a>
-        <a class="tile" href="docs/components.html#field"><div class="tile-stage"><div class="field" style="width:100%;max-width:280px"><span class="field-label">E-mail corporativo</span><span class="input" style="display:flex;align-items:center" aria-invalid="true">ana@gmail.com</span><span class="field-message"><i data-icon="alert-circle"></i>Use o e-mail corporativo.</span></div></div><div class="tile-text"><h3>Campo</h3><p>Rótulo, dica e erro que diz o que fazer.</p></div></a>
-        <a class="tile" href="docs/components.html#badge"><div class="tile-stage"><span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span><span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span><span class="badge info">Info</span><span class="badge ok"><i data-icon="check-circle"></i>Pronta</span><span class="count">12</span></div><div class="tile-text"><h3>Selo e estado</h3><p>Sempre com texto, nunca só cor.</p></div></a>
-        <a class="tile" href="docs/components.html#table"><div class="tile-stage" style="padding:16px"><div class="table-wrap" style="width:100%"><table class="table compact"><tbody><tr><td>Ana Lima</td><td class="numeric">4</td></tr><tr aria-selected="true"><td>Bruno Reis</td><td class="numeric">1</td></tr><tr><td>Carla Souza</td><td class="numeric">12</td></tr></tbody></table></div></div><div class="tile-text"><h3>Tabela</h3><p>Cabeçalho fixo, seleção e estados por célula.</p></div></a>
-        <a class="tile" href="docs/components.html#segmented"><div class="tile-stage"><div class="segmented"><label><input type="radio" name="g-s" checked><span>Semana</span></label><label><input type="radio" name="g-s"><span>Mês</span></label><label><input type="radio" name="g-s"><span>Ano</span></label></div><label class="switch"><input type="checkbox" role="switch" checked>Avisos</label></div><div class="tile-text"><h3>Seleção</h3><p>Segmentado, interruptor, caixa e opções.</p></div></a>
-        <a class="tile" href="docs/components.html#menu"><div class="tile-stage"><div class="menu" style="min-width:190px"><span class="menu-item"><i data-icon="pencil"></i><span class="menu-label">Editar</span><kbd>E</kbd></span><span class="menu-item"><i data-icon="copy"></i><span class="menu-label">Duplicar</span></span><span class="menu-separator"></span><span class="menu-item danger"><i data-icon="trash"></i><span class="menu-label">Excluir</span></span></div></div><div class="tile-text"><h3>Menu, diálogo e gaveta</h3><p>Camadas que prendem o foco e fecham com Esc.</p></div></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="t-principles">
-    <div class="home-wrap">
-      <div class="band-head">
-        <h2 id="t-principles">Princípios</h2>
-      </div>
-      <div class="principles">
-        <div class="principle"><h3>Os dados em primeiro plano</h3><p>Interface neutra, bordas finas e poucas sombras, para que números e estados se destaquem.</p></div>
-        <div class="principle"><h3>Nunca só cor</h3><p>Todo estado tem texto, e ícone quando pede atenção. Sucesso é azul petróleo, não o verde da marca.</p></div>
-        <div class="principle"><h3>Contraste medido</h3><p>Texto a 4,5:1, interface a 3:1 e 7:1 no alto contraste. Um script confere a cada mudança.</p></div>
-        <div class="principle"><h3>Densidade conforme a tarefa</h3><p>Compacta para horas de tabela, confortável para ler e analisar. A pessoa escolhe.</p></div>
-        <div class="principle"><h3>Movimento curto</h3><p>De 120 a 220 ms, só em resposta a uma ação. Com "reduzir movimento", nada se mexe.</p></div>
-        <div class="principle"><h3>Sem dependências</h3><p>HTML, CSS e um pouco de JavaScript. Cabe num app grande ou num arquivo único.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" aria-labelledby="t-start">
-    <div class="home-wrap">
-      <div class="cta">
-        <div>
-          <h2 id="t-start">Instalação</h2>
-          <p>Copie <code>styles/</code>, <code>scripts/</code>, <code>components/</code> e <code>assets/</code> para a ferramenta e ligue as folhas de estilo. O guia explica tema, densidade, estrutura e convenções.</p>
-          <div class="row" style="margin-top:20px"><a class="btn primary lg" href="docs/getting-started.html">Guia de instalação</a><a class="btn lg" href="examples/dashboard.html">Exemplos</a></div>
-        </div>
-<pre><code>&lt;link rel="stylesheet" href="styles/fonts.css"&gt;
+      <section class="docs-section" aria-labelledby="t-install">
+        <header><h2 id="t-install">Instalação</h2><p>Copie <code>styles/</code>, <code>scripts/</code>, <code>components/</code> e <code>assets/</code> para a ferramenta e ligue as folhas de estilo. Detalhes em <a href="docs/getting-started.html">Começar</a>.</p></header>
+<pre class="code-block"><code>&lt;link rel="stylesheet" href="styles/fonts.css"&gt;
 &lt;link rel="stylesheet" href="styles/variables.css"&gt;
 &lt;link rel="stylesheet" href="styles/global.css"&gt;
-&lt;link rel="stylesheet" href="styles/components.css"&gt;</code></pre>
-      </div>
-    </div>
-  </section>
-</main>
+&lt;link rel="stylesheet" href="styles/components.css"&gt;
+&lt;script type="module" src="scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
+      </section>
 
-<footer class="home-wrap site-footer"><span>Grin 1.1 · novembro de 2026</span><a href="https://github.com/saulossorio/grin">GitHub</a><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><span>Geist e Geist Mono, SIL OFL</span></footer>
+      <section class="docs-section" aria-labelledby="t-principles">
+        <header><h2 id="t-principles">Princípios</h2></header>
+        <ul class="docs-list">
+          <li><b>Interface neutra.</b> Bordas finas, poucas sombras e nada decorativo nas áreas de trabalho.</li>
+          <li><b>Verde só como acento.</b> A cor da marca (<code>#8dc63f</code>) aparece no botão primário, no item atual, no filtro ativo e no foco; nunca em fundos grandes.</li>
+          <li><b>Nunca só cor.</b> Todo estado tem texto, e ícone quando pede atenção. Sucesso é azul petróleo, não o verde da marca.</li>
+          <li><b>Contraste medido.</b> Texto a 4,5:1 nos temas claro e escuro e a 7:1 no alto contraste; interface a 3:1. Conferido por <code>tools/check-contrast.mjs</code>.</li>
+          <li><b>Duas densidades.</b> Compacta (32 px) e confortável (40 px); a pessoa escolhe.</li>
+          <li><b>Movimento curto.</b> De 120 a 220 ms, só como resposta a uma ação; nada se mexe com "reduzir movimento".</li>
+        </ul>
+      </section>
 
-<script type="module">
-import { paintIcons } from './scripts/utils.js';
-import './scripts/theme.js';
-
-// Scales band, read from the core tokens
-let data = null;
-try { data = await (await fetch('tokens/core/colors.json')).json(); } catch { /* the band stays empty offline */ }
-if (data) {
-  const draw = () => {
-    const isDark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
-    document.getElementById('scales').innerHTML = ['gray', 'green', 'teal', 'blue', 'amber', 'red'].map((n) => {
-      const key = isDark ? `${n}-dark` : n;
-      return `<div class="scale-line"><span>${n}</span>${Array.from({ length: 12 }, (_, i) => `<i style="background:${data.color[key][i + 1].$value}"></i>`).join('')}</div>`;
-    }).join('');
-  };
-  draw();
-  new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-  document.documentElement.addEventListener('grin:theme', draw);
-}
-
-// The product window keeps its desktop layout and is scaled to fit the column
-const shot = document.getElementById('shot'), frame = document.getElementById('shot-frame');
-const fit = () => {
-  const scale = Math.min(1, shot.clientWidth / frame.offsetWidth);
-  shot.style.setProperty('--shot-scale', scale);
-  shot.style.height = `${frame.offsetHeight * scale}px`;
-};
-new ResizeObserver(fit).observe(shot);
-fit();
-
-// Header border after scrolling, and the phone menu
-const header = document.getElementById('site-header');
-addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
-const menuButton = document.getElementById('menu-button'), sheet = document.getElementById('site-sheet');
-menuButton.addEventListener('click', () => {
-  const open = sheet.hidden;
-  sheet.hidden = !open;
-  menuButton.setAttribute('aria-expanded', String(open));
-  menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-});
-addEventListener('keydown', (e) => { if (e.key === 'Escape' && !sheet.hidden) { sheet.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); menuButton.focus(); } });
-
-paintIcons();
-</script>
+      <footer class="docs-footer"><span>Grin 1.1.1</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
+    </main>
+  </div>
+</div>
 </body>
 </html>
