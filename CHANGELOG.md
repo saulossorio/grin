@@ -1,7 +1,7 @@
 # Mudanças
 
 ## 1.1.1 · 19/11/2026
-- Página inicial nova, de apresentação: cabeçalho próprio com menu no celular, título grande, uma janela de produto montada com os componentes reais, faixas de temas, tipografia, cor, galeria de componentes e princípios (`styles/home.css`).
+- Página inicial volta ao formato das demais páginas da documentação: o que é, conteúdo, instalação e princípios.
 - Documentação no celular: a barra lateral virou uma gaveta aberta pelo botão do topo, em vez de uma faixa de links.
 - Tema e densidade por seção: `data-theme` e `data-density` agora valem em qualquer elemento, não só na raiz.
 

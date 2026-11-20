@@ -56,7 +56,7 @@ styles/
   global.css            reset, tipografia, foco, utilitários, animações
   components.css        importa o CSS de cada componente
   docs.css              só das páginas de documentação
-  home.css              só da página inicial
+  home.css              sem uso (aguardando remoção)
 components/<nome>/      <nome>.html (exemplo comentado), <nome>.css, <nome>.js quando há comportamento
                         ("input" guarda os campos e "sidebar" guarda a casca do app)
 scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js (só documentação)
