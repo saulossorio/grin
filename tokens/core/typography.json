@@ -16,35 +16,35 @@
       },
       "xs": {
         "$value": "0.75rem",
-        "$description": "12 px. Selos, cabeçalho de tabela, legendas, dicas, teclas."
+        "$description": "12 px. Sobretítulo, etiqueta, tecla, contador."
       },
       "sm": {
         "$value": "0.875rem",
-        "$description": "14 px. Interface densa: botões e campos na densidade compacta, células de tabela, menus, navegação."
+        "$description": "14 px. Rótulo de campo, dica, cabeçalho de tabela, texto da densidade compacta."
       },
       "base": {
         "$value": "1rem",
-        "$description": "16 px. Texto padrão; botões e campos na densidade confortável."
+        "$description": "16 px. Texto, botões e campos (padrão)."
       },
       "lg": {
         "$value": "1.125rem",
-        "$description": "18 px. Subtítulo, título de diálogo."
+        "$description": "18 px. Título de cartão e de subseção (h3), descrição da página."
       },
       "xl": {
         "$value": "1.25rem",
-        "$description": "20 px. Título de seção."
+        "$description": "20 px. Título de diálogo e de gaveta."
       },
       "2xl": {
         "$value": "1.5rem",
-        "$description": "24 px. Título da página."
+        "$description": "24 px. Título de seção (h2)."
       },
       "3xl": {
         "$value": "2rem",
-        "$description": "32 px. Número em destaque (indicador)."
+        "$description": "32 px. Título da página (h1)."
       },
       "4xl": {
         "$value": "2.5rem",
-        "$description": "40 px. Título grande."
+        "$description": "40 px. Número em destaque do indicador."
       }
     },
     "weight": {

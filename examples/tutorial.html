@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exemplo: tutorial · Grin</title>
+<meta name="description" content="Exemplo do Grin: tutorial com índice, passos, termos com definição, perguntas frequentes, glossário e tour guiado.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<style>
+  /* Only what is specific to this example */
+  .tutorial-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; color: var(--muted-foreground); font-size: var(--text-sm); }
+  .tutorial-meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .tutorial-meta svg { width: 16px; height: 16px; }
+  .mock { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--sidebar); }
+</style>
+<script type="module" src="../components/tabs/tabs.js"></script>
+<script type="module" src="../components/popover/popover.js"></script>
+<script type="module" src="../components/glossary/glossary.js"></script>
+<script type="module" src="../components/toc/toc.js"></script>
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" aria-label="Navegação principal">
+    <a class="app-logo" href="../index.html"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="nav-item" href="dashboard.html"><i data-icon="users"></i><span class="label">Pessoas</span></a>
+    <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span></a>
+    <span class="nav-heading">Ajuda</span>
+    <a class="nav-item" href="#" aria-current="page"><i data-icon="book-open"></i><span class="label">Tutoriais</span></a>
+    <a class="nav-item" href="#glossario"><i data-icon="book"></i><span class="label">Glossário</span></a>
+    <div class="sidebar-footer">
+      <div>
+        <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
+        <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="app-main">
+    <div class="page-header">
+      <nav class="breadcrumb" aria-label="Você está em"><i data-icon="book-open"></i><a href="#">Tutoriais</a><i data-icon="chevron-right"></i><span aria-current="page">Importar convidados</span></nav>
+      <div class="page-title-row">
+        <div>
+          <span class="overline">Tutorial · Pessoas</span>
+          <div class="page-title"><h1>Importar convidados de uma planilha</h1></div>
+          <p class="page-description">Do arquivo à agenda, corrigindo o que faltar no caminho.</p>
+          <div class="tutorial-meta"><span><i data-icon="clock"></i>5 minutos</span><span><i data-icon="table"></i>Planilha .xlsx ou .csv</span><span><i data-icon="check-circle"></i>2 de 4 passos feitos</span></div>
+        </div>
+        <div class="toolbar"><button type="button" class="btn" id="start-tour"><i data-icon="map"></i>Fazer o tour</button></div>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Progresso do tutorial" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"><i style="width:50%"></i></div>
+    </div>
+    <main class="page-content">
+      <div class="with-toc">
+        <article class="prose">
+          <h2 id="antes">Antes de começar</h2>
+          <p>Você precisa de uma planilha com uma linha por pessoa e os nomes das colunas na primeira linha. A agenda lê o <button type="button" class="term" aria-expanded="false" data-popover="def-cnpj">CNPJ</button> para ligar cada pessoa à empresa certa.</p>
+          <div class="popover" id="def-cnpj" role="dialog" aria-label="CNPJ"><span class="popover-title"><span>CNPJ<small>Cadastro Nacional da Pessoa Jurídica</small></span></span><p>O número que identifica uma empresa no Brasil: 14 dígitos, como 12.345.678/0001-90.</p><div class="popover-footer"><a class="link" href="#g-cnpj">Ver no glossário</a></div></div>
+          <ul><li>Formatos: .xlsx e .csv, até 5.000 linhas.</li><li>Colunas obrigatórias: nome e e-mail.</li><li>Colunas opcionais: empresa, CNPJ, cargo, telefone.</li></ul>
+          <div class="alert"><i data-icon="lightbulb"></i><div class="alert-body"><span class="alert-title">Dica.</span> Exporte a lista do seu evento anterior e use como modelo: as colunas já estão na ordem certa.</div></div>
+
+          <h2 id="passos">Passo a passo</h2>
+          <ol class="steps">
+            <li class="step" data-state="done"><span class="step-title">Abra Pessoas</span><div class="step-body"><p>No menu da esquerda, clique em <b>Pessoas</b>.</p></div></li>
+            <li class="step" data-state="done"><span class="step-title">Escolha o arquivo</span><div class="step-body"><p>Clique em <b>Importar</b> e escolha a planilha. A agenda lê o arquivo no seu computador.</p>
+              <div class="mock"><div class="search" id="tour-search"><i data-icon="search"></i><input class="input" type="search" placeholder="Buscar pessoas" aria-label="Buscar pessoas (exemplo)"></div><button type="button" class="btn" id="tour-import"><i data-icon="upload"></i>Importar</button></div></div></li>
+            <li class="step" data-state="current" aria-current="step"><span class="step-title">Confira as colunas <span class="badge brand">Agora</span></span><div class="step-body"><p>Diga qual coluna é o nome e qual é o e-mail. Colunas que a agenda não conhece ficam de fora, e você vê quais.</p></div></li>
+            <li class="step"><span class="step-title">Corrija as pendências</span><div class="step-body"><p>Linhas com <span class="badge crit"><span class="dot crit"></span>Crítico</span> não entram até serem corrigidas. Linhas com <span class="badge warn"><span class="dot warn"></span>Atenção</span> entram, mas vale conferir.</p></div></li>
+          </ol>
+
+          <h2 id="pendencias">Entender as pendências</h2>
+          <p>Cada linha recebe uma situação. A cor nunca aparece sozinha: o texto do selo diz o que falta.</p>
+          <h3 id="criticas">Críticas</h3>
+          <p>Faltam dados sem os quais a pessoa não recebe convite: e-mail ou empresa.</p>
+          <h3 id="atencao">Atenção</h3>
+          <p>O dado existe mas parece errado, como um e-mail pessoal ou um telefone com 8 dígitos.</p>
+
+          <h2 id="perguntas">Perguntas frequentes</h2>
+          <div class="accordion">
+            <details open><summary>A planilha original é alterada?</summary><div class="accordion-body"><p>Não. A agenda lê uma cópia; o arquivo no seu computador fica como estava.</p></div></details>
+            <details><summary>Posso desfazer uma importação?</summary><div class="accordion-body"><p>Sim, por 30 dias, em <b>Importações</b>. As pessoas saem da agenda e dos eventos.</p></div></details>
+            <details><summary>O que acontece com pessoas repetidas?</summary><div class="accordion-body"><p>Vão para <b>Duplicados</b>, onde você escolhe entre mesclar e manter as duas.</p></div></details>
+          </div>
+
+          <h2 id="glossario">Glossário</h2>
+          <div class="glossary">
+            <div class="letter-index" aria-label="Filtrar por letra"><button type="button" data-letter="">Todas</button><button type="button" data-letter="C">C</button><button type="button" data-letter="D">D</button><button type="button" data-letter="P">P</button></div>
+            <section class="glossary-group" data-letter="C"><h3 class="glossary-letter">C</h3>
+              <article class="glossary-item" id="g-cnpj"><div class="glossary-head"><h4>CNPJ</h4><span class="glossary-aka">Cadastro Nacional da Pessoa Jurídica</span><span class="badge">Empresa</span></div><p>O número que identifica uma empresa no Brasil.</p></article></section>
+            <section class="glossary-group" data-letter="D"><h3 class="glossary-letter">D</h3>
+              <article class="glossary-item" id="g-dup"><div class="glossary-head"><h4>Duplicado</h4><span class="badge">Pessoas</span></div><p>Duas linhas que parecem a mesma pessoa: mesmo e-mail, ou mesmo nome na mesma empresa.</p></article></section>
+            <section class="glossary-group" data-letter="P"><h3 class="glossary-letter">P</h3>
+              <article class="glossary-item" id="g-pend"><div class="glossary-head"><h4>Pendência</h4><span class="badge">Importação</span></div><p>Um dado que falta ou parece errado numa linha. Crítica impede a importação; atenção não.</p></article></section>
+          </div>
+        </article>
+        <nav class="toc" aria-label="Nesta página"><span class="toc-title">Nesta página</span><a href="#antes">Antes de começar</a><a href="#passos">Passo a passo</a><a href="#pendencias">Entender as pendências</a><a class="sub" href="#criticas">Críticas</a><a class="sub" href="#atencao">Atenção</a><a href="#perguntas">Perguntas frequentes</a><a href="#glossario">Glossário</a></nav>
+      </div>
+    </main>
+  </div>
+</div>
+<script type="module">
+import '../scripts/theme.js';
+import { paintIcons } from '../scripts/utils.js';
+import { startTour } from '../components/tour/tour.js';
+document.getElementById('start-tour').addEventListener('click', () => startTour([
+  { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê como seguir este tutorial.' },
+  { target: '.toc', title: 'Índice', text: 'Mostra a seção que você está lendo. Clique para pular para outra.' },
+  { target: '.step[data-state="current"]', title: 'Onde você parou', text: 'O passo atual fica marcado. Os feitos aparecem com um visto.' },
+  { target: '#tour-import', title: 'Importar', text: 'Quando estiver pronto, este é o botão que abre a importação.' },
+]));
+paintIcons();
+</script>
+</body>
+</html>

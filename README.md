@@ -10,7 +10,7 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 - **Temas** claro, escuro e alto contraste; **densidades** confortável (44 px, padrão) e compacta (36 px); fonte em 100%, 112,5% e 125%.
 - **Cor:** seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro. Marca: `#8dc63f`, usada só como acento.
 - **Tipografia:** Geist e Geist Mono, servidas pelo próprio repositório (`assets/fonts`, licença OFL).
-- **16 componentes:** botão, campo, seleção, interruptor, controle segmentado, chip de filtro, selo, aviso, toast, cartão e indicador, tabela, abas, menu, diálogo, gaveta, estado vazio e a casca do app (barra lateral e topo).
+- **24 componentes:** botão, campo, seleção, interruptor, controle segmentado, chip de filtro, selo, aviso, toast, cartão e indicador, tabela, abas, menu, diálogo, gaveta, estado vazio e a casca do app (barra lateral e topo); e, para tutoriais e ajuda: texto longo, passos, seções que abrem, progresso, dica de ferramenta e popover com termo, glossário, índice da página e tour guiado.
 - **Guias:** começar, fundamentos, componentes, padrões e acessibilidade. **Exemplos:** lista de dados, formulário e página de apresentação.
 - **Verificações:** contraste nos três temas e coerência entre HTML, CSS e ícones.
 
@@ -46,7 +46,7 @@ Ferramenta de arquivo único: cole o CSS num `<style>`, troque o `url()` das fon
 ```
 index.html              visão geral
 docs/                   getting-started, foundations, components, patterns, accessibility
-examples/               dashboard, form, landing
+examples/               dashboard, form, tutorial, landing
 tokens/
   core/                 colors.json (escalas), spacing.json (espaço, raio, medidas, sombras), typography.json (fontes, tipos, movimento)
   semantic/colors.json  o papel de cada cor; os componentes só usam estes

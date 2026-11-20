@@ -22,7 +22,7 @@
     <header class="topbar" data-docs-top data-title="Fundamentos"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Fundamentos</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#tokens">Camadas de tokens</a><a href="#color">Cor</a><a href="#brand">Cor da marca</a><a href="#scales">Escalas</a><a href="#type">Tipografia</a><a href="#space">Espaço</a><a href="#radius">Raio e sombra</a><a href="#motion">Movimento</a><a href="#icons">Ícones</a><a href="#themes">Temas e densidade</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#tokens">Camadas de tokens</a><a href="#color">Cor</a><a href="#brand">Cor da marca</a><a href="#scales">Escalas</a><a href="#type">Tipografia</a><a href="#hierarchy">Hierarquia</a><a href="#layout">Tela e layout</a><a href="#space">Espaço</a><a href="#radius">Raio e sombra</a><a href="#motion">Movimento</a><a href="#icons">Ícones</a><a href="#themes">Temas e densidade</a></nav>
       </section>
 
       <section class="docs-section" id="tokens" aria-labelledby="t-tokens">
@@ -75,12 +75,61 @@
       <section class="docs-section" id="type" aria-labelledby="t-type">
         <header><h2 id="t-type">Tipografia</h2></header>
         <div id="type-scale"></div>
+        <div class="docs-sub" id="hierarchy">
+          <h3>Hierarquia</h3>
+          <div class="table-wrap"><table class="table docs-table">
+            <thead><tr><th scope="col">Nível</th><th scope="col">Elemento</th><th scope="col">Tamanho · peso · entrelinha</th><th scope="col">Cor</th><th scope="col">Exemplo</th></tr></thead>
+            <tbody>
+              <tr><td>Sobretítulo</td><td><code>.overline</code> acima do título</td><td>12 · 600 · maiúsculas</td><td>secundária</td><td><span class="overline">Guia</span></td></tr>
+              <tr><td>Título da página</td><td><code>h1</code></td><td>32 · 600 · 1,2</td><td>principal</td><td><span style="font-size:var(--text-3xl);font-weight:600;letter-spacing:var(--tracking-display);line-height:1.2">Pessoas</span></td></tr>
+              <tr><td>Descrição da página</td><td><code>.page-description</code>, <code>.lead</code></td><td>18 · 400 · 1,6</td><td>secundária</td><td><span class="lead">Convidados dos eventos.</span></td></tr>
+              <tr><td>Título de seção</td><td><code>h2</code></td><td>24 · 600 · 1,2</td><td>principal</td><td><span style="font-size:var(--text-2xl);font-weight:600;letter-spacing:var(--tracking-display)">Antes de começar</span></td></tr>
+              <tr><td>Título de diálogo e gaveta</td><td><code>h2</code> dentro de <code>.dialog-header</code> ou <code>.drawer-heading</code></td><td>20 · 600 · 1,2</td><td>principal</td><td><span style="font-size:var(--text-xl);font-weight:600">Excluir 3 pessoas?</span></td></tr>
+              <tr><td>Subseção e cartão</td><td><code>h3</code>, <code>.card-title</code></td><td>18 · 600 · 1,2</td><td>principal</td><td><span style="font-size:var(--text-lg);font-weight:600">Colunas da planilha</span></td></tr>
+              <tr><td>Título menor</td><td><code>h4</code></td><td>16 · 600 · 1,2</td><td>principal</td><td><span style="font-weight:600">Formatos aceitos</span></td></tr>
+              <tr><td>Texto</td><td><code>p</code>; texto corrido em <code>.prose</code></td><td>16 · 400 · 1,45 (1,6 em <code>.prose</code>)</td><td>principal</td><td>Linhas sem e-mail entram como pendência.</td></tr>
+              <tr><td>Texto secundário</td><td><code>.text-secondary</code></td><td>16 · 400</td><td>secundária</td><td><span class="text-secondary">Atualizado há 5 min</span></td></tr>
+              <tr><td>Rótulo</td><td><code>.field-label</code>, <code>th</code></td><td>14 · 500</td><td>principal; secundária no <code>th</code></td><td><span class="field-label">E-mail corporativo</span></td></tr>
+              <tr><td>Dica e legenda</td><td><code>.field-hint</code>, <code>figcaption</code>, <code>.text-sm</code></td><td>14 · 400 · 1,45</td><td>secundária</td><td><span class="field-hint">Usado nos convites.</span></td></tr>
+              <tr><td>Número em destaque</td><td><code>.stat-value</code></td><td>40 · 600 · algarismos tabulares</td><td>principal</td><td><span style="font-size:var(--text-4xl);font-weight:600;letter-spacing:var(--tracking-display);font-variant-numeric:tabular-nums;line-height:1.1">1.284</span></td></tr>
+              <tr><td>Código e identificador</td><td><code>code</code>, <code>kbd</code>, <code>.text-mono</code></td><td>Geist Mono, 92% do texto ao redor</td><td>principal</td><td><code>ERR-7F3A</code> <kbd>⌘</kbd> <kbd>K</kbd></td></tr>
+            </tbody></table></div>
+          <ul class="docs-list">
+            <li>Um <code>h1</code> por página: o título. Seções em <code>h2</code>, o que está dentro delas em <code>h3</code>, <code>h4</code> raramente. Nunca pule um nível.</li>
+            <li>O nível vem da estrutura, não do tamanho. Para outro tamanho, mantenha a tag certa e use a classe (um <code>h2</code> pode ter <code>.card-title</code>).</li>
+            <li>Diálogo e gaveta começam em <code>h2</code>: são uma camada nova sobre a página.</li>
+            <li>O sobretítulo fica acima de um título e nunca substitui um.</li>
+            <li>Texto corrido até 72 caracteres por linha (<code>.prose</code> ou <code>--size-prose</code>).</li>
+            <li>Peso 600 em títulos, botões e números; 500 em rótulos e navegação; 400 no texto.</li>
+          </ul>
+        </div>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Peso</th><th scope="col">Uso</th></tr></thead>
           <tbody>
             <tr><td><span style="font-weight:400">400 Regular</span></td><td>Texto.</td></tr>
-            <tr><td><span style="font-weight:500">500 Medium</span></td><td>Botões, rótulos, itens de navegação, cabeçalho de tabela.</td></tr>
-            <tr><td><span style="font-weight:600">600 Semibold</span></td><td>Títulos e números em destaque.</td></tr>
+            <tr><td><span style="font-weight:500">500 Medium</span></td><td>Rótulos, itens de navegação, cabeçalho de tabela.</td></tr>
+            <tr><td><span style="font-weight:600">600 Semibold</span></td><td>Títulos, botões e números em destaque.</td></tr>
+          </tbody></table></div>
+      </section>
+
+      <section class="docs-section" id="layout" aria-labelledby="t-layout">
+        <header><h2 id="t-layout">Tela e layout</h2></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Medida</th><th scope="col">Valor</th><th scope="col">Uso</th></tr></thead>
+          <tbody>
+            <tr><td>Tela de referência</td><td><code>--size-screen</code> · 1200 px</td><td>Tudo é desenhado e conferido primeiro nesta largura.</td></tr>
+            <tr><td>Barra lateral</td><td><code>--size-sidebar</code> · 248 px</td><td>Na tela de referência deixa 952 px para o conteúdo: quatro indicadores numa linha e uma tabela de seis colunas sem rolar de lado.</td></tr>
+            <tr><td>Margem do conteúdo</td><td>32 px (16 px no celular)</td><td><code>.page-header</code> e <code>.page-content</code>.</td></tr>
+            <tr><td>Conteúdo máximo</td><td><code>--size-content</code> · 1120 px</td><td>Em telas maiores o conteúdo para de crescer e fica alinhado à esquerda.</td></tr>
+            <tr><td>Texto corrido</td><td><code>--size-prose</code> · 72ch</td><td>Tutoriais, ajuda, metodologia.</td></tr>
+          </tbody></table></div>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Abaixo de</th><th scope="col">O que muda</th></tr></thead>
+          <tbody>
+            <tr><td>1000 px</td><td>O índice ao lado do texto (<code>.toc</code>) sobe para o topo como uma linha de links.</td></tr>
+            <tr><td>960 px</td><td>Blocos da página inicial em uma coluna.</td></tr>
+            <tr><td>760 px</td><td>A barra lateral vira uma faixa no topo; margens de 16 px.</td></tr>
+            <tr><td>640 px</td><td>Indicadores dois por linha, abas em duas colunas, tabela com <code>.table-cards</code> vira lista de cartões.</td></tr>
           </tbody></table></div>
       </section>
 
@@ -136,7 +185,7 @@
           </tbody></table></div>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.2</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
@@ -179,7 +228,7 @@ async function drawScales() {
   document.getElementById('scales-dark').innerHTML = head + names.map((n) => row(`${n}-dark`)).join('');
 }
 
-const TYPE = [['4xl', 600, 'Título grande', 'display'], ['3xl', 600, '1.284', 'display'], ['2xl', 600, 'Título da página', 'display'], ['xl', 600, 'Título de seção', 'tight'], ['lg', 600, 'Subtítulo e título de diálogo', 'tight'], ['base', 400, 'Texto padrão e controles na densidade confortável', 'normal'], ['sm', 500, 'Botões, campos, tabelas e menus', 'normal'], ['xs', 500, 'Selos, cabeçalho de tabela, legendas', 'normal'], ['2xs', 600, 'Contador na barra recolhida', 'normal']];
+const TYPE = [['4xl', 600, '1.284', 'display'], ['3xl', 600, 'Título da página', 'display'], ['2xl', 600, 'Título de seção', 'display'], ['xl', 600, 'Título de diálogo', 'tight'], ['lg', 600, 'Título de cartão e subseção', 'tight'], ['base', 400, 'Texto, botões e campos', 'normal'], ['sm', 500, 'Rótulo, dica, cabeçalho de tabela', 'normal'], ['xs', 600, 'SOBRETÍTULO · ETIQUETA', 'caps'], ['2xs', 600, 'Contador na barra recolhida', 'normal']];
 document.getElementById('type-scale').innerHTML = TYPE.map(([size, weight, sample, track]) => `<div class="token-row"><code>--text-${size}</code><code>${token('text-' + size)}</code><span class="sample" style="font-size:var(--text-${size});font-weight:${weight};letter-spacing:var(--tracking-${track});${size === '3xl' ? 'font-variant-numeric:tabular-nums' : ''}">${sample}</span></div>`).join('')
   + `<div class="token-row"><code>--font-mono</code><code>Geist Mono</code><span class="sample text-mono">ERR-7F3A · 12.345.678/0001-90</span></div>`;
 const SPACE = ['0-5', '1', '1-5', '2', '2-5', '3', '3-5', '4', '5', '6', '8', '10', '12', '16', '20'];

@@ -1,0 +1,10 @@
+/* Grin progress: how far a task or a tutorial has gone. Use <div class="progress" role="progressbar" aria-valuenow="40"
+   aria-valuemin="0" aria-valuemax="100" aria-label="…"><i style="width:40%"></i></div>. .indeterminate when the end is unknown. */
+.progress { position: relative; height: 8px; overflow: hidden; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); }
+.progress > i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--primary); transition: width var(--dur-slow) var(--ease); }
+.progress.sm { height: 4px; }
+.progress.indeterminate > i { width: 40%; animation: grin-progress 1.4s var(--ease-in-out) infinite; }
+@keyframes grin-progress { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+.progress-field { display: flex; flex-direction: column; gap: 8px; }
+.progress-label { display: flex; justify-content: space-between; gap: 12px; font-size: var(--text-sm); color: var(--muted-foreground); }
+.progress-label b { color: var(--foreground); font-weight: var(--weight-medium); font-variant-numeric: tabular-nums; }

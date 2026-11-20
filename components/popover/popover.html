@@ -1,0 +1,16 @@
+<!-- Grin tooltip, popover, help button and term. Load components/popover/popover.js. -->
+<button type="button" class="btn icon" aria-label="Exportar" data-tooltip="Exportar"><i data-icon="download"></i></button>
+
+<span class="field-label">Faixa provável <button type="button" class="help-button" aria-label="O que é a faixa provável" aria-expanded="false" data-popover="help-range"><i data-icon="help-circle"></i></button></span>
+<div class="popover" id="help-range" role="dialog" aria-label="Faixa provável">
+  <span class="popover-title">Faixa provável</span>
+  <p>Onde o valor real deve estar em 8 de cada 10 casos. Quanto mais estreita, mais confiável.</p>
+  <div class="popover-footer"><a class="link" href="#">Ler a metodologia</a></div>
+</div>
+
+<p>A estimativa usa a <button type="button" class="term" aria-expanded="false" data-popover="term-capex">CAPEX</button> declarada.</p>
+<div class="popover" id="term-capex" role="dialog" aria-label="CAPEX">
+  <span class="popover-title"><span>CAPEX<small>Capital expenditure · investimento</small></span></span>
+  <p>Gasto com bens que duram mais de um ano: equipamentos, licenças perpétuas, obras.</p>
+</div>
+<script type="module" src="popover.js"></script>

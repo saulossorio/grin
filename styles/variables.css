@@ -30,11 +30,14 @@
   --size-control-xs: 32px;
   --size-nav-item: 40px;
   --size-topbar: 64px;
-  --size-sidebar: 272px;
+  --size-sidebar: 248px;
   --size-sidebar-collapsed: 72px;
   --size-drawer: 480px;
   --size-target-min: 24px;
   --size-avatar: 40px;
+  --size-screen: 1200px;
+  --size-content: 1120px;
+  --size-prose: 72ch;
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --text-2xs: 0.625rem;

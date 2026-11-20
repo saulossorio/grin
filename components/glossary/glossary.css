@@ -1,0 +1,18 @@
+/* Grin glossary: the list of terms used in a product or a tutorial. A letter index stays visible while the list
+   scrolls (like dictionary tabs); letters with no terms are disabled. glossary.js filters by letter and by search. */
+.glossary { display: flex; flex-direction: column; gap: 16px; }
+.letter-index { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 2px; padding: 8px 0; border-bottom: 1px solid var(--border); background: var(--background); }
+.letter-index button { min-width: 36px; height: 36px; padding: 0 8px; border: 1px solid transparent; border-radius: var(--radius-sm); background: none; color: var(--foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); transition: background-color var(--dur-fast), border-color var(--dur-fast); }
+.letter-index button:hover:not(:disabled) { background: var(--accent); }
+.letter-index button[aria-pressed="true"] { background: var(--brand-bg); border-color: var(--brand-border); color: var(--brand-fg); }
+.letter-index button:disabled { color: var(--muted-foreground); opacity: 0.45; cursor: default; }
+.glossary-group { display: flex; flex-direction: column; gap: 10px; }
+.glossary-letter { padding-bottom: 6px; border-bottom: 1px solid var(--border-soft); font-size: var(--text-lg); font-weight: var(--weight-semibold); color: var(--muted-foreground); }
+.glossary-item { display: flex; flex-direction: column; gap: 6px; padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); scroll-margin-top: 72px; }
+.glossary-item:target { border-color: var(--primary); box-shadow: 0 0 0 3px var(--highlight); }
+.glossary-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+.glossary-head h3 { font-size: var(--text-lg); }
+.glossary-aka { color: var(--muted-foreground); font-size: var(--text-sm); }
+.glossary-head .badge { margin-left: auto; align-self: center; }
+.glossary-item p { margin: 0; color: var(--muted-foreground); line-height: var(--leading-body); }
+.glossary-item [hidden], .glossary-group[hidden] { display: none; }

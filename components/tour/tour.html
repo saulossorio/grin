@@ -1,0 +1,10 @@
+<!-- Grin tour. Offer it, never force it: a "Fazer o tour" button, and the person can leave at any step. -->
+<button type="button" class="btn" id="start-tour"><i data-icon="map"></i>Fazer o tour</button>
+<script type="module">
+  import { startTour } from './tour.js';
+  document.getElementById('start-tour').addEventListener('click', () => startTour([
+    { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê onde ficam as pessoas, os filtros e a importação.' },
+    { target: '#search', title: 'Busque qualquer pessoa', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.' },
+    { target: '#import', title: 'Importe uma planilha', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.' },
+  ]));
+</script>

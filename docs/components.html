@@ -16,6 +16,19 @@
 <script type="module" src="../scripts/docs-shell.js"></script>
 <script type="module" src="../components/dialog/dialog.js"></script>
 <script type="module" src="../components/tabs/tabs.js"></script>
+<script type="module" src="../components/popover/popover.js"></script>
+<script type="module" src="../components/glossary/glossary.js"></script>
+<script type="module">
+import { startTour } from '../components/tour/tour.js';
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('#ex-tour-start')) return;
+  startTour([
+    { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê onde buscar, onde importar e como sair do tour.' },
+    { target: '#ex-tour-search', title: 'Busque qualquer pessoa', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.' },
+    { target: '#ex-tour-import', title: 'Importe uma planilha', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.' },
+  ]);
+});
+</script>
 </head>
 <body>
 <div class="app">
@@ -24,7 +37,7 @@
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Seleção</a><a href="#badge">Selo e estado</a><a href="#chip">Chip de filtro</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Aviso</a><a href="#toast">Toast</a><a href="#card">Cartão e indicador</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Diálogo e gaveta</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Seleção</a><a href="#badge">Selo e estado</a><a href="#chip">Chip de filtro</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Aviso</a><a href="#toast">Toast</a><a href="#card">Cartão e indicador</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Diálogo e gaveta</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Popover e termo</a><a href="#prose">Texto longo</a><a href="#steps">Passos</a><a href="#accordion">Seções que abrem</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
@@ -290,6 +303,124 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-item</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
       </section>
 
+      <section class="docs-section" id="help" aria-labelledby="t-help">
+        <header><h2 id="t-help">Dica de ferramenta, popover e termo</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="row">
+  <button type="button" class="btn icon" aria-label="Exportar" data-tooltip="Exportar"><i data-icon="download"></i></button>
+  <button type="button" class="btn icon" aria-label="Colunas" data-tooltip="Colunas"><i data-icon="columns"></i></button>
+  <span class="field-label">Faixa provável <button type="button" class="help-button" aria-label="O que é a faixa provável" aria-expanded="false" data-popover="ex-help"><i data-icon="help-circle"></i></button></span>
+</div>
+<div class="popover" id="ex-help" role="dialog" aria-label="Faixa provável">
+  <span class="popover-title">Faixa provável</span>
+  <p>Onde o valor real deve estar em 8 de cada 10 casos. Quanto mais estreita, mais confiável.</p>
+  <div class="popover-footer"><a class="link" href="#glossary">Ver no glossário</a></div>
+</div>
+<p>A estimativa parte da <button type="button" class="term" aria-expanded="false" data-popover="ex-term">CAPEX</button> declarada no último balanço.</p>
+<div class="popover" id="ex-term" role="dialog" aria-label="CAPEX">
+  <span class="popover-title"><span>CAPEX<small>Capital expenditure · investimento</small></span></span>
+  <p>Gasto com bens que duram mais de um ano: equipamentos, licenças perpétuas, obras.</p>
+</div>
+        </div></div>
+        <p class="class-list"><code>[data-tooltip]</code> · <code>.tooltip</code> · <code>.popover</code> · <code>.popover-title</code> · <code>.popover-footer</code> · <code>.help-button</code> · <code>.term</code> · <code>[data-popover]</code> · <code>components/popover/popover.js</code></p>
+      </section>
+
+      <section class="docs-section" id="prose" aria-labelledby="t-prose">
+        <header><h2 id="t-prose">Texto longo</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<article class="prose">
+  <h3>Importar convidados de uma planilha</h3>
+  <p class="lead">Leva cerca de 5 minutos. Você precisa de uma planilha com nome e e-mail.</p>
+  <p>Confira se a primeira linha tem os nomes das colunas. Linhas sem e-mail entram como pendência.</p>
+  <ul><li>Formatos aceitos: .xlsx e .csv.</li><li>Até 5.000 linhas por arquivo.</li></ul>
+  <blockquote>A planilha original nunca é alterada.</blockquote>
+  <dl><dt>Tempo</dt><dd>5 minutos</dd><dt>Precisa de</dt><dd>Planilha com nome e e-mail</dd></dl>
+</article>
+        </div></div>
+        <p class="class-list"><code>.prose</code> · <code>.lead</code> · <code>h2</code>–<code>h4</code>, <code>p</code>, <code>ul</code>, <code>ol</code>, <code>blockquote</code>, <code>pre</code>, <code>figure</code>, <code>dl</code>, <code>hr</code> dentro dele</p>
+      </section>
+
+      <section class="docs-section" id="steps" aria-labelledby="t-steps">
+        <header><h2 id="t-steps">Passos</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<ol class="steps horizontal">
+  <li class="step" data-state="done"><span class="step-title">Arquivo</span></li>
+  <li class="step" data-state="current" aria-current="step"><span class="step-title">Colunas</span></li>
+  <li class="step"><span class="step-title">Revisão</span></li>
+</ol>
+<ol class="steps">
+  <li class="step" data-state="done"><span class="step-title">Escolha a planilha</span><div class="step-body"><p>convidados-novembro.xlsx · 1.284 linhas</p></div></li>
+  <li class="step" data-state="current" aria-current="step"><span class="step-title">Confira as colunas <span class="badge brand">Agora</span></span><div class="step-body"><p>Diga qual coluna é o nome e qual é o e-mail.</p><div class="row"><button type="button" class="btn primary">Continuar</button></div></div></li>
+  <li class="step"><span class="step-title">Corrija as pendências</span><div class="step-body"><p>Linhas sem e-mail ou empresa aparecem primeiro.</p></div></li>
+</ol>
+        </div></div>
+        <p class="class-list"><code>.steps</code> (<code>.horizontal</code>) · <code>.step</code> + <code>data-state="done|current"</code> · <code>.step-title</code> · <code>.step-body</code></p>
+      </section>
+
+      <section class="docs-section" id="accordion" aria-labelledby="t-accordion">
+        <header><h2 id="t-accordion">Seções que abrem</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="accordion">
+  <details open><summary>Quais formatos de planilha são aceitos?</summary><div class="accordion-body"><p>.xlsx e .csv, com até 5.000 linhas.</p></div></details>
+  <details><summary>O que acontece com linhas sem e-mail?</summary><div class="accordion-body"><p>Entram como pendência crítica e só vão para a agenda depois de corrigidas.</p></div></details>
+  <details><summary>Posso desfazer uma importação?</summary><div class="accordion-body"><p>Sim, por 30 dias, em Importações.</p></div></details>
+</div>
+        </div></div>
+        <p class="class-list"><code>.accordion</code> com <code>details</code> e <code>summary</code> · <code>.accordion-body</code></p>
+      </section>
+
+      <section class="docs-section" id="progress" aria-labelledby="t-progress">
+        <header><h2 id="t-progress">Progresso</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="progress-field">
+  <div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div>
+  <div class="progress" role="progressbar" aria-label="Importando pessoas" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><i style="width:40%"></i></div>
+</div>
+<div class="progress indeterminate sm" role="progressbar" aria-label="Lendo a planilha"><i></i></div>
+        </div></div>
+        <p class="class-list"><code>.progress</code> (<code>.sm</code>, <code>.indeterminate</code>) · <code>.progress-field</code> · <code>.progress-label</code></p>
+      </section>
+
+      <section class="docs-section" id="glossary" aria-labelledby="t-glossary">
+        <header><h2 id="t-glossary">Glossário</h2></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="glossary">
+  <div class="letter-index" aria-label="Filtrar por letra"><button type="button" data-letter="">Todas</button><button type="button" data-letter="C">C</button><button type="button" data-letter="F">F</button><button type="button" data-letter="P">P</button></div>
+  <section class="glossary-group" data-letter="C">
+    <h3 class="glossary-letter">C</h3>
+    <article class="glossary-item" id="ex-capex"><div class="glossary-head"><h4>CAPEX</h4><span class="glossary-aka">Capital expenditure</span><span class="badge">Finanças</span></div><p>Gasto com bens que duram mais de um ano.</p></article>
+  </section>
+  <section class="glossary-group" data-letter="F">
+    <h3 class="glossary-letter">F</h3>
+    <article class="glossary-item" id="ex-faixa"><div class="glossary-head"><h4>Faixa provável</h4><span class="badge">Método</span></div><p>Onde o valor real deve estar em 8 de cada 10 casos.</p></article>
+  </section>
+</div>
+        </div></div>
+        <p class="class-list"><code>.glossary</code> · <code>.letter-index</code> · <code>.glossary-group[data-letter]</code> · <code>.glossary-letter</code> · <code>.glossary-item</code> · <code>.glossary-head</code> · <code>.glossary-aka</code> · <code>[data-glossary-search]</code> · <code>components/glossary/glossary.js</code></p>
+      </section>
+
+      <section class="docs-section" id="toc" aria-labelledby="t-toc">
+        <header><h2 id="t-toc">Índice da página</h2></header>
+        <div class="demo"><div class="demo-stage column">
+<div class="with-toc">
+  <div class="prose"><p>O índice fica ao lado do texto e marca a seção sendo lida. Abaixo de 1000 px sobe para o topo como uma linha de links. Veja funcionando no <a href="../examples/tutorial.html">exemplo de tutorial</a>.</p></div>
+  <nav class="toc" aria-label="Exemplo de índice"><span class="toc-title">Nesta página</span><a href="#toc" aria-current="true">Antes de começar</a><a href="#toc">Importar</a><a class="sub" href="#toc">Colunas</a><a href="#toc">Revisar</a></nav>
+</div>
+        </div></div>
+        <p class="class-list"><code>.with-toc</code> · <code>.toc</code> · <code>.toc-title</code> · <code>a.sub</code> · <code>components/toc/toc.js</code></p>
+      </section>
+
+      <section class="docs-section" id="tour" aria-labelledby="t-tour">
+        <header><h2 id="t-tour">Tour guiado</h2></header>
+        <div class="demo" data-code><div class="demo-stage">
+<div class="search" id="ex-tour-search"><i data-icon="search"></i><input class="input" type="search" placeholder="Buscar pessoas" aria-label="Buscar pessoas"></div>
+<button type="button" class="btn" id="ex-tour-import"><i data-icon="upload"></i>Importar</button>
+<span class="spacer"></span>
+<button type="button" class="btn primary" id="ex-tour-start"><i data-icon="map"></i>Fazer o tour</button>
+        </div></div>
+        <p class="class-list"><code>startTour(steps)</code> de <code>components/tour/tour.js</code> · <code>.tour</code> · <code>.tour-spot</code> · <code>.tour-card</code> · <code>.tour-count</code> · <code>.tour-actions</code></p>
+      </section>
+
       <section class="docs-section" id="new" aria-labelledby="t-new">
         <header><h2 id="t-new">Novo componente</h2></header>
         <ol class="docs-list">
@@ -300,7 +431,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.2</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

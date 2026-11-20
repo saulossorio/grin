@@ -15,12 +15,13 @@ const PAGES = [
   { heading: 'Exemplos', items: [
     ['ex-dashboard', 'examples/dashboard.html', 'Lista de dados', 'table'],
     ['ex-form', 'examples/form.html', 'Formulário', 'pencil'],
-    ['ex-landing', 'examples/landing.html', 'Página de apresentação', 'monitor'],
+    ['ex-tutorial', 'examples/tutorial.html', 'Tutorial', 'book-open'],
+    ['ex-landing', 'examples/landing.html', 'Apresentação', 'monitor'],
   ] },
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.1';
+export const VERSION = '2.2';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';

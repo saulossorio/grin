@@ -1,0 +1,15 @@
+/* Grin table of contents: the index of a long page (tutorial, method, help), beside the text. It stays visible
+   while the page scrolls and marks the section being read (toc.js). Below 1000 px it becomes a row of links on top. */
+.with-toc { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 48px; align-items: start; }
+.toc { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 2px; max-height: calc(100vh - 48px); overflow: auto; font-size: var(--text-sm); }
+.toc-title { margin-bottom: 6px; padding-left: 14px; font-weight: var(--weight-semibold); color: var(--foreground); }
+.toc a { display: block; padding: 6px 12px; border-left: 2px solid var(--border); color: var(--muted-foreground); text-decoration: none; transition: color var(--dur-fast), border-color var(--dur) var(--ease); }
+.toc a.sub { padding-left: 24px; }
+.toc a:hover { color: var(--foreground); border-left-color: var(--border-strong); }
+.toc a[aria-current="true"] { color: var(--brand-fg); border-left-color: var(--primary); font-weight: var(--weight-medium); }
+@media (max-width: 1000px) {
+  .with-toc { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .with-toc > .toc { order: -1; position: static; flex-direction: row; flex-wrap: wrap; gap: 6px; max-height: none; }
+  .toc-title { display: none; }
+  .toc a, .toc a.sub { padding: 4px 12px; border: 1px solid var(--border); border-radius: var(--radius-pill); }
+}

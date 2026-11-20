@@ -1,0 +1,14 @@
+/* Grin tour: a guided walk through a screen, one point at a time. A veil darkens the page except a cut-out around
+   the point shown; the cut-out and the card slide from one step to the next. Created by tour.js. */
+.tour { position: fixed; inset: 0; z-index: 120; pointer-events: none; opacity: 0; transition: opacity var(--dur) var(--ease); }
+.tour.show { opacity: 1; }
+.tour-spot { position: fixed; border-radius: var(--radius-md); box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), width var(--dur-slow) var(--ease), height var(--dur-slow) var(--ease); }
+.tour-spot.none { box-shadow: 0 0 0 200vmax var(--overlay); }
+.tour-card { position: fixed; display: flex; flex-direction: column; gap: 10px; width: min(360px, calc(100vw - 32px)); padding: 18px 20px 16px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); pointer-events: auto; transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), opacity var(--dur-fast), transform var(--dur-fast) var(--ease); }
+.tour-card.swap { opacity: 0; transform: translateY(6px); }
+.tour-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -6px -8px 0 0; }
+.tour-count { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-fg); font-variant-numeric: tabular-nums; }
+.tour-card h2 { font-size: var(--text-lg); outline: none; }
+.tour-card p { margin: 0; color: var(--muted-foreground); line-height: var(--leading-body); }
+.tour-actions { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
+.tour-actions .spacer { flex: 1 1 auto; }

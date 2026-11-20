@@ -1,0 +1,24 @@
+/* Grin tooltip, popover, help button and term.
+   Tooltip: one short line naming an icon-only control (data-tooltip). Never the only place for important information.
+   Popover: a small panel tied to a button, for help or a definition; it can hold links and actions.
+   Term: a word in running text with a definition (dotted underline); it opens a popover.
+   popover.js places them next to their trigger and keeps them inside the screen. */
+.tooltip { position: fixed; z-index: 100; max-width: 280px; padding: 6px 10px; border-radius: var(--radius-sm); background: var(--foreground); color: var(--background); font-size: var(--text-sm); line-height: 1.4; pointer-events: none; opacity: 0; transform: translateY(2px); transition: opacity var(--dur-fast), transform var(--dur-fast) var(--ease); }
+.tooltip.show { opacity: 1; transform: none; }
+
+.popover { position: fixed; z-index: 95; display: flex; flex-direction: column; gap: 8px; width: max-content; max-width: min(360px, calc(100vw - 24px)); margin: 0; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-md); font-size: var(--text-sm); line-height: var(--leading-body); }
+.popover:not(.open) { display: none; }
+.popover.open { animation: grin-scale-in var(--dur) var(--ease); }
+.popover-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: var(--leading-tight); }
+.popover-title small { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); }
+.popover p { margin: 0; color: var(--muted-foreground); }
+.popover-footer { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+
+/* Help button: the round "?" next to a label or a title */
+.help-button { display: inline-grid; place-items: center; width: 24px; height: 24px; flex-shrink: 0; padding: 0; border: 0; border-radius: var(--radius-pill); background: transparent; color: var(--muted-foreground); vertical-align: middle; transition: background-color var(--dur-fast), color var(--dur-fast); }
+.help-button svg { width: 18px; height: 18px; }
+.help-button:hover, .help-button[aria-expanded="true"] { background: var(--accent); color: var(--foreground); }
+
+/* Term: dotted underline, opens its definition */
+.term { padding: 0 1px; border: 0; border-radius: 3px; background: none; color: inherit; font: inherit; cursor: help; text-decoration: underline dotted; text-decoration-thickness: 1.5px; text-underline-offset: 3px; text-decoration-color: var(--muted-foreground); transition: background-color var(--dur-fast), text-decoration-color var(--dur-fast); }
+.term:hover, .term[aria-expanded="true"] { background: var(--brand-bg); text-decoration-color: var(--link); }

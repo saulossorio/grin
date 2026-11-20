@@ -98,8 +98,8 @@
       "$description": "Barra superior."
     },
     "sidebar": {
-      "$value": "272px",
-      "$description": "Barra lateral aberta."
+      "$value": "248px",
+      "$description": "Barra lateral aberta. Na tela de referência (1200 px) deixa 952 px para o conteúdo."
     },
     "sidebar-collapsed": {
       "$value": "72px",
@@ -116,6 +116,18 @@
     "avatar": {
       "$value": "40px",
       "$description": "Avatar com iniciais na tabela e na lista."
+    },
+    "screen": {
+      "$value": "1200px",
+      "$description": "Largura de tela de referência: tudo é desenhado e conferido primeiro nesta largura."
+    },
+    "content": {
+      "$value": "1120px",
+      "$description": "Largura máxima da área de conteúdo em telas maiores que a de referência."
+    },
+    "prose": {
+      "$value": "72ch",
+      "$description": "Largura máxima de texto corrido (cerca de 70 caracteres por linha)."
     }
   },
   "shadow": {

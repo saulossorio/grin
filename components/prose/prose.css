@@ -1,0 +1,25 @@
+/* Grin prose: long text written for reading (tutorials, help, method notes). Wrap the content in .prose;
+   it sets line length, spacing between headings, paragraphs, lists, quotes, code and figures. Headings keep the global sizes. */
+.prose { max-width: var(--size-prose); font-size: var(--text-base); line-height: var(--leading-body); color: var(--foreground); }
+.prose > * + * { margin-top: 16px; }
+.prose > h2 { margin-top: 48px; }
+.prose > h3 { margin-top: 32px; }
+.prose > h4 { margin-top: 24px; }
+.prose > h2 + *, .prose > h3 + *, .prose > h4 + * { margin-top: 8px; }
+.prose > :first-child { margin-top: 0; }
+.prose p, .prose li { text-wrap: pretty; }
+.prose .lead { font-size: var(--text-lg); color: var(--muted-foreground); }
+.prose ul, .prose ol { margin-bottom: 0; padding-left: 1.4em; }
+.prose li + li { margin-top: 6px; }
+.prose li::marker { color: var(--muted-foreground); }
+.prose ol > li::marker { font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+.prose blockquote { margin-left: 0; margin-right: 0; padding: 4px 0 4px 18px; border-left: 3px solid var(--border-strong); color: var(--muted-foreground); }
+.prose pre { margin: 0; padding: 14px 16px; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--muted); font-size: var(--text-sm); line-height: 1.65; }
+.prose hr { margin: 40px 0; border: 0; border-top: 1px solid var(--border); }
+.prose figure { display: flex; flex-direction: column; gap: 8px; }
+.prose figcaption { color: var(--muted-foreground); font-size: var(--text-sm); }
+.prose img { border: 1px solid var(--border); border-radius: var(--radius-lg); }
+.prose dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; }
+.prose dt { font-weight: var(--weight-semibold); }
+.prose dd { margin: 0; color: var(--muted-foreground); }
+.prose .alert, .prose .steps, .prose .accordion, .prose .table-wrap { margin-top: 20px; }

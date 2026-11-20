@@ -87,6 +87,7 @@
 /* Docs tables (tokens, mappings) wrap text */
 .docs-table td, .docs-table th { height: auto; padding-top: 10px; padding-bottom: 10px; white-space: normal; vertical-align: top; line-height: var(--leading-ui); }
 .docs-table th { position: static; }
+.docs-table td { color: var(--foreground); }
 
 .docs-footer { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: var(--text-sm); }
 

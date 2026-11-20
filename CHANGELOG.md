@@ -1,5 +1,25 @@
 # Mudanças
 
+## 2.2 · 20/11/2026
+**Tela de referência: 1200 px.** Tudo é desenhado e conferido primeiro nesta largura.
+- Barra lateral de 248 px (era 272): sobram 952 px para o conteúdo. Quatro indicadores cabem numa linha e a tabela de seis colunas não rola de lado.
+- Novos tokens `--size-screen` (1200 px), `--size-content` (1120 px, conteúdo para de crescer em telas maiores) e `--size-prose` (72ch).
+- Tabela com margens internas de 12 px (20 px nas bordas) e `td.wrap` para texto longo que pode quebrar linha.
+- Título e ações da página lado a lado na tela de referência.
+
+**Tipografia.** Nova seção "Hierarquia" em Fundamentos: cada nível (sobretítulo, título da página, descrição, seção, diálogo, subseção, texto, rótulo, dica, número, código) com tag, tamanho, peso, entrelinha, cor e exemplo, e as regras de uso dos títulos. `.text-sm` passa a 14 px (era 12) e entra `.lead`.
+
+**Componentes para tutoriais e ajuda** (8 novos, total 24):
+- Texto longo (`.prose`): largura de leitura, espaço entre títulos, listas, citação, código, figura e lista de definições.
+- Passos (`.steps`, vertical e horizontal), com estados feito e atual.
+- Seções que abrem (`.accordion`), com `details` nativo e altura animada.
+- Progresso (`.progress`, com valor ou sem fim conhecido).
+- Dica de ferramenta (`data-tooltip`), popover com botão de ajuda (`.help-button`) e termo com definição (`.term`), em `popover.js`.
+- Glossário (`.glossary`) com índice de letras fixo e busca, em `glossary.js`.
+- Índice da página (`.toc`) que marca a seção sendo lida, em `toc.js`.
+- Tour guiado (`startTour()` em `tour.js`): véu com recorte no ponto mostrado, cartão com passo, barra de progresso, voltar e próximo, teclado e Esc.
+- Novo exemplo: `examples/tutorial.html`. Novos ícones: `help-circle`, `arrow-left`, `arrow-right`, `lightbulb`, `book-open`, `map`, `clock`.
+
 ## 2.1 · 20/11/2026
 - Alto contraste separado do tema: `data-contrast="more"` funciona no claro e no escuro (novo `tokens/themes/high-contrast-dark.json`). Trocar entre claro e escuro mantém o alto contraste. `data-contrast="normal"` desliga mesmo se o sistema pedir mais contraste.
 - `theme.js`: `setContrast()`, `getContrast()`, `effectiveContrast()` e o botão `[data-contrast-toggle]`. O antigo `data-theme="hc"` (e `?theme=hc`) vira claro com alto contraste.

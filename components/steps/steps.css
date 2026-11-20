@@ -1,0 +1,22 @@
+/* Grin steps: a real sequence the person follows (tutorial, setup, import). Numbered circles joined by a line.
+   States on each .step: data-state="done" (check), "current" (brand ring) or none (to do). */
+.steps { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; counter-reset: grin-step; }
+.step { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 16px; padding-bottom: 24px; counter-increment: grin-step; }
+.step:last-child { padding-bottom: 0; }
+.step::before { content: counter(grin-step); grid-row: 1 / span 2; display: grid; place-items: center; width: 32px; height: 32px; border: 1.5px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--surface); color: var(--muted-foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; transition: background-color var(--dur) var(--ease), border-color var(--dur), color var(--dur); }
+.step:not(:last-child)::after { content: ''; position: absolute; left: 15px; top: 36px; bottom: 4px; width: 2px; border-radius: 2px; background: var(--border); }
+.step-title { align-self: center; min-height: 32px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: var(--text-base); font-weight: var(--weight-semibold); }
+.step-body { grid-column: 2; display: flex; flex-direction: column; gap: 10px; margin-top: 4px; color: var(--muted-foreground); line-height: var(--leading-body); }
+.step-body > * { margin: 0; }
+.step[data-state="current"]::before { border-color: var(--primary); background: var(--brand-bg); color: var(--brand-fg); box-shadow: 0 0 0 4px var(--highlight); }
+.step[data-state="done"]::before { content: '✓'; border-color: var(--primary); background: var(--primary); color: var(--primary-foreground); }
+.step[data-state="done"]:not(:last-child)::after { background: var(--primary); }
+.step[data-state="done"] .step-title { color: var(--muted-foreground); }
+
+/* Horizontal: a short process seen at a glance (3 to 5 steps), e.g. at the top of a wizard */
+.steps.horizontal { flex-direction: row; gap: 8px; }
+.steps.horizontal .step { flex: 1 1 0; grid-template-columns: 32px minmax(0, 1fr); padding-bottom: 0; }
+.steps.horizontal .step:not(:last-child)::after { left: 44px; right: 8px; top: 15px; bottom: auto; width: auto; height: 2px; }
+.steps.horizontal .step-title { position: relative; z-index: 1; padding-right: 8px; background: var(--background); font-size: var(--text-sm); justify-self: start; }
+.steps.horizontal .step-body { display: none; }
+@media (max-width: 640px) { .steps.horizontal .step-title { display: none; } .steps.horizontal .step { flex: 0 1 auto; } .steps.horizontal .step:not(:last-child)::after { display: none; } }
