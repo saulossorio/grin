@@ -59,21 +59,25 @@ function buildTop(top) {
 }
 
 /* Search: ⌘K or "/" opens it. The index is read from the documentation pages themselves (every section with an id,
-   its title and the classes listed under it), so it never goes out of date. Examples are added by hand. */
+   its title, the classes listed under it and its first line of text), so it never goes out of date. Examples are added by hand.
+   Without a query the list shows everything, grouped in the order of the sidebar and alphabetical inside each group.
+   With a query: titles that start with it, then titles that contain it, then classes and text; alphabetical within each. */
 const SEARCH_PAGES = [['docs/getting-started.html', 'Começar'], ['docs/foundations.html', 'Fundamentos'], ['docs/components.html', 'Componentes'], ['docs/patterns.html', 'Padrões'], ['docs/accessibility.html', 'Acessibilidade']];
-const SEARCH_EXTRA = [['examples/dashboard.html', 'Lista de dados', 'Exemplos', 'tabela indicadores filtro gaveta'], ['examples/form.html', 'Formulário', 'Exemplos', 'campo validação cadastro'], ['examples/tutorial.html', 'Tutorial', 'Exemplos', 'passos tour glossário termo índice'], ['examples/landing.html', 'Página de apresentação', 'Exemplos', 'landing gráfico']];
+const SEARCH_GROUPS = ['Componentes', 'Fundamentos', 'Padrões', 'Acessibilidade', 'Começar', 'Exemplos'];
+const SEARCH_EXTRA = [['examples/dashboard.html', 'Lista de dados', 'Indicadores, tabela, filtros, gaveta e ações em massa'], ['examples/form.html', 'Formulário', 'Cadastro com seções e validação'], ['examples/tutorial.html', 'Tutorial', 'Índice, passos, termos, perguntas, glossário e tour'], ['examples/landing.html', 'Página de apresentação', 'Apresentação de um produto com gráfico']];
 let searchIndex = null;
 const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+const byTitle = (a, b) => a.title.localeCompare(b.title, 'pt-BR');
 async function buildIndex(base) {
-  const entries = SEARCH_EXTRA.map(([href, title, page, words]) => ({ href: base + href, title, page, words }));
-  await Promise.all(SEARCH_PAGES.map(async ([href, page]) => {
+  const entries = SEARCH_EXTRA.map(([href, title, sub]) => ({ href: base + href, title, group: 'Exemplos', sub, words: sub }));
+  await Promise.all(SEARCH_PAGES.map(async ([href, group]) => {
     try {
       const doc = new DOMParser().parseFromString(await (await fetch(base + href)).text(), 'text/html');
-      entries.push({ href: base + href, title: page, page: 'Guia', words: doc.querySelector('h1')?.textContent ?? '' });
       doc.querySelectorAll('section[id], .docs-sub[id]').forEach((sec) => {
         const h = sec.querySelector('h2, h3'); if (!h) return;
         const classes = [...sec.querySelectorAll('.class-list code')].map((c) => c.textContent).join(' ');
-        entries.push({ href: `${base}${href}#${sec.id}`, title: h.textContent.trim(), page, words: `${classes} ${sec.querySelector('header p')?.textContent ?? ''}`, classes });
+        const text = (sec.querySelector('header p, p, li, td')?.textContent ?? '').replace(/\s+/g, ' ').trim();
+        entries.push({ href: `${base}${href}#${sec.id}`, title: h.textContent.trim(), group, sub: classes || text || group, mono: Boolean(classes), words: `${classes} ${text}` });
       });
     } catch { /* offline or file:// — that page is left out */ }
   }));
@@ -90,16 +94,22 @@ function ensureSearch() {
   document.body.append(dlg);
   const input = dlg.querySelector('input'), list = dlg.querySelector('ul');
   let active = 0, results = [];
+  const item = (e, i) => `<li role="option" id="ds-${i}" aria-selected="${i === active}"><a href="${e.href}"><span class="docs-search-title">${e.title}</span><span class="docs-search-page">${e.group}</span><span class="docs-search-sub${e.mono ? ' mono' : ''}">${e.sub}</span></a></li>`;
   const render = () => {
     const q = fold(input.value.trim());
     const all = searchIndex ?? [];
-    results = (q ? all.filter((e) => fold(`${e.title} ${e.page} ${e.words}`).includes(q))
-      .sort((a, b) => (fold(b.title).startsWith(q) - fold(a.title).startsWith(q)) || (fold(b.title).includes(q) - fold(a.title).includes(q)))
-      : all.filter((e) => e.page === 'Componentes')).slice(0, 12);
+    if (q) {
+      const rank = (e) => (fold(e.title).startsWith(q) ? 0 : fold(e.title).includes(q) ? 1 : 2);
+      results = all.filter((e) => fold(`${e.title} ${e.group} ${e.words}`).includes(q)).sort((a, b) => rank(a) - rank(b) || byTitle(a, b));
+    } else {
+      results = SEARCH_GROUPS.flatMap((g) => all.filter((e) => e.group === g).sort(byTitle));
+    }
     active = Math.min(active, Math.max(0, results.length - 1));
-    list.innerHTML = searchIndex === null ? '<li class="docs-search-empty">Carregando…</li>'
-      : results.length ? results.map((e, i) => `<li role="option" id="ds-${i}" aria-selected="${i === active}"><a href="${e.href}"><span class="docs-search-title">${e.title}</span><span class="docs-search-page">${e.page}</span>${e.classes ? `<span class="docs-search-classes">${e.classes.split(' ').slice(0, 4).join(' ')}</span>` : ''}</a></li>`).join('')
-      : `<li class="docs-search-empty">Nada encontrado para “${input.value.replace(/[<>&]/g, '')}”. Tente o nome em português ou a classe, como <code>.btn</code>.</li>`;
+    list.classList.toggle('grouped', !q); // the group is already the heading, so the label on the right is hidden
+    if (searchIndex === null) list.innerHTML = '<li class="docs-search-empty">Carregando…</li>';
+    else if (!results.length) list.innerHTML = `<li class="docs-search-empty">Nada encontrado para “${input.value.replace(/[<>&]/g, '')}”. Tente o nome em português ou a classe, como <code>.btn</code>.</li>`;
+    else if (q) list.innerHTML = results.map(item).join('');
+    else list.innerHTML = results.map((e, i) => (i === 0 || results[i - 1].group !== e.group ? `<li class="docs-search-group" role="presentation">${e.group}</li>` : '') + item(e, i)).join('');
     input.setAttribute('aria-activedescendant', results.length ? `ds-${active}` : '');
   };
   input.addEventListener('input', () => { active = 0; render(); });

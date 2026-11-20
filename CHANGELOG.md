@@ -4,6 +4,8 @@
 - Busca na documentação: botão no topo e na barra lateral, atalho <kbd>⌘K</kbd> (ou <kbd>/</kbd>). Acha componentes, seções, tokens, classes (por exemplo `.btn`) e exemplos; o índice é lido das próprias páginas, então nunca fica desatualizado.
 - Tema, alto contraste, densidade e tamanho da fonte saem do topo e vão para um único menu "Aparência".
 - Página inicial com 14 blocos novos: campo, aviso e toast, navegação, diálogo, menu, passos e progresso, tour, termo, seções que abrem, estado vazio, ícones, raio e sombra, acessibilidade (contraste calculado no tema atual) e tela de referência.
+- Busca: sem texto, mostra tudo agrupado na ordem da barra lateral (Componentes, Fundamentos, Padrões, Acessibilidade, Começar, Exemplos) e em ordem alfabética dentro de cada grupo; com texto, primeiro os títulos que começam com a busca, depois os que a contêm, depois classes e texto. Todas as linhas com a mesma altura (título e uma linha de detalhe).
+- Menu Aparência não sai mais da tela com a fonte em 125%.
 - `theme.js`: `[data-contrast-toggle]` também funciona num interruptor (checkbox). Ícones novos: `sliders`, `corner-down-left`.
 
 ## 2.2 · 20/11/2026
