@@ -1,5 +1,7 @@
-<!-- Grin accordion. Each item is a <details>; add "open" to start opened. Put the answer in .accordion-body. -->
+<!-- Grin accordion (FAQ). Each item is a <details>; add "open" to start opened, and the same name="" on items that
+     should be exclusive (opening one closes the other). Put the answer in .accordion-body. Load accordion.js for the motion. -->
 <div class="accordion">
   <details open><summary>Quais formatos de planilha são aceitos?</summary><div class="accordion-body"><p>.xlsx e .csv, com até 5.000 linhas.</p></div></details>
   <details><summary>O que acontece com linhas sem e-mail? <small>2 min de leitura</small></summary><div class="accordion-body"><p>Entram como pendência crítica e não vão para a agenda até serem corrigidas.</p></div></details>
 </div>
+<script type="module" src="accordion.js"></script>

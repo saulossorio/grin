@@ -38,6 +38,7 @@
 .docs-section { display: flex; flex-direction: column; gap: 20px; scroll-margin-top: calc(var(--size-topbar) + 16px); }
 .docs-section > header { display: flex; flex-direction: column; gap: 6px; max-width: 72ch; }
 .docs-section > header p { color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
+.docs-section > header .aka { font-size: var(--text-sm); }
 .docs-sub { display: flex; flex-direction: column; gap: 12px; scroll-margin-top: calc(var(--size-topbar) + 16px); }
 .docs-sub > h3 { font-size: var(--text-lg); }
 .docs-sub > p { max-width: 72ch; color: var(--muted-foreground); line-height: var(--leading-body); }

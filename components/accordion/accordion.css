@@ -1,5 +1,6 @@
-/* Grin accordion: questions, details or optional parts that open in place. Native <details>/<summary>:
-   keyboard and screen readers work with no script. The panel animates its height where the browser can. */
+/* Grin accordion (also: FAQ, collapse, disclosure): questions, details or optional parts that open in place.
+   Native <details>/<summary>: keyboard and screen readers work with no script. accordion.js animates the height,
+   a fade and a small rise of the content in every browser; the chevron turns and the row tints on hover. */
 .accordion { display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); overflow: hidden; }
 .accordion > details + details { border-top: 1px solid var(--border-soft); }
 .accordion summary { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 12px 20px; font-weight: var(--weight-semibold); cursor: pointer; list-style: none; transition: background-color var(--dur-fast); }
@@ -11,6 +12,4 @@
 .accordion summary small { font-weight: var(--weight-regular); color: var(--muted-foreground); }
 .accordion-body { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; color: var(--muted-foreground); line-height: var(--leading-body); }
 .accordion-body > * { margin: 0; }
-details { interpolate-size: allow-keywords; }
-.accordion details::details-content { block-size: 0; overflow: hidden; transition: block-size var(--dur) var(--ease), content-visibility var(--dur) allow-discrete; }
-.accordion details[open]::details-content { block-size: auto; }
+.accordion summary:active { background: var(--accent); }

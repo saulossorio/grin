@@ -10,7 +10,7 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 - **Temas** claro, escuro e alto contraste; **densidades** confortável (44 px, padrão) e compacta (36 px); fonte em 100%, 112,5% e 125%.
 - **Cor:** seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro. Marca: `#8dc63f`, usada só como acento.
 - **Tipografia:** Geist e Geist Mono, servidas pelo próprio repositório (`assets/fonts`, licença OFL).
-- **24 componentes:** botão, campo, seleção, interruptor, controle segmentado, chip de filtro, selo, aviso, toast, cartão e indicador, tabela, abas, menu, diálogo, gaveta, estado vazio e a casca do app (barra lateral e topo); e, para tutoriais e ajuda: texto longo, passos, seções que abrem, progresso, dica de ferramenta e popover com termo, glossário, índice da página e tour guiado.
+- **24 componentes:** botão, campo de formulário, checkbox, rádio e interruptor, controle segmentado, chip de filtro, badge, status e avatar, alerta, toast, card e indicador, tabela, abas, menu, modal e drawer, estado vazio, navegação; e, para tutoriais e ajuda: texto corrido, stepper, acordeão (FAQ), barra de progresso, tooltip, popover e termo, glossário, índice da página e tour guiado. Cada um traz na documentação os outros nomes pelos quais é conhecido, e a busca acha por qualquer um deles.
 - **Guias:** começar, fundamentos, componentes, padrões e acessibilidade. **Exemplos:** lista de dados, formulário e página de apresentação.
 - **Verificações:** contraste nos três temas e coerência entre HTML, CSS e ícones.
 

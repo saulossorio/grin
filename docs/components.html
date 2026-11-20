@@ -18,6 +18,7 @@
 <script type="module" src="../components/tabs/tabs.js"></script>
 <script type="module" src="../components/popover/popover.js"></script>
 <script type="module" src="../components/glossary/glossary.js"></script>
+<script type="module" src="../components/accordion/accordion.js"></script>
 <script type="module">
 import { startTour } from '../components/tour/tour.js';
 document.addEventListener('click', (e) => {
@@ -37,11 +38,11 @@ document.addEventListener('click', (e) => {
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Seleção</a><a href="#badge">Selo e estado</a><a href="#chip">Chip de filtro</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Aviso</a><a href="#toast">Toast</a><a href="#card">Cartão e indicador</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Diálogo e gaveta</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Popover e termo</a><a href="#prose">Texto longo</a><a href="#steps">Passos</a><a href="#accordion">Seções que abrem</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
-        <header><h2 id="t-button">Botão</h2></header>
+        <header><h2 id="t-button">Botão</h2><p class="aka">Também chamado: button, CTA, ação, link de ação, spinner</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <button type="button" class="btn primary">Salvar</button>
 <button type="button" class="btn">Cancelar</button>
@@ -58,7 +59,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="field" aria-labelledby="t-field">
-        <header><h2 id="t-field">Campo</h2></header>
+        <header><h2 id="t-field">Campo de formulário</h2><p class="aka">Também chamado: input, text field, select, dropdown nativo, textarea, busca, search, formulário</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="field-grid">
   <div class="field">
@@ -87,7 +88,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="choice" aria-labelledby="t-choice">
-        <header><h2 id="t-choice">Seleção</h2></header>
+        <header><h2 id="t-choice">Checkbox, rádio e interruptor</h2><p class="aka">Também chamado: checkbox, radio, switch, toggle, opção, caixa de seleção, choice card</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="choices">
   <label class="choice"><input type="radio" name="ex-merge" checked><span><span class="choice-title">Mesclar</span><span class="choice-description">Junta os dois registros e guarda o histórico.</span></span></label>
@@ -103,7 +104,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="badge" aria-labelledby="t-badge">
-        <header><h2 id="t-badge">Selo</h2></header>
+        <header><h2 id="t-badge">Badge, status e avatar</h2><p class="aka">Também chamado: selo, tag, etiqueta, pill, contador, counter, status, dot, delta, avatar, iniciais</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span>
 <span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span>
@@ -126,7 +127,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="chip" aria-labelledby="t-chip">
-        <header><h2 id="t-chip">Chip de filtro</h2></header>
+        <header><h2 id="t-chip">Chip de filtro</h2><p class="aka">Também chamado: chip, filter chip, filtro ativo, tag removível</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <div class="chip-group">
   <span class="chip"><button type="button" class="chip-label">Setor: Tecnologia, Saúde</button><button type="button" class="chip-remove" aria-label="Remover filtro Setor"><i data-icon="x"></i></button></span>
@@ -138,7 +139,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="segmented" aria-labelledby="t-segmented">
-        <header><h2 id="t-segmented">Controle segmentado</h2></header>
+        <header><h2 id="t-segmented">Controle segmentado</h2><p class="aka">Também chamado: segmented control, toggle group, button group, alternador</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <div class="segmented" role="radiogroup" aria-label="Período">
   <label><input type="radio" name="ex-period" checked><span>2026</span></label>
@@ -150,7 +151,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="tabs" aria-labelledby="t-tabs">
-        <header><h2 id="t-tabs">Abas</h2></header>
+        <header><h2 id="t-tabs">Abas</h2><p class="aka">Também chamado: tabs, guias, abas deslizantes</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="tabs" role="tablist" aria-label="Seções da pessoa">
   <button type="button" class="tab" role="tab" id="ex-tab-1" aria-selected="true" aria-controls="ex-panel-1">Dados</button>
@@ -165,7 +166,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="alert" aria-labelledby="t-alert">
-        <header><h2 id="t-alert">Aviso</h2></header>
+        <header><h2 id="t-alert">Alerta</h2><p class="aka">Também chamado: alert, banner, callout, aviso, mensagem na página, nota</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="alert" role="status"><i data-icon="info"></i><div class="alert-body">A planilha tem 1.284 linhas. As colunas foram reconhecidas pelo cabeçalho.</div></div>
 <div class="alert warn" role="status"><i data-icon="alert-triangle"></i><div class="alert-body"><span class="alert-title">14 linhas sem e-mail.</span> A pessoa entra no cadastro, mas não recebe convites. Complete o e-mail ou siga mesmo assim.</div></div>
@@ -177,7 +178,7 @@ document.addEventListener('click', (e) => {
       </section>
 
       <section class="docs-section" id="toast" aria-labelledby="t-toast">
-        <header><h2 id="t-toast">Toast</h2></header>
+        <header><h2 id="t-toast">Toast</h2><p class="aka">Também chamado: snackbar, notificação, aviso temporário, desfazer</p></header>
         <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="toast-demo">Excluir e mostrar o toast</button></div></div>
 <pre class="code-block"><code>import { toast } from './components/toast/toast.js';
 toast('3 pessoas excluídas.', { action: 'Desfazer', onAction: undo });
@@ -185,7 +186,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="card" aria-labelledby="t-card">
-        <header><h2 id="t-card">Cartão</h2></header>
+        <header><h2 id="t-card">Card e indicador</h2><p class="aka">Também chamado: card, cartão, KPI, métrica, estatística, stat, filtro de gravidade</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="stat-grid">
   <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="users"></i></span>Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta"><span class="delta ok">+46</span>desde outubro</span></div>
@@ -207,7 +208,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="table" aria-labelledby="t-table">
-        <header><h2 id="t-table">Tabela</h2></header>
+        <header><h2 id="t-table">Tabela</h2><p class="aka">Também chamado: table, data table, data grid, lista, paginação, pagination, ações em massa</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <section class="table-wrap table-cards" aria-labelledby="ex-table-title">
   <div class="table-header"><div><h3 id="ex-table-title">Lista de pessoas</h3><p class="text-secondary">Convidados com evento em 2026.</p></div><button type="button" class="btn"><i data-icon="download"></i>Exportar</button></div>
@@ -228,7 +229,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="menu" aria-labelledby="t-menu">
-        <header><h2 id="t-menu">Menu</h2></header>
+        <header><h2 id="t-menu">Menu</h2><p class="aka">Também chamado: dropdown, menu de ações, context menu, menu suspenso, kebab</p></header>
         <div class="demo" data-code><div class="demo-stage dotted">
 <div class="menu" role="menu" aria-label="Ações da linha">
   <div class="menu-header">Ana Lima</div>
@@ -243,7 +244,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="dialog" aria-labelledby="t-dialog">
-        <header><h2 id="t-dialog">Diálogo e gaveta</h2></header>
+        <header><h2 id="t-dialog">Modal e drawer</h2><p class="aka">Também chamado: modal, dialog, diálogo, confirmação, drawer, gaveta, sheet, painel lateral</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <button type="button" class="btn danger" data-open="ex-dialog">Excluir 3 pessoas</button>
 <button type="button" class="btn" data-open="ex-drawer">Abrir registro</button>
@@ -270,7 +271,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="empty" aria-labelledby="t-empty">
-        <header><h2 id="t-empty">Estado vazio</h2></header>
+        <header><h2 id="t-empty">Estado vazio</h2><p class="aka">Também chamado: empty state, sem resultados, nenhum item, zero state</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="empty-state">
   <span class="empty-state-icon"><i data-icon="search"></i></span>
@@ -284,7 +285,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="shell" aria-labelledby="t-shell">
-        <header><h2 id="t-shell">Navegação</h2></header>
+        <header><h2 id="t-shell">Navegação</h2><p class="aka">Também chamado: sidebar, barra lateral, menu lateral, breadcrumb, trilha, topbar, app shell, layout</p></header>
         <div class="demo" data-code><div class="demo-stage tinted" style="align-items:stretch">
 <nav class="sidebar" aria-label="Exemplo de navegação" style="position:static;height:auto">
   <a class="app-logo" href="#shell"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
@@ -304,7 +305,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="help" aria-labelledby="t-help">
-        <header><h2 id="t-help">Dica de ferramenta, popover e termo</h2></header>
+        <header><h2 id="t-help">Tooltip, popover e termo</h2><p class="aka">Também chamado: tooltip, dica de ferramenta, hint, popover, ajuda, help, definição, glossário inline</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="row">
   <button type="button" class="btn icon" aria-label="Exportar" data-tooltip="Exportar"><i data-icon="download"></i></button>
@@ -326,7 +327,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="prose" aria-labelledby="t-prose">
-        <header><h2 id="t-prose">Texto longo</h2></header>
+        <header><h2 id="t-prose">Texto corrido</h2><p class="aka">Também chamado: prose, rich text, artigo, tutorial, markdown, conteúdo longo</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <article class="prose">
   <h3>Importar convidados de uma planilha</h3>
@@ -341,7 +342,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="steps" aria-labelledby="t-steps">
-        <header><h2 id="t-steps">Passos</h2></header>
+        <header><h2 id="t-steps">Stepper</h2><p class="aka">Também chamado: passos, etapas, steps, wizard, assistente, timeline, progresso por etapas</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <ol class="steps horizontal">
   <li class="step" data-state="done"><span class="step-title">Arquivo</span></li>
@@ -358,7 +359,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="accordion" aria-labelledby="t-accordion">
-        <header><h2 id="t-accordion">Seções que abrem</h2></header>
+        <header><h2 id="t-accordion">Acordeão</h2><p class="aka">Também chamado: accordion, FAQ, perguntas frequentes, collapse, expansível, details, disclosure</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="accordion">
   <details open><summary>Quais formatos de planilha são aceitos?</summary><div class="accordion-body"><p>.xlsx e .csv, com até 5.000 linhas.</p></div></details>
@@ -366,11 +367,11 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <details><summary>Posso desfazer uma importação?</summary><div class="accordion-body"><p>Sim, por 30 dias, em Importações.</p></div></details>
 </div>
         </div></div>
-        <p class="class-list"><code>.accordion</code> com <code>details</code> e <code>summary</code> · <code>.accordion-body</code></p>
+        <p class="class-list"><code>.accordion</code> com <code>details</code> e <code>summary</code> · <code>.accordion-body</code> · <code>details[name]</code> para abrir um por vez · <code>components/accordion/accordion.js</code></p>
       </section>
 
       <section class="docs-section" id="progress" aria-labelledby="t-progress">
-        <header><h2 id="t-progress">Progresso</h2></header>
+        <header><h2 id="t-progress">Barra de progresso</h2><p class="aka">Também chamado: progress bar, loading, carregamento, indicador de progresso</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="progress-field">
   <div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div>
@@ -382,7 +383,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="glossary" aria-labelledby="t-glossary">
-        <header><h2 id="t-glossary">Glossário</h2></header>
+        <header><h2 id="t-glossary">Glossário</h2><p class="aka">Também chamado: glossary, dicionário, termos, definições, índice alfabético</p></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="glossary">
   <div class="letter-index" aria-label="Filtrar por letra"><button type="button" data-letter="">Todas</button><button type="button" data-letter="C">C</button><button type="button" data-letter="F">F</button><button type="button" data-letter="P">P</button></div>
@@ -400,7 +401,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="toc" aria-labelledby="t-toc">
-        <header><h2 id="t-toc">Índice da página</h2></header>
+        <header><h2 id="t-toc">Índice da página</h2><p class="aka">Também chamado: table of contents, TOC, sumário, âncoras, scrollspy, nesta página</p></header>
         <div class="demo"><div class="demo-stage column">
 <div class="with-toc">
   <div class="prose"><p>O índice fica ao lado do texto e marca a seção sendo lida. Abaixo de 1000 px sobe para o topo como uma linha de links. Veja funcionando no <a href="../examples/tutorial.html">exemplo de tutorial</a>.</p></div>
@@ -411,7 +412,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="tour" aria-labelledby="t-tour">
-        <header><h2 id="t-tour">Tour guiado</h2></header>
+        <header><h2 id="t-tour">Tour guiado</h2><p class="aka">Também chamado: onboarding, product tour, walkthrough, coach marks, spotlight, primeiros passos</p></header>
         <div class="demo" data-code><div class="demo-stage">
 <div class="search" id="ex-tour-search"><i data-icon="search"></i><input class="input" type="search" placeholder="Buscar pessoas" aria-label="Buscar pessoas"></div>
 <button type="button" class="btn" id="ex-tour-import"><i data-icon="upload"></i>Importar</button>
@@ -431,7 +432,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.3</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.4</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
