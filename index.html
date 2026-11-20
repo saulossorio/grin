@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="styles/global.css">
 <link rel="stylesheet" href="styles/components.css">
 <link rel="stylesheet" href="styles/docs.css">
+<link rel="stylesheet" href="styles/home.css">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <script type="module" src="scripts/docs-shell.js"></script>
 </head>
@@ -22,9 +23,71 @@
     <header class="topbar" data-docs-top data-title="Início"></header>
     <main class="docs-main" id="content">
 
-      <section class="docs-hero" aria-labelledby="t-hero">
+      <section class="home-hero" aria-labelledby="t-hero">
         <span class="overline">Design system · versão 2.0</span>
-        <h1 id="t-hero">Grin</h1>
+        <h1 class="home-title" id="t-hero"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>Grin</h1>
+        <div class="home-facts"><span><b>16</b> componentes</span><span><b>54</b> tokens de cor</span><span><b>3</b> temas</span><span><b>2</b> densidades</span><span>Geist e Geist Mono</span></div>
+        <div class="home-actions"><a class="btn primary lg" href="docs/getting-started.html"><i data-icon="play"></i>Começar</a><a class="btn lg" href="docs/components.html"><i data-icon="layout-grid"></i>Componentes</a><a class="btn lg ghost" href="examples/dashboard.html"><i data-icon="table"></i>Ver um exemplo</a></div>
+      </section>
+
+      <section class="board" aria-label="Partes do Grin">
+        <a class="tile span-7" href="docs/components.html#card">
+          <span class="tile-head">Indicador<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="stat-grid">
+            <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="users"></i></span>Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta"><span class="delta ok">+46</span>desde outubro</span></div>
+            <div class="stat"><span class="stat-label"><span class="stat-icon crit"><i data-icon="alert-circle"></i></span>Com pendência</span><span class="stat-value">77</span><span class="stat-delta"><span class="delta crit">8 críticas</span>a corrigir</span></div>
+          </div></div>
+        </a>
+        <a class="tile span-5" href="docs/foundations.html#color">
+          <span class="tile-head">Cor<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-brand"><span></span><div><code>#8dc63f</code><div class="text-secondary text-sm">Verde da marca: ação principal e item atual</div></div></div>
+            <div class="tile-swatches" id="home-gray"></div>
+            <div class="tile-row"><span class="badge ok"><span class="dot ok"></span>Pronta</span><span class="badge warn"><span class="dot warn"></span>Atenção</span><span class="badge crit"><span class="dot crit"></span>Crítico</span><span class="badge info"><span class="dot info"></span>Nova</span></div>
+          </div>
+        </a>
+        <a class="tile span-8" href="docs/components.html#table">
+          <span class="tile-head">Tabela<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="table-wrap"><table class="table">
+            <thead><tr><th scope="col" class="select-col"><input type="checkbox" aria-label="Marcar todas" tabindex="-1"></th><th scope="col">Nome</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
+            <tbody>
+              <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked aria-label="Marcar Ana Lima" tabindex="-1"></td><td><div class="cell-main"><span class="avatar ok">AL</span><div><b>Ana Lima</b><small>ana.lima@nortesul.com.br</small></div></div></td><td><span class="badge ok"><span class="dot ok"></span>Pronta</span></td><td class="numeric">4</td></tr>
+              <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Bruno Reis" tabindex="-1"></td><td><div class="cell-main"><span class="avatar info">BR</span><div><b>Bruno Reis</b><small class="text-crit">sem e-mail</small></div></div></td><td><span class="badge crit"><span class="dot crit"></span>Sem e-mail</span></td><td class="numeric">1</td></tr>
+              <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Carla Souza" tabindex="-1"></td><td><div class="cell-main"><span class="avatar warn">CS</span><div><b>Carla Souza</b><small>carla@varejosul.com.br</small></div></div></td><td><span class="badge warn"><span class="dot warn"></span>Revisar cargo</span></td><td class="numeric">12</td></tr>
+            </tbody></table></div></div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#choice">
+          <span class="tile-head">Controles<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="segmented"><label><input type="radio" name="home-seg" checked tabindex="-1"><span>Mês</span></label><label><input type="radio" name="home-seg" tabindex="-1"><span>Trimestre</span></label><label><input type="radio" name="home-seg" tabindex="-1"><span>Ano</span></label></div>
+            <label class="switch"><input type="checkbox" role="switch" checked tabindex="-1">Avisar por e-mail</label>
+            <label class="checkbox"><input type="checkbox" checked tabindex="-1">Autorizou o uso dos dados</label>
+            <div class="search"><i data-icon="search"></i><input class="input" type="search" placeholder="Buscar pessoas" aria-label="Buscar pessoas" tabindex="-1"></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/foundations.html#type">
+          <span class="tile-head">Tipografia<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-type"><b>Aa</b><div><span>Geist</span><span>400 · 500 · 600</span><span class="text-mono">Geist Mono 0123</span></div></div>
+            <div class="tile-sizes"><span style="font-size:12px">12</span><span style="font-size:14px">14</span><span style="font-size:16px">16</span><span style="font-size:20px">20</span><span style="font-size:24px">24</span><span style="font-size:32px;color:var(--foreground)">32</span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#button">
+          <span class="tile-head">Botão e selo<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-row"><span class="btn primary"><i data-icon="plus"></i>Nova pessoa</span><span class="btn"><i data-icon="download"></i>Exportar</span></div>
+            <div class="tile-row"><span class="btn danger xs"><i data-icon="trash"></i>Excluir 3</span><span class="btn xs ghost">Cancelar</span><span class="count">12</span><span class="tag">Beta</span></div>
+            <div class="chip-group"><span class="chip"><span class="chip-label">Situação: Crítico</span><span class="chip-remove"><i data-icon="x"></i></span></span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/foundations.html#themes">
+          <span class="tile-head">Temas<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-themes">
+            <div data-theme="light">Claro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="dark">Escuro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="hc">Contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+          </div></div>
+        </a>
       </section>
 
       <section class="docs-section" aria-labelledby="t-install">
@@ -40,5 +103,13 @@
     </main>
   </div>
 </div>
+<script type="module">
+/* Gray scale of the current theme, read from tokens/core/colors.json */
+const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+fetch('tokens/core/colors.json').then((r) => r.json()).then((c) => {
+  const g = c.color[dark ? 'gray-dark' : 'gray'];
+  document.getElementById('home-gray').innerHTML = Array.from({ length: 12 }, (_, i) => `<span style="background:${g[i + 1].$value}" title="gray ${i + 1}"></span>`).join('');
+}).catch(() => {});
+</script>
 </body>
 </html>
