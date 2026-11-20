@@ -8,7 +8,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const core = { ...read('tokens/core/colors.json'), ...read('tokens/core/spacing.json'), ...read('tokens/core/typography.json') };
 const semantic = read('tokens/semantic/colors.json');
-const themes = { dark: read('tokens/themes/dark.json'), hc: read('tokens/themes/high-contrast.json') };
+const themes = { dark: read('tokens/themes/dark.json'), hc: read('tokens/themes/high-contrast.json'), hcDark: read('tokens/themes/high-contrast-dark.json') };
 
 // {color.gray.11} -> valor do token core
 const lookup = (path) => {
@@ -69,17 +69,40 @@ ${block(themes.dark, '    ')}
   }
 }
 
-/* Alto contraste: escolhido pela pessoa, pedido pelo sistema, ou numa seção */
-:root[data-theme="hc"], [data-theme="hc"] {
+/* Alto contraste: independente do tema. data-contrast="more" liga, "normal" desliga, sem atributo segue o sistema.
+   Claro + alto contraste */
+:root[data-contrast="more"]:not([data-theme="dark"]), [data-contrast="more"]:not([data-theme="dark"]) {
   color-scheme: light;
 ${block(themes.hc)}
 }
+/* Escuro + alto contraste */
+:root[data-theme="dark"][data-contrast="more"], [data-theme="dark"][data-contrast="more"] {
+  color-scheme: dark;
+${block(themes.hcDark)}
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme])[data-contrast="more"] {
+    color-scheme: dark;
+${block(themes.hcDark, '    ')}
+  }
+}
+/* O sistema pede mais contraste e a pessoa não escolheu */
 @media (prefers-contrast: more) {
-  :root:not([data-theme]) {
+  :root:not([data-contrast]):not([data-theme="dark"]) {
     color-scheme: light;
 ${block(themes.hc, '    ')}
+  }
+  :root[data-theme="dark"]:not([data-contrast]) {
+    color-scheme: dark;
+${block(themes.hcDark, '    ')}
+  }
+}
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+  :root:not([data-contrast]):not([data-theme]) {
+    color-scheme: dark;
+${block(themes.hcDark, '    ')}
   }
 }
 `;
 writeFileSync(join(root, 'styles/variables.css'), css);
-console.log(`styles/variables.css: ${names.length} tokens semânticos em 3 temas`);
+console.log(`styles/variables.css: ${names.length} tokens semânticos em 4 temas (claro, escuro e o alto contraste de cada um)`);

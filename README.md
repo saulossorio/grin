@@ -19,7 +19,7 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 
 ```html
-<script>/* evita piscar o tema errado: aplica a escolha salva antes de pintar */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* evita piscar o tema errado: aplica a escolha salva antes de pintar */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
 <link rel="stylesheet" href="styles/global.css">
@@ -30,7 +30,8 @@ Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 | Atributo na tag `<html>` | Efeito |
 |---|---|
 | nenhum | Segue o sistema (claro, escuro ou alto contraste) |
-| `data-theme="light"`, `"dark"`, `"hc"` | Fixa o tema |
+| `data-theme="light"` ou `"dark"` | Fixa o tema |
+| `data-contrast="more"` ou `"normal"` | Liga ou desliga o alto contraste, no claro e no escuro |
 | `data-density="compact"` | Controles de 36 px e texto de 14 px |
 | `data-scale="112"` ou `"125"` | Fonte em 112,5% ou 125% |
 
@@ -91,7 +92,7 @@ Os scripts são módulos ES, que o navegador não carrega por `file://`:
 python3 -m http.server 8000
 ```
 
-e abra http://localhost:8000. Para abrir num tema: `?theme=dark` (ou `light`, `hc`).
+e abra http://localhost:8000. Para abrir num tema: `?theme=dark` (ou `light`) e, se quiser, `&contrast=more`.
 
 ## Licença das fontes
 

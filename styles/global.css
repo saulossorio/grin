@@ -46,7 +46,8 @@ mark { background: var(--highlight); color: inherit; border-radius: 2px; padding
 /* ---------- Focus: always visible; in fields the ring hugs the border ---------- */
 :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: -1px; }
-:root[data-theme="hc"] :focus-visible { outline-width: 3px; }
+:root[data-contrast="more"] :focus-visible { outline-width: 3px; }
+@media (prefers-contrast: more) { :root:not([data-contrast]) :focus-visible { outline-width: 3px; } }
 
 /* ---------- Layout utilities ---------- */
 .row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }

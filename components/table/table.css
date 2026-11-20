@@ -21,8 +21,12 @@
 .table tr[aria-selected="true"] td { background: var(--row-selected); }
 .table td.cell-crit, .table tr:hover td.cell-crit { background: var(--crit-bg); color: var(--crit-fg); }
 .table td.cell-warn, .table tr:hover td.cell-warn { background: var(--warn-bg); color: var(--warn-fg); }
-:root[data-theme="hc"] .table td.cell-crit { box-shadow: inset 3px 0 0 var(--crit-fg); }
-:root[data-theme="hc"] .table td.cell-warn { box-shadow: inset 3px 0 0 var(--warn-fg); }
+:root[data-contrast="more"] .table td.cell-crit { box-shadow: inset 3px 0 0 var(--crit-fg); }
+:root[data-contrast="more"] .table td.cell-warn { box-shadow: inset 3px 0 0 var(--warn-fg); }
+@media (prefers-contrast: more) {
+  :root:not([data-contrast]) .table td.cell-crit { box-shadow: inset 3px 0 0 var(--crit-fg); }
+  :root:not([data-contrast]) .table td.cell-warn { box-shadow: inset 3px 0 0 var(--warn-fg); }
+}
 .table .cell-empty { color: var(--crit-fg); font-size: var(--text-sm); }
 .table td.cell-edited { position: relative; }
 .table td.cell-edited::after { content: ''; position: absolute; top: 0; right: 0; border-style: solid; border-width: 0 8px 8px 0; border-color: transparent var(--primary) transparent transparent; }

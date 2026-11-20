@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.1 · 20/11/2026
+- Alto contraste separado do tema: `data-contrast="more"` funciona no claro e no escuro (novo `tokens/themes/high-contrast-dark.json`). Trocar entre claro e escuro mantém o alto contraste. `data-contrast="normal"` desliga mesmo se o sistema pedir mais contraste.
+- `theme.js`: `setContrast()`, `getContrast()`, `effectiveContrast()` e o botão `[data-contrast-toggle]`. O antigo `data-theme="hc"` (e `?theme=hc`) vira claro com alto contraste.
+- Página inicial com painel de blocos feitos com os componentes reais.
+- `check-contrast.mjs` confere os quatro temas.
+
 ## 2.0 · 20/11/2026
 Novo visual, mais amplo e legível.
 

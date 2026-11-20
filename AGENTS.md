@@ -32,7 +32,7 @@ node tools/check-contrast.mjs    # contraste nos três temas
 node tools/check-markup.mjs      # toda classe usada existe no CSS e todo ícone existe
 ```
 
-Depois confira as páginas num servidor local (`python3 -m http.server`) nos temas claro, escuro e alto contraste (`?theme=dark`, `?theme=hc`) e numa largura de celular. Anote a mudança em `CHANGELOG.md` e, se a versão mudar, em `scripts/docs-shell.js` (`VERSION`) e nos rodapés.
+Depois confira as páginas num servidor local (`python3 -m http.server`) nos temas claro e escuro, cada um com e sem alto contraste (`?theme=dark`, `?theme=light&contrast=more`, `?theme=dark&contrast=more`) e numa largura de celular. Anote a mudança em `CHANGELOG.md` e, se a versão mudar, em `scripts/docs-shell.js` (`VERSION`) e nos rodapés.
 
 ## Tarefas comuns
 

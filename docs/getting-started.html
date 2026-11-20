@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Começar · Grin</title>
 <meta name="description" content="Como instalar e usar o Grin numa ferramenta: arquivos, tema, densidade, estrutura e convenções.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -42,7 +42,7 @@
             <tr><td>nenhum</td><td>Segue o sistema: <code>prefers-color-scheme</code> e <code>prefers-contrast</code>.</td></tr>
             <tr><td><code>data-theme="light"</code></td><td>Claro.</td></tr>
             <tr><td><code>data-theme="dark"</code></td><td>Escuro.</td></tr>
-            <tr><td><code>data-theme="hc"</code></td><td>Alto contraste: texto a 7:1, bordas pretas, foco de 3 px.</td></tr>
+            <tr><td><code>data-contrast="more"</code></td><td>Alto contraste, no claro ou no escuro: texto a 7:1, bordas fortes, foco de 3 px. <code>"normal"</code> desliga mesmo se o sistema pedir mais contraste.</td></tr>
           </tbody></table></div>
       </section>
 
@@ -97,7 +97,7 @@ node tools/check-contrast.mjs
 node tools/check-markup.mjs</code></pre>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.1</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

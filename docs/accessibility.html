@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acessibilidade · Grin</title>
 <meta name="description" content="Checklist por tela e contraste medido do Grin nos três temas.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -48,7 +48,7 @@
         <header><h2 id="t-built">O que já vem pronto</h2></header>
         <ul class="docs-list"><li>Foco visível em todos os controles, com 3 px no alto contraste.</li><li>Diálogo e gaveta com <code>&lt;dialog&gt;</code> nativo: prendem o foco, fecham com Esc e devolvem o foco ao botão que abriu.</li><li>Abas com setas, Home e End.</li><li>Toasts numa região <code>role="status"</code>, anunciada por leitores de tela.</li><li>Temas que seguem <code>prefers-color-scheme</code> e <code>prefers-contrast</code>; animações desligadas com <code>prefers-reduced-motion</code>.</li><li>Tudo em rem: a fonte da pessoa e o zoom aumentam a interface inteira.</li></ul>
       </section>
-      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.1</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
@@ -57,7 +57,7 @@ import { contrast, token, icon } from '../scripts/utils.js';
 const PAIRS = [['foreground', 'background', 'Texto principal'], ['muted-foreground', 'background', 'Texto secundário'], ['muted-foreground', 'sidebar', 'Texto da barra lateral'], ['link', 'background', 'Link'], ['primary-foreground', 'primary', 'Texto sobre a marca'], ['brand-fg', 'brand-bg', 'Chip de filtro'], ['crit-fg', 'crit-bg', 'Crítico'], ['warn-fg', 'warn-bg', 'Atenção'], ['info-fg', 'info-bg', 'Informação'], ['ok-fg', 'ok-bg', 'Sucesso'], ['crit-on', 'crit-solid', 'Botão de excluir'], ['input', 'background', 'Borda de campo', 3], ['ring', 'background', 'Anel de foco', 3]];
 function draw() {
   const root = document.documentElement;
-  const hc = root.dataset.theme === 'hc' || (!root.dataset.theme && matchMedia('(prefers-contrast: more)').matches);
+  const hc = root.dataset.contrast ? root.dataset.contrast === 'more' : matchMedia('(prefers-contrast: more)').matches;
   document.querySelector('#contrast-table tbody').innerHTML = PAIRS.map(([fg, bg, name, ui]) => {
     const r = contrast(token(fg), token(bg)); const min = ui ?? (hc ? 7 : 4.5); const ok = r >= min;
     return `<tr><td>${name}<br><code>--${fg}</code> sobre <code>--${bg}</code></td><td><span style="display:inline-flex;padding:4px 10px;border-radius:var(--radius-sm);background:var(--${bg});color:var(--${fg});${ui ? `box-shadow:inset 0 0 0 2px var(--${fg})` : ''}">Aa 123</span></td><td class="numeric">${r.toFixed(2).replace('.', ',')}:1</td><td>${String(min).replace('.', ',')}:1</td><td><span class="badge ${ok ? 'ok' : 'crit'}">${icon(ok ? 'check' : 'x', 12)}${ok ? 'Passa' : 'Não passa'}</span></td></tr>`;

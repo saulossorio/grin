@@ -1,4 +1,4 @@
-// Checks the color pairs that matter, in all three themes. Run from the project root: node tools/check-contrast.mjs
+// Checks the color pairs that matter, in all four themes (light, dark and the high-contrast version of each). Run from the project root: node tools/check-contrast.mjs
 // Text: 4.5:1 in light and dark, 7:1 in high contrast. UI parts (field border, focus ring, chart lines): 3:1.
 // Exits with code 1 when any pair falls short, so it can gate a commit.
 import { readFileSync } from 'node:fs';
@@ -10,7 +10,12 @@ const block = (selector) => {
   return Object.fromEntries([...body.matchAll(/--([\w-]+):\s*([^;]+);/g)].map((m) => [m[1], m[2].trim()]));
 };
 const light = block(':root');
-const themes = { light, dark: { ...light, ...block(':root[data-theme="dark"], [data-theme="dark"]') }, 'high contrast': { ...light, ...block(':root[data-theme="hc"], [data-theme="hc"]') } };
+const dark = { ...light, ...block(':root[data-theme="dark"], [data-theme="dark"]') };
+const themes = {
+  light, dark,
+  'high contrast, light': { ...light, ...block(':root[data-contrast="more"]:not([data-theme="dark"]), [data-contrast="more"]:not([data-theme="dark"])') },
+  'high contrast, dark': { ...dark, ...block(':root[data-theme="dark"][data-contrast="more"], [data-theme="dark"][data-contrast="more"]') },
+};
 const TEXT = [
   ['foreground', 'background'], ['foreground', 'surface'], ['foreground', 'popover'], ['foreground', 'sidebar'], ['foreground', 'muted'],
   ['muted-foreground', 'background'], ['muted-foreground', 'surface'], ['muted-foreground', 'muted'], ['muted-foreground', 'table-head'],
@@ -22,7 +27,7 @@ const TEXT = [
 const UI = [['input', 'background'], ['input', 'field'], ['ring', 'background'], ['ring', 'surface'], ['chart-1', 'background'], ['chart-2', 'background'], ['crit-fg', 'crit-bg']];
 let failures = 0;
 for (const [name, t] of Object.entries(themes)) {
-  const minText = name === 'high contrast' ? 7 : 4.5;
+  const minText = name.startsWith('high contrast') ? 7 : 4.5;
   const lines = [];
   for (const [pairs, min] of [[TEXT, minText], [UI, 3]]) {
     for (const [a, b] of pairs) {

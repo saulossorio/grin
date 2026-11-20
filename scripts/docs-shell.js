@@ -20,7 +20,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.0';
+export const VERSION = '2.1';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -37,7 +37,8 @@ function buildNav(nav) {
 function buildTop(top) {
   top.innerHTML = `<button type="button" class="btn icon ghost docs-menu-button" id="docs-menu-button" aria-expanded="false" aria-controls="docs-nav" aria-label="Abrir navegação">${icon('sidebar')}</button><span class="docs-crumb">${top.dataset.title ?? ''}</span><span class="spacer"></span><div class="docs-controls">
     <label class="sr-only" for="docs-theme">Tema</label>
-    <select class="select" id="docs-theme" data-theme-select><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
+    <select class="select" id="docs-theme" data-theme-select><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select>
+    <button type="button" class="btn" data-contrast-toggle aria-pressed="false">${icon('contrast')}<span>Alto contraste</span></button>
     <div class="segmented" role="radiogroup" aria-label="Densidade">
       <label><input type="radio" name="docs-density" value="compact" data-set-density><span>Compacta</span></label>
       <label><input type="radio" name="docs-density" value="comfortable" data-set-density><span>Confortável</span></label>

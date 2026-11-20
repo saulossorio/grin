@@ -1,5 +1,5 @@
 {
-  "$description": "Alto contraste. Texto a 7:1 ou mais (WCAG AAA), bordas escuras, estados com a cor mais escura da escala sobre branco e foco de 3 px. Entra sozinho quando o sistema pede mais contraste.",
+  "$description": "Alto contraste no claro. Texto a 7:1 ou mais (WCAG AAA), bordas escuras, estados com a cor mais escura da escala sobre branco e foco de 3 px. Vale com data-contrast=\"more\" no tema claro, ou quando o sistema pede mais contraste e está no claro. A versão escura fica em high-contrast-dark.json.",
   "background": "{color.white}", "surface": "{color.white}", "popover": "{color.white}", "sidebar": "{color.white}",
   "muted": "{color.gray.2}", "accent": "{color.gray.4}",
   "foreground": "{color.black}", "muted-foreground": "{color.gray.12}", "sidebar-foreground": "{color.black}",

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundamentos · Grin</title>
 <meta name="description" content="Cor, tipografia, espaço, raio, sombra, movimento e ícones do Grin, com valores ao vivo.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -121,11 +121,12 @@
       <section class="docs-section" id="themes" aria-labelledby="t-themes">
         <header><h2 id="t-themes">Temas e densidade</h2></header>
         <div class="table-wrap"><table class="table docs-table">
-          <thead><tr><th scope="col">Tema</th><th scope="col">Atributo</th><th scope="col">Caráter</th><th scope="col">Contraste mínimo</th></tr></thead>
+          <thead><tr><th scope="col">Tema</th><th scope="col">Atributos</th><th scope="col">Caráter</th><th scope="col">Contraste mínimo</th></tr></thead>
           <tbody>
             <tr><td>Claro</td><td><code>data-theme="light"</code></td><td>Fundo branco, barra lateral em cinza 2, bordas finas.</td><td>Texto 4,5:1, interface 3:1</td></tr>
             <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td>Quase preto e neutro; cada elevação um passo mais clara.</td><td>Texto 4,5:1, interface 3:1</td></tr>
-            <tr><td>Alto contraste</td><td><code>data-theme="hc"</code></td><td>Preto sobre branco, bordas escuras, estados sem fundo colorido, foco de 3 px.</td><td>Texto 7:1</td></tr>
+            <tr><td>Alto contraste no claro</td><td><code>data-contrast="more"</code></td><td>Preto sobre branco, bordas escuras, estados sem fundo colorido, foco de 3 px.</td><td>Texto 7:1</td></tr>
+            <tr><td>Alto contraste no escuro</td><td><code>data-theme="dark" data-contrast="more"</code></td><td>Branco sobre preto, bordas claras, estados sem fundo colorido, foco de 3 px.</td><td>Texto 7:1</td></tr>
           </tbody></table></div>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Controles</th><th scope="col">Para</th></tr></thead>
@@ -135,7 +136,7 @@
           </tbody></table></div>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.1</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
@@ -154,7 +155,7 @@ const GROUPS = [
 ];
 const UI = new Set(['ring', 'input', 'chart-1', 'chart-2']);
 const TEXT = new Set(['foreground', 'muted-foreground', 'link']);
-const isHc = () => document.documentElement.dataset.theme === 'hc' || (!document.documentElement.dataset.theme && matchMedia('(prefers-contrast: more)').matches);
+const isHc = () => { const c = document.documentElement.dataset.contrast; return c ? c === 'more' : matchMedia('(prefers-contrast: more)').matches; };
 
 function drawSwatches() {
   const bg = token('background');

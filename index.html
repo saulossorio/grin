@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grin Design System</title>
 <meta name="description" content="Grin: design system com tokens, componentes, padrões de uso e regras de acessibilidade.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
@@ -24,7 +24,7 @@
     <main class="docs-main" id="content">
 
       <section class="home-hero" aria-labelledby="t-hero">
-        <span class="overline">Design system · versão 2.0</span>
+        <span class="overline">Design system · versão 2.1</span>
         <h1 class="home-title" id="t-hero"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>Grin</h1>
         <div class="home-facts"><span><b>16</b> componentes</span><span><b>54</b> tokens de cor</span><span><b>3</b> temas</span><span><b>2</b> densidades</span><span>Geist e Geist Mono</span></div>
         <div class="home-actions"><a class="btn primary lg" href="docs/getting-started.html"><i data-icon="play"></i>Começar</a><a class="btn lg" href="docs/components.html"><i data-icon="layout-grid"></i>Componentes</a><a class="btn lg ghost" href="examples/dashboard.html"><i data-icon="table"></i>Ver um exemplo</a></div>
@@ -85,7 +85,8 @@
           <div class="tile-body"><div class="tile-themes">
             <div data-theme="light">Claro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
             <div data-theme="dark">Escuro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
-            <div data-theme="hc">Contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="light" data-contrast="more">Claro, contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="dark" data-contrast="more">Escuro, contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
           </div></div>
         </a>
       </section>
@@ -99,7 +100,7 @@
 &lt;script type="module" src="scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.0</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
+      <footer class="docs-footer"><span>Grin 2.1</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
     </main>
   </div>
 </div>
