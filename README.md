@@ -78,7 +78,7 @@ design/figma-link.txt   link do Figma, quando existir
 | Para | Faça |
 |---|---|
 | Mudar uma cor, medida ou fonte | Edite o JSON em `tokens/`, rode `node tools/build-tokens.mjs` e `node tools/check-contrast.mjs` |
-| Criar um componente | Siga "Criar um componente" em `docs/components.html` |
+| Criar um componente | Siga "Novo componente" em `docs/components.html` |
 | Conferir antes de publicar | `node tools/check-contrast.mjs && node tools/check-markup.mjs` |
 
 Anote cada mudança em `CHANGELOG.md`.

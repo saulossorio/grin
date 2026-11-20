@@ -37,5 +37,5 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 ## Tarefas comuns
 
 - **Mudar uma cor:** escolha o passo certo da escala em `tokens/core/colors.json` (papéis dos passos na descrição do arquivo), mude o mapeamento em `tokens/semantic/colors.json` e nos dois temas em `tokens/themes/`, gere e confira o contraste.
-- **Novo componente:** siga "Criar um componente" em `docs/components.html`.
+- **Novo componente:** siga "Novo componente" em `docs/components.html`.
 - **Novo ícone:** acrescente o desenho (viewBox 24, traço 2, estilo Lucide) em `ICONS` de `scripts/utils.js`.

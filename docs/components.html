@@ -24,12 +24,12 @@
   <div class="app-main">
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
-      <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1><p class="lead">Cada componente vive em <code>components/&lt;nome&gt;/</code>, com um exemplo comentado em HTML, o CSS e, quando precisa, o JS. Abra "Ver código" para copiar.</p>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Seleção</a><a href="#badge">Selo e estado</a><a href="#chip">Chip de filtro</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Aviso</a><a href="#toast">Toast</a><a href="#card">Cartão e indicador</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Diálogo e gaveta</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#new">Criar um componente</a></nav>
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Seleção</a><a href="#badge">Selo e estado</a><a href="#chip">Chip de filtro</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Aviso</a><a href="#toast">Toast</a><a href="#card">Cartão e indicador</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Diálogo e gaveta</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
-        <header><h2 id="t-button">Botão</h2><p>A altura acompanha a densidade. Um primário por área. O botão destrutivo diz o que faz e com quantos itens.</p></header>
+        <header><h2 id="t-button">Botão</h2></header>
         <div class="demo" data-code><div class="demo-stage">
 <button type="button" class="btn primary">Salvar</button>
 <button type="button" class="btn">Cancelar</button>
@@ -43,11 +43,10 @@
 <button type="button" class="link">Ver detalhes</button>
         </div></div>
         <p class="class-list"><code>.btn</code> + <code>primary</code> · <code>danger</code> · <code>ghost</code> · <code>dashed</code> · <code>xs</code> · <code>lg</code> · <code>icon</code> · <code>.btn-group</code> · <code>.link</code> · <code>.spinner</code></p>
-        <div class="usage"><div class="do"><h4><i data-icon="check"></i>Use</h4><ul><li><code>&lt;button&gt;</code> para agir, <code>&lt;a class="btn"&gt;</code> para navegar.</li><li>Verbo que diz o resultado: "Cadastrar pessoa", "Exportar 120 linhas".</li><li><code>aria-label</code> em botão só de ícone.</li></ul></div><div class="dont"><h4><i data-icon="x"></i>Não use</h4><ul><li>Dois primários lado a lado.</li><li>"OK", "Sim" ou "Confirmar" num botão destrutivo.</li><li>Botão desabilitado sem dizer por quê; prefira explicar ao clicar.</li></ul></div></div>
       </section>
 
       <section class="docs-section" id="field" aria-labelledby="t-field">
-        <header><h2 id="t-field">Campo</h2><p>Rótulo sempre visível e ligado ao campo. Erro com <code>aria-invalid</code> e mensagem ligada por <code>aria-describedby</code>, no formato "o que aconteceu, por quê, o que fazer".</p></header>
+        <header><h2 id="t-field">Campo</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="field-grid">
   <div class="field">
@@ -73,11 +72,10 @@
 <div class="field-row"><label class="field-label" for="ex-row">Telefone</label><input class="input" id="ex-row" value="(11) 98765-4321"></div>
         </div></div>
         <p class="class-list"><code>.field</code> · <code>.field-label</code> · <code>.required</code> · <code>.field-hint</code> · <code>.field-message</code> (<code>.warn</code>) · <code>.field-grid</code> · <code>.field-row</code> · <code>.input</code> · <code>.select</code> · <code>.textarea</code> · <code>.search</code></p>
-        <div class="usage"><div class="do"><h4><i data-icon="check"></i>Use</h4><ul><li>Largura que sugere o tamanho da resposta: CEP curto, e-mail longo.</li><li>Validação ao sair do campo; no envio, foco no primeiro erro.</li><li><code>.field-row</code> (rótulo à esquerda) no detalhe dentro da gaveta.</li></ul></div><div class="dont"><h4><i data-icon="x"></i>Não use</h4><ul><li>Placeholder como rótulo.</li><li>Erro a cada tecla digitada.</li><li>"Campo inválido" sem dizer o que fazer.</li></ul></div></div>
       </section>
 
       <section class="docs-section" id="choice" aria-labelledby="t-choice">
-        <header><h2 id="t-choice">Seleção: caixa, opção com descrição e interruptor</h2><p>Caixa de seleção dentro de formulários. Opção com descrição quando a escolha precisa de explicação. Interruptor para ajustes que valem na hora, sem botão de salvar.</p></header>
+        <header><h2 id="t-choice">Seleção</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="choices">
   <label class="choice"><input type="radio" name="ex-merge" checked><span><span class="choice-title">Mesclar</span><span class="choice-description">Junta os dois registros e guarda o histórico.</span></span></label>
@@ -93,7 +91,7 @@
       </section>
 
       <section class="docs-section" id="badge" aria-labelledby="t-badge">
-        <header><h2 id="t-badge">Selo, contador e estado</h2><p>O texto diz o estado; a cor só reforça. Contador vermelho só para pendências que pedem ação. Os tons são os mesmos em todo o sistema: <code>crit</code>, <code>warn</code>, <code>info</code>, <code>ok</code>, <code>brand</code>.</p></header>
+        <header><h2 id="t-badge">Selo</h2></header>
         <div class="demo" data-code><div class="demo-stage">
 <span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span>
 <span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span>
@@ -110,7 +108,7 @@
       </section>
 
       <section class="docs-section" id="chip" aria-labelledby="t-chip">
-        <header><h2 id="t-chip">Chip de filtro</h2><p>Mostra um filtro ativo. Clicar no texto edita, no X tira. "Limpar filtros" aparece com dois ou mais.</p></header>
+        <header><h2 id="t-chip">Chip de filtro</h2></header>
         <div class="demo" data-code><div class="demo-stage">
 <div class="chip-group">
   <span class="chip"><button type="button" class="chip-label">Setor: Tecnologia, Saúde</button><button type="button" class="chip-remove" aria-label="Remover filtro Setor"><i data-icon="x"></i></button></span>
@@ -122,7 +120,7 @@
       </section>
 
       <section class="docs-section" id="segmented" aria-labelledby="t-segmented">
-        <header><h2 id="t-segmented">Controle segmentado</h2><p>Uma escolha entre 2 a 5 opções curtas, todas à vista. Com mais opções, use uma lista.</p></header>
+        <header><h2 id="t-segmented">Controle segmentado</h2></header>
         <div class="demo" data-code><div class="demo-stage">
 <div class="segmented" role="radiogroup" aria-label="Período">
   <label><input type="radio" name="ex-period" checked><span>2026</span></label>
@@ -134,7 +132,7 @@
       </section>
 
       <section class="docs-section" id="tabs" aria-labelledby="t-tabs">
-        <header><h2 id="t-tabs">Abas</h2><p>Visões diferentes do mesmo objeto. Setas do teclado trocam de aba (<code>tabs.js</code>).</p></header>
+        <header><h2 id="t-tabs">Abas</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="tabs" role="tablist" aria-label="Seções da pessoa">
   <button type="button" class="tab" role="tab" id="ex-tab-1" aria-selected="true" aria-controls="ex-panel-1">Dados</button>
@@ -149,7 +147,7 @@
       </section>
 
       <section class="docs-section" id="alert" aria-labelledby="t-alert">
-        <header><h2 id="t-alert">Aviso</h2><p>Fica na página, perto do que explica. <code>role="alert"</code> só para erros que travam a tarefa.</p></header>
+        <header><h2 id="t-alert">Aviso</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="alert" role="status"><i data-icon="info"></i><div class="alert-body">A planilha tem 1.284 linhas. As colunas foram reconhecidas pelo cabeçalho.</div></div>
 <div class="alert warn" role="status"><i data-icon="alert-triangle"></i><div class="alert-body"><span class="alert-title">14 linhas sem e-mail.</span> A pessoa entra no cadastro, mas não recebe convites. Complete o e-mail ou siga mesmo assim.</div></div>
@@ -161,7 +159,7 @@
       </section>
 
       <section class="docs-section" id="toast" aria-labelledby="t-toast">
-        <header><h2 id="t-toast">Toast</h2><p>Confirma o que já aconteceu e oferece desfazer. Some sozinho em 5 segundos. O que exige decisão vai num diálogo.</p></header>
+        <header><h2 id="t-toast">Toast</h2></header>
         <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="toast-demo">Excluir e mostrar o toast</button></div></div>
 <pre class="code-block"><code>import { toast } from './components/toast/toast.js';
 toast('3 pessoas excluídas.', { action: 'Desfazer', onAction: undo });
@@ -169,7 +167,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="card" aria-labelledby="t-card">
-        <header><h2 id="t-card">Cartão, indicador e filtro de gravidade</h2><p>Cartão quando o bloco é uma coisa própria; numa tela de dados, a maioria dos blocos não precisa de borda. Indicador só quando o número é o assunto.</p></header>
+        <header><h2 id="t-card">Cartão</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="stat-grid">
   <div class="stat"><span class="stat-label">Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+46 neste mês</span></div>
@@ -191,7 +189,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="table" aria-labelledby="t-table">
-        <header><h2 id="t-table">Tabela</h2><p>Cabeçalho fixo, números à direita em algarismos tabulares, linha marcada em verde-claro, célula com problema na cor do problema. O triângulo verde marca célula editada.</p></header>
+        <header><h2 id="t-table">Tabela</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="table-wrap">
   <table class="table">
@@ -210,7 +208,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="menu" aria-labelledby="t-menu">
-        <header><h2 id="t-menu">Menu</h2><p>Ações sobre um item, escolha de colunas, menu do usuário. A página posiciona o menu.</p></header>
+        <header><h2 id="t-menu">Menu</h2></header>
         <div class="demo" data-code><div class="demo-stage dotted">
 <div class="menu" role="menu" aria-label="Ações da linha">
   <div class="menu-header">Ana Lima</div>
@@ -225,7 +223,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="dialog" aria-labelledby="t-dialog">
-        <header><h2 id="t-dialog">Diálogo e gaveta</h2><p>Diálogo para decidir algo curto. Gaveta para ver e editar um registro sem perder a lista. Os dois usam <code>&lt;dialog&gt;</code>, que prende o foco e fecha com Esc (<code>dialog.js</code>).</p></header>
+        <header><h2 id="t-dialog">Diálogo e gaveta</h2></header>
         <div class="demo" data-code><div class="demo-stage">
 <button type="button" class="btn danger" data-open="ex-dialog">Excluir 3 pessoas</button>
 <button type="button" class="btn" data-open="ex-drawer">Abrir registro</button>
@@ -248,11 +246,10 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </dialog>
         </div></div>
         <p class="class-list"><code>dialog.dialog</code> · <code>.dialog-header</code> · <code>.dialog-body</code> · <code>.dialog-footer</code> · <code>dialog.drawer</code> · <code>.drawer-header</code> · <code>.drawer-heading</code> · <code>.drawer-body</code> · <code>.drawer-footer</code> · <code>[data-open]</code> · <code>[data-close]</code></p>
-        <div class="usage"><div class="do"><h4><i data-icon="check"></i>Use</h4><ul><li>O número no título e no botão: "Excluir 3 pessoas?".</li><li>Foco inicial em "Cancelar" (<code>autofocus</code>).</li></ul></div><div class="dont"><h4><i data-icon="x"></i>Não use</h4><ul><li>Diálogo para ação que dá para desfazer: faça e mostre um toast.</li><li>Formulário longo em diálogo: use a gaveta.</li></ul></div></div>
       </section>
 
       <section class="docs-section" id="empty" aria-labelledby="t-empty">
-        <header><h2 id="t-empty">Estado vazio e carregamento</h2><p>O vazio diz o que vai aparecer e o próximo passo. O carregamento diz o que está acontecendo.</p></header>
+        <header><h2 id="t-empty">Estado vazio</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="empty-state">
   <span class="empty-state-icon"><i data-icon="search"></i></span>
@@ -266,7 +263,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="shell" aria-labelledby="t-shell">
-        <header><h2 id="t-shell">Navegação e casca do app</h2><p>Barra lateral de 240 px que recolhe para 56 px só com ícones; no celular vira uma faixa no topo. O item atual usa <code>aria-current="page"</code>. A estrutura completa está em <code>components/sidebar/sidebar.html</code> e no <a href="../examples/dashboard.html">exemplo de lista</a>.</p></header>
+        <header><h2 id="t-shell">Navegação</h2></header>
         <div class="demo" data-code><div class="demo-stage tinted" style="align-items:stretch">
 <nav class="sidebar" aria-label="Exemplo de navegação" style="position:static;height:auto">
   <a class="app-logo" href="#shell"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
@@ -285,13 +282,12 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="new" aria-labelledby="t-new">
-        <header><h2 id="t-new">Criar um componente</h2></header>
+        <header><h2 id="t-new">Novo componente</h2></header>
         <ol class="docs-list">
-          <li>Crie <code>components/&lt;nome&gt;/</code> com <code>&lt;nome&gt;.html</code> (exemplo comentado: quando usar e regras de acessibilidade), <code>&lt;nome&gt;.css</code> e, se precisar, <code>&lt;nome&gt;.js</code>.</li>
-          <li>Nomes: o bloco tem um nome, as partes usam hífen (<code>.card-header</code>), as variações são uma classe a mais (<code>.btn.primary</code>), os tons são <code>crit</code>, <code>warn</code>, <code>info</code>, <code>ok</code>, <code>brand</code>, e estados vêm de atributos ARIA.</li>
-          <li>No CSS, só tokens semânticos. Se faltar uma cor, crie o token em <code>tokens/semantic/colors.json</code> e nos dois temas, depois rode <code>node tools/build-tokens.mjs</code> e <code>node tools/check-contrast.mjs</code>.</li>
-          <li>Acrescente o <code>@import</code> em <code>styles/components.css</code>.</li>
-          <li>Ponha uma seção nesta página, com exemplo ao vivo, lista de classes e quando usar.</li>
+          <li><code>components/&lt;nome&gt;/</code> com <code>.html</code>, <code>.css</code> e, se precisar, <code>.js</code>.</li>
+          <li>Só tokens semânticos no CSS.</li>
+          <li><code>@import</code> em <code>styles/components.css</code>.</li>
+          <li>Seção nesta página com exemplo e classes.</li>
         </ol>
       </section>
 

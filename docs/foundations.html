@@ -22,12 +22,12 @@
   <div class="app-main">
     <header class="topbar" data-docs-top data-title="Fundamentos"></header>
     <main class="docs-main" id="content">
-      <section class="docs-hero"><span class="overline">Guia</span><h1>Fundamentos</h1><p class="lead">Os valores de base do Grin. Tudo nesta página é lido dos tokens ao vivo: troque o tema no topo e as amostras e os contrastes se recalculam.</p>
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Fundamentos</h1>
         <nav class="docs-toc" aria-label="Nesta página"><a href="#tokens">Camadas de tokens</a><a href="#color">Cor</a><a href="#brand">Cor da marca</a><a href="#scales">Escalas</a><a href="#type">Tipografia</a><a href="#space">Espaço</a><a href="#radius">Raio e sombra</a><a href="#motion">Movimento</a><a href="#icons">Ícones</a><a href="#themes">Temas e densidade</a></nav>
       </section>
 
       <section class="docs-section" id="tokens" aria-labelledby="t-tokens">
-        <header><h2 id="t-tokens">Três camadas de tokens</h2><p>Os JSON em <code>tokens/</code> são a fonte de verdade. <code>styles/variables.css</code> é gerado a partir deles.</p></header>
+        <header><h2 id="t-tokens">Três camadas de tokens</h2></header>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Camada</th><th scope="col">Arquivo</th><th scope="col">O que guarda</th><th scope="col">Quem usa</th></tr></thead>
           <tbody>
@@ -43,12 +43,12 @@
       </section>
 
       <section class="docs-section" id="color" aria-labelledby="t-color">
-        <header><h2 id="t-color">Cor</h2><p>Tokens semânticos, agrupados por papel. Os pares de texto mostram o contraste medido no tema atual.</p></header>
+        <header><h2 id="t-color">Cor</h2></header>
         <div id="swatches" class="stack" style="gap:28px"></div>
       </section>
 
       <section class="docs-section" id="brand" aria-labelledby="t-brand">
-        <header><h2 id="t-brand">A cor da marca</h2><p>O verde do Grin é <code>#8dc63f</code>. Sobre branco ele dá 2,04:1, abaixo dos 3:1 que um elemento de interface pede e dos 4,5:1 do texto. Por isso ele aparece de três jeitos.</p></header>
+        <header><h2 id="t-brand">A cor da marca</h2></header>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Uso</th><th scope="col">Token</th><th scope="col">Passo da escala</th></tr></thead>
           <tbody>
@@ -56,14 +56,10 @@
             <tr><td>Texto, link, ícone de item atual e foco</td><td><code>--link</code>, <code>--brand-fg</code>, <code>--ring</code></td><td>green 11 no claro; no escuro, green-dark 11 e 9</td></tr>
             <tr><td>Fundos discretos de seleção</td><td><code>--brand-bg</code>, <code>--sidebar-active</code>, <code>--row-selected</code></td><td>green 2 e 3</td></tr>
           </tbody></table></div>
-        <div class="usage">
-          <div class="do"><h4><i data-icon="check"></i>Faça</h4><p>Use o verde em áreas pequenas: botão primário, item atual da navegação, chip de filtro, foco, célula editada, a faixa de 3 px no topo.</p></div>
-          <div class="dont"><h4><i data-icon="x"></i>Não faça</h4><p>Não pinte fundos, cabeçalhos ou cartões inteiros de verde, e não use verde para dizer "deu certo": sucesso é azul petróleo (<code>--ok-fg</code>).</p></div>
-        </div>
       </section>
 
       <section class="docs-section" id="scales" aria-labelledby="t-scales">
-        <header><h2 id="t-scales">Escalas</h2><p>Cada cor tem 12 passos, gerados em OKLCH para que a mesma posição tenha o mesmo peso visual em todas as cores. Os passos têm papéis fixos.</p></header>
+        <header><h2 id="t-scales">Escalas</h2></header>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Passos</th><th scope="col">Papel</th></tr></thead>
           <tbody>
@@ -78,7 +74,7 @@
       </section>
 
       <section class="docs-section" id="type" aria-labelledby="t-type">
-        <header><h2 id="t-type">Tipografia</h2><p>Geist para toda a interface e Geist Mono para códigos e identificadores. Números de tabela e indicadores usam algarismos tabulares, que alinham na coluna. Texto corrido tem 16 px; abaixo disso, só texto de interface.</p></header>
+        <header><h2 id="t-type">Tipografia</h2></header>
         <div id="type-scale"></div>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Peso</th><th scope="col">Uso</th></tr></thead>
@@ -90,12 +86,12 @@
       </section>
 
       <section class="docs-section" id="space" aria-labelledby="t-space">
-        <header><h2 id="t-space">Espaço</h2><p>Base de 4 px, com meios passos (2, 6, 10, 14) para ajustes finos dentro de componentes. Entre blocos irmãos, use <code>gap</code> e não margens.</p></header>
+        <header><h2 id="t-space">Espaço</h2></header>
         <div id="space-scale"></div>
       </section>
 
       <section class="docs-section" id="radius" aria-labelledby="t-radius">
-        <header><h2 id="t-radius">Raio e sombra</h2><p>Quatro raios: 4 px para peças pequenas, 6 px para controles, 8 px para avisos e menus e 12 px para cartões, tabelas e diálogos. A sombra marca elevação, não decoração: quanto mais alto o objeto, maior a sombra.</p></header>
+        <header><h2 id="t-radius">Raio e sombra</h2></header>
         <div class="row" style="gap:24px" id="radius-scale"></div>
         <div class="docs-grid">
           <div class="shadow-box" style="box-shadow:var(--shadow-xs)">shadow-xs · botões</div>
@@ -106,12 +102,12 @@
       </section>
 
       <section class="docs-section" id="motion" aria-labelledby="t-motion">
-        <header><h2 id="t-motion">Movimento</h2><p>Curto e só como resposta a uma ação. <code>--dur-fast</code> 120 ms para hover e cor, <code>--dur</code> 160 ms para menus, toasts e diálogos, <code>--dur-slow</code> 220 ms para a gaveta. A curva <code>--ease</code> começa rápida e assenta.</p></header>
+        <header><h2 id="t-motion">Movimento</h2></header>
         <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="motion-demo">Salvar linha</button><span id="motion-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@nortesul.com.br</span></div></div>
       </section>
 
       <section class="docs-section" id="icons" aria-labelledby="t-icons">
-        <header><h2 id="t-icons">Ícones</h2><p>Traço de 2 px e cantos arredondados, no desenho do Lucide. 16 px em botões e menus, 14 px em botões pequenos e mensagens, 12 px em selos. São decorativos (<code>aria-hidden</code>): o significado vem do texto ao lado. Uso: <code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code>.</p></header>
+        <header><h2 id="t-icons">Ícones</h2></header>
         <div class="icon-grid" id="icon-grid"></div>
       </section>
 

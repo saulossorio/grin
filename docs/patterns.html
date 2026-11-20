@@ -22,50 +22,48 @@
   <div class="app-main">
     <header class="topbar" data-docs-top data-title="Padrões"></header>
     <main class="docs-main" id="content">
-      <section class="docs-hero"><span class="overline">Guia</span><h1>Padrões</h1><p class="lead">Como os componentes trabalham juntos nas situações que mais se repetem.</p>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#screen">Estrutura de tela</a><a href="#filters">Filtros e busca</a><a href="#forms">Formulários</a><a href="#messages">Mensagens de erro</a><a href="#confirm">Confirmar ou desfazer</a><a href="#states">Estados de tela</a><a href="#numbers">Números e datas</a><a href="#charts">Gráficos</a><a href="#writing">Escrita</a></nav>
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Padrões</h1>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#screen">Tela</a><a href="#filters">Filtros</a><a href="#forms">Formulários</a><a href="#messages">Erros</a><a href="#confirm">Confirmar</a><a href="#states">Estados</a><a href="#numbers">Números</a><a href="#charts">Gráficos</a><a href="#writing">Escrita</a></nav>
       </section>
       <section class="docs-section" id="screen" aria-labelledby="t-screen">
-        <header><h2 id="t-screen">Estrutura de tela</h2><p>Faixa da marca, barra lateral, barra superior de 56 px e a área principal. Veja o <a href="../examples/dashboard.html">exemplo de lista</a>.</p></header>
-        <ol class="docs-list"><li><b>Título e contagem:</b> "Pessoas" e, ao lado, "1.284" em texto secundário.</li><li><b>Ações da página</b> à direita do título; o primário por último.</li><li><b>Indicadores</b>, só se os números forem o assunto da tela.</li><li><b>Barra de ferramentas:</b> busca, filtros, colunas; à direita, a densidade.</li><li><b>Chips</b> dos filtros ativos, logo abaixo.</li><li><b>Conteúdo:</b> tabela ou painéis.</li><li><b>Rodapé:</b> paginação e, com linhas marcadas, a barra de ações em massa.</li></ol>
+        <header><h2 id="t-screen">Tela</h2></header>
+        <ol class="docs-list"><li>Título e contagem</li><li>Ações da página, primário por último</li><li>Indicadores, se forem o assunto</li><li>Busca, filtros, colunas</li><li>Chips dos filtros ativos</li><li>Conteúdo</li><li>Paginação e ações em massa</li></ol>
       </section>
       <section class="docs-section" id="filters" aria-labelledby="t-filters">
-        <header><h2 id="t-filters">Filtros e busca</h2></header>
-        <ul class="docs-list"><li>A busca da lista filtra enquanto a pessoa digita e destaca o termo com <code>&lt;mark&gt;</code>.</li><li>Cada filtro ativo vira um chip; clicar no texto edita, no X tira. "Limpar filtros" aparece com dois ou mais.</li><li>Com filtro e sem resultado, o estado vazio diz isso e oferece "Limpar filtros".</li><li>O título da página mostra o total filtrado: "12 de 1.284 pessoas".</li></ul>
+        <header><h2 id="t-filters">Filtros</h2></header>
+        <ul class="docs-list"><li>Busca filtra ao digitar e destaca com <code>&lt;mark&gt;</code>.</li><li>Cada filtro ativo é um chip.</li><li>"Limpar filtros" a partir de dois.</li><li>Sem resultado: estado vazio com "Limpar filtros".</li></ul>
       </section>
       <section class="docs-section" id="forms" aria-labelledby="t-forms">
-        <header><h2 id="t-forms">Formulários</h2><p>Veja o <a href="../examples/form.html">exemplo de formulário</a>.</p></header>
-        <ul class="docs-list"><li>Rótulo em cima do campo nos cadastros; à esquerda (<code>.field-row</code>) no detalhe dentro da gaveta.</li><li>Agrupe em seções com título curto; uma coluna, ou duas para pares naturais (nome e sobrenome, CEP e cidade).</li><li>A largura do campo sugere o tamanho da resposta.</li><li>Valide ao sair do campo. No envio, mostre um resumo no topo e leve o foco ao primeiro erro.</li><li>Obrigatório leva asterisco e <code>required</code>; não marque o opcional.</li><li>O botão primário diz o que acontece: "Cadastrar pessoa", não "OK".</li></ul>
+        <header><h2 id="t-forms">Formulários</h2></header>
+        <ul class="docs-list"><li>Rótulo em cima; à esquerda (<code>.field-row</code>) na gaveta.</li><li>Valida ao sair do campo; no envio, resumo e foco no primeiro erro.</li><li>Obrigatório com asterisco.</li><li>Botão primário com verbo e objeto.</li></ul>
       </section>
       <section class="docs-section" id="messages" aria-labelledby="t-messages">
-        <header><h2 id="t-messages">Mensagens de erro</h2><p>O que aconteceu, por quê, o que fazer. Quando o erro é do sistema, um código para o suporte.</p></header>
-        <div class="table-wrap"><table class="table docs-table"><thead><tr><th scope="col">Situação</th><th scope="col">Mensagem</th></tr></thead><tbody>
-          <tr><td>Campo obrigatório vazio</td><td>"Informe o nome da pessoa."</td></tr>
-          <tr><td>Domínio pessoal</td><td>"Use o e-mail corporativo. gmail.com é um provedor pessoal."</td></tr>
-          <tr><td>Formato</td><td>"O CNPJ tem um dígito errado. Confira os dois últimos números."</td></tr>
-          <tr><td>Erro do sistema</td><td>"Não foi possível salvar agora. Seus dados continuam no formulário. Tente de novo em instantes. Código: ERR-7F3A"</td></tr>
+        <header><h2 id="t-messages">Erros</h2></header>
+        <div class="table-wrap"><table class="table docs-table"><thead><tr><th scope="col">Caso</th><th scope="col">Mensagem</th></tr></thead><tbody>
+          <tr><td>Obrigatório</td><td>"Informe o nome da pessoa."</td></tr>
+          <tr><td>Formato</td><td>"Use o e-mail corporativo. gmail.com é um provedor pessoal."</td></tr>
+          <tr><td>Sistema</td><td>"Não foi possível salvar agora. Seus dados continuam no formulário. Tente de novo em instantes. Código: ERR-7F3A"</td></tr>
         </tbody></table></div>
-        <div class="usage"><div class="do"><h4><i data-icon="check"></i>Faça</h4><p>Escreva como uma pessoa falaria, sem culpar quem usa e sem pedir desculpas.</p></div><div class="dont"><h4><i data-icon="x"></i>Não faça</h4><p>“Erro 500”, “Dados inválidos”, “Ops! Algo deu errado”.</p></div></div>
       </section>
       <section class="docs-section" id="confirm" aria-labelledby="t-confirm">
         <header><h2 id="t-confirm">Confirmar ou desfazer</h2></header>
-        <ul class="docs-list"><li><b>Dá para desfazer:</b> faça na hora e mostre um toast com "Desfazer".</li><li><b>Não dá para desfazer, ou afeta muitos registros:</b> diálogo com o número no título e no botão ("Excluir 3 pessoas?" e "Excluir 3 pessoas").</li><li>O botão destrutivo é <code>.btn.danger</code>, fica à direita, e o foco começa em "Cancelar".</li></ul>
+        <ul class="docs-list"><li>Reversível: faz na hora e mostra toast com "Desfazer".</li><li>Irreversível ou em massa: diálogo com o número no título e no botão.</li></ul>
       </section>
       <section class="docs-section" id="states" aria-labelledby="t-states">
-        <header><h2 id="t-states">Estados de tela</h2></header>
-        <ul class="docs-list"><li><b>Vazio de verdade:</b> diga o que vai aparecer e dê o primeiro passo ("Importe uma planilha").</li><li><b>Vazio por filtro:</b> ofereça limpar os filtros.</li><li><b>Carregando:</b> até 1 segundo, nada; depois, diga o que está acontecendo e o progresso ("Lendo a planilha: 640 de 1.284 linhas").</li><li><b>Erro:</b> aviso crítico no topo da área afetada, com a ação para tentar de novo.</li><li><b>Salvo:</b> "Salvo agora" com ponto na barra superior; nada de toast para cada gravação automática.</li></ul>
+        <header><h2 id="t-states">Estados</h2></header>
+        <ul class="docs-list"><li>Vazio: o que vai aparecer e o primeiro passo.</li><li>Vazio por filtro: "Limpar filtros".</li><li>Carregando (mais de 1 s): o que está acontecendo e o progresso.</li><li>Erro: aviso crítico com "Tentar de novo".</li></ul>
       </section>
       <section class="docs-section" id="numbers" aria-labelledby="t-numbers">
         <header><h2 id="t-numbers">Números e datas</h2></header>
-        <ul class="docs-list"><li>Formato brasileiro: <span class="tabular">1.284</span>, <span class="tabular">7,9%</span>, <span class="tabular">R$ 412 mi</span>, 19/11/2026.</li><li>Em tabelas e indicadores, algarismos tabulares (<code>.tabular</code>, já ligados em <code>.table</code> e <code>.stat-value</code>) e números à direita (<code>.numeric</code>).</li><li>Datas recentes por extenso relativo ("há 5 min", "ontem"), com a data completa no <code>title</code>.</li></ul>
+        <ul class="docs-list"><li><span class="tabular">1.284 · 7,9% · R$ 412 mi · 19/11/2026</span></li><li>Tabelas e indicadores: <code>.tabular</code> e <code>.numeric</code>.</li></ul>
       </section>
       <section class="docs-section" id="charts" aria-labelledby="t-charts">
         <header><h2 id="t-charts">Gráficos</h2></header>
-        <ul class="docs-list"><li>Série principal em <code>--chart-1</code>, comparação em <code>--chart-2</code>, faixa de intervalo em <code>--chart-band</code>, grade em <code>--chart-grid</code>.</li><li>Sempre com rótulo ou legenda: a cor sozinha não identifica a série.</li><li>Texto do gráfico com os tokens de texto, para funcionar nos três temas.</li><li>Grade discreta, eixo começando em zero para barras, ponto final destacado em linhas.</li></ul>
+        <ul class="docs-list"><li><code>--chart-1</code> principal, <code>--chart-2</code> comparação, <code>--chart-band</code> intervalo, <code>--chart-grid</code> grade.</li><li>Sempre com rótulo.</li></ul>
       </section>
       <section class="docs-section" id="writing" aria-labelledby="t-writing">
         <header><h2 id="t-writing">Escrita</h2></header>
-        <ul class="docs-list"><li>Nomes que a pessoa reconhece: "avisos", não "notificações push"; "pessoas", não "registros".</li><li>Botões com verbo e objeto: "Exportar 120 linhas".</li><li>Frases curtas, voz ativa, sem jargão técnico, sem pontos de exclamação.</li><li>Maiúscula só no início da frase, também em títulos e botões.</li></ul>
+        <ul class="docs-list"><li>Frases curtas, voz ativa, sem exclamação.</li><li>Maiúscula só no início.</li></ul>
       </section>
       <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
