@@ -23,6 +23,7 @@
 </style>
 <script type="module" src="../components/dialog/dialog.js"></script>
 <script type="module" src="../components/tabs/tabs.js"></script>
+<script type="module" src="../components/sidebar/sidebar.js"></script>
 </head>
 <body>
 <div class="app">
@@ -39,7 +40,7 @@
       <div>
         <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
         <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
-        <button type="button" class="nav-item small" id="collapse" aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
+        <button type="button" class="nav-item small" data-sidebar-toggle aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
       </div>
       <a class="account" href="#"><span class="avatar ok">MC</span><div><b>Marina Costa</b><small>marina@nortesul.com.br</small></div></a>
     </div>
@@ -200,11 +201,6 @@ document.getElementById('confirm').addEventListener('click', () => {
   const before = people.slice(); const n = selected.size;
   people = people.filter((_, i) => !selected.has(i)); selected.clear(); render();
   toast(n === 1 ? '1 pessoa excluída.' : `${n} pessoas excluídas.`, { action: 'Desfazer', onAction: () => { people = before; render(); } });
-});
-document.getElementById('collapse').addEventListener('click', (e) => {
-  const collapsed = document.getElementById('sidebar').classList.toggle('collapsed');
-  e.currentTarget.setAttribute('aria-expanded', String(!collapsed));
-  e.currentTarget.querySelector('.label').textContent = collapsed ? 'Expandir barra' : 'Recolher barra';
 });
 render();
 paintIcons();

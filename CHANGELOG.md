@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.7 · 20/11/2026
+- Barra lateral recolhível como comportamento do componente (`components/sidebar/sidebar.js`): botão redondo na borda (ou qualquer `[data-sidebar-toggle]`), largura animada, escolha guardada em `grin-sidebar`, nome de cada item como tooltip quando recolhida, títulos de grupo viram uma linha. Abaixo de 1100 px se recolhe sozinha se a pessoa não escolheu; no celular nunca fica só com ícones.
+- Em 1024 px, com a barra recolhida, a tabela do exemplo de lista cabe inteira.
+- Vale na documentação e nos exemplos (lista, formulário, tutorial).
+
 ## 2.6 · 20/11/2026
 Revisão de todas as páginas em 390, 768, 1024, 1200, 1440, 1920 e 2560 px.
 - Telas grandes: o conteúdo do app cresce até 1440 px (`--size-content`, era 1120) e depois fica centralizado; páginas de leitura param em 1120 px, também centralizadas. Antes ficava tudo encostado à esquerda.

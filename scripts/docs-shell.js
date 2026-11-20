@@ -5,6 +5,7 @@ import { icon, paintIcons } from './utils.js';
 import { sync } from './theme.js';
 import '../components/popover/popover.js';
 import '../components/slider/slider.js';
+import { initSidebar } from '../components/sidebar/sidebar.js';
 
 const PAGES = [
   { heading: null, items: [['index', 'index.html', 'Início', 'book'], ['start', 'docs/getting-started.html', 'Começar', 'play']] },
@@ -23,7 +24,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.6';
+export const VERSION = '2.7';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -185,5 +186,6 @@ function init() {
   const top = document.querySelector('[data-docs-top]'); if (top) buildTop(top);
   paintIcons();
   sync();
+  initSidebar();
 }
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();
