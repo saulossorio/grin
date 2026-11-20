@@ -1,5 +1,13 @@
 # Mudanças
 
+## 2.6 · 20/11/2026
+Revisão de todas as páginas em 390, 768, 1024, 1200, 1440, 1920 e 2560 px.
+- Telas grandes: o conteúdo do app cresce até 1440 px (`--size-content`, era 1120) e depois fica centralizado; páginas de leitura param em 1120 px, também centralizadas. Antes ficava tudo encostado à esquerda.
+- Quatro indicadores nunca ficam 3 + 1: uma linha de quatro, ou duas de dois abaixo de 1100 px.
+- Página inicial entre 960 e 1100 px: dois blocos por linha.
+- Celular: tabelas da documentação viram blocos empilhados (nada cortado); a tabela do bloco da página inicial mostra só nome e situação; o topo do exemplo de apresentação cabe em 375 px.
+- Exemplo de apresentação usava `.steps` próprio, que agora colide com o stepper do Grin: renomeado para `.how`.
+
 ## 2.5 · 20/11/2026
 - Novo componente: slider (`input.slider[type=range]`, `slider.js`), com valor ao lado, pontas "A" pequena e grande e marcas por passo. Total: 25 componentes.
 - Menu Aparência: o tamanho da fonte agora é um slider (100%, 112,5%, 125%) que aplica enquanto arrasta.

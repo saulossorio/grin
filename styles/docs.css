@@ -1,6 +1,6 @@
 /* Grin: styles for the documentation pages only (index.html, docs/, examples/). Not part of the components. */
 
-.docs-main { flex: 1 1 auto; min-width: 0; width: 100%; max-width: 1120px; display: flex; flex-direction: column; gap: 64px; padding: 40px 40px 72px; }
+.docs-main { flex: 1 1 auto; min-width: 0; width: 100%; max-width: 1120px; margin-inline: auto; display: flex; flex-direction: column; gap: 64px; padding: 40px 40px 72px; }
 .docs-crumb { font-size: var(--text-sm); color: var(--muted-foreground); }
 /* Top bar: search and the appearance menu (theme, contrast, density, font size) */
 .docs-search-button { display: inline-flex; align-items: center; gap: 10px; width: min(320px, 40vw); height: 40px; padding: 0 8px 0 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--sidebar); color: var(--muted-foreground); font-size: var(--text-sm); text-align: left; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
@@ -113,6 +113,15 @@
 .docs-table td, .docs-table th { height: auto; padding-top: 10px; padding-bottom: 10px; white-space: normal; vertical-align: top; line-height: var(--leading-ui); }
 .docs-table th { position: static; }
 .docs-table td { color: var(--foreground); }
+.docs-table td code { overflow-wrap: anywhere; }
+@media (max-width: 640px) {
+  .docs-table thead { display: none; }
+  .docs-table, .docs-table tbody, .docs-table tr, .docs-table td { display: block; }
+  .docs-table tr { padding: 12px 16px; border-bottom: 1px solid var(--border-soft); }
+  .docs-table tr:last-child { border-bottom: 0; }
+  .docs-table td { height: auto; padding: 2px 0 !important; border: 0; }
+  .docs-table td:first-child { font-weight: var(--weight-semibold); }
+}
 
 .docs-footer { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: var(--text-sm); }
 

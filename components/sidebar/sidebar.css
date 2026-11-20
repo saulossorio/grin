@@ -49,8 +49,8 @@
 .page-description { margin-top: 6px; color: var(--muted-foreground); font-size: var(--text-lg); }
 .toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .page-content { display: flex; flex-direction: column; gap: 28px; min-width: 0; padding: 28px 32px 64px; }
-/* Wider than the reference screen (1200 px): content stops growing and stays left-aligned */
-.page-header, .page-content { width: 100%; max-width: calc(var(--size-content) + 64px); }
+/* Wider than the reference screen (1200 px): content grows up to --size-content, then stays centered */
+.page-header, .page-content { width: 100%; max-width: calc(var(--size-content) + 64px); margin-inline: auto; }
 
 @media (max-width: 760px) {
   .app { flex-direction: column; }

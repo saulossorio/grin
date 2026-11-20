@@ -122,8 +122,8 @@
       "$description": "Largura de tela de referência: tudo é desenhado e conferido primeiro nesta largura."
     },
     "content": {
-      "$value": "1120px",
-      "$description": "Largura máxima da área de conteúdo em telas maiores que a de referência."
+      "$value": "1440px",
+      "$description": "Largura máxima do conteúdo das telas do app. Cresce com a tela até aqui e depois fica centralizado. Texto de documentação para em 1120 px."
     },
     "prose": {
       "$value": "72ch",
