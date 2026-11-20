@@ -1,6 +1,6 @@
 /* Grin alert: a message inside the page, next to what it explains. Tones: info (default), warn, crit, ok, neutral.
    Message format: what happened, why, what to do. */
-.alert { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); border: 1px solid var(--info-border); background: var(--info-bg); color: var(--foreground); font-size: var(--text-md); line-height: var(--leading-ui); }
+.alert { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); border: 1px solid var(--info-border); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }
 .alert > svg { width: 16px; height: 16px; margin-top: 1px; color: var(--info-fg); }
 .alert-body { flex: 1 1 auto; min-width: 0; }
 .alert-title { font-weight: var(--weight-semibold); }

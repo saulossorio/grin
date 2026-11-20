@@ -1,5 +1,5 @@
 /* Grin switch: an on/off setting that takes effect immediately. Built on a checkbox with role="switch". */
-.switch { display: inline-flex; align-items: center; gap: 10px; min-height: var(--size-target-min); font-size: var(--text-base); cursor: pointer; }
+.switch { display: inline-flex; align-items: center; gap: 10px; min-height: var(--size-target-min); font-size: var(--text-sm); cursor: pointer; }
 .switch input {
   appearance: none; -webkit-appearance: none; position: relative; width: 32px; height: 18px; margin: 0; flex-shrink: 0; cursor: pointer;
   border-radius: var(--radius-pill); background: var(--input); transition: background-color var(--dur-fast);

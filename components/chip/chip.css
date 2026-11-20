@@ -1,6 +1,6 @@
 /* Grin filter chip: shows an active filter. Clicking the text edits it, the X removes it. */
 .chip-group { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
-.chip { display: inline-flex; align-items: center; height: 28px; max-width: 420px; border-radius: var(--radius-pill); background: var(--brand-bg); border: 1px solid var(--brand-border); color: var(--brand-fg); font-size: var(--text-md); font-weight: var(--weight-medium); }
+.chip { display: inline-flex; align-items: center; height: 28px; max-width: 420px; border-radius: var(--radius-pill); background: var(--brand-bg); border: 1px solid var(--brand-border); color: var(--brand-fg); font-size: var(--text-sm); font-weight: var(--weight-medium); }
 .chip-label { height: 26px; padding: 0 4px 0 11px; border: 0; background: transparent; color: inherit; font-weight: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; border-radius: var(--radius-pill); }
 .chip-remove { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; margin-right: 2px; padding: 0; border: 0; border-radius: var(--radius-pill); background: transparent; color: inherit; flex-shrink: 0; }
 .chip-remove:hover { background: var(--hover); }

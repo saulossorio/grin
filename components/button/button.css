@@ -17,9 +17,9 @@
 .btn.ghost { background: transparent; border-color: transparent; box-shadow: none; color: var(--muted-foreground); }
 .btn.ghost:hover { background: var(--accent); color: var(--foreground); }
 .btn.dashed { border-style: dashed; box-shadow: none; }
-.btn.xs { height: var(--size-control-xs); padding: 0 8px; gap: 4px; font-size: var(--text-sm); }
+.btn.xs { height: var(--size-control-xs); padding: 0 8px; gap: 4px; font-size: var(--text-xs); }
 .btn.xs svg { width: 14px; height: 14px; }
-.btn.lg { height: calc(var(--control-h) + 6px); padding: 0 16px; font-size: var(--text-base); }
+.btn.lg { height: calc(var(--control-h) + 6px); padding: 0 16px; font-size: var(--text-sm); }
 .btn.icon { width: var(--control-h); padding: 0; }
 .btn.icon.xs { width: var(--size-control-xs); }
 .btn .count-inline { font-variant-numeric: tabular-nums; color: var(--muted-foreground); }

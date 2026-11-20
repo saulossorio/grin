@@ -35,7 +35,7 @@ const fixed = [
   ...leaves(core.font['line-height'], '--leading'),
   ['--dur-fast', core.motion.duration.fast.$value], ['--dur', core.motion.duration.base.$value], ['--dur-slow', core.motion.duration.slow.$value],
   ['--ease', core.motion.easing.out.$value], ['--ease-in-out', core.motion.easing['in-out'].$value],
-  ['--control-h', 'var(--size-control-compact)'], ['--control-text', 'var(--text-md)'],
+  ['--control-h', 'var(--size-control-compact)'], ['--control-text', 'var(--text-sm)'],
 ].map(([k, v]) => `  ${k}: ${v};`).join('\n');
 
 const css = `/* Grin: variáveis geradas por tools/build-tokens.mjs a partir de tokens/. Não edite à mão. */
@@ -47,9 +47,9 @@ ${fixed}
 ${block()}
 }
 
-/* Densidade. Vale na raiz ou numa seção (data-density em qualquer elemento) */
-:root[data-density="comfortable"], [data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: 0.9375rem; }
-[data-density="compact"] { --control-h: var(--size-control-compact); --control-text: var(--text-md); }
+/* Densidade. Vale na raiz ou numa seção (data-density em qualquer elemento). Compacta: 32 px e texto de 14 px; confortável: 40 px e 16 px */
+:root[data-density="comfortable"], [data-density="comfortable"] { --control-h: var(--size-control-comfortable); --control-text: var(--text-base); }
+[data-density="compact"] { --control-h: var(--size-control-compact); --control-text: var(--text-sm); }
 
 /* Tema claro numa seção, dentro de uma página escura */
 [data-theme="light"]:not(:root) {

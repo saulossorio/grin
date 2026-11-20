@@ -2,6 +2,6 @@
 .empty-state { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 48px 24px; text-align: center; border: 1px dashed var(--border-strong); border-radius: var(--radius-lg); background: var(--surface); }
 .empty-state-icon { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin-bottom: 4px; border-radius: var(--radius-md); background: var(--muted); color: var(--muted-foreground); }
 .empty-state-icon svg { width: 20px; height: 20px; }
-.empty-state h3 { font-size: var(--text-body); }
-.empty-state p { max-width: 44ch; color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
+.empty-state h3 { font-size: var(--text-base); }
+.empty-state p { max-width: 44ch; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-body); }
 .empty-state .row { justify-content: center; margin-top: 6px; }

@@ -4,5 +4,5 @@
 .dialog::backdrop { background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
 .dialog-header { display: flex; align-items: flex-start; gap: 12px; padding: 18px 16px 4px 20px; }
 .dialog-header h2 { flex: 1 1 auto; font-size: var(--text-lg); }
-.dialog-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 14px; padding: 4px 20px 16px; color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
+.dialog-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 14px; padding: 4px 20px 16px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-body); }
 .dialog-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; padding: 12px 20px; border-top: 1px solid var(--border-soft); background: var(--surface); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }

@@ -1,10 +1,10 @@
 /* Grin data table: sticky header, row hover and selection, cell states, pagination and bulk-action bar. */
 .table-wrap { max-width: 100%; overflow: auto; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--background); }
-.table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--text-base); font-variant-numeric: tabular-nums; }
+.table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
 .table th {
   position: sticky; top: 0; z-index: 2; height: 36px; padding: 0 12px; text-align: left; white-space: nowrap; vertical-align: middle;
   background: var(--table-head); border-bottom: 1px solid var(--border);
-  font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground);
+  font-size: var(--text-xs); font-weight: var(--weight-medium); color: var(--muted-foreground);
 }
 .table th button { display: inline-flex; align-items: center; gap: 4px; padding: 0; border: 0; background: none; color: inherit; font: inherit; }
 .table th button:hover { color: var(--foreground); }
@@ -19,14 +19,14 @@
 .table td.cell-warn, .table tr:hover td.cell-warn { background: var(--warn-bg); }
 :root[data-theme="hc"] .table td.cell-crit { box-shadow: inset 3px 0 0 var(--crit-fg); }
 :root[data-theme="hc"] .table td.cell-warn { box-shadow: inset 3px 0 0 var(--warn-fg); }
-.table .cell-empty { color: var(--crit-fg); font-style: italic; font-size: var(--text-sm); }
+.table .cell-empty { color: var(--crit-fg); font-style: italic; font-size: var(--text-xs); }
 .table td.cell-edited { position: relative; }
 .table td.cell-edited::after { content: ''; position: absolute; top: 0; right: 0; border-style: solid; border-width: 0 8px 8px 0; border-color: transparent var(--primary) transparent transparent; }
-.table.compact td { height: 32px; font-size: var(--text-md); }
+.table.compact td { height: 32px; font-size: var(--text-sm); }
 
-.pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 8px 2px; font-size: var(--text-md); color: var(--muted-foreground); }
+.pagination { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 8px 2px; font-size: var(--text-sm); color: var(--muted-foreground); }
 
 /* Bulk-action bar: appears while rows are selected */
 .bulk-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: max-content; max-width: 100%; padding: 6px 6px 6px 14px; border-radius: var(--radius-lg); background: var(--popover); border: 1px solid var(--border-strong); box-shadow: var(--shadow-lg); animation: grin-rise var(--dur) var(--ease); }
-.bulk-bar-count { font-size: var(--text-md); font-weight: var(--weight-semibold); white-space: nowrap; }
+.bulk-bar-count { font-size: var(--text-sm); font-weight: var(--weight-semibold); white-space: nowrap; }
 .divider-v { width: 1px; height: 20px; background: var(--border); }

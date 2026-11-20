@@ -18,10 +18,10 @@
 
 /* Field: label on top, control, then hint or message. The label is always visible and tied to the control (for/id). */
 .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.field-label { font-size: var(--text-md); font-weight: var(--weight-medium); color: var(--foreground); }
+.field-label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--foreground); }
 .required { color: var(--crit-fg); margin-left: 2px; }
-.field-hint { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
-.field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-sm); line-height: var(--leading-ui); color: var(--crit-fg); }
+.field-hint { font-size: var(--text-xs); color: var(--muted-foreground); line-height: var(--leading-ui); }
+.field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-xs); line-height: var(--leading-ui); color: var(--crit-fg); }
 .field-message.warn { color: var(--warn-fg); }
 .field-message svg { width: 14px; height: 14px; margin-top: 1px; }
 .field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--space-4); }
@@ -38,7 +38,7 @@
 .search .btn { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); }
 
 /* Checkbox and radio with text */
-.checkbox { display: inline-flex; align-items: center; gap: 8px; min-height: var(--size-target-min); font-size: var(--text-base); line-height: 1.35; cursor: pointer; }
+.checkbox { display: inline-flex; align-items: center; gap: 8px; min-height: var(--size-target-min); font-size: var(--text-sm); line-height: 1.35; cursor: pointer; }
 .checkbox-group { display: flex; flex-direction: column; gap: 10px; }
 
 /* Choice card: a radio or checkbox with a title and a description */
@@ -48,5 +48,5 @@
 .choice:has(input:checked) { border-color: var(--brand-border); background: var(--brand-bg); }
 .choice:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
 .choice input { margin-top: 2px; }
-.choice-title { display: block; font-weight: var(--weight-medium); font-size: var(--text-base); }
-.choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }
+.choice-title { display: block; font-weight: var(--weight-medium); font-size: var(--text-sm); }
+.choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-xs); line-height: var(--leading-ui); }

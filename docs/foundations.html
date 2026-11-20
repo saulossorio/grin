@@ -123,8 +123,8 @@
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Controles</th><th scope="col">Para</th></tr></thead>
           <tbody>
-            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px, texto de 13 px</td><td>Trabalhar horas numa tabela.</td></tr>
-            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px, texto de 15 px</td><td>Ler, analisar, telas de apresentação.</td></tr>
+            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px, texto de 14 px</td><td>Trabalhar horas numa tabela.</td></tr>
+            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px, texto de 16 px</td><td>Ler, analisar, telas de apresentação.</td></tr>
           </tbody></table></div>
       </section>
 
@@ -171,7 +171,7 @@ async function drawScales() {
   document.getElementById('scales-dark').innerHTML = head + names.map((n) => row(`${n}-dark`)).join('');
 }
 
-const TYPE = [['4xl', 600, 'Título de apresentação', 'display'], ['3xl', 600, '1.284', 'display'], ['2xl', 600, 'Título da página', 'display'], ['xl', 600, 'Título de diálogo', 'tight'], ['lg', 600, 'Subtítulo e título de cartão', 'tight'], ['body', 400, 'Texto corrido para ler com calma, como esta frase.', 'normal'], ['base', 400, 'Texto de interface e células de tabela', 'normal'], ['md', 500, 'Botões, campos e menus', 'normal'], ['sm', 500, 'Selos, cabeçalho de tabela e legendas', 'normal'], ['xs', 500, 'Rótulo de grupo e tecla de atalho', 'normal']];
+const TYPE = [['4xl', 600, 'Título grande', 'display'], ['3xl', 600, '1.284', 'display'], ['2xl', 600, 'Título da página', 'display'], ['xl', 600, 'Título de seção', 'tight'], ['lg', 600, 'Subtítulo e título de diálogo', 'tight'], ['base', 400, 'Texto padrão e controles na densidade confortável', 'normal'], ['sm', 500, 'Botões, campos, tabelas e menus', 'normal'], ['xs', 500, 'Selos, cabeçalho de tabela, legendas', 'normal'], ['2xs', 600, 'Contador na barra recolhida', 'normal']];
 document.getElementById('type-scale').innerHTML = TYPE.map(([size, weight, sample, track]) => `<div class="token-row"><code>--text-${size}</code><code>${token('text-' + size)}</code><span class="sample" style="font-size:var(--text-${size});font-weight:${weight};letter-spacing:var(--tracking-${track});${size === '3xl' ? 'font-variant-numeric:tabular-nums' : ''}">${sample}</span></div>`).join('')
   + `<div class="token-row"><code>--font-mono</code><code>Geist Mono</code><span class="sample text-mono">ERR-7F3A · 12.345.678/0001-90</span></div>`;
 const SPACE = ['0-5', '1', '1-5', '2', '2-5', '3', '3-5', '4', '5', '6', '8', '10', '12', '16', '20'];
