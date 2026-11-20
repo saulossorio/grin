@@ -4,6 +4,7 @@
 - Nomes de componentes pelos termos que designers e desenvolvedores usam: Acordeão (era "Seções que abrem"), Stepper (Passos), Texto corrido (Texto longo), Modal e drawer (Diálogo e gaveta), Alerta (Aviso), Badge, status e avatar (Selo), Card e indicador (Cartão), Campo de formulário, Checkbox, rádio e interruptor (Seleção), Tooltip, popover e termo, Barra de progresso. As classes não mudam.
 - Cada componente mostra "Também chamado:" com os outros nomes conhecidos (FAQ, collapse, modal, dropdown, snackbar, stepper, onboarding…), e a busca acha por qualquer um deles.
 - Acordeão com animação em todos os navegadores (`accordion.js`): a altura abre e fecha, o conteúdo aparece com um leve deslize, a seta gira e a linha escurece ao tocar. `details[name]` abre um por vez. Com "reduzir movimento", abre direto.
+- Correção: ao fechar, o acordeão dava um salto de 20 px no fim. Agora a animação é no `details` inteiro (da altura do título até título + painel), a seta gira já no começo do fechamento e um clique no meio do fechamento reabre de onde está.
 
 ## 2.3 · 20/11/2026
 - Busca na documentação: botão no topo e na barra lateral, atalho <kbd>⌘K</kbd> (ou <kbd>/</kbd>). Acha componentes, seções, tokens, classes (por exemplo `.btn`) e exemplos; o índice é lido das próprias páginas, então nunca fica desatualizado.

@@ -6,7 +6,7 @@
 .accordion summary { display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 12px 20px; font-weight: var(--weight-semibold); cursor: pointer; list-style: none; transition: background-color var(--dur-fast); }
 .accordion summary::-webkit-details-marker { display: none; }
 .accordion summary::after { content: ''; flex-shrink: 0; width: 8px; height: 8px; margin-left: auto; border: solid var(--muted-foreground); border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); transition: transform var(--dur) var(--ease); }
-.accordion details[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.accordion details[open]:not([data-closing="1"]) > summary::after { transform: translateY(2px) rotate(-135deg); }
 .accordion summary:hover { background: var(--row-hover); }
 .accordion summary:focus-visible { outline-offset: -2px; }
 .accordion summary small { font-weight: var(--weight-regular); color: var(--muted-foreground); }
