@@ -20,7 +20,7 @@
 .tile:hover .tile-head svg { transform: translate(2px, -2px); }
 .tile-body { display: flex; flex-direction: column; gap: 12px; flex: 1 1 auto; justify-content: center; pointer-events: none; }
 .tile-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; }
+.span-4 { grid-column: span 4; } .span-5 { grid-column: span 5; } .span-6 { grid-column: span 6; } .span-7 { grid-column: span 7; } .span-8 { grid-column: span 8; }
 
 /* Tile contents */
 .tile .stat-grid { gap: 12px; }
@@ -42,8 +42,40 @@
 .tile-themes i:nth-of-type(2) { width: 60%; }
 .tile-themes .btn { align-self: flex-start; }
 
+/* Layers shown in place: dialog, menu, popover and tour card sit inside the tile instead of floating */
+.tile .tile-layer { position: static; width: 100%; max-width: none; margin: 0; animation: none; transform: none; }
+.tile .dialog.tile-layer { display: flex; flex-direction: column; box-shadow: var(--shadow-md); }
+.tile .dialog.tile-layer .dialog-header { padding: 16px 16px 0; gap: 12px; align-items: center; }
+.tile .dialog.tile-layer .dialog-icon { width: 40px; height: 40px; }
+.tile .dialog.tile-layer .dialog-body { padding: 8px 16px 16px; font-size: var(--text-sm); }
+.tile .dialog.tile-layer .dialog-footer { padding: 12px 16px; }
+.tile .toast, .tile .alert { animation: none; }
+.tile .chip { animation: none; }
+.tile .steps.horizontal .step-title { background: var(--sidebar); }
+.tile-input { display: flex; align-items: center; }
+.tile .field-message { animation: none; }
+.tile-nav { display: flex; flex-direction: column; gap: 2px; padding: 8px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--sidebar); }
+.tile .accordion summary { min-height: 48px; padding: 10px 16px; font-size: var(--text-sm); }
+.tile .accordion-body { padding: 0 16px 14px; font-size: var(--text-sm); }
+.tile-empty { padding: 24px 16px; gap: 8px; }
+.tile-empty h3 { font-size: var(--text-base); }
+.tile-empty p { font-size: var(--text-sm); }
+.tile-icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(44px, 1fr)); gap: 8px; }
+.tile-icons span { display: grid; place-items: center; height: 44px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); color: var(--foreground); }
+.tile-radius { display: flex; align-items: flex-end; gap: 10px; }
+.tile-radius span { display: grid; place-items: center; flex: 1 1 0; height: 64px; border: 1.5px solid var(--border-strong); background: var(--surface); color: var(--muted-foreground); font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.tile-contrast { display: flex; align-items: center; gap: 16px; }
+.tile-aa { display: grid; place-items: center; width: 72px; height: 72px; border-radius: var(--radius-lg); background: var(--surface); border: 1px solid var(--border); font-size: 2rem; font-weight: var(--weight-semibold); }
+.tile-contrast b { display: block; font-size: var(--text-3xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile-contrast span { color: var(--muted-foreground); font-size: var(--text-sm); }
+.tile-screen { display: flex; height: 96px; overflow: hidden; border: 1px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); font-size: var(--text-sm); }
+.tile-screen-side { display: grid; place-items: center; width: 20.67%; border-right: 1px solid var(--border); background: var(--sidebar); color: var(--muted-foreground); }
+.tile-screen-main { display: grid; place-items: center; flex: 1 1 auto; margin: 10px; border: 1px dashed var(--primary); border-radius: var(--radius-sm); background: var(--brand-bg); color: var(--brand-fg); font-weight: var(--weight-semibold); }
+.tile-meta { gap: 16px; color: var(--muted-foreground); font-size: var(--text-sm); }
+.tile-meta b { color: var(--foreground); }
+
 @media (max-width: 960px) {
-  .span-4, .span-5, .span-7, .span-8 { grid-column: span 12; }
+  .span-4, .span-5, .span-6, .span-7, .span-8 { grid-column: span 12; }
   .board { gap: 12px; }
 }
 @media (max-width: 640px) {

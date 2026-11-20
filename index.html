@@ -24,7 +24,7 @@
     <main class="docs-main" id="content">
 
       <section class="home-hero" aria-labelledby="t-hero">
-        <span class="overline">Design system · versão 2.2</span>
+        <span class="overline">Design system · versão 2.3</span>
         <h1 class="home-title" id="t-hero"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>Grin</h1>
         <div class="home-facts"><span><b>24</b> componentes</span><span><b>54</b> tokens de cor</span><span><b>4</b> temas</span><span><b>2</b> densidades</span><span>Tela de referência <b>1200 px</b></span></div>
         <div class="home-actions"><a class="btn primary lg" href="docs/getting-started.html"><i data-icon="play"></i>Começar</a><a class="btn lg" href="docs/components.html"><i data-icon="layout-grid"></i>Componentes</a><a class="btn lg ghost" href="examples/dashboard.html"><i data-icon="table"></i>Ver um exemplo</a></div>
@@ -89,6 +89,124 @@
             <div data-theme="dark" data-contrast="more">Escuro, contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
           </div></div>
         </a>
+        <a class="tile span-5" href="docs/components.html#field">
+          <span class="tile-head">Campo<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="field"><span class="field-label">Nome <span class="required">*</span></span><span class="input tile-input">Ana Lima</span></div>
+            <div class="field"><span class="field-label">E-mail corporativo <span class="required">*</span></span><span class="input tile-input" aria-invalid="true">ana@gmail.com</span><span class="field-message"><i data-icon="alert-circle"></i>Use o e-mail da empresa.</span></div>
+          </div>
+        </a>
+        <a class="tile span-7" href="docs/components.html#alert">
+          <span class="tile-head">Aviso e toast<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="alert warn"><i data-icon="alert-triangle"></i><div class="alert-body"><span class="alert-title">8 linhas sem empresa.</span> Elas ficam fora da importação até serem corrigidas.</div></div>
+            <div class="toast ok"><i data-icon="check-circle"></i><div class="toast-text">Ana Lima: alterações salvas.</div><span class="link">Desfazer</span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#shell">
+          <span class="tile-head">Navegação<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <nav class="breadcrumb" aria-label="Exemplo"><span>Pessoas</span><i data-icon="chevron-right"></i><span aria-current="page">Ana Lima</span></nav>
+            <div class="tile-nav">
+              <span class="nav-item" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></span>
+              <span class="nav-item"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></span>
+              <span class="nav-item"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></span>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#dialog">
+          <span class="tile-head">Diálogo<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="dialog tile-layer">
+              <div class="dialog-header"><span class="dialog-icon crit"><i data-icon="trash"></i></span><h3>Excluir 3 pessoas?</h3></div>
+              <div class="dialog-body"><p>Elas saem das listas e dos eventos.</p></div>
+              <div class="dialog-footer"><span class="btn xs">Cancelar</span><span class="btn xs danger">Excluir 3</span></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#menu">
+          <span class="tile-head">Menu<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="menu tile-layer">
+              <span class="menu-header">Ana Lima</span>
+              <span class="menu-item"><i data-icon="pencil"></i><span class="menu-label">Editar</span><kbd>E</kbd></span>
+              <span class="menu-item"><i data-icon="merge"></i><span class="menu-label">Mesclar com…</span></span>
+              <span class="menu-separator"></span>
+              <span class="menu-item danger"><i data-icon="trash"></i><span class="menu-label">Excluir</span></span>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-7" href="docs/components.html#steps">
+          <span class="tile-head">Passos<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <ol class="steps horizontal">
+              <li class="step" data-state="done"><span class="step-title">Arquivo</span></li>
+              <li class="step" data-state="current"><span class="step-title">Colunas</span></li>
+              <li class="step"><span class="step-title">Revisão</span></li>
+              <li class="step"><span class="step-title">Pronto</span></li>
+            </ol>
+            <div class="progress-field">
+              <div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div>
+              <div class="progress"><i style="width:40%"></i></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-5" href="docs/components.html#tour">
+          <span class="tile-head">Tour guiado<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tour-card tile-layer">
+              <div class="tour-top"><span class="tour-count">Passo 2 de 4</span></div>
+              <div class="progress sm"><i style="width:50%"></i></div>
+              <h3>Busque qualquer pessoa</h3>
+              <p>Por nome, e-mail ou empresa.</p>
+              <div class="tour-actions"><span class="btn xs">Voltar</span><span class="spacer"></span><span class="btn xs primary">Próximo<i data-icon="arrow-right"></i></span></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#help">
+          <span class="tile-head">Termo e ajuda<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <p>A estimativa parte da <span class="term" aria-expanded="true">CAPEX</span> declarada.</p>
+            <div class="popover open tile-layer"><span class="popover-title"><span>CAPEX<small>Capital expenditure</small></span></span><p>Gasto com bens que duram mais de um ano.</p></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#accordion">
+          <span class="tile-head">Seções que abrem<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="accordion">
+              <details open><summary>A planilha original muda?</summary><div class="accordion-body"><p>Não. A agenda lê uma cópia.</p></div></details>
+              <details><summary>Posso desfazer?</summary><div class="accordion-body"><p>Sim, por 30 dias.</p></div></details>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="docs/components.html#empty">
+          <span class="tile-head">Estado vazio<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="empty-state tile-empty"><span class="empty-state-icon"><i data-icon="search"></i></span><h3>Nenhuma pessoa encontrada</h3><p>Procure por outro nome ou e-mail.</p></div>
+          </div>
+        </a>
+        <a class="tile span-8" href="docs/foundations.html#icons">
+          <span class="tile-head">Ícones<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-icons" id="home-icons"></div></div>
+        </a>
+        <a class="tile span-4" href="docs/foundations.html#radius">
+          <span class="tile-head">Raio e sombra<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-radius"><span style="border-radius:var(--radius-xs)">6</span><span style="border-radius:var(--radius-sm)">10</span><span style="border-radius:var(--radius-md)">12</span><span style="border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)">16</span><span style="border-radius:var(--radius-xl);box-shadow:var(--shadow-md)">20</span></div></div>
+        </a>
+        <a class="tile span-6" href="docs/accessibility.html">
+          <span class="tile-head">Acessibilidade<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-contrast"><span class="tile-aa">Aa</span><div><b id="home-ratio">—</b><span id="home-ratio-note">Texto sobre o fundo neste tema</span></div></div>
+            <div class="tile-row"><span class="badge ok"><i data-icon="check"></i>Texto 4,5:1</span><span class="badge ok"><i data-icon="check"></i>Alto contraste 7:1</span><span class="badge ok"><i data-icon="check"></i>Interface 3:1</span><span class="badge"><kbd>Tab</kbd> foco visível</span></div>
+          </div>
+        </a>
+        <a class="tile span-6" href="docs/foundations.html#layout">
+          <span class="tile-head">Tela de referência<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-screen"><span class="tile-screen-side">248</span><span class="tile-screen-main">952 px de conteúdo</span></div>
+            <div class="tile-row tile-meta"><span>Tela <b>1200 px</b></span><span>Margem <b>32 px</b></span><span>Texto até <b>72ch</b></span></div>
+          </div>
+        </a>
       </section>
 
       <section class="docs-section" aria-labelledby="t-install">
@@ -100,7 +218,7 @@
 &lt;script type="module" src="scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.2</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
+      <footer class="docs-footer"><span>Grin 2.3</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
     </main>
   </div>
 </div>
@@ -111,6 +229,18 @@ fetch('tokens/core/colors.json').then((r) => r.json()).then((c) => {
   const g = c.color[dark ? 'gray-dark' : 'gray'];
   document.getElementById('home-gray').innerHTML = Array.from({ length: 12 }, (_, i) => `<span style="background:${g[i + 1].$value}" title="gray ${i + 1}"></span>`).join('');
 }).catch(() => {});
+/* A sample of the icon set */
+import('./scripts/utils.js').then(({ icon, contrast, token }) => {
+  const ratio = () => {
+    const hc = document.documentElement.dataset.contrast ? document.documentElement.dataset.contrast === 'more' : matchMedia('(prefers-contrast: more)').matches;
+    document.getElementById('home-ratio').textContent = `${contrast(token('foreground'), token('background')).toFixed(1).replace('.', ',')}:1`;
+    document.getElementById('home-ratio-note').textContent = `Texto sobre o fundo neste tema · mínimo ${hc ? '7' : '4,5'}:1`;
+  };
+  ratio();
+  document.documentElement.addEventListener('grin:theme', () => requestAnimationFrame(ratio));
+  document.getElementById('home-icons').innerHTML = ['users', 'building', 'search', 'filter', 'download', 'upload', 'pencil', 'trash', 'check-circle', 'alert-triangle', 'alert-circle', 'info', 'calendar', 'table', 'columns', 'merge', 'map', 'lightbulb', 'help-circle', 'book-open', 'clock']
+    .filter((n) => n !== 'calendar').map((n) => `<span title="${n}">${icon(n, 20)}</span>`).join('');
+});
 </script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 //   <select data-theme-select>               options: system, light, dark
 //   <button data-set-theme="dark">           sets a theme
 //   <button data-theme-toggle>               toggles light/dark; updates its .label text
-//   <button data-contrast-toggle>            turns high contrast on/off; aria-pressed shows the state
+//   <button data-contrast-toggle>            turns high contrast on/off; aria-pressed shows the state (or a checkbox switch: checked)
 //   <input type="radio" data-set-density value="comfortable|compact">
 //   <input type="radio" data-set-scale value="100|112|125">
 // ?theme=dark and ?contrast=more in the URL set them on load (handy to share a preview). ?theme=hc = high contrast.
@@ -56,7 +56,7 @@ export function sync() {
   const t = getTheme(), d = read('density', 'comfortable'), s = read('scale', '100');
   document.querySelectorAll('[data-theme-select]').forEach((el) => { el.value = t; });
   document.querySelectorAll('button[data-set-theme]').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.setTheme === t)));
-  document.querySelectorAll('[data-contrast-toggle]').forEach((el) => el.setAttribute('aria-pressed', String(effectiveContrast() === 'more')));
+  document.querySelectorAll('[data-contrast-toggle]').forEach((el) => { if (el.matches('input')) el.checked = effectiveContrast() === 'more'; else el.setAttribute('aria-pressed', String(effectiveContrast() === 'more')); });
   document.querySelectorAll('input[data-set-density]').forEach((el) => { el.checked = el.value === d; });
   document.querySelectorAll('input[data-set-scale]').forEach((el) => { el.checked = el.value === s; });
   document.querySelectorAll('[data-theme-toggle] .label').forEach((el) => { el.textContent = effectiveTheme() === 'dark' ? 'Tema claro' : 'Tema escuro'; });
