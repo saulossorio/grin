@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grin Design System</title>
-<meta name="description" content="Grin: design system para ferramentas de trabalho com dados. Sóbrio, preciso e acessível, em HTML e CSS, sem framework.">
+<meta name="description" content="Grin: design system para ferramentas de trabalho com dados. Tokens, componentes, padrões e acessibilidade.">
 <meta name="theme-color" content="#8dc63f">
 <script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
@@ -49,12 +49,12 @@
   <section class="hero" aria-labelledby="t-hero">
     <div class="home-wrap">
       <div class="hero-text">
-        <a class="hero-pill" href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md"><span class="tag">1.1</span><span><b>Geist</b> e cores em OKLCH</span><i data-icon="chevron-right" data-size="14"></i></a>
-        <h1 id="t-hero">Clareza para telas <em>cheias de dados.</em></h1>
-        <p class="hero-lead">Grin é um design system para ferramentas de trabalho: tabelas, filtros, cadastros e indicadores. Sóbrio para os dados aparecerem, preciso nos detalhes e acessível desde o primeiro componente.</p>
+        <a class="hero-pill" href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md"><span class="tag">1.1.1</span><span>Lista de mudanças</span><i data-icon="chevron-right" data-size="14"></i></a>
+        <h1 id="t-hero">Grin</h1>
+        <p class="hero-lead">Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros e indicadores. Reúne tokens, componentes, padrões de uso e regras de acessibilidade.</p>
         <div class="hero-actions">
-          <a class="btn primary" href="docs/getting-started.html">Começar a usar</a>
-          <a class="btn" href="docs/components.html">Ver os componentes</a>
+          <a class="btn primary" href="docs/getting-started.html">Começar</a>
+          <a class="btn" href="docs/components.html">Componentes</a>
         </div>
         <div class="hero-facts">
           <span><i data-icon="check"></i>HTML e CSS, sem framework</span>
@@ -122,9 +122,8 @@
   <section class="band" aria-labelledby="t-themes">
     <div class="home-wrap">
       <div class="band-head">
-        <span class="overline">Temas</span>
-        <h2 id="t-themes">Um sistema, três temas.</h2>
-        <p>Claro para o dia a dia, escuro para longas sessões e alto contraste para quem precisa. Os componentes não mudam: só os tokens. Cada tema tem o contraste conferido por script.</p>
+        <h2 id="t-themes">Temas</h2>
+        <p>Claro, escuro e alto contraste. Os componentes são os mesmos; cada tema troca só os valores dos tokens. O contraste dos três é conferido por <code>tools/check-contrast.mjs</code>.</p>
       </div>
       <div class="theme-trio">
         <div class="theme-tile" data-theme="light">
@@ -152,9 +151,8 @@
   <section class="band" aria-labelledby="t-type">
     <div class="home-wrap">
       <div class="band-head">
-        <span class="overline">Tipografia</span>
-        <h2 id="t-type">Geist, feita para telas e números.</h2>
-        <p>Uma família para toda a interface e uma monoespaçada para códigos. Algarismos tabulares alinham colunas e indicadores. As fontes vêm junto: funcionam sem internet.</p>
+        <h2 id="t-type">Tipografia</h2>
+        <p>Geist para a interface e Geist Mono para códigos e identificadores, com algarismos tabulares em tabelas e indicadores. Os arquivos das fontes estão em <code>assets/fonts</code>.</p>
       </div>
       <div class="type-grid">
         <div class="specimen">
@@ -172,9 +170,8 @@
   <section class="band" aria-labelledby="t-color">
     <div class="home-wrap">
       <div class="band-head">
-        <span class="overline">Cor</span>
-        <h2 id="t-color">Verde como acento. O resto, em silêncio.</h2>
-        <p>Seis escalas de 12 passos em OKLCH, com o mesmo papel em cada passo. Neutros quase cinza deixam os estados e os dados em primeiro plano.</p>
+        <h2 id="t-color">Cor</h2>
+        <p>Seis escalas de 12 passos em OKLCH, com o mesmo papel em cada passo. A cor da marca é usada só em áreas pequenas.</p>
       </div>
       <div class="color-grid">
         <div class="brand-swatch"><span class="overline" style="color:inherit;opacity:.75">Marca</span><div><b>#8dc63f</b><p>Botão primário, item atual, filtro ativo e foco. Nunca em fundos grandes, nunca como texto sobre branco.</p></div></div>
@@ -186,9 +183,8 @@
   <section class="band" aria-labelledby="t-components">
     <div class="home-wrap">
       <div class="band-head">
-        <span class="overline">Componentes</span>
-        <h2 id="t-components">Dezesseis peças que se encaixam.</h2>
-        <p>Cada componente vem com exemplo, código, lista de classes e quando usar. Tudo responde ao tema, à densidade e ao tamanho de fonte escolhido pela pessoa.</p>
+        <h2 id="t-components">Componentes</h2>
+        <p>16 componentes. Cada um tem exemplo, código, lista de classes e regras de uso, e responde ao tema, à densidade e ao tamanho da fonte.</p>
       </div>
       <div class="gallery">
         <a class="tile" href="docs/components.html#button"><div class="tile-stage"><button class="btn primary">Salvar</button><button class="btn">Cancelar</button><button class="btn danger">Excluir 3</button></div><div class="tile-text"><h3>Botão</h3><p>Primário, secundário, fantasma e destrutivo.</p></div></a>
@@ -204,8 +200,7 @@
   <section class="band" aria-labelledby="t-principles">
     <div class="home-wrap">
       <div class="band-head">
-        <span class="overline">Princípios</span>
-        <h2 id="t-principles">Decisões que se explicam.</h2>
+        <h2 id="t-principles">Princípios</h2>
       </div>
       <div class="principles">
         <div class="principle"><h3>Os dados em primeiro plano</h3><p>Interface neutra, bordas finas e poucas sombras, para que números e estados se destaquem.</p></div>
@@ -222,9 +217,9 @@
     <div class="home-wrap">
       <div class="cta">
         <div>
-          <h2 id="t-start">Comece com quatro linhas.</h2>
-          <p>Copie as pastas para a ferramenta, ligue as folhas de estilo e use as classes. O guia mostra tema, densidade, estrutura e convenções.</p>
-          <div class="row" style="margin-top:20px"><a class="btn primary lg" href="docs/getting-started.html">Ler o guia</a><a class="btn lg" href="examples/dashboard.html">Abrir um exemplo</a></div>
+          <h2 id="t-start">Instalação</h2>
+          <p>Copie <code>styles/</code>, <code>scripts/</code>, <code>components/</code> e <code>assets/</code> para a ferramenta e ligue as folhas de estilo. O guia explica tema, densidade, estrutura e convenções.</p>
+          <div class="row" style="margin-top:20px"><a class="btn primary lg" href="docs/getting-started.html">Guia de instalação</a><a class="btn lg" href="examples/dashboard.html">Exemplos</a></div>
         </div>
 <pre><code>&lt;link rel="stylesheet" href="styles/fonts.css"&gt;
 &lt;link rel="stylesheet" href="styles/variables.css"&gt;

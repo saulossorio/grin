@@ -6,7 +6,7 @@ Leia este arquivo inteiro antes de mudar qualquer coisa. O README.md explica o p
 
 Grin é um design system independente, feito do zero, para ferramentas de trabalho com dados. HTML, CSS e JavaScript puros, sem framework, sem build além de `tools/build-tokens.mjs`. Publicado no GitHub Pages a partir da branch `main`: https://saulossorio.github.io/grin/
 
-Não cite outras ferramentas ou empresas como origem do Grin na documentação, nos exemplos, nos tokens ou nos comentários. Os exemplos usam produtos e dados fictícios ("Agenda", "Prumo", "Norte Sul").
+Textos da documentação: diretos e descritivos, sem frases de marketing nem slogans (títulos são nomes de seção: "Temas", "Cor"). Não cite outras ferramentas ou empresas como origem do Grin na documentação, nos exemplos, nos tokens ou nos comentários. Os exemplos usam produtos e dados fictícios ("Agenda", "Prumo", "Norte Sul").
 
 ## Fontes de verdade
 

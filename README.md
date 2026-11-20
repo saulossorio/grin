@@ -1,6 +1,6 @@
 # Grin
 
-Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros, revisão e indicadores. Sóbrio, denso quando precisa e acessível por padrão. HTML, CSS e um pouco de JavaScript, sem framework e sem dependências.
+Design system para ferramentas de trabalho com dados: tabelas, filtros, cadastros, revisão e indicadores. HTML, CSS e um pouco de JavaScript, sem framework e sem dependências.
 
 **Documentação ao vivo:** https://saulossorio.github.io/grin/
 

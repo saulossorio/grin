@@ -31,7 +31,7 @@
 .hero-pill:hover { border-color: var(--border-strong); color: var(--foreground); }
 .hero-pill b { color: var(--foreground); font-weight: var(--weight-medium); }
 .hero-pill .tag { height: 20px; }
-.hero-text h1 { font-size: clamp(2.5rem, 7.2vw, 5.25rem); line-height: 0.98; letter-spacing: -0.045em; font-weight: var(--weight-semibold); }
+.hero-text h1 { font-size: clamp(3rem, 9vw, 6rem); line-height: 1; letter-spacing: -0.05em; font-weight: var(--weight-semibold); }
 .hero-text h1 em { font-style: normal; color: var(--link); }
 .hero-lead { max-width: 60ch; color: var(--muted-foreground); font-size: clamp(1.0625rem, 1.6vw, 1.25rem); line-height: 1.55; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 6px; }
