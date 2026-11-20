@@ -1,6 +1,7 @@
 # Mudanças
 
 ## 1.1.1 · 19/11/2026
+- Marca do Grin: triângulo equilátero verde antes da palavra, com altura de 2/3 da altura das maiúsculas (0,473 em), apoiado na linha de base. Substitui o quadrado com G, também no favicon.
 - Tipografia: base de 16 px e só tamanhos pares (10, 12, 14, 16, 18, 20, 24, 32, 40). Saíram 11, 13, 15 e 30 px; `--text-md` e `--text-body` deixaram de existir. Controles: 14 px na densidade compacta, 16 px na confortável.
 - Página inicial volta ao formato das demais páginas da documentação: o que é, conteúdo, instalação e princípios.
 - Documentação no celular: a barra lateral virou uma gaveta aberta pelo botão do topo, em vez de uma faixa de links.
