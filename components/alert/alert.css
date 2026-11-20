@@ -1,10 +1,10 @@
 /* Grin alert: a message inside the page, next to what it explains. Tones: info (default), warn, crit, ok, neutral.
-   Message format: what happened, why, what to do. */
-.alert { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); border: 1px solid var(--info-border); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }
-.alert > svg { width: 16px; height: 16px; margin-top: 1px; color: var(--info-fg); }
+   Message format: what happened, why, what to do. The icon sits in a soft square of its tone. */
+.alert { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: var(--radius-lg); border: 1px solid var(--info-border); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); line-height: var(--leading-ui); animation: grin-rise var(--dur) var(--ease); }
+.alert > svg { width: 20px; height: 20px; margin-top: 0; color: var(--info-fg); }
 .alert-body { flex: 1 1 auto; min-width: 0; }
-.alert-title { font-weight: var(--weight-semibold); }
-.alert-actions { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.alert-title { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+.alert-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 .alert.warn { border-color: var(--warn-border); background: var(--warn-bg); } .alert.warn > svg { color: var(--warn-fg); }
 .alert.crit { border-color: var(--crit-border); background: var(--crit-bg); } .alert.crit > svg { color: var(--crit-fg); }
 .alert.ok { border-color: var(--ok-border); background: var(--ok-bg); } .alert.ok > svg { color: var(--ok-fg); }

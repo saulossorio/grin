@@ -1,8 +1,13 @@
-/* Grin dialog: short decisions and destructive confirmations. Native <dialog> traps focus and closes with Esc. */
-.dialog { width: min(480px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); }
-.dialog[open] { display: flex; flex-direction: column; animation: grin-scale-in var(--dur) var(--ease); }
-.dialog::backdrop { background: var(--overlay); animation: grin-fade var(--dur) ease-out; }
-.dialog-header { display: flex; align-items: flex-start; gap: 12px; padding: 18px 16px 4px 20px; }
-.dialog-header h2 { flex: 1 1 auto; font-size: var(--text-lg); }
-.dialog-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 14px; padding: 4px 20px 16px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-body); }
-.dialog-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; padding: 12px 20px; border-top: 1px solid var(--border-soft); background: var(--surface); border-radius: 0 0 var(--radius-lg) var(--radius-lg); }
+/* Grin dialog: short decisions and destructive confirmations. Native <dialog> traps focus and closes with Esc.
+   Rises and scales in over a blurred veil. */
+.dialog { width: min(480px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); }
+.dialog[open] { display: flex; flex-direction: column; animation: grin-pop var(--dur-slow) var(--ease-spring); }
+.dialog::backdrop { background: var(--overlay); backdrop-filter: blur(2px); animation: grin-fade var(--dur) ease-out; }
+.dialog-header { display: flex; align-items: flex-start; gap: 16px; padding: 24px 20px 4px 24px; }
+.dialog-header h2 { flex: 1 1 auto; font-size: var(--text-xl); }
+.dialog-icon { display: inline-grid; place-items: center; width: 48px; height: 48px; flex-shrink: 0; border-radius: var(--radius-md); background: var(--brand-bg); color: var(--brand-fg); }
+.dialog-icon svg { width: 24px; height: 24px; }
+.dialog-icon.crit { background: var(--crit-bg); color: var(--crit-fg); } .dialog-icon.warn { background: var(--warn-bg); color: var(--warn-fg); }
+.dialog-body { flex: 1 1 auto; min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 16px; padding: 8px 24px 24px; color: var(--muted-foreground); font-size: var(--text-base); line-height: var(--leading-body); }
+.dialog-footer { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; padding: 16px 24px; border-top: 1px solid var(--border-soft); }
+@media (max-width: 520px) { .dialog-footer > .btn { flex: 1 1 auto; } }

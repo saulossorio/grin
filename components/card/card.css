@@ -1,25 +1,38 @@
-/* Grin card: sets an object apart from the background. Use it when the block is a thing of its own;
-   on a data screen most blocks need no border. */
-.card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
-.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 16px 16px 0; }
-.card-title { font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); }
-.card-description { margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-sm); }
-.card-body { display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 16px; }
-.card-footer { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--border-soft); }
-a.card { color: inherit; text-decoration: none; transition: border-color var(--dur-fast), box-shadow var(--dur-fast); }
-a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-sm); }
+/* Grin card: sets an object apart from the background, with a soft shadow and round corners.
+   Use it when the block is a thing of its own; not every block on a screen needs one. */
+.card { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
+.card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 20px 24px 0; }
+.card-title { display: flex; align-items: center; gap: 10px; font-size: var(--text-lg); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-tight); }
+.card-description { margin-top: 4px; color: var(--muted-foreground); font-size: var(--text-base); }
+.card-body { display: flex; flex-direction: column; gap: 12px; padding: 16px 24px 24px; }
+.card-footer { display: flex; align-items: center; gap: 12px; padding: 14px 24px; border-top: 1px solid var(--border-soft); }
+a.card { color: inherit; text-decoration: none; transition: box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease), border-color var(--dur-fast); }
+a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-/* Stat: a number that is the point of the screen */
-.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: var(--space-3); }
-.stat { display: flex; flex-direction: column; gap: 6px; min-width: 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
-.stat-label { font-size: var(--text-sm); color: var(--muted-foreground); font-weight: var(--weight-medium); }
-.stat-value { font-size: var(--text-3xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
-.stat-delta { display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-xs); font-weight: var(--weight-medium); }
-.stat-delta svg { width: 14px; height: 14px; }
+/* Stat: a number that is the point of the screen. Icon, label, value, then a comparison (.delta) with its context. */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--space-5); }
+.stat { display: flex; flex-direction: column; gap: 14px; min-width: 0; padding: 22px 24px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
+.stat-label { display: flex; align-items: center; gap: 12px; font-size: var(--text-base); color: var(--muted-foreground); font-weight: var(--weight-medium); }
+.stat-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius-md); background: var(--brand-bg); color: var(--brand-fg); }
+.stat-icon svg { width: 20px; height: 20px; }
+.stat-icon.crit { background: var(--crit-bg); color: var(--crit-fg); } .stat-icon.warn { background: var(--warn-bg); color: var(--warn-fg); } .stat-icon.info { background: var(--info-bg); color: var(--info-fg); }
+.stat-value { font-size: var(--text-4xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat-delta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font-size: var(--text-base); color: var(--muted-foreground); }
+.stat-delta > svg { width: 16px; height: 16px; }
 
 /* Severity filter: Crítico, Atenção, Informação, with counts. A toggle button (aria-pressed). */
 .severity-group { display: flex; gap: var(--space-2); flex-wrap: wrap; }
-.severity { display: inline-flex; align-items: center; gap: 8px; height: calc(var(--control-h) + 6px); padding: 0 14px; border-radius: var(--radius-md); border: 1px solid; background: transparent; font-size: var(--text-sm); font-weight: var(--weight-medium); }
-.severity svg { width: 16px; height: 16px; }
-.severity .severity-count { font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+.severity { display: inline-flex; align-items: center; gap: 8px; height: var(--control-h); padding: 0 16px; border-radius: var(--radius-md); border: 1px solid; background: transparent; font-size: var(--control-text); font-weight: var(--weight-semibold); transition: box-shadow var(--dur-fast), transform var(--dur-fast) var(--ease); }
+.severity:active { transform: scale(0.97); }
+.severity svg { width: 18px; height: 18px; }
+.severity .severity-count { font-variant-numeric: tabular-nums; }
 .severity[aria-pressed="true"] { box-shadow: inset 0 0 0 1px currentColor; }
+
+/* Phones: two stats per row, icon above the label */
+@media (max-width: 640px) {
+  .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+  .stat { gap: 10px; padding: 16px; }
+  .stat-label { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .stat-value { font-size: var(--text-3xl); }
+  .stat-delta { font-size: var(--text-sm); }
+}

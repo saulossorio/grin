@@ -29,7 +29,7 @@ export function setTheme(theme) {
   root.dispatchEvent(new CustomEvent('grin:theme', { detail: effectiveTheme() }));
 }
 export function setDensity(density) {
-  if (density === 'comfortable') root.setAttribute('data-density', 'comfortable'); else root.removeAttribute('data-density');
+  if (density === 'compact') root.setAttribute('data-density', 'compact'); else root.removeAttribute('data-density');
   write('density', density);
   sync();
 }
@@ -41,7 +41,7 @@ export function setScale(scale) {
 
 // Brings every control on the page in line with the current choice.
 export function sync() {
-  const t = getTheme(), d = read('density', 'compact'), s = read('scale', '100');
+  const t = getTheme(), d = read('density', 'comfortable'), s = read('scale', '100');
   document.querySelectorAll('[data-theme-select]').forEach((el) => { el.value = t; });
   document.querySelectorAll('button[data-set-theme]').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.setTheme === t)));
   document.querySelectorAll('input[data-set-density]').forEach((el) => { el.checked = el.value === d; });
@@ -53,7 +53,7 @@ export function sync() {
 const fromUrl = new URLSearchParams(location.search).get('theme');
 if (['light', 'dark', 'hc', 'system'].includes(fromUrl)) write('theme', fromUrl);
 const t0 = getTheme(); if (t0 !== 'system') root.setAttribute('data-theme', t0);
-if (read('density', 'compact') === 'comfortable') root.setAttribute('data-density', 'comfortable');
+if (read('density', 'comfortable') === 'compact') root.setAttribute('data-density', 'compact');
 const s0 = read('scale', '100'); if (s0 !== '100') root.setAttribute('data-scale', s0);
 
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync, { once: true }); else sync();

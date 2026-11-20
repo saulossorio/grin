@@ -15,7 +15,8 @@ export function toast(text, { type = 'ok', action, onAction, duration = 5000 } =
   el.className = `toast ${type}`;
   el.innerHTML = `${icon(ICON[type] ?? 'info')}<div class="toast-text"></div>${action ? '<button type="button" class="link"></button>' : ''}<button type="button" class="btn icon xs ghost" aria-label="Fechar aviso">${icon('x', 14)}</button>`;
   el.querySelector('.toast-text').textContent = text;
-  const close = () => el.remove();
+  // Fades out before leaving; with reduced motion the animation is off, so remove right away
+  const close = () => { if (!el.isConnected) return; el.classList.add('leaving'); setTimeout(() => el.remove(), matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 220); };
   if (action) {
     const b = el.querySelector('.link');
     b.textContent = action;

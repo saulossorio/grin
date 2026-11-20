@@ -8,81 +8,81 @@
       "$value": "#000000"
     },
     "gray": {
-      "$description": "Neutro do tema claro. Cinza com leve viés verde (matiz 155).",
+      "$description": "Neutro do tema claro. Cinza quase sem matiz, com um leve viés frio.",
       "1": {
-        "$value": "#fcfdfc"
+        "$value": "#fcfcfc"
       },
       "2": {
-        "$value": "#f7f9f7"
+        "$value": "#fafafa"
       },
       "3": {
-        "$value": "#eff2f0"
+        "$value": "#f4f4f5"
       },
       "4": {
-        "$value": "#e8ebe9"
+        "$value": "#efeff1"
       },
       "5": {
-        "$value": "#e0e4e1"
+        "$value": "#e9e9eb"
       },
       "6": {
-        "$value": "#d8ddd9"
+        "$value": "#e2e3e6"
       },
       "7": {
-        "$value": "#ccd2ce"
+        "$value": "#d6d7da"
       },
       "8": {
-        "$value": "#b4bbb6"
+        "$value": "#b9bbc0"
       },
       "9": {
-        "$value": "#808782"
+        "$value": "#8a8c93"
       },
       "10": {
-        "$value": "#737974"
+        "$value": "#71737a"
       },
       "11": {
-        "$value": "#565d58"
+        "$value": "#53555c"
       },
       "12": {
-        "$value": "#171c19"
+        "$value": "#17181c"
       }
     },
     "gray-dark": {
-      "$description": "Neutro do tema escuro (matiz 175).",
+      "$description": "Neutro do tema escuro. Cinza quase sem matiz, com um leve viés frio.",
       "1": {
-        "$value": "#0e100f"
+        "$value": "#111113"
       },
       "2": {
-        "$value": "#131615"
+        "$value": "#18181b"
       },
       "3": {
-        "$value": "#1a1d1c"
+        "$value": "#1f1f23"
       },
       "4": {
-        "$value": "#1f2423"
+        "$value": "#26262b"
       },
       "5": {
-        "$value": "#252b29"
+        "$value": "#2d2d33"
       },
       "6": {
-        "$value": "#2c3230"
+        "$value": "#36363d"
       },
       "7": {
-        "$value": "#383f3d"
+        "$value": "#44444c"
       },
       "8": {
-        "$value": "#4e5653"
+        "$value": "#5a5a64"
       },
       "9": {
-        "$value": "#717a77"
+        "$value": "#6e6e78"
       },
       "10": {
-        "$value": "#808886"
+        "$value": "#7c7c86"
       },
       "11": {
-        "$value": "#b8c0bd"
+        "$value": "#b0b0b8"
       },
       "12": {
-        "$value": "#edf1f0"
+        "$value": "#ededf0"
       }
     },
     "green": {

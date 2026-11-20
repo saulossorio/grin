@@ -19,15 +19,15 @@ const PAGES = [
   ] },
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
-export const GRIN_MARK = '<svg class="grin-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '1.1.1';
+export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
+export const VERSION = '2.0';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
   const here = nav.dataset.here;
   nav.setAttribute('aria-label', 'Navegação da documentação');
   nav.id = 'docs-nav';
-  nav.innerHTML = `<a class="app-logo grin-logo" href="${base}index.html">${GRIN_MARK}<span>Grin</span><span class="tag">${VERSION}</span></a>`
+  nav.innerHTML = `<a class="app-logo" href="${base}index.html">${GRIN_MARK}<span>Grin</span><span class="tag">${VERSION}</span></a>`
     + PAGES.map(({ heading, items }) => (heading ? `<div class="nav-heading">${heading}</div>` : '') + items.map(([id, href, label, ic]) =>
       `<a class="nav-item" href="${base}${href}"${id === here ? ' aria-current="page"' : ''}>${icon(ic)}<span class="label">${label}</span></a>`).join('')).join('')
     + `<div class="sidebar-footer"><a class="nav-item small" href="https://github.com/saulossorio/grin">${icon('external-link')}<span class="label">Repositório</span></a>`

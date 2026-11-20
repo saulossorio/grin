@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fundamentos · Grin</title>
 <meta name="description" content="Cor, tipografia, espaço, raio, sombra, movimento e ícones do Grin, com valores ao vivo.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -16,7 +16,6 @@
 <script type="module" src="../scripts/docs-shell.js"></script>
 </head>
 <body>
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" data-docs-nav data-base="../" data-here="foundations"></nav>
   <div class="app-main">
@@ -94,15 +93,23 @@
         <header><h2 id="t-radius">Raio e sombra</h2></header>
         <div class="row" style="gap:24px" id="radius-scale"></div>
         <div class="docs-grid">
-          <div class="shadow-box" style="box-shadow:var(--shadow-xs)">shadow-xs · botões</div>
-          <div class="shadow-box" style="box-shadow:var(--shadow-sm)">shadow-sm · selecionado</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-xs)">shadow-xs · campos</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-control)">shadow-control · botões</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-sm)">shadow-sm · cartões</div>
           <div class="shadow-box" style="box-shadow:var(--shadow-md)">shadow-md · menus</div>
-          <div class="shadow-box" style="box-shadow:var(--shadow-lg)">shadow-lg · diálogos</div>
+          <div class="shadow-box" style="box-shadow:var(--shadow-lg)">shadow-lg · diálogos e gaveta</div>
         </div>
       </section>
 
       <section class="docs-section" id="motion" aria-labelledby="t-motion">
         <header><h2 id="t-motion">Movimento</h2></header>
+        <div class="table-wrap"><table class="table docs-table"><thead><tr><th scope="col">Token</th><th scope="col">Valor</th><th scope="col">Uso</th></tr></thead><tbody>
+          <tr><td><code>--dur-fast</code></td><td>140 ms</td><td>Hover, troca de cor, toque em botão.</td></tr>
+          <tr><td><code>--dur</code></td><td>220 ms</td><td>Menus, toasts, diálogos, casinha de marcar.</td></tr>
+          <tr><td><code>--dur-slow</code></td><td>320 ms</td><td>Gaveta e indicadores que deslizam.</td></tr>
+          <tr><td><code>--ease</code></td><td>sai rápido e assenta</td><td>Entradas e saídas.</td></tr>
+          <tr><td><code>--ease-spring</code></td><td>passa um pouco e volta</td><td>Aba, interruptor, casinha de marcar, toast.</td></tr>
+        </tbody></table></div>
         <div class="demo"><div class="demo-stage"><button type="button" class="btn" id="motion-demo">Salvar linha</button><span id="motion-row" style="padding:6px 10px;border-radius:var(--radius-sm)">Ana Lima · ana.lima@nortesul.com.br</span></div></div>
       </section>
 
@@ -117,18 +124,18 @@
           <thead><tr><th scope="col">Tema</th><th scope="col">Atributo</th><th scope="col">Caráter</th><th scope="col">Contraste mínimo</th></tr></thead>
           <tbody>
             <tr><td>Claro</td><td><code>data-theme="light"</code></td><td>Fundo branco, barra lateral em cinza 2, bordas finas.</td><td>Texto 4,5:1, interface 3:1</td></tr>
-            <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td>Quase preto com leve viés verde; cada elevação um passo mais clara.</td><td>Texto 4,5:1, interface 3:1</td></tr>
+            <tr><td>Escuro</td><td><code>data-theme="dark"</code></td><td>Quase preto e neutro; cada elevação um passo mais clara.</td><td>Texto 4,5:1, interface 3:1</td></tr>
             <tr><td>Alto contraste</td><td><code>data-theme="hc"</code></td><td>Preto sobre branco, bordas escuras, estados sem fundo colorido, foco de 3 px.</td><td>Texto 7:1</td></tr>
           </tbody></table></div>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Densidade</th><th scope="col">Atributo</th><th scope="col">Controles</th><th scope="col">Para</th></tr></thead>
           <tbody>
-            <tr><td>Compacta (padrão)</td><td>nenhum</td><td>32 px, texto de 14 px</td><td>Trabalhar horas numa tabela.</td></tr>
-            <tr><td>Confortável</td><td><code>data-density="comfortable"</code></td><td>40 px, texto de 16 px</td><td>Ler, analisar, telas de apresentação.</td></tr>
+            <tr><td>Confortável (padrão)</td><td>nenhum</td><td>44 px, texto de 16 px</td><td>A maior parte das telas.</td></tr>
+            <tr><td>Compacta</td><td><code>data-density="compact"</code></td><td>36 px, texto de 14 px</td><td>Trabalhar horas numa tabela grande.</td></tr>
           </tbody></table></div>
       </section>
 
-      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
@@ -176,7 +183,7 @@ document.getElementById('type-scale').innerHTML = TYPE.map(([size, weight, sampl
   + `<div class="token-row"><code>--font-mono</code><code>Geist Mono</code><span class="sample text-mono">ERR-7F3A · 12.345.678/0001-90</span></div>`;
 const SPACE = ['0-5', '1', '1-5', '2', '2-5', '3', '3-5', '4', '5', '6', '8', '10', '12', '16', '20'];
 document.getElementById('space-scale').innerHTML = SPACE.map((s) => `<div class="token-row"><code>--space-${s}</code><code>${token('space-' + s)}</code><div class="space-bar" style="width:var(--space-${s})"></div></div>`).join('');
-document.getElementById('radius-scale').innerHTML = ['xs', 'sm', 'md', 'lg'].map((r) => `<div class="stack" style="gap:8px;align-items:center"><div class="radius-box" style="border-radius:var(--radius-${r})"></div><code>--radius-${r} · ${token('radius-' + r)}</code></div>`).join('');
+document.getElementById('radius-scale').innerHTML = ['xs', 'sm', 'md', 'lg', 'xl'].map((r) => `<div class="stack" style="gap:8px;align-items:center"><div class="radius-box" style="border-radius:var(--radius-${r})"></div><code>--radius-${r} · ${token('radius-' + r)}</code></div>`).join('');
 document.getElementById('icon-grid').innerHTML = Object.keys(ICONS).map((n) => `<div class="icon-cell">${icon(n, 20)}${n}</div>`).join('');
 document.getElementById('motion-demo').addEventListener('click', () => flash(document.getElementById('motion-row')));
 

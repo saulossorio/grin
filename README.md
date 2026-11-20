@@ -7,7 +7,7 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 ## O que tem
 
 - **Tokens** em três camadas (core, semântica, temas), em JSON, com gerador de CSS.
-- **Temas** claro, escuro e alto contraste; **densidades** compacta (32 px) e confortável (40 px); fonte em 100%, 112,5% e 125%.
+- **Temas** claro, escuro e alto contraste; **densidades** confortável (44 px, padrão) e compacta (36 px); fonte em 100%, 112,5% e 125%.
 - **Cor:** seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro. Marca: `#8dc63f`, usada só como acento.
 - **Tipografia:** Geist e Geist Mono, servidas pelo próprio repositório (`assets/fonts`, licença OFL).
 - **16 componentes:** botão, campo, seleção, interruptor, controle segmentado, chip de filtro, selo, aviso, toast, cartão e indicador, tabela, abas, menu, diálogo, gaveta, estado vazio e a casca do app (barra lateral e topo).
@@ -19,7 +19,7 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 
 ```html
-<script>/* evita piscar o tema errado: aplica a escolha salva antes de pintar */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* evita piscar o tema errado: aplica a escolha salva antes de pintar */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="stylesheet" href="styles/fonts.css">
 <link rel="stylesheet" href="styles/variables.css">
 <link rel="stylesheet" href="styles/global.css">
@@ -31,7 +31,7 @@ Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 |---|---|
 | nenhum | Segue o sistema (claro, escuro ou alto contraste) |
 | `data-theme="light"`, `"dark"`, `"hc"` | Fixa o tema |
-| `data-density="comfortable"` | Controles de 40 px |
+| `data-density="compact"` | Controles de 36 px e texto de 14 px |
 | `data-scale="112"` ou `"125"` | Fonte em 112,5% ou 125% |
 
 `data-theme` e `data-density` também valem numa seção (qualquer elemento), por exemplo para mostrar um painel escuro dentro de uma página clara.

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Exemplo: lista de pessoas · Grin</title>
 <meta name="description" content="Exemplo do Grin: lista de dados com indicadores, busca, filtros, tabela, ações em massa, gaveta e diálogo.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -14,85 +14,86 @@
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <style>
   /* Only what is specific to this example; everything else comes from Grin */
-  .table td.name { font-weight: var(--weight-medium); }
   .table tbody tr { cursor: pointer; }
-  .bulk-bar-wrap { position: sticky; bottom: 16px; display: flex; justify-content: center; pointer-events: none; }
+  .bulk-bar-wrap { position: sticky; bottom: 24px; display: flex; justify-content: center; pointer-events: none; }
   .bulk-bar-wrap .bulk-bar { pointer-events: auto; }
-  .file-chip { display: inline-flex; align-items: center; gap: 6px; min-width: 0; font-size: var(--text-sm); font-weight: var(--weight-medium); }
-  .file-chip span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .sidebar .search { width: 100%; margin-bottom: 12px; }
+  .table-header h2 { display: flex; align-items: center; gap: 10px; font-size: var(--text-xl); }
+  .table-header p { margin-top: 4px; color: var(--muted-foreground); }
 </style>
 <script type="module" src="../components/dialog/dialog.js"></script>
+<script type="module" src="../components/tabs/tabs.js"></script>
 </head>
 <body>
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" id="sidebar" aria-label="Navegação principal">
-    <a class="app-logo" href="../index.html"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="app-logo" href="../index.html"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
+    <div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar no aplicativo" placeholder="Buscar"></div>
+    <a class="nav-item" href="#"><i data-icon="layout-grid"></i><span class="label">Painel</span></a>
     <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
     <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></a>
+    <span class="nav-heading">Gestão</span>
     <a class="nav-item" href="#"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
     <a class="nav-item" href="#"><i data-icon="merge"></i><span class="label">Duplicados</span><span class="nav-count">7</span></a>
     <div class="sidebar-footer">
-      <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
-      <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
-      <button type="button" class="nav-item small" id="collapse" aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
+      <div>
+        <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
+        <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
+        <button type="button" class="nav-item small" id="collapse" aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
+      </div>
+      <a class="account" href="#"><span class="avatar ok">MC</span><div><b>Marina Costa</b><small>marina@nortesul.com.br</small></div></a>
     </div>
   </nav>
   <div class="app-main">
-    <header class="topbar">
-      <span class="file-chip"><i data-icon="table" data-size="14"></i><span>convidados-novembro.xlsx</span></span>
-      <span class="status"><span class="dot ok"></span>Salvo agora</span>
-      <span class="spacer"></span>
-      <label class="sr-only" for="theme">Tema</label>
-      <select class="select" id="theme" data-theme-select style="width:auto"><option value="system">Tema do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option><option value="hc">Alto contraste</option></select>
-    </header>
     <div class="page-header">
+      <nav class="breadcrumb" aria-label="Você está em"><i data-icon="users"></i><a href="#">Pessoas</a><i data-icon="chevron-right"></i><span aria-current="page">Importação de novembro</span></nav>
       <div class="page-title-row">
-        <div class="page-title"><h1>Pessoas</h1><span class="text-secondary tabular" id="total">1.284 na planilha</span></div>
-        <div class="row"><button type="button" class="btn"><i data-icon="upload"></i>Importar</button><button type="button" class="btn"><i data-icon="download"></i>Exportar</button><button type="button" class="btn primary"><i data-icon="check"></i>Importar para a agenda</button></div>
+        <div><div class="page-title"><h1>Pessoas</h1></div><p class="page-description">Convidados da planilha <b>convidados-novembro.xlsx</b>, antes de entrar na agenda.</p></div>
+        <div class="toolbar"><button type="button" class="btn"><i data-icon="download"></i>Exportar</button><button type="button" class="btn primary"><i data-icon="check"></i>Importar para a agenda</button></div>
       </div>
-      <div class="stat-grid">
-        <div class="stat"><span class="stat-label">Prontas</span><span class="stat-value">1.207</span><span class="stat-delta text-ok"><i data-icon="check-circle"></i>94% da planilha</span></div>
-        <div class="stat"><span class="stat-label">Com problema crítico</span><span class="stat-value">8</span><span class="stat-delta text-crit"><i data-icon="alert-circle"></i>Não podem ser importadas</span></div>
-        <div class="stat"><span class="stat-label">Com atenção</span><span class="stat-value">69</span><span class="stat-delta text-warn"><i data-icon="alert-triangle"></i>Podem ser importadas</span></div>
-      </div>
-      <div class="toolbar">
-        <div class="search"><i data-icon="search"></i><input class="input" id="search" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome, e-mail ou empresa"></div>
-        <button type="button" class="btn"><i data-icon="filter"></i>Filtrar</button>
-        <button type="button" class="btn"><i data-icon="columns"></i>Colunas</button>
-        <span class="spacer"></span>
-        <div class="segmented" role="radiogroup" aria-label="Densidade">
-          <label><input type="radio" name="density" value="compact" data-set-density><span>Compacta</span></label>
-          <label><input type="radio" name="density" value="comfortable" data-set-density><span>Confortável</span></label>
-        </div>
-      </div>
-      <div class="chip-group" id="chips">
-        <span class="chip"><button type="button" class="chip-label">Situação: Crítico, Atenção</button><button type="button" class="chip-remove" aria-label="Remover filtro Situação" data-remove-filter><i data-icon="x"></i></button></span>
+      <div class="tabs" role="tablist" aria-label="Situação">
+        <button type="button" class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="all">Todas <span class="nav-count">1.284</span></button>
+        <button type="button" class="tab" role="tab" aria-selected="true" data-filter="issues">Com pendência <span class="nav-count">77</span></button>
+        <button type="button" class="tab" role="tab" aria-selected="false" tabindex="-1" data-filter="ok">Prontas <span class="nav-count">1.207</span></button>
       </div>
     </div>
     <main class="page-content">
-      <div class="table-wrap">
+      <div class="stat-grid">
+        <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="users"></i></span>Na planilha</span><span class="stat-value">1.284</span><span class="stat-delta"><span class="delta ok">+46</span>desde outubro</span></div>
+        <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="check-circle"></i></span>Prontas</span><span class="stat-value">1.207</span><span class="stat-delta"><span class="delta ok">94%</span>da planilha</span></div>
+        <div class="stat"><span class="stat-label"><span class="stat-icon crit"><i data-icon="alert-circle"></i></span>Críticas</span><span class="stat-value">8</span><span class="stat-delta"><span class="delta crit">não entram</span>até corrigir</span></div>
+        <div class="stat"><span class="stat-label"><span class="stat-icon warn"><i data-icon="alert-triangle"></i></span>Com atenção</span><span class="stat-value">69</span><span class="stat-delta"><span class="delta warn">podem entrar</span>vale conferir</span></div>
+      </div>
+      <section class="table-wrap table-cards" aria-labelledby="t-people">
+        <div class="table-header"><div><h2 id="t-people">Lista de pessoas <span class="badge" id="total"></span></h2><p>Toque numa pessoa para abrir. Marque várias para ações em massa.</p></div><button type="button" class="btn"><i data-icon="columns"></i>Colunas</button></div>
+        <div class="table-toolbar">
+          <div class="search"><i data-icon="search"></i><input class="input" id="search" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome, e-mail ou empresa"></div>
+          <div class="chip-group" id="chips">
+            <span class="chip"><button type="button" class="chip-label">Situação: Crítico, Atenção</button><button type="button" class="chip-remove" aria-label="Remover filtro Situação" data-remove-filter><i data-icon="x"></i></button></span>
+            <button type="button" class="btn"><i data-icon="filter"></i>Filtros</button>
+          </div>
+        </div>
         <table class="table" id="people">
-          <thead><tr><th scope="col" class="select-col"><input type="checkbox" id="select-all" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Cargo</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
+          <thead><tr><th scope="col" class="select-col"><input type="checkbox" id="select-all" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">Empresa</th><th scope="col">Cargo</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
           <tbody></tbody>
         </table>
-      </div>
-      <div class="pagination"><span id="summary"></span><div class="row"><button type="button" class="btn xs icon" aria-label="Página anterior" disabled><i data-icon="chevron-left"></i></button><span>Página 1 de 1</span><button type="button" class="btn xs icon" aria-label="Próxima página" disabled><i data-icon="chevron-right"></i></button></div></div>
+        <div class="pagination"><span id="summary"></span><div class="pages"><button type="button" aria-current="page">1</button><button type="button" disabled>2</button></div></div>
+      </section>
       <div class="bulk-bar-wrap" id="bulk" hidden><div class="bulk-bar" role="toolbar" aria-label="Ações para as linhas marcadas"><span class="bulk-bar-count" id="bulk-count"></span><span class="divider-v"></span><button type="button" class="btn xs"><i data-icon="pencil"></i>Editar em massa</button><button type="button" class="btn xs"><i data-icon="download"></i>Exportar</button><button type="button" class="btn xs danger" data-open="confirm-delete"><i data-icon="trash"></i><span id="bulk-delete">Excluir</span></button></div></div>
     </main>
   </div>
 </div>
 
 <dialog class="dialog" id="confirm-delete" aria-labelledby="confirm-title">
-  <div class="dialog-header"><h2 id="confirm-title">Excluir?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="dialog-header"><span class="dialog-icon crit"><i data-icon="trash"></i></span><h2 id="confirm-title">Excluir?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
   <div class="dialog-body"><p id="confirm-text"></p></div>
   <div class="dialog-footer"><button type="button" class="btn" data-close autofocus>Cancelar</button><button type="button" class="btn danger" id="confirm" data-close>Excluir</button></div>
 </dialog>
 
 <dialog class="drawer" id="record" aria-labelledby="record-title">
-  <div class="drawer-header"><div class="drawer-heading"><h2 id="record-title"></h2><span class="text-secondary" id="record-sub"></span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="drawer-header"><span class="avatar lg" id="record-avatar"></span><div class="drawer-heading"><h2 id="record-title"></h2><span class="text-secondary" id="record-sub"></span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
   <div class="drawer-body" id="record-body"></div>
-  <div class="drawer-footer"><button type="button" class="btn primary" id="record-save" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
+  <div class="drawer-footer"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn primary" id="record-save" data-close>Salvar</button></div>
 </dialog>
 
 <script type="module">
@@ -116,25 +117,29 @@ let people = [
 ];
 const STATE = { ok: ['ok', 'check-circle', 'Pronta'], crit: ['crit', 'alert-circle', 'Crítico'], warn: ['warn', 'alert-triangle', 'Atenção'], info: ['info', 'info', 'Informação'] };
 const selected = new Set();
-let filterBySeverity = true;
+let filter = 'issues';
+const TONES = ['ok', 'info', 'warn', 'crit', 'brand'];
+const initials = (n) => n.split(' ').filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 function render() {
   const q = document.getElementById('search').value.trim().toLowerCase();
   const mark = (s) => (q && s.toLowerCase().includes(q) ? esc(s).replace(new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'ig'), (m) => `<mark>${m}</mark>`) : esc(s));
-  const list = people.filter((p) => (!filterBySeverity || p.state === 'crit' || p.state === 'warn') && (!q || [p.name, p.company, p.email].some((v) => v.toLowerCase().includes(q))));
+  const list = people.filter((p) => (filter === 'all' || (filter === 'ok' ? p.state === 'ok' : p.state !== 'ok')) && (!q || [p.name, p.company, p.email].some((v) => v.toLowerCase().includes(q))));
   const body = document.querySelector('#people tbody');
   if (!list.length) {
-    body.innerHTML = `<tr><td colspan="7" style="height:auto;padding:16px"><div class="empty-state" style="border:0"><span class="empty-state-icon">${icon('search')}</span><h3>Nenhuma pessoa corresponde à busca.</h3><p>Procure por outro nome, e-mail ou empresa.</p><div class="row"><button type="button" class="btn" id="clear-search">Limpar busca</button></div></div></td></tr>`;
+    body.innerHTML = `<tr><td colspan="6" style="height:auto;padding:16px"><div class="empty-state" style="border:0"><span class="empty-state-icon">${icon('search')}</span><h3>Nenhuma pessoa corresponde à busca.</h3><p>Procure por outro nome, e-mail ou empresa.</p><div class="row"><button type="button" class="btn" id="clear-search">Limpar busca</button></div></div></td></tr>`;
   } else {
     body.innerHTML = list.map((p) => {
       const i = people.indexOf(p); const [tone, ic, label] = STATE[p.state];
       const value = (v, what) => (v ? mark(v) : `<span class="cell-empty">sem ${what}</span>`);
-      const emailState = p.state !== 'ok' && /e-mail/i.test(p.problem ?? '') ? ` cell-${p.state === 'crit' ? 'crit' : 'warn'}` : '';
-      return `<tr data-i="${i}" aria-selected="${selected.has(i)}"><td class="select-col"><input type="checkbox" ${selected.has(i) ? 'checked' : ''} aria-label="Marcar ${esc(p.name)}"></td><td class="name">${mark(p.name)}</td><td class="${p.company ? '' : 'cell-crit'}">${value(p.company, 'empresa')}</td><td class="${emailState}${p.edited ? ' cell-edited' : ''}">${value(p.email, 'e-mail')}</td><td>${esc(p.role)}</td><td><span class="badge ${tone}"${p.problem ? ` title="${esc(p.problem)}"` : ''}>${icon(ic, 12)}${label}</span></td><td class="numeric">${p.events}</td></tr>`;
+      const emailState = p.state !== 'ok' && /e-mail/i.test(p.problem ?? '');
+      const mail = p.email ? `<small class="${emailState ? `text-${p.state === 'crit' ? 'crit' : 'warn'}` : ''}">${mark(p.email)}</small>` : '<small class="text-crit">sem e-mail</small>';
+      return `<tr data-i="${i}" aria-selected="${selected.has(i)}"><td class="select-col"><input type="checkbox" ${selected.has(i) ? 'checked' : ''} aria-label="Marcar ${esc(p.name)}"></td><td class="${p.edited ? 'cell-edited' : ''}"><div class="cell-main"><span class="avatar ${TONES[i % TONES.length]}">${initials(p.name)}</span><div><b>${mark(p.name)}</b>${mail}</div></div></td><td class="${p.company ? '' : 'cell-crit'}" data-label="Empresa">${value(p.company, 'empresa')}</td><td data-label="Cargo">${esc(p.role)}</td><td data-label="Situação"><span class="badge ${tone}"${p.problem ? ` title="${esc(p.problem)}"` : ''}><span class="dot ${tone}"></span>${p.problem ?? label}</span></td><td class="numeric" data-label="Eventos">${p.events}</td></tr>`;
     }).join('');
   }
   document.getElementById('summary').textContent = `${list.length} de ${people.length} pessoas`;
+  document.getElementById('total').textContent = list.length === 1 ? '1 pessoa' : `${list.length} pessoas`;
   const n = selected.size;
   document.getElementById('bulk').hidden = n === 0;
   document.getElementById('bulk-count').textContent = n === 1 ? '1 marcada' : `${n} marcadas`;
@@ -147,10 +152,11 @@ function openRecord(i) {
   document.getElementById('record').dataset.i = i;
   document.getElementById('record-title').textContent = p.name;
   document.getElementById('record-sub').textContent = [p.role, p.company].filter(Boolean).join(' · ');
+  const av = document.getElementById('record-avatar'); av.className = `avatar lg ${TONES[i % TONES.length]}`; av.textContent = initials(p.name);
   const tone = STATE[p.state][0];
   const alert = p.problem ? `<div class="alert ${tone === 'ok' ? '' : tone}">${icon(STATE[p.state][1])}<div class="alert-body"><span class="alert-title">${esc(p.problem)}.</span> ${p.state === 'crit' ? 'Esta linha não pode ser importada. Complete o campo.' : 'Pode ser importada, mas vale conferir.'}</div></div>` : '';
   const invalidEmail = p.state !== 'ok' && /e-mail/i.test(p.problem ?? '');
-  document.getElementById('record-body').innerHTML = `${alert}<div>
+  document.getElementById('record-body').innerHTML = `<div class="facts"><div><small>Eventos</small><b>${p.events}</b></div><div><small>Situação</small><b>${STATE[p.state][2]}</b></div></div>${alert}<div>
     <div class="field-row"><label class="field-label" for="f-name">Nome</label><input class="input" id="f-name" value="${esc(p.name)}"></div>
     <div class="field-row"><label class="field-label" for="f-company">Empresa</label><input class="input" id="f-company" value="${esc(p.company)}"${p.company ? '' : ' aria-invalid="true"'}></div>
     <div class="field-row"><label class="field-label" for="f-email">E-mail</label><input class="input" id="f-email" type="email" value="${esc(p.email)}"${invalidEmail ? ' aria-invalid="true"' : ''}></div>
@@ -186,7 +192,9 @@ document.addEventListener('click', (e) => {
     document.getElementById('confirm-text').textContent = `${n === 1 ? 'A pessoa sai' : `As ${n} pessoas saem`} da importação. A planilha original não muda.`;
     document.getElementById('confirm').textContent = n === 1 ? 'Excluir 1 pessoa' : `Excluir ${n} pessoas`;
   }
-  if (e.target.closest('[data-remove-filter]')) { filterBySeverity = false; e.target.closest('.chip').remove(); render(); toast('Filtro removido.', { type: 'info' }); }
+  if (e.target.closest('[data-remove-filter]')) { filter = 'all'; e.target.closest('.chip').remove(); document.querySelector('.tab[data-filter="all"]').click(); toast('Filtro removido.', { type: 'info' }); }
+  const tab = e.target.closest('.tab[data-filter]');
+  if (tab) { filter = tab.dataset.filter; render(); }
 });
 document.getElementById('confirm').addEventListener('click', () => {
   const before = people.slice(); const n = selected.size;

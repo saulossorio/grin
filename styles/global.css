@@ -28,10 +28,10 @@ img { display: block; max-width: 100%; }
 
 /* ---------- Typography ---------- */
 h1, h2, h3, h4 { font-weight: var(--weight-semibold); line-height: var(--leading-tight); text-wrap: balance; }
-h1 { font-size: var(--text-2xl); letter-spacing: var(--tracking-display); }
-h2 { font-size: var(--text-xl); letter-spacing: var(--tracking-tight); }
-h3 { font-size: var(--text-base); letter-spacing: var(--tracking-tight); }
-h4 { font-size: var(--text-sm); }
+h1 { font-size: var(--text-3xl); letter-spacing: var(--tracking-display); }
+h2 { font-size: var(--text-2xl); letter-spacing: var(--tracking-display); }
+h3 { font-size: var(--text-lg); letter-spacing: var(--tracking-tight); }
+h4 { font-size: var(--text-base); }
 p { text-wrap: pretty; }
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
@@ -48,11 +48,6 @@ mark { background: var(--highlight); color: inherit; border-radius: 2px; padding
 input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--ring); outline-offset: -1px; }
 :root[data-theme="hc"] :focus-visible { outline-width: 3px; }
 
-input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; margin: 0; flex-shrink: 0; cursor: pointer; accent-color: var(--primary); }
-
-/* ---------- Brand bar: 3 px of brand green across the top of the screen ---------- */
-.brand-bar { height: var(--size-brand-bar); background: var(--primary); }
-
 /* ---------- Layout utilities ---------- */
 .row { display: flex; align-items: center; gap: var(--space-2); flex-wrap: wrap; }
 .stack { display: flex; flex-direction: column; gap: var(--space-3); }
@@ -67,10 +62,12 @@ input[type="checkbox"], input[type="radio"] { width: 16px; height: 16px; margin:
 .text-crit { color: var(--crit-fg); } .text-warn { color: var(--warn-fg); } .text-info { color: var(--info-fg); } .text-ok { color: var(--ok-fg); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* ---------- Motion: short, and only in response to an action. "Reduce motion" turns it off. ---------- */
+/* ---------- Motion: short, and only in response to an action. Indicators slide with a small bounce (--ease-spring).
+   "Reduce motion" turns it all off. ---------- */
 @keyframes grin-fade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes grin-rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-@keyframes grin-scale-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+@keyframes grin-scale-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: none; } }
+@keyframes grin-pop { from { opacity: 0; transform: translateY(12px) scale(0.98); } to { opacity: 1; transform: none; } }
 @keyframes grin-slide-in { from { opacity: 0; transform: translateX(24px); } to { opacity: 1; transform: none; } }
 @keyframes grin-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {

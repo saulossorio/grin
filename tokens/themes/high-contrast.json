@@ -15,5 +15,5 @@
   "ok-fg": "{color.teal.12}", "ok-bg": "{color.white}", "ok-border": "{color.teal.12}", "ok-solid": "{color.teal.12}",
   "chart-1": "{color.green.12}", "chart-2": "{color.blue.12}", "chart-band": "{color.green.5}", "chart-grid": "{color.gray.9}",
   "overlay": "oklch(0 0 0 / 0.6)", "hover": "oklch(0 0 0 / 0.08)",
-  "shadow-xs": "none", "shadow-sm": "0 0 0 1px #000000", "shadow-md": "0 0 0 2px #000000", "shadow-lg": "0 0 0 2px #000000"
+  "shadow-xs": "none", "shadow-control": "none", "shadow-sm": "0 0 0 1px #000000", "shadow-md": "0 0 0 2px #000000", "shadow-lg": "0 0 0 2px #000000"
 }

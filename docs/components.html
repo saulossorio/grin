@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Componentes · Grin</title>
 <meta name="description" content="Os componentes do Grin com exemplo ao vivo, código, classes e quando usar.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -18,7 +18,6 @@
 <script type="module" src="../components/tabs/tabs.js"></script>
 </head>
 <body>
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" data-docs-nav data-base="../" data-here="components"></nav>
   <div class="app-main">
@@ -103,8 +102,14 @@
 <span class="count">12</span>
 <span class="status"><span class="dot ok"></span>Salvo agora</span>
 <span class="status"><span class="dot warn"></span>Com pendências</span>
+<span class="delta ok">+46</span>
+<span class="delta crit">8 críticas</span>
+<span class="avatar ok">AL</span>
+<span class="avatar info">BR</span>
+<span class="avatar warn">CS</span>
+<span class="avatar brand">DM</span>
         </div></div>
-        <p class="class-list"><code>.badge</code> + tom · <code>.tag</code> · <code>.count</code> · <code>.status</code> · <code>.dot</code> + tom</p>
+        <p class="class-list"><code>.badge</code> + tom · <code>.tag</code> · <code>.count</code> · <code>.status</code> · <code>.dot</code> + tom · <code>.delta</code> + tom · <code>.avatar</code> + tom (<code>.sm</code>, <code>.lg</code>)</p>
       </section>
 
       <section class="docs-section" id="chip" aria-labelledby="t-chip">
@@ -170,9 +175,9 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <header><h2 id="t-card">Cartão</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
 <div class="stat-grid">
-  <div class="stat"><span class="stat-label">Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta text-ok"><i data-icon="trending-up"></i>+46 neste mês</span></div>
-  <div class="stat"><span class="stat-label">Com pendência</span><span class="stat-value">12</span><span class="stat-delta text-crit"><i data-icon="alert-circle"></i>8 críticas</span></div>
-  <div class="stat"><span class="stat-label">Empresas</span><span class="stat-value">318</span><span class="stat-delta text-secondary">Sem mudança</span></div>
+  <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="users"></i></span>Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta"><span class="delta ok">+46</span>desde outubro</span></div>
+  <div class="stat"><span class="stat-label"><span class="stat-icon crit"><i data-icon="alert-circle"></i></span>Com pendência</span><span class="stat-value">12</span><span class="stat-delta"><span class="delta crit">8 críticas</span>a corrigir</span></div>
+  <div class="stat"><span class="stat-label"><span class="stat-icon info"><i data-icon="building"></i></span>Empresas</span><span class="stat-value">318</span><span class="stat-delta"><span class="delta">0</span>sem mudança</span></div>
 </div>
 <article class="card">
   <header class="card-header"><div><h3 class="card-title">Norte Sul Eventos</h3><p class="card-description">São Paulo · 32 pessoas vinculadas</p></div><span class="badge ok">Ativa</span></header>
@@ -185,26 +190,28 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="severity info" aria-pressed="false"><i data-icon="info"></i>Informação <span class="severity-count">41</span></button>
 </div>
         </div></div>
-        <p class="class-list"><code>.card</code> · <code>.card-header</code> · <code>.card-title</code> · <code>.card-description</code> · <code>.card-body</code> · <code>.card-footer</code> · <code>.stat-grid</code> · <code>.stat</code> · <code>.stat-label</code> · <code>.stat-value</code> · <code>.stat-delta</code> · <code>.severity</code> + tom</p>
+        <p class="class-list"><code>.card</code> · <code>.card-header</code> · <code>.card-title</code> · <code>.card-description</code> · <code>.card-body</code> · <code>.card-footer</code> · <code>.stat-grid</code> · <code>.stat</code> · <code>.stat-label</code> · <code>.stat-icon</code> + tom · <code>.stat-value</code> · <code>.stat-delta</code> · <code>.severity</code> + tom</p>
       </section>
 
       <section class="docs-section" id="table" aria-labelledby="t-table">
         <header><h2 id="t-table">Tabela</h2></header>
         <div class="demo" data-code><div class="demo-stage column">
-<div class="table-wrap">
+<section class="table-wrap table-cards" aria-labelledby="ex-table-title">
+  <div class="table-header"><div><h3 id="ex-table-title">Lista de pessoas</h3><p class="text-secondary">Convidados com evento em 2026.</p></div><button type="button" class="btn"><i data-icon="download"></i>Exportar</button></div>
+  <div class="table-toolbar"><div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome ou e-mail"></div><button type="button" class="btn"><i data-icon="filter"></i>Filtros</button></div>
   <table class="table">
-    <thead><tr><th scope="col" class="select-col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">Empresa</th><th scope="col">E-mail</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
+    <thead><tr><th scope="col" class="select-col"><input type="checkbox" aria-label="Marcar todas"></th><th scope="col" aria-sort="ascending"><button type="button">Nome <i data-icon="chevron-down"></i></button></th><th scope="col">Empresa</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
     <tbody>
-      <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td>Ana Lima</td><td>Norte Sul</td><td class="cell-edited">ana.lima@nortesul.com.br</td><td><span class="badge ok"><i data-icon="check-circle"></i>Revisada</span></td><td class="numeric">4</td></tr>
-      <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td>Bruno Reis</td><td>Hospital Vida</td><td class="cell-crit"><span class="cell-empty">sem e-mail</span></td><td><span class="badge crit"><i data-icon="alert-circle"></i>Crítico</span></td><td class="numeric">1</td></tr>
-      <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Carla Souza"></td><td>Carla Souza</td><td>Varejo Sul</td><td class="cell-warn">carla@varejosul</td><td><span class="badge warn"><i data-icon="alert-triangle"></i>Atenção</span></td><td class="numeric">12</td></tr>
+      <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked aria-label="Marcar Ana Lima"></td><td class="cell-edited"><div class="cell-main"><span class="avatar ok">AL</span><div><b>Ana Lima</b><small>ana.lima@nortesul.com.br</small></div></div></td><td data-label="Empresa">Norte Sul</td><td data-label="Situação"><span class="badge ok"><span class="dot ok"></span>Revisada</span></td><td class="numeric" data-label="Eventos">4</td></tr>
+      <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Bruno Reis"></td><td><div class="cell-main"><span class="avatar info">BR</span><div><b>Bruno Reis</b><small class="text-crit">sem e-mail</small></div></div></td><td data-label="Empresa">Hospital Vida</td><td data-label="Situação"><span class="badge crit"><span class="dot crit"></span>Sem e-mail</span></td><td class="numeric" data-label="Eventos">1</td></tr>
+      <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Carla Souza"></td><td><div class="cell-main"><span class="avatar warn">CS</span><div><b>Carla Souza</b><small class="text-warn">carla@varejosul</small></div></div></td><td class="cell-crit" data-label="Empresa"><span class="cell-empty">sem empresa</span></td><td data-label="Situação"><span class="badge warn"><span class="dot warn"></span>E-mail incompleto</span></td><td class="numeric" data-label="Eventos">12</td></tr>
     </tbody>
   </table>
-</div>
-<div class="pagination"><span>3 de 1.284 pessoas</span><div class="row"><button type="button" class="btn xs icon" aria-label="Página anterior" disabled><i data-icon="chevron-left"></i></button><span>Página 1 de 428</span><button type="button" class="btn xs icon" aria-label="Próxima página"><i data-icon="chevron-right"></i></button></div></div>
+  <div class="pagination"><span>3 de 1.284 pessoas</span><div class="pages"><button type="button" aria-current="page">1</button><button type="button">2</button><button type="button">3</button><button type="button">428</button></div></div>
+</section>
 <div class="bulk-bar" role="toolbar" aria-label="Ações para 1 linha marcada"><span class="bulk-bar-count">1 marcada</span><span class="divider-v"></span><button type="button" class="btn xs"><i data-icon="pencil"></i>Editar</button><button type="button" class="btn xs"><i data-icon="download"></i>Exportar</button><button type="button" class="btn xs danger"><i data-icon="trash"></i>Excluir 1</button></div>
         </div></div>
-        <p class="class-list"><code>.table-wrap</code> · <code>.table</code> (<code>.compact</code>) · <code>.numeric</code> · <code>.select-col</code> · <code>.cell-crit</code> · <code>.cell-warn</code> · <code>.cell-edited</code> · <code>.cell-empty</code> · <code>.pagination</code> · <code>.bulk-bar</code></p>
+        <p class="class-list"><code>.table-wrap</code> (<code>.table-cards</code>: lista de cartões no celular, com <code>data-label</code> nas células) · <code>.table-header</code> · <code>.table-toolbar</code> · <code>.table</code> (<code>.compact</code>) · <code>.cell-main</code> · <code>.numeric</code> · <code>.select-col</code> · <code>.cell-crit</code> · <code>.cell-warn</code> · <code>.cell-edited</code> · <code>.cell-empty</code> · <code>.pagination</code> · <code>.pages</code> · <code>.bulk-bar</code></p>
       </section>
 
       <section class="docs-section" id="menu" aria-labelledby="t-menu">
@@ -228,13 +235,14 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 <button type="button" class="btn danger" data-open="ex-dialog">Excluir 3 pessoas</button>
 <button type="button" class="btn" data-open="ex-drawer">Abrir registro</button>
 <dialog class="dialog" id="ex-dialog" aria-labelledby="ex-dialog-title">
-  <div class="dialog-header"><h2 id="ex-dialog-title">Excluir 3 pessoas?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="dialog-header"><span class="dialog-icon crit"><i data-icon="trash"></i></span><h2 id="ex-dialog-title">Excluir 3 pessoas?</h2><button type="button" class="btn icon ghost xs" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
   <div class="dialog-body"><p>As 3 pessoas saem das listas e dos eventos. Você pode desfazer por 30 dias na Lixeira.</p></div>
   <div class="dialog-footer"><button type="button" class="btn" data-close autofocus>Cancelar</button><button type="button" class="btn danger" data-close>Excluir 3 pessoas</button></div>
 </dialog>
 <dialog class="drawer" id="ex-drawer" aria-labelledby="ex-drawer-title">
-  <div class="drawer-header"><div class="drawer-heading"><h2 id="ex-drawer-title">Ana Lima</h2><span class="text-secondary">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="drawer-header"><span class="avatar lg ok">AL</span><div class="drawer-heading"><h2 id="ex-drawer-title">Ana Lima</h2><span class="text-secondary">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
   <div class="drawer-body">
+    <div class="facts"><div><small>Eventos</small><b>4</b></div><div><small>Atualizado</small><b>há 5 min</b></div></div>
     <div class="alert warn"><i data-icon="alert-triangle"></i><div class="alert-body">O telefone tem só 8 dígitos. Confira o DDD.</div></div>
     <div>
       <div class="field-row"><label class="field-label" for="ex-dr-name">Nome</label><input class="input" id="ex-dr-name" value="Ana Lima"></div>
@@ -242,10 +250,10 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       <div class="field-row"><label class="field-label" for="ex-dr-phone">Telefone</label><input class="input" id="ex-dr-phone" value="3456-7890" aria-invalid="true"></div>
     </div>
   </div>
-  <div class="drawer-footer"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
+  <div class="drawer-footer"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn primary" data-close>Salvar</button></div>
 </dialog>
         </div></div>
-        <p class="class-list"><code>dialog.dialog</code> · <code>.dialog-header</code> · <code>.dialog-body</code> · <code>.dialog-footer</code> · <code>dialog.drawer</code> · <code>.drawer-header</code> · <code>.drawer-heading</code> · <code>.drawer-body</code> · <code>.drawer-footer</code> · <code>[data-open]</code> · <code>[data-close]</code></p>
+        <p class="class-list"><code>dialog.dialog</code> · <code>.dialog-header</code> · <code>.dialog-icon</code> + tom · <code>.dialog-body</code> · <code>.dialog-footer</code> · <code>dialog.drawer</code> · <code>.drawer-header</code> · <code>.drawer-heading</code> · <code>.drawer-body</code> · <code>.facts</code> · <code>.drawer-footer</code> · <code>[data-open]</code> · <code>[data-close]</code></p>
       </section>
 
       <section class="docs-section" id="empty" aria-labelledby="t-empty">
@@ -266,19 +274,20 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <header><h2 id="t-shell">Navegação</h2></header>
         <div class="demo" data-code><div class="demo-stage tinted" style="align-items:stretch">
 <nav class="sidebar" aria-label="Exemplo de navegação" style="position:static;height:auto">
-  <a class="app-logo" href="#shell"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
+  <a class="app-logo" href="#shell"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
   <a class="nav-item" href="#shell" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
   <a class="nav-item" href="#shell"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></a>
   <a class="nav-item" href="#shell"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
+  <div class="sidebar-footer"><a class="account" href="#shell"><span class="avatar ok">MC</span><div><b>Marina Costa</b><small>marina@nortesul.com.br</small></div></a></div>
 </nav>
 <nav class="sidebar collapsed" aria-label="Navegação recolhida" style="position:static;height:auto">
-  <a class="app-logo" href="#shell" aria-label="Agenda"><span class="app-logo-mark" aria-hidden="true">A</span></a>
+  <a class="app-logo" href="#shell" aria-label="Agenda"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg></a>
   <a class="nav-item" href="#shell" aria-current="page" aria-label="Pessoas"><i data-icon="users"></i></a>
   <a class="nav-item" href="#shell" aria-label="Empresas"><i data-icon="building"></i></a>
   <a class="nav-item" href="#shell" aria-label="Revisão, 12 pendências"><i data-icon="clipboard-check"></i><span class="count">12</span></a>
 </nav>
         </div></div>
-        <p class="class-list"><code>.brand-bar</code> · <code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-item</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.app-main</code> · <code>.topbar</code> · <code>.page-header</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.toolbar</code> · <code>.page-content</code></p>
+        <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-item</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
       </section>
 
       <section class="docs-section" id="new" aria-labelledby="t-new">
@@ -291,7 +300,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

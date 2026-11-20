@@ -1,9 +1,9 @@
 {
-  "$description": "Tema escuro. Fundo quase preto com leve viés verde, superfícies um passo mais claras a cada elevação. A cor da marca continua #8dc63f.",
+  "$description": "Tema escuro. Fundo quase preto e neutro, superfícies um passo mais claras a cada elevação. A cor da marca continua #8dc63f.",
   "background": "{color.gray-dark.1}", "surface": "{color.gray-dark.2}", "popover": "{color.gray-dark.3}", "sidebar": "{color.gray-dark.1}",
   "muted": "{color.gray-dark.3}", "accent": "{color.gray-dark.4}",
   "foreground": "{color.gray-dark.12}", "muted-foreground": "{color.gray-dark.11}", "sidebar-foreground": "{color.gray-dark.11}",
-  "border-soft": "{color.gray-dark.4}", "border": "{color.gray-dark.6}", "border-strong": "{color.gray-dark.7}",
+  "border-soft": "{color.gray-dark.4}", "border": "{color.gray-dark.5}", "border-strong": "{color.gray-dark.7}",
   "input": "{color.gray-dark.9}", "field": "{color.gray-dark.2}", "ring": "{color.green-dark.9}",
   "primary": "{color.green-dark.9}", "primary-hover": "{color.green-dark.10}", "primary-foreground": "{color.gray.12}", "link": "{color.green-dark.11}",
   "brand-fg": "{color.green-dark.11}", "brand-bg": "{color.green-dark.3}", "brand-border": "{color.green-dark.6}",
@@ -14,8 +14,9 @@
   "info-fg": "{color.blue-dark.11}", "info-bg": "{color.blue-dark.3}", "info-border": "{color.blue-dark.6}",
   "ok-fg": "{color.teal-dark.11}", "ok-bg": "{color.teal-dark.3}", "ok-border": "{color.teal-dark.6}", "ok-solid": "{color.teal-dark.9}",
   "chart-1": "{color.green-dark.9}", "chart-2": "{color.blue-dark.11}", "chart-band": "{color.green-dark.4}", "chart-grid": "{color.gray-dark.4}",
-  "overlay": "oklch(0.05 0.005 160 / 0.62)", "hover": "oklch(1 0 0 / 0.06)",
+  "overlay": "oklch(0.05 0 0 / 0.62)", "hover": "oklch(1 0 0 / 0.06)",
   "shadow-xs": "0 1px 2px oklch(0 0 0 / 0.4)",
+  "shadow-control": "0 1px 2px oklch(0 0 0 / 0.4), inset 0 1px 0 oklch(1 0 0 / 0.05)",
   "shadow-sm": "0 1px 3px oklch(0 0 0 / 0.5), 0 0 0 1px oklch(1 0 0 / 0.04)",
   "shadow-md": "0 8px 20px -4px oklch(0 0 0 / 0.55), 0 0 0 1px oklch(1 0 0 / 0.05)",
   "shadow-lg": "0 24px 56px -12px oklch(0 0 0 / 0.7), 0 0 0 1px oklch(1 0 0 / 0.06)"

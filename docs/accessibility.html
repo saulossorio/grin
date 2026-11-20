@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Acessibilidade · Grin</title>
 <meta name="description" content="Checklist por tela e contraste medido do Grin nos três temas.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -16,7 +16,6 @@
 <script type="module" src="../scripts/docs-shell.js"></script>
 </head>
 <body>
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" data-docs-nav data-base="../" data-here="accessibility"></nav>
   <div class="app-main">
@@ -49,7 +48,7 @@
         <header><h2 id="t-built">O que já vem pronto</h2></header>
         <ul class="docs-list"><li>Foco visível em todos os controles, com 3 px no alto contraste.</li><li>Diálogo e gaveta com <code>&lt;dialog&gt;</code> nativo: prendem o foco, fecham com Esc e devolvem o foco ao botão que abriu.</li><li>Abas com setas, Home e End.</li><li>Toasts numa região <code>role="status"</code>, anunciada por leitores de tela.</li><li>Temas que seguem <code>prefers-color-scheme</code> e <code>prefers-contrast</code>; animações desligadas com <code>prefers-reduced-motion</code>.</li><li>Tudo em rem: a fonte da pessoa e o zoom aumentam a interface inteira.</li></ul>
       </section>
-      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Começar · Grin</title>
 <meta name="description" content="Como instalar e usar o Grin numa ferramenta: arquivos, tema, densidade, estrutura e convenções.">
-<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='comfortable')r.dataset.density='comfortable';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=q||localStorage.getItem('grin-theme');if(t&&t!=='system')r.dataset.theme=t;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
 <link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../styles/fonts.css">
 <link rel="stylesheet" href="../styles/variables.css">
@@ -16,7 +16,6 @@
 <script type="module" src="../scripts/docs-shell.js"></script>
 </head>
 <body>
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" data-docs-nav data-base="../" data-here="start"></nav>
   <div class="app-main">
@@ -52,8 +51,8 @@
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Atributo</th><th scope="col">Efeito</th><th scope="col">Controle</th></tr></thead>
           <tbody>
-            <tr><td>nenhum</td><td>Densidade compacta: controles de 32 px, texto de 14 px.</td><td rowspan="2"><code>&lt;input type="radio" data-set-density value="compact|comfortable"&gt;</code></td></tr>
-            <tr><td><code>data-density="comfortable"</code></td><td>Controles de 40 px, texto de 16 px.</td></tr>
+            <tr><td>nenhum</td><td>Densidade confortável: controles de 44 px, texto de 16 px.</td><td rowspan="2"><code>&lt;input type="radio" data-set-density value="compact|comfortable"&gt;</code></td></tr>
+            <tr><td><code>data-density="compact"</code></td><td>Controles de 36 px, texto de 14 px.</td></tr>
             <tr><td><code>data-scale="112"</code> ou <code>"125"</code></td><td>Fonte em 112,5% ou 125%. Tudo é medido em rem e cresce junto.</td><td><code>&lt;input type="radio" data-set-scale value="100|112|125"&gt;</code></td></tr>
           </tbody></table></div>
       </section>
@@ -98,7 +97,7 @@ node tools/check-contrast.mjs
 node tools/check-markup.mjs</code></pre>
       </section>
 
-      <footer class="docs-footer"><span>Grin 1.1</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.0</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

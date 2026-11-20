@@ -1,17 +1,25 @@
 <!-- Grin app shell. The current page uses aria-current="page". Collapsed: add .collapsed to the sidebar
      and an aria-label to each item (the label is hidden). -->
-<div class="brand-bar"></div>
 <div class="app">
   <nav class="sidebar" aria-label="Navegação principal">
-    <a class="app-logo" href="#"><span class="app-logo-mark" aria-hidden="true">A</span><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="app-logo" href="#"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
     <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
     <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span></a>
+    <span class="nav-heading">Gestão</span>
     <a class="nav-item" href="#"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></a>
-    <div class="sidebar-footer"><button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button></div>
+    <div class="sidebar-footer">
+      <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
+      <a class="account" href="#"><span class="avatar ok">MC</span><div><b>Marina Costa</b><small>marina@nortesul.com.br</small></div></a>
+    </div>
   </nav>
   <div class="app-main">
-    <header class="topbar">…</header>
-    <div class="page-header"><div class="page-title-row"><div class="page-title"><h1>Pessoas</h1><span class="text-secondary">1.284</span></div></div></div>
+    <div class="page-header">
+      <nav class="breadcrumb" aria-label="Você está em"><a href="#">Pessoas</a><i data-icon="chevron-right"></i><span aria-current="page">Todas</span></nav>
+      <div class="page-title-row">
+        <div><div class="page-title"><h1>Pessoas</h1></div><p class="page-description">Convidados e participantes dos eventos.</p></div>
+        <div class="toolbar"><button type="button" class="btn primary"><i data-icon="plus"></i>Nova pessoa</button></div>
+      </div>
+    </div>
     <main class="page-content">…</main>
   </div>
 </div>

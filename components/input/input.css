@@ -1,52 +1,69 @@
-/* Grin fields: text input, select, textarea, search, checkbox, choice cards and the label + control + message group. */
+/* Grin fields: text input, select, textarea, search, checkbox, choice cards and the label + control + message group.
+   Focus shows a soft ring around the field; an invalid field turns red and says what to fix. */
 .input, .select, .textarea {
-  width: 100%; min-width: 0; height: var(--control-h); padding: 0 10px;
-  border: 1px solid var(--input); border-radius: var(--radius-sm); background: var(--field); color: var(--foreground); box-shadow: var(--shadow-xs);
+  width: 100%; min-width: 0; height: var(--control-h); padding: 0 14px;
+  border: 1px solid var(--input); border-radius: var(--radius-md); background: var(--field); color: var(--foreground); box-shadow: var(--shadow-xs);
   font-size: var(--control-text);
-  transition: border-color var(--dur-fast);
+  transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
 }
-.input:hover, .select:hover, .textarea:hover { border-color: var(--foreground); }
-.textarea { height: auto; min-height: 96px; padding: 8px 10px; line-height: var(--leading-body); resize: vertical; }
+.input:hover, .select:hover, .textarea:hover { border-color: var(--muted-foreground); }
+.input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 0; border-color: var(--ring); box-shadow: 0 0 0 4px var(--highlight); }
+.textarea { height: auto; min-height: 112px; padding: 10px 14px; line-height: var(--leading-body); resize: vertical; }
 .select {
-  appearance: none; -webkit-appearance: none; padding-right: 32px; cursor: pointer; text-overflow: ellipsis;
+  appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; text-overflow: ellipsis;
   background-image: linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%), linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
-  background-position: calc(100% - 16px) 52%, calc(100% - 11px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
+  background-position: calc(100% - 20px) 52%, calc(100% - 15px) 52%; background-size: 5px 5px; background-repeat: no-repeat;
 }
 .input:disabled, .select:disabled, .textarea:disabled { background: var(--muted); color: var(--muted-foreground); cursor: not-allowed; box-shadow: none; }
 .input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--crit-fg); }
-.input[aria-invalid="true"]:focus-visible { outline-color: var(--crit-fg); }
+.input[aria-invalid="true"]:focus-visible, .select[aria-invalid="true"]:focus-visible, .textarea[aria-invalid="true"]:focus-visible { box-shadow: 0 0 0 4px var(--crit-bg); }
 
 /* Field: label on top, control, then hint or message. The label is always visible and tied to the control (for/id). */
 .field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .field-label { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--foreground); }
 .required { color: var(--crit-fg); margin-left: 2px; }
-.field-hint { font-size: var(--text-xs); color: var(--muted-foreground); line-height: var(--leading-ui); }
-.field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-xs); line-height: var(--leading-ui); color: var(--crit-fg); }
+.field-hint { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
+.field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-sm); line-height: var(--leading-ui); color: var(--crit-fg); animation: grin-rise var(--dur) var(--ease); }
 .field-message.warn { color: var(--warn-fg); }
-.field-message svg { width: 14px; height: 14px; margin-top: 1px; }
-.field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--space-4); }
+.field-message svg { width: 16px; height: 16px; margin-top: 2px; }
+.field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--space-5); }
 
 /* Field row: label on the left. For record detail inside a drawer. Stacks on narrow screens. */
-.field-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 4px 12px; padding: 6px 0; align-items: start; }
+.field-row { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 4px 16px; padding: 8px 0; align-items: start; }
 .field-row > .field-label { padding-top: calc((var(--control-h) - 1.45em) / 2); font-weight: var(--weight-regular); color: var(--muted-foreground); overflow-wrap: anywhere; }
 @media (max-width: 520px) { .field-row { grid-template-columns: 1fr; } .field-row > .field-label { padding-top: 0; } }
 
 /* Search: leading icon and optional clear button */
 .search { position: relative; width: min(320px, 100%); }
-.search > svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--muted-foreground); pointer-events: none; }
-.search .input { padding: 0 32px 0 32px; }
-.search .btn { position: absolute; right: 3px; top: 50%; transform: translateY(-50%); }
+.search > svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted-foreground); pointer-events: none; }
+.search .input { padding: 0 40px 0 44px; }
+.search .btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }
 
-/* Checkbox and radio with text */
-.checkbox { display: inline-flex; align-items: center; gap: 8px; min-height: var(--size-target-min); font-size: var(--text-sm); line-height: 1.35; cursor: pointer; }
-.checkbox-group { display: flex; flex-direction: column; gap: 10px; }
+/* Checkbox and radio. The check draws itself in with a small bounce. */
+input[type="checkbox"], input[type="radio"] {
+  appearance: none; -webkit-appearance: none; position: relative; display: inline-grid; place-content: center; width: 20px; height: 20px; margin: 0; flex-shrink: 0; cursor: pointer;
+  border: 1.5px solid var(--border-strong); border-radius: var(--radius-xs); background: var(--field);
+  transition: background-color var(--dur-fast), border-color var(--dur-fast), transform var(--dur-fast) var(--ease);
+}
+input[type="radio"] { border-radius: var(--radius-pill); }
+input[type="checkbox"]:hover, input[type="radio"]:hover { border-color: var(--muted-foreground); }
+input[type="checkbox"]:active, input[type="radio"]:active { transform: scale(0.9); }
+input[type="checkbox"]:checked, input[type="radio"]:checked, input[type="checkbox"]:indeterminate { background: var(--primary); border-color: var(--primary-hover); }
+input[type="checkbox"]::after { content: ''; width: 5px; height: 10px; margin-top: -2px; border: solid var(--primary-foreground); border-width: 0 2px 2px 0; transform: rotate(45deg) scale(0); transition: transform var(--dur) var(--ease-spring); }
+input[type="checkbox"]:checked::after { transform: rotate(45deg) scale(1); }
+input[type="checkbox"]:indeterminate::after { width: 10px; height: 0; margin: 0; border-width: 0 0 2px; transform: none; }
+input[type="radio"]::after { content: ''; width: 8px; height: 8px; border-radius: var(--radius-pill); background: var(--primary-foreground); transform: scale(0); transition: transform var(--dur) var(--ease-spring); }
+input[type="radio"]:checked::after { transform: scale(1); }
+input[type="checkbox"]:disabled, input[type="radio"]:disabled { opacity: 0.5; cursor: not-allowed; }
+.checkbox { display: inline-flex; align-items: center; gap: 10px; min-height: var(--size-target-min); font-size: var(--control-text); line-height: 1.35; cursor: pointer; }
+.checkbox-group { display: flex; flex-direction: column; gap: 12px; }
 
 /* Choice card: a radio or checkbox with a title and a description */
-.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr)); gap: var(--space-2); }
-.choice { display: flex; gap: 10px; align-items: flex-start; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); cursor: pointer; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
+.choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: var(--space-3); }
+.choice { display: flex; gap: 12px; align-items: flex-start; padding: 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-xs); cursor: pointer; transition: border-color var(--dur-fast), background-color var(--dur-fast), box-shadow var(--dur-fast); }
 .choice:hover { border-color: var(--border-strong); }
-.choice:has(input:checked) { border-color: var(--brand-border); background: var(--brand-bg); }
+.choice:has(input:checked) { border-color: var(--primary); background: var(--brand-bg); box-shadow: 0 0 0 3px var(--highlight); }
 .choice:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
-.choice input { margin-top: 2px; }
-.choice-title { display: block; font-weight: var(--weight-medium); font-size: var(--text-sm); }
-.choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-xs); line-height: var(--leading-ui); }
+.choice input { margin-top: 1px; }
+.choice-title { display: block; font-weight: var(--weight-semibold); font-size: var(--text-base); }
+.choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }

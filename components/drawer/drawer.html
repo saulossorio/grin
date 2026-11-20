@@ -1,11 +1,12 @@
 <!-- Grin drawer. Same open/close hooks as the dialog (dialog.js). -->
 <button type="button" class="btn" data-open="drawer-person">Abrir registro</button>
 <dialog class="drawer" id="drawer-person" aria-labelledby="drawer-person-title">
-  <div class="drawer-header"><div class="drawer-heading"><h2 id="drawer-person-title">Ana Lima</h2><span class="text-secondary">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
+  <div class="drawer-header"><span class="avatar lg ok">AL</span><div class="drawer-heading"><h2 id="drawer-person-title">Ana Lima</h2><span class="text-secondary">Diretora de TI · Norte Sul</span></div><button type="button" class="btn icon ghost" aria-label="Fechar" data-close><i data-icon="x"></i></button></div>
   <div class="drawer-body">
+    <div class="facts"><div><small>Eventos</small><b>4</b></div><div><small>Atualizado</small><b>há 5 min</b></div></div>
     <div class="field-row"><label class="field-label" for="dp-name">Nome</label><input class="input" id="dp-name" value="Ana Lima"></div>
     <div class="field-row"><label class="field-label" for="dp-email">E-mail</label><input class="input" id="dp-email" value="ana.lima@nortesul.com.br"></div>
   </div>
-  <div class="drawer-footer"><button type="button" class="btn primary" data-close>Salvar</button><button type="button" class="btn" data-close>Cancelar</button></div>
+  <div class="drawer-footer"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn primary" data-close>Salvar</button></div>
 </dialog>
 <script type="module" src="../dialog/dialog.js"></script>

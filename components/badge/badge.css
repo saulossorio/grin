@@ -1,11 +1,12 @@
-/* Grin badge, tag, counter and status. Never color alone: always text, plus an icon or dot when it needs attention.
-   Tones (shared with alert, toast, severity, dot): crit, warn, info, ok, brand. */
+/* Grin badge, tag, counter, status, delta and avatar. Never color alone: always text, plus a dot or icon when it needs attention.
+   Tones (shared with alert, toast, severity, dot, avatar): crit, warn, info, ok, brand. */
 .badge {
-  display: inline-flex; align-items: center; gap: 4px; height: 20px; padding: 0 7px; border-radius: var(--radius-pill);
+  display: inline-flex; align-items: center; gap: 6px; height: 24px; padding: 0 10px; border-radius: var(--radius-pill);
   border: 1px solid var(--border); background: var(--muted); color: var(--muted-foreground);
-  font-size: var(--text-xs); font-weight: var(--weight-medium); line-height: 1; white-space: nowrap;
+  font-size: var(--text-sm); font-weight: var(--weight-medium); line-height: 1; white-space: nowrap;
 }
-.badge svg { width: 12px; height: 12px; }
+.badge svg { width: 14px; height: 14px; }
+.badge .dot { width: 6px; height: 6px; }
 .crit.badge, .crit.severity  { color: var(--crit-fg); background: var(--crit-bg); border-color: var(--crit-border); }
 .warn.badge, .warn.severity  { color: var(--warn-fg); background: var(--warn-bg); border-color: var(--warn-border); }
 .info.badge, .info.severity  { color: var(--info-fg); background: var(--info-bg); border-color: var(--info-border); }
@@ -13,12 +14,24 @@
 .brand.badge                 { color: var(--brand-fg); background: var(--brand-bg); border-color: var(--brand-border); }
 
 /* Tag: small label next to a product or section name (Beta, Novo) */
-.tag { display: inline-flex; align-items: center; height: 18px; padding: 0 6px; border-radius: var(--radius-xs); background: var(--brand-bg); color: var(--brand-fg); border: 1px solid var(--brand-border); font-size: var(--text-xs); font-weight: var(--weight-semibold); }
+.tag { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--radius-pill); background: var(--brand-bg); color: var(--brand-fg); border: 1px solid var(--brand-border); font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: 0.01em; }
 
-/* Counter: pending items that need action (solid red). For neutral quantities use .nav-count. */
-.count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 18px; padding: 0 5px; border-radius: var(--radius-pill); background: var(--crit-solid); color: var(--crit-on); font-size: var(--text-xs); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+/* Counter: pending items that need action (soft red pill). For neutral quantities use .nav-count. */
+.count { display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 22px; padding: 0 7px; border-radius: var(--radius-pill); background: var(--crit-bg); border: 1px solid var(--crit-border); color: var(--crit-fg); font-size: var(--text-xs); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
 
 /* Status: dot + text */
-.status { display: inline-flex; align-items: center; gap: 6px; font-size: var(--text-sm); color: var(--muted-foreground); white-space: nowrap; }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: var(--text-sm); color: var(--muted-foreground); white-space: nowrap; }
 .dot { display: inline-block; width: 8px; height: 8px; flex-shrink: 0; border-radius: var(--radius-pill); background: var(--input); }
-.dot.crit { background: var(--crit-solid); } .dot.warn { background: var(--warn-solid); } .dot.info { background: var(--info-fg); } .dot.ok { background: var(--ok-solid); }
+.dot.crit { background: var(--crit-solid); } .dot.warn { background: var(--warn-solid); } .dot.info { background: var(--info-fg); } .dot.ok { background: var(--ok-solid); } .dot.brand { background: var(--primary); }
+
+/* Delta: the comparison next to a number (+46, 94%, 8 críticas). Tone says if it is good or bad, the text says how much. */
+.delta { display: inline-flex; align-items: center; gap: 4px; height: 24px; padding: 0 8px; border-radius: var(--radius-pill); background: var(--muted); color: var(--muted-foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.delta svg { width: 14px; height: 14px; }
+.delta.ok { background: var(--ok-bg); color: var(--ok-fg); } .delta.crit { background: var(--crit-bg); color: var(--crit-fg); } .delta.warn { background: var(--warn-bg); color: var(--warn-fg); }
+
+/* Avatar: initials of a person or company. The tone only tells people apart; it carries no meaning. */
+.avatar { display: inline-grid; place-items: center; width: var(--size-avatar); height: var(--size-avatar); flex-shrink: 0; border-radius: var(--radius-pill); border: 1px solid oklch(0 0 0 / 0.06); background: var(--muted); color: var(--muted-foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: 0.01em; }
+.avatar.sm { width: 32px; height: 32px; font-size: var(--text-xs); }
+.avatar.lg { width: 56px; height: 56px; font-size: var(--text-lg); }
+.avatar.brand { background: var(--brand-bg); color: var(--brand-fg); } .avatar.info { background: var(--info-bg); color: var(--info-fg); }
+.avatar.warn { background: var(--warn-bg); color: var(--warn-fg); } .avatar.crit { background: var(--crit-bg); color: var(--crit-fg); } .avatar.ok { background: var(--ok-bg); color: var(--ok-fg); }

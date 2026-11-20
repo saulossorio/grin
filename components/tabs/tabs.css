@@ -1,9 +1,16 @@
-/* Grin tabs: switch between views of the same object. Underline style, keyboard with arrow keys (tabs.js). */
-.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border); overflow-x: auto; }
-.tab { position: relative; display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 10px; border: 0; background: transparent; color: var(--muted-foreground); font-size: var(--text-sm); font-weight: var(--weight-medium); white-space: nowrap; }
+/* Grin tabs: switch between views of the same object. A white piece slides to the chosen tab on a soft track
+   (tabs.js moves it). Keyboard with arrow keys. On phones the tabs wrap instead of scrolling sideways. */
+.tabs { position: relative; display: flex; flex-wrap: wrap; gap: 4px; width: fit-content; max-width: 100%; padding: 4px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--sidebar); }
+.tab { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; height: calc(var(--control-h) - 4px); padding: 0 14px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--muted-foreground); font-size: var(--control-text); font-weight: var(--weight-semibold); white-space: nowrap; transition: color var(--dur) var(--ease); }
 .tab:hover { color: var(--foreground); }
 .tab[aria-selected="true"] { color: var(--foreground); }
-.tab[aria-selected="true"]::after { content: ''; position: absolute; left: 6px; right: 6px; bottom: -1px; height: 2px; border-radius: 2px; background: var(--foreground); }
+.tabs:not(.tabs-ready) .tab[aria-selected="true"] { background: var(--surface); box-shadow: var(--shadow-sm); }
 .tab:focus-visible { outline-offset: -2px; }
-.tab .nav-count { font-size: var(--text-xs); }
-.tab-panel { padding-top: 16px; }
+.tab .nav-count { padding: 0 8px; border-radius: var(--radius-pill); background: var(--accent); font-size: var(--text-sm); transition: background-color var(--dur), color var(--dur); }
+.tab[aria-selected="true"] .nav-count { background: var(--brand-bg); color: var(--brand-fg); }
+.tabs-indicator { position: absolute; z-index: 0; top: 0; left: 0; border-radius: var(--radius-sm); background: var(--surface); box-shadow: var(--shadow-sm); transition: transform var(--dur-slow) var(--ease-spring), width var(--dur-slow) var(--ease-spring), height var(--dur-slow) var(--ease-spring); pointer-events: none; }
+.tab-panel { padding-top: 20px; animation: grin-fade var(--dur) var(--ease); }
+@media (max-width: 640px) {
+  .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; }
+  .tab { justify-content: space-between; }
+}
