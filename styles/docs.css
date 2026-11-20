@@ -7,9 +7,6 @@
 .docs-search-button:hover { border-color: var(--border-strong); background: var(--surface); }
 .docs-search-button svg { width: 18px; height: 18px; }
 .docs-search-button span { flex: 1 1 auto; }
-.docs-search-side { width: 100%; margin-bottom: 12px; background: var(--surface); }
-.sidebar.collapsed .docs-search-side { justify-content: center; padding: 0; }
-.sidebar.collapsed .docs-search-side span, .sidebar.collapsed .docs-search-side kbd { display: none; }
 .docs-appearance { width: max-content; min-width: 288px; gap: 16px; }
 .docs-appearance .select { width: 100%; }
 .docs-appearance .segmented { width: 100%; flex-wrap: nowrap; }
@@ -142,6 +139,6 @@
   .docs-hero h1 { font-size: var(--text-3xl); }
   .token-row { grid-template-columns: 96px minmax(0, 1fr); }
   .token-row > code:nth-child(2) { display: none; }
-  .docs-search-button:not(.docs-search-side) { width: 40px; padding: 0; justify-content: center; }
-  .docs-search-button:not(.docs-search-side) span, .docs-search-button:not(.docs-search-side) kbd { display: none; }
+  .docs-search-button { width: 40px; padding: 0; justify-content: center; }
+  .docs-search-button span, .docs-search-button kbd { display: none; }
 }

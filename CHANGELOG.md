@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.8 · 20/11/2026
+- Slider com marcas (`data-stops`): o botão acompanha o arraste sem saltos e, ao soltar, desliza em 180 ms até a marca mais próxima; as setas do teclado pulam de marca em marca. Antes ele pulava de 12,5 em 12,5 e o tamanho da fonte mudava a cada movimento, o que travava a página.
+- Tamanho da fonte (menu Aparência) muda uma vez, ao soltar o slider.
+- Correção: `theme.js` disparava "change" no slider ao sincronizar e podia entrar em repetição.
+- Uma busca só: fica o campo do topo (e ⌘K); saiu o da barra lateral.
+
 ## 2.7 · 20/11/2026
 - Barra lateral recolhível como comportamento do componente (`components/sidebar/sidebar.js`): botão redondo na borda (ou qualquer `[data-sidebar-toggle]`), largura animada, escolha guardada em `grin-sidebar`, nome de cada item como tooltip quando recolhida, títulos de grupo viram uma linha. Abaixo de 1100 px se recolhe sozinha se a pessoa não escolheu; no celular nunca fica só com ícones.
 - Em 1024 px, com a barra recolhida, a tabela do exemplo de lista cabe inteira.

@@ -14,7 +14,7 @@ function apply(sidebar, wanted) {
   const collapsed = wanted && !phone();
   sidebar.classList.toggle('collapsed', collapsed);
   sidebar.closest('.app')?.classList.toggle('sidebar-collapsed', collapsed);
-  sidebar.querySelectorAll('.nav-item, .account, .docs-search-side').forEach((el) => {
+  sidebar.querySelectorAll('.nav-item, .account').forEach((el) => {
     const name = el.querySelector('.label, b, span')?.textContent.trim() || el.getAttribute('aria-label');
     if (collapsed && name) { el.dataset.tooltip = name; if (!el.textContent.trim() || el.querySelector('.label')) el.setAttribute('aria-label', name); } else delete el.dataset.tooltip;
   });

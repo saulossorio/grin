@@ -7,7 +7,8 @@
 //   <button data-theme-toggle>               toggles light/dark; updates its .label text
 //   <button data-contrast-toggle>            turns high contrast on/off; aria-pressed shows the state (or a checkbox switch: checked)
 //   <input type="radio" data-set-density value="comfortable|compact">
-//   <input type="radio" data-set-scale value="100|112|125">  or  <input type="range" class="slider" data-set-scale min="100" max="125" step="12.5">
+//   <input type="radio" data-set-scale value="100|112|125">  or  <input type="range" class="slider" data-set-scale min="100" max="125" data-stops="100,112.5,125">
+//   (the slider moves freely while dragged and the font size changes once, on release, after it settles on a stop)
 // ?theme=dark and ?contrast=more in the URL set them on load (handy to share a preview). ?theme=hc = high contrast.
 // To avoid a flash of the wrong theme, also put the inline snippet from README.md in <head>.
 
@@ -59,7 +60,8 @@ export function sync() {
   document.querySelectorAll('[data-contrast-toggle]').forEach((el) => { if (el.matches('input')) el.checked = effectiveContrast() === 'more'; else el.setAttribute('aria-pressed', String(effectiveContrast() === 'more')); });
   document.querySelectorAll('input[data-set-density]').forEach((el) => { el.checked = el.value === d; });
   document.querySelectorAll('input[data-set-scale]').forEach((el) => {
-    if (el.type === 'range') { el.value = s === '112' ? '112.5' : s; el.dispatchEvent(new Event('change', { bubbles: true })); } else el.checked = el.value === s;
+    // 'input' only repaints the slider; a 'change' here would call setScale again, in a loop
+    if (el.type === 'range') { el.value = s === '112' ? '112.5' : s; el.dispatchEvent(new Event('input', { bubbles: true })); } else el.checked = el.value === s;
   });
   document.querySelectorAll('[data-theme-toggle] .label').forEach((el) => { el.textContent = effectiveTheme() === 'dark' ? 'Tema claro' : 'Tema escuro'; });
 }
@@ -82,8 +84,6 @@ document.addEventListener('change', (e) => {
   else if (el.matches('input[data-set-density]')) setDensity(el.value);
   else if (el.matches('input[data-set-scale]')) setScale(String(Math.floor(+el.value)));
 });
-// A range applies the font size while it is dragged, not only on release
-document.addEventListener('input', (e) => { if (e.target.matches?.('input[type="range"][data-set-scale]')) setScale(String(Math.floor(+e.target.value))); });
 document.addEventListener('click', (e) => {
   const c = e.target.closest('[data-contrast-toggle]');
   if (c) { setContrast(effectiveContrast() === 'more' ? 'normal' : 'more'); return; }

@@ -155,7 +155,7 @@ document.addEventListener('click', (e) => {
         <div class="demo" data-code><div class="demo-stage column">
 <div class="slider-field" style="max-width:360px">
   <div class="slider-head"><label class="field-label" for="ex-slider">Tamanho da fonte</label><output for="ex-slider" data-format="percent">112,5%</output></div>
-  <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="ex-slider" min="100" max="125" step="12.5" value="112.5"><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
+  <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="ex-slider" min="100" max="125" step="any" data-stops="100,112.5,125" value="112.5"><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
   <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
 </div>
 <div class="slider-field" style="max-width:360px">
@@ -163,7 +163,7 @@ document.addEventListener('click', (e) => {
   <input class="slider" type="range" id="ex-slider-2" min="0" max="100" step="5" value="80">
 </div>
         </div></div>
-        <p class="class-list"><code>input.slider[type=range]</code> · <code>.slider-field</code> · <code>.slider-head</code> com <code>output</code> · <code>.slider-row</code> · <code>.slider-end</code> · <code>.slider-ticks</code> · <code>components/slider/slider.js</code></p>
+        <p class="class-list"><code>input.slider[type=range]</code> · <code>data-stops="100,112.5,125"</code> com <code>step="any"</code> (arrasta livre, ao soltar desliza até a marca mais próxima; setas pulam de marca em marca) · <code>.slider-field</code> · <code>.slider-head</code> com <code>output</code> · <code>.slider-row</code> · <code>.slider-end</code> · <code>.slider-ticks</code> · <code>components/slider/slider.js</code></p>
       </section>
 
       <section class="docs-section" id="tabs" aria-labelledby="t-tabs">
@@ -448,7 +448,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.7</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.8</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

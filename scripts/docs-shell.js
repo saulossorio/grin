@@ -24,7 +24,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.7';
+export const VERSION = '2.8';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -32,7 +32,6 @@ function buildNav(nav) {
   nav.setAttribute('aria-label', 'Navegação da documentação');
   nav.id = 'docs-nav';
   nav.innerHTML = `<a class="app-logo" href="${base}index.html">${GRIN_MARK}<span>Grin</span><span class="tag">${VERSION}</span></a>`
-    + `<button type="button" class="docs-search-button docs-search-side" data-docs-search>${icon('search')}<span>Buscar</span><kbd>⌘K</kbd></button>`
     + PAGES.map(({ heading, items }) => (heading ? `<div class="nav-heading">${heading}</div>` : '') + items.map(([id, href, label, ic]) =>
       `<a class="nav-item" href="${base}${href}"${id === here ? ' aria-current="page"' : ''}>${icon(ic)}<span class="label">${label}</span></a>`).join('')).join('')
     + `<div class="sidebar-footer"><a class="nav-item small" href="https://github.com/saulossorio/grin">${icon('external-link')}<span class="label">Repositório</span></a>`
@@ -54,7 +53,7 @@ function buildTop(top) {
       </div></div>
       <div class="slider-field">
         <div class="slider-head"><label class="field-label" for="docs-scale">Tamanho da fonte</label><output for="docs-scale" data-format="percent">100%</output></div>
-        <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="docs-scale" min="100" max="125" step="12.5" value="100" data-set-scale><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
+        <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="docs-scale" min="100" max="125" step="any" data-stops="100,112.5,125" value="100" data-set-scale><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
         <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
       </div>
     </div>`;
