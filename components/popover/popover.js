@@ -3,11 +3,13 @@
 // Popover: <button data-popover="id" aria-expanded="false"> opens <div class="popover" id="id" role="dialog" aria-label="…">.
 //   Click outside or Esc closes it; focus goes back to the button. The .term and .help-button use the same hook.
 const GAP = 8;
+// The visible area excludes the scrollbar (innerWidth includes it, and the panel ended up under it)
 function place(el, anchor) {
   const a = anchor.getBoundingClientRect(), r = el.getBoundingClientRect();
+  const vw = document.documentElement.clientWidth, vh = document.documentElement.clientHeight;
   let top = a.bottom + GAP;
-  if (top + r.height > innerHeight - GAP && a.top - r.height - GAP > GAP) top = a.top - r.height - GAP;
-  const left = Math.min(Math.max(GAP, a.left + a.width / 2 - r.width / 2), innerWidth - r.width - GAP);
+  if (top + r.height > vh - GAP && a.top - r.height - GAP > GAP) top = a.top - r.height - GAP;
+  const left = Math.min(Math.max(GAP, a.left + a.width / 2 - r.width / 2), vw - r.width - GAP);
   el.style.top = `${Math.round(top)}px`; el.style.left = `${Math.round(left)}px`;
 }
 

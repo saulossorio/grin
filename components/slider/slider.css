@@ -1,0 +1,28 @@
+/* Grin slider (also: range, slider de valor): a value on a continuous or stepped scale, when the exact number matters
+   less than the position (volume, zoom, font size). Native <input type="range">: keyboard and screen readers work.
+   slider.js paints the filled part (--fill) and keeps the <output> and the tick marks in sync. */
+.slider-field { display: flex; flex-direction: column; gap: 10px; }
+.slider-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.slider-head output { font-size: var(--text-sm); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; color: var(--foreground); }
+.slider-row { display: flex; align-items: center; gap: 12px; }
+.slider-row > .slider-end { flex-shrink: 0; color: var(--muted-foreground); font-weight: var(--weight-semibold); line-height: 1; }
+.slider {
+  --fill: 0%;
+  appearance: none; -webkit-appearance: none; flex: 1 1 auto; width: 100%; height: 24px; margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer;
+}
+.slider::-webkit-slider-runnable-track { height: 6px; border-radius: var(--radius-pill); background: linear-gradient(to right, var(--primary) var(--fill), var(--muted) var(--fill)); box-shadow: inset 0 0 0 1px var(--border-soft); }
+.slider::-moz-range-track { height: 6px; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); }
+.slider::-moz-range-progress { height: 6px; border-radius: var(--radius-pill); background: var(--primary); }
+.slider::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--crit-on); box-shadow: var(--shadow-sm); transition: transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast); }
+.slider::-moz-range-thumb { width: 22px; height: 22px; border: 1px solid var(--border-strong); border-radius: var(--radius-pill); background: var(--crit-on); box-shadow: var(--shadow-sm); transition: transform var(--dur-fast) var(--ease); }
+.slider:hover::-webkit-slider-thumb { transform: scale(1.08); }
+.slider:active::-webkit-slider-thumb { transform: scale(1.15); box-shadow: 0 0 0 6px var(--highlight); }
+.slider:active::-moz-range-thumb { transform: scale(1.15); }
+.slider:focus-visible { outline: none; }
+.slider:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px var(--ring); }
+.slider:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 3px var(--ring); }
+.slider:disabled { opacity: 0.5; cursor: not-allowed; }
+/* Tick marks under a stepped slider: one label per step, the current one in bold */
+.slider-ticks { display: flex; justify-content: space-between; padding: 0 3px; font-size: var(--text-xs); color: var(--muted-foreground); font-variant-numeric: tabular-nums; }
+.slider-ticks span[aria-current="true"] { color: var(--foreground); font-weight: var(--weight-semibold); }
+.slider-row + .slider-ticks { margin-left: calc(1ch + 12px); margin-right: calc(1ch + 12px); }

@@ -4,6 +4,7 @@
 import { icon, paintIcons } from './utils.js';
 import { sync } from './theme.js';
 import '../components/popover/popover.js';
+import '../components/slider/slider.js';
 
 const PAGES = [
   { heading: null, items: [['index', 'index.html', 'Início', 'book'], ['start', 'docs/getting-started.html', 'Começar', 'play']] },
@@ -22,7 +23,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.4';
+export const VERSION = '2.5';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -50,11 +51,11 @@ function buildTop(top) {
         <label><input type="radio" name="docs-density" value="comfortable" data-set-density><span>Confortável</span></label>
         <label><input type="radio" name="docs-density" value="compact" data-set-density><span>Compacta</span></label>
       </div></div>
-      <div class="field"><span class="field-label" id="docs-scale-label">Tamanho da fonte</span><div class="segmented" role="radiogroup" aria-labelledby="docs-scale-label">
-        <label><input type="radio" name="docs-scale" value="100" data-set-scale><span>100%</span></label>
-        <label><input type="radio" name="docs-scale" value="112" data-set-scale><span>112%</span></label>
-        <label><input type="radio" name="docs-scale" value="125" data-set-scale><span>125%</span></label>
-      </div></div>
+      <div class="slider-field">
+        <div class="slider-head"><label class="field-label" for="docs-scale">Tamanho da fonte</label><output for="docs-scale" data-format="percent">100%</output></div>
+        <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="docs-scale" min="100" max="125" step="12.5" value="100" data-set-scale><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
+        <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
+      </div>
     </div>`;
 }
 

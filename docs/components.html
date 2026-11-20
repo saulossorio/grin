@@ -38,7 +38,7 @@ document.addEventListener('click', (e) => {
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
@@ -148,6 +148,22 @@ document.addEventListener('click', (e) => {
 </div>
         </div></div>
         <p class="class-list"><code>.segmented</code> com rádios dentro de <code>label</code></p>
+      </section>
+
+      <section class="docs-section" id="slider" aria-labelledby="t-slider">
+        <header><h2 id="t-slider">Slider</h2><p class="aka">Também chamado: range, controle deslizante, régua de valor, zoom, volume</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="slider-field" style="max-width:360px">
+  <div class="slider-head"><label class="field-label" for="ex-slider">Tamanho da fonte</label><output for="ex-slider" data-format="percent">112,5%</output></div>
+  <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="ex-slider" min="100" max="125" step="12.5" value="112.5"><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
+  <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
+</div>
+<div class="slider-field" style="max-width:360px">
+  <div class="slider-head"><label class="field-label" for="ex-slider-2">Confiança mínima</label><output for="ex-slider-2" data-format="percent">80%</output></div>
+  <input class="slider" type="range" id="ex-slider-2" min="0" max="100" step="5" value="80">
+</div>
+        </div></div>
+        <p class="class-list"><code>input.slider[type=range]</code> · <code>.slider-field</code> · <code>.slider-head</code> com <code>output</code> · <code>.slider-row</code> · <code>.slider-end</code> · <code>.slider-ticks</code> · <code>components/slider/slider.js</code></p>
       </section>
 
       <section class="docs-section" id="tabs" aria-labelledby="t-tabs">
@@ -432,7 +448,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.4</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.5</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

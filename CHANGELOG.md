@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.5 · 20/11/2026
+- Novo componente: slider (`input.slider[type=range]`, `slider.js`), com valor ao lado, pontas "A" pequena e grande e marcas por passo. Total: 25 componentes.
+- Menu Aparência: o tamanho da fonte agora é um slider (100%, 112,5%, 125%) que aplica enquanto arrasta.
+- Popovers e menus calculam o espaço sem a barra de rolagem: o menu Aparência não fica mais cortado embaixo dela.
+
 ## 2.4 · 20/11/2026
 - Nomes de componentes pelos termos que designers e desenvolvedores usam: Acordeão (era "Seções que abrem"), Stepper (Passos), Texto corrido (Texto longo), Modal e drawer (Diálogo e gaveta), Alerta (Aviso), Badge, status e avatar (Selo), Card e indicador (Cartão), Campo de formulário, Checkbox, rádio e interruptor (Seleção), Tooltip, popover e termo, Barra de progresso. As classes não mudam.
 - Cada componente mostra "Também chamado:" com os outros nomes conhecidos (FAQ, collapse, modal, dropdown, snackbar, stepper, onboarding…), e a busca acha por qualquer um deles.

@@ -1,0 +1,7 @@
+<!-- Grin slider. Use a stepped slider (step + ticks) when only some values make sense. The <output> shows the value. -->
+<div class="slider-field">
+  <div class="slider-head"><label class="field-label" for="font-scale">Tamanho da fonte</label><output for="font-scale" data-format="percent">100%</output></div>
+  <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="font-scale" min="100" max="125" step="12.5" value="100"><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
+  <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
+</div>
+<script type="module" src="slider.js"></script>
