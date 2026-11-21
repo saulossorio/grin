@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../styles/docs.css">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <script type="module" src="../scripts/docs-shell.js"></script>
+<script type="module" src="../components/tabs/tabs.js"></script>
 </head>
 <body>
 <div class="app">
@@ -27,30 +28,49 @@
       </section>
 
       <section class="docs-section" id="screen" aria-labelledby="t-screen">
-        <header><h2 id="t-screen">Estrutura da tela</h2><p>Toda tela de lista segue a mesma ordem, de cima para baixo. Quem aprende uma tela já sabe usar as outras.</p></header>
+        <header><h2 id="t-screen">Estrutura da tela</h2><p>O cabeçalho é igual em todas as telas. O corpo depende do que a tela faz.</p></header>
+        <h3 class="screen-sub">Cabeçalho de toda tela</h3>
         <div class="anatomy">
-          <div class="wire" aria-hidden="true">
-            <div class="wire-row"><span class="wire-block title"><span class="wire-num">1</span>Pessoas <span class="badge">1.284</span></span><span class="spacer"></span><span class="wire-block"><span class="wire-num">2</span>Exportar</span><span class="wire-block primary">Nova pessoa</span></div>
-            <div class="wire-row"><span class="wire-block grow"><span class="wire-num">3</span>Indicadores</span><span class="wire-block grow">&nbsp;</span><span class="wire-block grow">&nbsp;</span></div>
-            <div class="wire-row"><span class="wire-block grow"><span class="wire-num">4</span>Buscar</span><span class="wire-block">Filtros</span><span class="wire-block">Colunas</span></div>
-            <div class="wire-row"><span class="wire-block"><span class="wire-num">5</span>Situação: Crítico ×</span><span class="wire-block">Limpar filtros</span></div>
-            <div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">6</span>Tabela ou lista</span></div>
-            <div class="wire-row"><span class="wire-block grow"><span class="wire-num">7</span>1 a 25 de 1.284</span><span class="wire-block">‹ 1 2 3 ›</span></div>
-          </div>
-          <ol class="legend">
-            <li><span class="wire-num">1</span><div><b>Título e contagem</b><span>O nome da tela e quantos itens ela tem.</span></div></li>
-            <li><span class="wire-num">2</span><div><b>Ações da página</b><span>O botão primário fica por último, à direita.</span></div></li>
-            <li><span class="wire-num">3</span><div><b>Indicadores</b><span>Só quando os números são o assunto da tela.</span></div></li>
-            <li><span class="wire-num">4</span><div><b>Busca, filtros e colunas</b><span>Numa linha, logo acima do conteúdo.</span></div></li>
-            <li><span class="wire-num">5</span><div><b>Filtros ativos</b><span>Um chip por filtro, para ver e remover.</span></div></li>
-            <li><span class="wire-num">6</span><div><b>Conteúdo</b><span>A tabela, a lista ou os cartões.</span></div></li>
-            <li><span class="wire-num">7</span><div><b>Paginação</b><span>A barra de ações em massa aparece aqui quando há linhas marcadas.</span></div></li>
-          </ol>
+          <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block "><span class="wire-num">1</span>Pessoas › Importação</span></div><div class="wire-row"><span class="wire-block title"><span class="wire-num">2</span>Pessoas</span><span class="spacer"></span><span class="wire-block "><span class="wire-num">3</span>Exportar</span><span class="wire-block primary">Nova pessoa</span></div><div class="wire-row"><span class="wire-block grow tall">Corpo da tela, que muda conforme o tipo</span></div></div>
+          <ol class="legend"><li><span class="wire-num">1</span><div><b>Trilha de navegação</b><span>Onde a pessoa está. Opcional nas telas do primeiro nível do menu.</span></div></li><li><span class="wire-num">2</span><div><b>Título e descrição</b><span>O nome da tela e, se ajudar, uma frase sobre ela.</span></div></li><li><span class="wire-num">3</span><div><b>Ações da página</b><span>O botão primário fica por último, à direita. No máximo um primário por tela.</span></div></li></ol>
         </div>
+        <h3 class="screen-sub">Corpo, por tipo de tela</h3>
+        <div class="tabs" role="tablist" aria-label="Tipos de tela"><button type="button" class="tab" role="tab" id="st-list" aria-selected="true" aria-controls="sp-list">Lista</button><button type="button" class="tab" role="tab" id="st-form" aria-selected="false" aria-controls="sp-form" tabindex="-1">Formulário</button><button type="button" class="tab" role="tab" id="st-dash" aria-selected="false" aria-controls="sp-dash" tabindex="-1">Painel de números</button><button type="button" class="tab" role="tab" id="st-detail" aria-selected="false" aria-controls="sp-detail" tabindex="-1">Detalhe de um item</button><button type="button" class="tab" role="tab" id="st-content" aria-selected="false" aria-controls="sp-content" tabindex="-1">Conteúdo e ajuda</button></div>
+        <div class="tab-panel" role="tabpanel" id="sp-list" aria-labelledby="st-list">
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para ver, buscar e agir sobre muitos itens do mesmo tipo, como pessoas, empresas ou pedidos. <a class="link" href="../examples/dashboard.html">Ver o exemplo de lista</a></p>
+            <div class="anatomy">
+              <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block grow"><span class="wire-num">1</span>Indicadores</span><span class="wire-block grow">&nbsp;</span><span class="wire-block grow">&nbsp;</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">2</span>Buscar</span><span class="wire-block ">Filtros</span><span class="wire-block ">Colunas</span></div><div class="wire-row"><span class="wire-block "><span class="wire-num">3</span>Situação: Crítico ×</span><span class="wire-block ">Limpar filtros</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">4</span>Tabela ou lista</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">5</span>1 a 25 de 1.284</span><span class="wire-block ">‹ 1 2 3 ›</span></div></div>
+              <ol class="legend"><li><span class="wire-num">1</span><div><b>Indicadores</b><span>Opcional. Só quando os números são o assunto da tela.</span></div></li><li><span class="wire-num">2</span><div><b>Busca, filtros e colunas</b><span>Numa linha, logo acima do conteúdo.</span></div></li><li><span class="wire-num">3</span><div><b>Filtros ativos</b><span>Um chip por filtro, para ver e remover.</span></div></li><li><span class="wire-num">4</span><div><b>Conteúdo</b><span>A tabela, a lista ou os cartões.</span></div></li><li><span class="wire-num">5</span><div><b>Paginação</b><span>A barra de ações em massa aparece aqui quando há linhas marcadas.</span></div></li></ol>
+            </div>
+          </div><div class="tab-panel" role="tabpanel" id="sp-form" aria-labelledby="st-form" hidden>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para criar ou editar um item com vários campos. <a class="link" href="../examples/form.html">Ver o exemplo de formulário</a></p>
+            <div class="anatomy">
+              <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block grow"><span class="wire-num">1</span>Corrija 2 campos para salvar</span></div><div class="wire-row"><span class="wire-block "><span class="wire-num">2</span>Identificação</span><span class="wire-block grow"><span class="wire-num">3</span>Nome · E-mail</span></div><div class="wire-row"><span class="wire-block ">Contato</span><span class="wire-block grow">Telefone · CEP</span></div><div class="wire-row"><span class="wire-block ">Empresa</span><span class="wire-block grow">Empresa · Cargo · Nível</span></div><div class="wire-row"><span class="spacer"></span><span class="wire-block "><span class="wire-num">4</span>Cancelar</span><span class="wire-block primary">Salvar pessoa</span></div></div>
+              <ol class="legend"><li><span class="wire-num">1</span><div><b>Resumo de erros</b><span>Aparece no topo só depois de tentar salvar, com link para cada campo.</span></div></li><li><span class="wire-num">2</span><div><b>Título da seção</b><span>À esquerda, com uma frase sobre o que a seção pede.</span></div></li><li><span class="wire-num">3</span><div><b>Campos</b><span>À direita, com rótulo em cima. Os obrigatórios levam asterisco.</span></div></li><li><span class="wire-num">4</span><div><b>Ações</b><span>No fim do formulário. Cancelar primeiro, salvar por último.</span></div></li></ol>
+            </div>
+          </div><div class="tab-panel" role="tabpanel" id="sp-dash" aria-labelledby="st-dash" hidden>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para acompanhar a situação de algo num relance, sem precisar buscar item por item. <span class="text-secondary">Ainda sem exemplo completo.</span></p>
+            <div class="anatomy">
+              <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block "><span class="wire-num">1</span>Período: Mês · Trimestre · Ano</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">2</span>1.284</span><span class="wire-block grow">1.207</span><span class="wire-block grow">8</span><span class="wire-block grow">69</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">3</span>Gráfico de evolução</span><span class="wire-block grow tall">Gráfico por grupo</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">4</span>Os 5 itens que pedem atenção</span></div></div>
+              <ol class="legend"><li><span class="wire-num">1</span><div><b>Período</b><span>Um controle segmentado que muda todos os números juntos.</span></div></li><li><span class="wire-num">2</span><div><b>Indicadores</b><span>Até quatro, com a comparação ao lado do número.</span></div></li><li><span class="wire-num">3</span><div><b>Gráficos</b><span>Em cards de duas colunas, cada um com título e legenda escrita.</span></div></li><li><span class="wire-num">4</span><div><b>Lista curta</b><span>Os itens que pedem ação, com link para a lista completa.</span></div></li></ol>
+            </div>
+          </div><div class="tab-panel" role="tabpanel" id="sp-detail" aria-labelledby="st-detail" hidden>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para ver tudo sobre um item e editá-lo. Use um drawer quando a pessoa precisa voltar logo à lista, e uma tela própria quando o item tem muito conteúdo. <a class="link" href="../examples/dashboard.html">Abrir uma pessoa no exemplo de lista</a></p>
+            <div class="anatomy">
+              <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block "><span class="wire-num">1</span>AL</span><span class="wire-block title">Ana Lima</span><span class="spacer"></span><span class="wire-block ">Editar</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">2</span>Eventos 4</span><span class="wire-block grow">Atualizado há 5 min</span></div><div class="wire-row"><span class="wire-block "><span class="wire-num">3</span>Dados</span><span class="wire-block ">Eventos</span><span class="wire-block ">Histórico</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">4</span>Conteúdo da aba escolhida</span></div></div>
+              <ol class="legend"><li><span class="wire-num">1</span><div><b>Identificação</b><span>Avatar, nome e a ação principal sobre o item.</span></div></li><li><span class="wire-num">2</span><div><b>Resumo</b><span>Dois a quatro números ou datas que importam.</span></div></li><li><span class="wire-num">3</span><div><b>Abas</b><span>Separam os assuntos do item, sem trocar de tela.</span></div></li><li><span class="wire-num">4</span><div><b>Conteúdo</b><span>Campos em linhas com o rótulo à esquerda (.field-row).</span></div></li></ol>
+            </div>
+          </div><div class="tab-panel" role="tabpanel" id="sp-content" aria-labelledby="st-content" hidden>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para explicar algo que se lê do começo ao fim, como um tutorial, uma página de ajuda ou a metodologia de um cálculo. <a class="link" href="../examples/tutorial.html">Ver o exemplo de tutorial</a></p>
+            <div class="anatomy">
+              <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block grow"><span class="wire-num">1</span>Tutorial · 5 minutos · 2 de 4 feitos</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">2</span>Texto corrido, passos e perguntas</span><span class="wire-block tall"><span class="wire-num">3</span>Índice</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">4</span>Glossário</span></div></div>
+              <ol class="legend"><li><span class="wire-num">1</span><div><b>Informações da leitura</b><span>Tempo, o que é preciso e o progresso, logo abaixo do título.</span></div></li><li><span class="wire-num">2</span><div><b>Texto</b><span>Até 72 caracteres por linha, com passos e acordeão para perguntas.</span></div></li><li><span class="wire-num">3</span><div><b>Índice</b><span>Ao lado do texto, marca a seção sendo lida.</span></div></li><li><span class="wire-num">4</span><div><b>Glossário</b><span>No fim, com os termos que aparecem sublinhados no texto.</span></div></li></ol>
+            </div>
+          </div>
       </section>
 
       <section class="docs-section" id="filters" aria-labelledby="t-filters">
-        <header><h2 id="t-filters">Busca e filtros</h2></header>
+        <header><h2 id="t-filters">Busca e filtros</h2><p>Vale para telas de lista e para qualquer busca dentro de outra tela, como num glossário ou num drawer.</p></header>
         <div class="guide-grid two">
           <div class="guide-card">
             <h3><span class="guide-icon"><i data-icon="search"></i></span>A busca filtra enquanto a pessoa digita</h3>
@@ -190,7 +210,7 @@
           </tbody></table></div>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.12</span><a href="../index.html">Início</a></footer>
+      <footer class="docs-footer"><span>Grin 2.13</span><a href="../index.html">Início</a></footer>
     </main>
   </div>
 </div>

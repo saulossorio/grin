@@ -160,6 +160,10 @@
 .guide-stage { display: flex; flex-direction: column; gap: 12px; padding: 16px; border-radius: var(--radius-lg); background: var(--sidebar); border: 1px solid var(--border-soft); }
 .guide-stage .row { gap: 8px; }
 .guide-note { font-size: var(--text-sm); color: var(--muted-foreground); }
+.screen-sub { margin-top: 8px; font-size: var(--text-lg); }
+.screen-when { margin-bottom: 16px; font-size: var(--text-base); line-height: var(--leading-body); }
+.screen-when b { color: var(--foreground); }
+#screen .tab-panel { padding-top: 16px; }
 
 /* Do / avoid pairs */
 .dodont { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }

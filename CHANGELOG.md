@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.13 · 20/11/2026
+- A estrutura da tela em Padrões separa o cabeçalho, igual em todas as telas, do corpo, que muda com o tipo de tela.
+- Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item e conteúdo e ajuda), cada um com esquema numerado, quando usar e link para o exemplo.
+
 ## 2.12 · 20/11/2026
 - Padrões refeito com exemplos visuais. A estrutura da tela aparece num esquema numerado, e busca, formulários, mensagens de erro, confirmação, estados da tela, gráficos e escrita aparecem com componentes reais e pares de faça e evite.
 - Números, datas e escrita viram tabelas de "assim" e "não assim".
