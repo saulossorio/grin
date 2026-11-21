@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.19 · 21/11/2026
+- Versões publicadas em GitHub Releases, a partir desta. O botão de Instalação baixa a última versão.
+- Nova pasta `dist/` gerada por `tools/bundle.mjs`, com o Grin em poucos arquivos. `grin.css` traz todo o CSS, e `grin.inline.css` traz o mesmo CSS com as fontes dentro. `grin.js` reúne todos os comportamentos num script comum, com as funções em `window.Grin`. As fontes ficam em `fonts/`.
+- Nova seção "Adotar o Grin num projeto existente" em Instalação. Ela explica quando copiar e quando ligar, os arquivos para copiar, ferramentas em pasta ou em um único HTML, os passos da migração e como atualizar.
+
 ## 2.18 · 21/11/2026
 - Arquivos sem uso removidos. Saíram `docs/getting-started.html` e `docs/overview.html`, que só redirecionavam, `tokens/themes/light.json`, que estava vazio, e `design/figma-link.txt`, porque ainda não há arquivo no Figma.
 

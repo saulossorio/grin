@@ -16,6 +16,8 @@ Design system para ferramentas web que trabalham com dados, como bases de regist
 
 ## Usar numa ferramenta
 
+Para uma ferramenta em uso, copie os arquivos de `dist/` de uma versão publicada em [Releases](https://github.com/saulossorio/grin/releases). O passo a passo está em "Adotar o Grin num projeto existente", na página Instalação. Para começar do zero:
+
 Copie `styles/`, `scripts/`, `components/` e `assets/` e ponha no `<head>`:
 
 ```html
@@ -62,7 +64,8 @@ components/<nome>/      <nome>.html (exemplo comentado), <nome>.css, <nome>.js q
                         ("input" guarda os campos e "sidebar" guarda a casca do app)
 scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js (só documentação)
 assets/                 fonts/ (Geist, Geist Mono, OFL.txt) e favicon.svg
-tools/                  build-tokens.mjs, check-contrast.mjs, check-markup.mjs
+tools/                  build-tokens.mjs, check-contrast.mjs, check-markup.mjs, bundle.mjs
+dist/                   grin.css, grin.inline.css, grin.js e fonts/, para copiar (gerado por tools/bundle.mjs)
 ```
 
 ## Convenções

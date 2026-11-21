@@ -72,6 +72,7 @@ Releia cada frase nova contra as regras acima. Se uma frase tiver dois-pontos se
 node tools/build-tokens.mjs      # se mexeu em tokens/
 node tools/check-contrast.mjs    # contraste nos quatro temas
 node tools/check-markup.mjs      # toda classe usada existe no CSS e todo ícone existe
+node tools/bundle.mjs            # regenera dist/ (sempre que mudar CSS, JS ou tokens)
 ```
 
 Depois confira as páginas num servidor local (`python3 -m http.server`) nos temas claro e escuro, cada um com e sem alto contraste (`?theme=dark`, `?theme=light&contrast=more`, `?theme=dark&contrast=more`) e numa largura de celular. Anote a mudança em `CHANGELOG.md` e, se a versão mudar, em `scripts/docs-shell.js` (`VERSION`) e nos rodapés.
@@ -79,5 +80,7 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 ## Tarefas comuns
 
 - **Mudar uma cor:** escolha o passo certo da escala em `tokens/core/colors.json` (papéis dos passos na descrição do arquivo), mude o mapeamento em `tokens/semantic/colors.json` e nos dois temas em `tokens/themes/`, gere e confira o contraste.
-- **Novo componente:** siga "Novo componente" em `docs/components.html`.
+- **Novo componente:** siga "Novo componente" em `docs/components.html`. Se tiver JavaScript, inclua o arquivo em `MODULES` de `tools/bundle.mjs`.
+- **Adotar o Grin em outra ferramenta:** siga "Adotar o Grin num projeto existente" em `docs/installation.html`. Copie os arquivos de `dist/` de uma versão publicada em Releases, nunca do ramo principal.
+- **Publicar uma versão:** depois do commit e do build do Pages, crie a tag e a release: `git tag vX.Y && git push origin vX.Y && gh release create vX.Y --notes "…"` (as notas são a entrada do CHANGELOG).
 - **Novo ícone:** acrescente o desenho (viewBox 24, traço 2, estilo Lucide) em `ICONS` de `scripts/utils.js`.
