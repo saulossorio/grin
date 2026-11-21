@@ -1,6 +1,6 @@
 # Grin
 
-Design system com tokens, componentes, padrões de uso e regras de acessibilidade. Arquivos CSS e módulos JavaScript.
+Design system para ferramentas web que trabalham com dados, como bases de registros, importação e revisão de planilhas, cadastros, painéis de indicadores e páginas de método e ajuda. Tokens, componentes, padrões de uso e regras de acessibilidade, em arquivos CSS e módulos JavaScript.
 
 **Documentação ao vivo:** https://saulossorio.github.io/grin/
 
@@ -101,3 +101,7 @@ Geist e Geist Mono: SIL Open Font License 1.1, em `assets/fonts/OFL.txt`.
 ## Contribuir
 
 Antes de mudar código ou texto, leia `AGENTS.md`. A seção "Linguagem" define como escrever qualquer texto do Grin, e vale para pessoas e para agentes de IA.
+
+---
+
+Grin · Design system por Saúl Ossorio.

@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.17 · 20/11/2026
+- O Início e o README dizem para que tipo de ferramenta o Grin serve, com exemplos concretos.
+- Assinatura em todas as páginas da documentação, no mesmo rodapé, com a versão, o autor e os links. Também no README e na meta "author" das páginas.
+
 ## 2.16 · 20/11/2026
 - Ícones da origem do dado: `shield-check` (oficial), `approx` (estimativa de terceiros), `dice` (palpite), `ruler` (faixa legal do enquadramento) e `calculator` (estimada pela ferramenta), com o tom de cada origem.
 - Opções do combobox e do select com ícone (`.combobox-icon` + tom). No select, o ícone da opção escolhida aparece também no campo.

@@ -124,7 +124,8 @@
   .docs-table td:first-child { font-weight: var(--weight-semibold); }
 }
 
-.docs-footer { display: flex; flex-wrap: wrap; gap: 12px 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: var(--text-sm); }
+.docs-signature b { color: var(--foreground); font-weight: var(--weight-semibold); }
+.docs-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-top: 24px; border-top: 1px solid var(--border); color: var(--muted-foreground); font-size: var(--text-sm); }
 
 /* Phones: sidebar as a drawer, opened by the menu button in the top bar */
 .docs-menu-button { display: none; }

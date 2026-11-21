@@ -24,7 +24,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.16';
+export const VERSION = '2.17';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -185,11 +185,22 @@ document.addEventListener('click', (e) => {
 });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('docs-nav-open')) { toggleNav(false); document.getElementById('docs-menu-button')?.focus(); } });
 
+// The same footer on every page: version, author, changes and repository
+export const AUTHOR = 'Saúl Ossorio';
+function buildFooter() {
+  const base = document.querySelector('[data-docs-nav]')?.dataset.base ?? '';
+  let f = document.querySelector('.docs-footer');
+  if (!f) { f = Object.assign(document.createElement('footer'), { className: 'docs-footer' }); document.querySelector('.docs-main')?.append(f); }
+  f.innerHTML = `<span class="docs-signature"><b>Grin ${VERSION}</b> · Design system por ${AUTHOR}</span><span class="spacer"></span>`
+    + `<a href="${base}index.html">Início</a><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a>`;
+}
+
 function init() {
   // Code panels read the markup before icons are painted, so samples show <i data-icon> and not raw SVG
   showCode();
   const nav = document.querySelector('[data-docs-nav]'); if (nav) buildNav(nav);
   const top = document.querySelector('[data-docs-top]'); if (top) buildTop(top);
+  buildFooter();
   paintIcons();
   sync();
   initSidebar();
