@@ -8,7 +8,7 @@ import '../components/slider/slider.js';
 import { initSidebar } from '../components/sidebar/sidebar.js';
 
 const PAGES = [
-  { heading: null, items: [['index', 'index.html', 'Início', 'book'], ['overview', 'docs/overview.html', 'Resumo', 'layout-grid'], ['install', 'docs/installation.html', 'Instalação', 'download']] },
+  { heading: null, items: [['index', 'index.html', 'Início', 'book'], ['install', 'docs/installation.html', 'Instalação', 'download']] },
   { heading: 'Guia', items: [
     ['foundations', 'docs/foundations.html', 'Fundamentos', 'palette'],
     ['components', 'docs/components.html', 'Componentes', 'layout-grid'],
@@ -24,7 +24,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.10';
+export const VERSION = '2.11';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -65,7 +65,7 @@ function buildTop(top) {
    With a query: titles that start with it, then titles that contain it, then classes and text; alphabetical within each. */
 const SEARCH_PAGES = [['docs/installation.html', 'Instalação'], ['docs/foundations.html', 'Fundamentos'], ['docs/components.html', 'Componentes'], ['docs/patterns.html', 'Padrões'], ['docs/accessibility.html', 'Acessibilidade']];
 const SEARCH_GROUPS = ['Componentes', 'Fundamentos', 'Padrões', 'Acessibilidade', 'Instalação', 'Páginas', 'Exemplos'];
-const SEARCH_EXTRA = [['index.html', 'Início', 'O que é o Grin, para que serve e por onde começar', 'Páginas'], ['docs/overview.html', 'Resumo', 'Todas as partes do Grin em blocos visuais', 'Páginas'], ['examples/dashboard.html', 'Lista de dados', 'Indicadores, tabela, filtros, gaveta e ações em massa'], ['examples/form.html', 'Formulário', 'Cadastro com seções e validação'], ['examples/tutorial.html', 'Tutorial', 'Índice, passos, termos, perguntas, glossário e tour'], ['examples/landing.html', 'Página de apresentação', 'Apresentação de um produto com gráfico']];
+const SEARCH_EXTRA = [['index.html', 'Início', 'Novidades e todas as partes do Grin em blocos visuais', 'Páginas'], ['examples/dashboard.html', 'Lista de dados', 'Indicadores, tabela, filtros, gaveta e ações em massa'], ['examples/form.html', 'Formulário', 'Cadastro com seções e validação'], ['examples/tutorial.html', 'Tutorial', 'Índice, passos, termos, perguntas, glossário e tour'], ['examples/landing.html', 'Página de apresentação', 'Apresentação de um produto com gráfico']];
 let searchIndex = null;
 const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const byTitle = (a, b) => a.title.localeCompare(b.title, 'pt-BR');

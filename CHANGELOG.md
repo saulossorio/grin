@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.11 · 20/11/2026
+- O Início mostra as novidades da última versão e os blocos visuais de todas as partes do Grin.
+- As novidades vêm do registro de mudanças e se atualizam sozinhas a cada versão.
+- A página Resumo saiu do menu e redireciona para o Início.
+- Os textos da documentação seguem uma regra de tom em AGENTS.md, com frases diretas e sem enumerações dentro da frase.
+
 ## 2.10 · 20/11/2026
 Documentação reorganizada para quem chega pela primeira vez.
 - **Início** vira uma introdução sem jargão: o que é o Grin, para que serve, como ele é, como o site está organizado e por onde começar (designer, desenvolvedor, quem escreve os textos).
