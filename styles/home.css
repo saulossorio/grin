@@ -8,6 +8,7 @@
 .home-facts { display: flex; flex-wrap: wrap; gap: 8px; }
 .home-facts span { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border: 1px solid var(--border); border-radius: var(--radius-pill); background: var(--surface); color: var(--muted-foreground); font-size: var(--text-sm); }
 .home-facts b { color: var(--foreground); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+.home-lead { max-width: 60ch; margin-top: -4px; }
 .home-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* Novidades: the latest version, read from CHANGELOG.md */
