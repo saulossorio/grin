@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.27 · 21/11/2026
+- Padrão Tela inicial refeito. A coluna centralizada de 680 px da 2.26 mudava a posição do título e do conteúdo ao passar para outra tela. Agora a tela inicial tem o mesmo cabeçalho, no mesmo lugar, e as mesmas margens das outras telas, e o conteúdo usa a largura da página. Só a descrição fica limitada a `--size-prose`. A assinatura continua no fim da janela.
+- Saiu o token `--size-start`.
+
 ## 2.26 · 21/11/2026
 - Padrão Tela inicial (`.start-screen`, `components/start/start.css`), descrito em Padrões. A primeira tela de uma ferramenta usa uma coluna centralizada de 680 px, com o conteúdo no centro vertical da janela e a assinatura no fim, na mesma largura. Opções lado a lado ficam em duas colunas.
 - Token `--size-start` (680 px).

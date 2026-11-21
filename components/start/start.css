@@ -1,13 +1,9 @@
 /* Grin start screen (also: tela inicial, home, welcome, primeira tela). The first screen of a tool, before there is data
-   to work on: title, short description, the main actions and the signature. One centered column (--size-start),
-   centered vertically in the window, with the signature at the bottom of the window in the same width.
-   Markup: <main class="page-content start-screen"><div class="start-screen-body">…</div><footer class="app-footer">…</footer></main>
-   Working screens (lists, forms, analyses) use the normal page layout, never this one. */
-.start-screen { align-items: center; padding-top: 0; }
-.start-screen > * { width: min(var(--size-start), 100%); }
-.start-screen-body { display: flex; flex-direction: column; gap: var(--space-4); margin-block: auto; padding-top: 32px; }
-.start-screen-body h1 { font-size: var(--text-3xl); }
-.start-screen-body > .lead, .start-screen-body > header > .lead { margin-top: -8px; }
-.start-screen > .app-footer { margin-top: 32px; }
-.start-screen .action-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (max-width: 560px) { .start-screen .action-cards { grid-template-columns: 1fr; } }
+   to work on. It uses the same structure as every other screen: the page header (.page-header) in the same place and
+   size, the content below it with the page width, and the signature at the bottom of the window. Only the description
+   is limited to --size-prose, for line length. Nothing is centered in a narrow column, so the title and the content do
+   not jump when the person moves to another screen.
+   Markup: <div class="page-header">…h1, p.page-description…</div>
+           <main class="page-content start-screen"><div class="start-screen-body">…</div><footer class="app-footer">…</footer></main> */
+.start-screen-body { display: flex; flex-direction: column; gap: var(--space-4); }
+.page-header .page-description, .start-screen-body .lead { max-width: var(--size-prose); }

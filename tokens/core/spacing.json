@@ -129,10 +129,6 @@
       "$value": "1440px",
       "$description": "Largura máxima do conteúdo das telas do app. Cresce com a tela até aqui e depois fica centralizado. Texto de documentação para em 1120 px."
     },
-    "start": {
-      "$value": "680px",
-      "$description": "Largura da coluna da tela inicial de uma ferramenta (.start-screen): conteúdo e assinatura centralizados nessa largura."
-    },
     "prose": {
       "$value": "72ch",
       "$description": "Largura máxima de texto corrido (cerca de 70 caracteres por linha)."
