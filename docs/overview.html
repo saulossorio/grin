@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resumo · Grin</title>
+<meta name="description" content="Resumo visual do Grin: as partes principais, feitas com os componentes reais, cada uma levando à sua documentação.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/docs.css">
+<link rel="stylesheet" href="../styles/home.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="../scripts/docs-shell.js"></script>
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" data-docs-nav data-base="../" data-here="overview"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Resumo"></header>
+    <main class="docs-main" id="content">
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Resumo</h1>
+        <div class="home-facts"><span><b>25</b> componentes</span><span><b>54</b> tokens de cor</span><span><b>4</b> temas</span><span><b>2</b> densidades</span><span>Tela de referência <b>1200 px</b></span></div>
+      </section>
+
+      <section class="board" aria-label="Partes do Grin">
+        <a class="tile span-7" href="components.html#card">
+          <span class="tile-head">Card e indicador<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="stat-grid">
+            <div class="stat"><span class="stat-label"><span class="stat-icon"><i data-icon="users"></i></span>Pessoas</span><span class="stat-value">1.284</span><span class="stat-delta"><span class="delta ok">+46</span>desde outubro</span></div>
+            <div class="stat"><span class="stat-label"><span class="stat-icon crit"><i data-icon="alert-circle"></i></span>Com pendência</span><span class="stat-value">77</span><span class="stat-delta"><span class="delta crit">8 críticas</span>a corrigir</span></div>
+          </div></div>
+        </a>
+        <a class="tile span-5" href="foundations.html#color">
+          <span class="tile-head">Cor<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-brand"><span></span><div><code>#8dc63f</code><div class="text-secondary text-sm">Verde da marca: ação principal e item atual</div></div></div>
+            <div class="tile-swatches" id="home-gray"></div>
+            <div class="tile-row"><span class="badge ok"><span class="dot ok"></span>Pronta</span><span class="badge warn"><span class="dot warn"></span>Atenção</span><span class="badge crit"><span class="dot crit"></span>Crítico</span><span class="badge info"><span class="dot info"></span>Nova</span></div>
+          </div>
+        </a>
+        <a class="tile span-8" href="components.html#table">
+          <span class="tile-head">Tabela<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="table-wrap"><table class="table">
+            <thead><tr><th scope="col" class="select-col"><input type="checkbox" aria-label="Marcar todas" tabindex="-1"></th><th scope="col">Nome</th><th scope="col">Situação</th><th scope="col" class="numeric">Eventos</th></tr></thead>
+            <tbody>
+              <tr aria-selected="true"><td class="select-col"><input type="checkbox" checked aria-label="Marcar Ana Lima" tabindex="-1"></td><td><div class="cell-main"><span class="avatar ok">AL</span><div><b>Ana Lima</b><small>ana.lima@nortesul.com.br</small></div></div></td><td><span class="badge ok"><span class="dot ok"></span>Pronta</span></td><td class="numeric">4</td></tr>
+              <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Bruno Reis" tabindex="-1"></td><td><div class="cell-main"><span class="avatar info">BR</span><div><b>Bruno Reis</b><small class="text-crit">sem e-mail</small></div></div></td><td><span class="badge crit"><span class="dot crit"></span>Sem e-mail</span></td><td class="numeric">1</td></tr>
+              <tr><td class="select-col"><input type="checkbox" aria-label="Marcar Carla Souza" tabindex="-1"></td><td><div class="cell-main"><span class="avatar warn">CS</span><div><b>Carla Souza</b><small>carla@varejosul.com.br</small></div></div></td><td><span class="badge warn"><span class="dot warn"></span>Revisar cargo</span></td><td class="numeric">12</td></tr>
+            </tbody></table></div></div>
+        </a>
+        <a class="tile span-4" href="components.html#choice">
+          <span class="tile-head">Controles<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="segmented"><label><input type="radio" name="home-seg" checked tabindex="-1"><span>Mês</span></label><label><input type="radio" name="home-seg" tabindex="-1"><span>Trimestre</span></label><label><input type="radio" name="home-seg" tabindex="-1"><span>Ano</span></label></div>
+            <label class="switch"><input type="checkbox" role="switch" checked tabindex="-1">Avisar por e-mail</label>
+            <label class="checkbox"><input type="checkbox" checked tabindex="-1">Autorizou o uso dos dados</label>
+            <div class="search"><i data-icon="search"></i><input class="input" type="search" placeholder="Buscar pessoas" aria-label="Buscar pessoas" tabindex="-1"></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="foundations.html#type">
+          <span class="tile-head">Tipografia<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-type"><b>Aa</b><div><span>Geist</span><span>400 · 500 · 600</span><span class="text-mono">Geist Mono 0123</span></div></div>
+            <div class="tile-sizes"><span style="font-size:12px">12</span><span style="font-size:14px">14</span><span style="font-size:16px">16</span><span style="font-size:20px">20</span><span style="font-size:24px">24</span><span style="font-size:32px;color:var(--foreground)">32</span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#button">
+          <span class="tile-head">Botão e badge<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-row"><span class="btn primary"><i data-icon="plus"></i>Nova pessoa</span><span class="btn"><i data-icon="download"></i>Exportar</span></div>
+            <div class="tile-row"><span class="btn danger xs"><i data-icon="trash"></i>Excluir 3</span><span class="btn xs ghost">Cancelar</span><span class="count">12</span><span class="tag">Beta</span></div>
+            <div class="chip-group"><span class="chip"><span class="chip-label">Situação: Crítico</span><span class="chip-remove"><i data-icon="x"></i></span></span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="foundations.html#themes">
+          <span class="tile-head">Temas<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-themes">
+            <div data-theme="light">Claro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="dark">Escuro<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="light" data-contrast="more">Claro, contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+            <div data-theme="dark" data-contrast="more">Escuro, contraste<i></i><i></i><span class="btn primary xs">Salvar</span></div>
+          </div></div>
+        </a>
+        <a class="tile span-5" href="components.html#field">
+          <span class="tile-head">Campo de formulário<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="field"><span class="field-label">Nome <span class="required">*</span></span><span class="input tile-input">Ana Lima</span></div>
+            <div class="field"><span class="field-label">E-mail corporativo <span class="required">*</span></span><span class="input tile-input" aria-invalid="true">ana@gmail.com</span><span class="field-message"><i data-icon="alert-circle"></i>Use o e-mail da empresa.</span></div>
+          </div>
+        </a>
+        <a class="tile span-7" href="components.html#alert">
+          <span class="tile-head">Alerta e toast<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="alert warn"><i data-icon="alert-triangle"></i><div class="alert-body"><span class="alert-title">8 linhas sem empresa.</span> Elas ficam fora da importação até serem corrigidas.</div></div>
+            <div class="toast ok"><i data-icon="check-circle"></i><div class="toast-text">Ana Lima: alterações salvas.</div><span class="link">Desfazer</span></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#shell">
+          <span class="tile-head">Navegação<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <nav class="breadcrumb" aria-label="Exemplo"><span>Pessoas</span><i data-icon="chevron-right"></i><span aria-current="page">Ana Lima</span></nav>
+            <div class="tile-nav">
+              <span class="nav-item" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></span>
+              <span class="nav-item"><i data-icon="building"></i><span class="label">Empresas</span><span class="nav-count">318</span></span>
+              <span class="nav-item"><i data-icon="clipboard-check"></i><span class="label">Revisão</span><span class="count">12</span></span>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#dialog">
+          <span class="tile-head">Modal<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="dialog tile-layer">
+              <div class="dialog-header"><span class="dialog-icon crit"><i data-icon="trash"></i></span><h3>Excluir 3 pessoas?</h3></div>
+              <div class="dialog-body"><p>Elas saem das listas e dos eventos.</p></div>
+              <div class="dialog-footer"><span class="btn xs">Cancelar</span><span class="btn xs danger">Excluir 3</span></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#menu">
+          <span class="tile-head">Menu<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="menu tile-layer">
+              <span class="menu-header">Ana Lima</span>
+              <span class="menu-item"><i data-icon="pencil"></i><span class="menu-label">Editar</span><kbd>E</kbd></span>
+              <span class="menu-item"><i data-icon="merge"></i><span class="menu-label">Mesclar com…</span></span>
+              <span class="menu-separator"></span>
+              <span class="menu-item danger"><i data-icon="trash"></i><span class="menu-label">Excluir</span></span>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-7" href="components.html#steps">
+          <span class="tile-head">Stepper e progresso<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <ol class="steps horizontal">
+              <li class="step" data-state="done"><span class="step-title">Arquivo</span></li>
+              <li class="step" data-state="current"><span class="step-title">Colunas</span></li>
+              <li class="step"><span class="step-title">Revisão</span></li>
+              <li class="step"><span class="step-title">Pronto</span></li>
+            </ol>
+            <div class="progress-field">
+              <div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div>
+              <div class="progress"><i style="width:40%"></i></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-5" href="components.html#tour">
+          <span class="tile-head">Tour guiado<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tour-card tile-layer">
+              <div class="tour-top"><span class="tour-count">Passo 2 de 4</span></div>
+              <div class="progress sm"><i style="width:50%"></i></div>
+              <h3>Busque qualquer pessoa</h3>
+              <p>Por nome, e-mail ou empresa.</p>
+              <div class="tour-actions"><span class="btn xs">Voltar</span><span class="spacer"></span><span class="btn xs primary">Próximo<i data-icon="arrow-right"></i></span></div>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#help">
+          <span class="tile-head">Tooltip e popover<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <p>A estimativa parte da <span class="term" aria-expanded="true">CAPEX</span> declarada.</p>
+            <div class="popover open tile-layer"><span class="popover-title"><span>CAPEX<small>Capital expenditure</small></span></span><p>Gasto com bens que duram mais de um ano.</p></div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#accordion">
+          <span class="tile-head">Acordeão<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="accordion">
+              <details open><summary>A planilha original muda?</summary><div class="accordion-body"><p>Não. A agenda lê uma cópia.</p></div></details>
+              <details><summary>Posso desfazer?</summary><div class="accordion-body"><p>Sim, por 30 dias.</p></div></details>
+            </div>
+          </div>
+        </a>
+        <a class="tile span-4" href="components.html#empty">
+          <span class="tile-head">Estado vazio<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="empty-state tile-empty"><span class="empty-state-icon"><i data-icon="search"></i></span><h3>Nenhuma pessoa encontrada</h3><p>Procure por outro nome ou e-mail.</p></div>
+          </div>
+        </a>
+        <a class="tile span-8" href="foundations.html#icons">
+          <span class="tile-head">Ícones<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-icons" id="home-icons"></div></div>
+        </a>
+        <a class="tile span-4" href="foundations.html#radius">
+          <span class="tile-head">Raio e sombra<i data-icon="external-link"></i></span>
+          <div class="tile-body"><div class="tile-radius"><span style="border-radius:var(--radius-xs)">6</span><span style="border-radius:var(--radius-sm)">10</span><span style="border-radius:var(--radius-md)">12</span><span style="border-radius:var(--radius-lg);box-shadow:var(--shadow-sm)">16</span><span style="border-radius:var(--radius-xl);box-shadow:var(--shadow-md)">20</span></div></div>
+        </a>
+        <a class="tile span-6" href="accessibility.html">
+          <span class="tile-head">Acessibilidade<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-contrast"><span class="tile-aa">Aa</span><div><b id="home-ratio">—</b><span id="home-ratio-note">Texto sobre o fundo neste tema</span></div></div>
+            <div class="tile-row"><span class="badge ok"><i data-icon="check"></i>Texto 4,5:1</span><span class="badge ok"><i data-icon="check"></i>Alto contraste 7:1</span><span class="badge ok"><i data-icon="check"></i>Interface 3:1</span><span class="badge"><kbd>Tab</kbd> foco visível</span></div>
+          </div>
+        </a>
+        <a class="tile span-6" href="foundations.html#layout">
+          <span class="tile-head">Tela de referência<i data-icon="external-link"></i></span>
+          <div class="tile-body">
+            <div class="tile-screen"><span class="tile-screen-side">248</span><span class="tile-screen-main">952 px de conteúdo</span></div>
+            <div class="tile-row tile-meta"><span>Tela <b>1200 px</b></span><span>Margem <b>32 px</b></span><span>Texto até <b>72ch</b></span></div>
+          </div>
+        </a>
+      </section>
+
+      <footer class="docs-footer"><span>Grin 2.10</span><a href="../index.html">Início</a><a href="installation.html">Instalação</a></footer>
+    </main>
+  </div>
+</div>
+<script type="module">
+/* Gray scale of the current theme, read from tokens/core/colors.json */
+const dark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+fetch('../tokens/core/colors.json').then((r) => r.json()).then((c) => {
+  const g = c.color[dark ? 'gray-dark' : 'gray'];
+  document.getElementById('home-gray').innerHTML = Array.from({ length: 12 }, (_, i) => `<span style="background:${g[i + 1].$value}" title="gray ${i + 1}"></span>`).join('');
+}).catch(() => {});
+/* A sample of the icon set */
+import('../scripts/utils.js').then(({ icon, contrast, token }) => {
+  const ratio = () => {
+    const hc = document.documentElement.dataset.contrast ? document.documentElement.dataset.contrast === 'more' : matchMedia('(prefers-contrast: more)').matches;
+    document.getElementById('home-ratio').textContent = `${contrast(token('foreground'), token('background')).toFixed(1).replace('.', ',')}:1`;
+    document.getElementById('home-ratio-note').textContent = `Texto sobre o fundo neste tema · mínimo ${hc ? '7' : '4,5'}:1`;
+  };
+  ratio();
+  document.documentElement.addEventListener('grin:theme', () => requestAnimationFrame(ratio));
+  document.getElementById('home-icons').innerHTML = ['users', 'building', 'search', 'filter', 'download', 'upload', 'pencil', 'trash', 'check-circle', 'alert-triangle', 'alert-circle', 'info', 'calendar', 'table', 'columns', 'merge', 'map', 'lightbulb', 'help-circle', 'book-open', 'clock']
+    .filter((n) => n !== 'calendar').map((n) => `<span title="${n}">${icon(n, 20)}</span>`).join('');
+});
+</script>
+</body>
+</html>

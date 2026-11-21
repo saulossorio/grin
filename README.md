@@ -45,7 +45,7 @@ Ferramenta de arquivo único: cole o CSS num `<style>`, troque o `url()` das fon
 
 ```
 index.html              visão geral
-docs/                   getting-started, foundations, components, patterns, accessibility
+docs/                   overview (resumo), installation, foundations, components, patterns, accessibility
 examples/               dashboard, form, tutorial, landing
 tokens/
   core/                 colors.json (escalas), spacing.json (espaço, raio, medidas, sombras), typography.json (fontes, tipos, movimento)

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instalação · Grin</title>
+<meta name="description" content="Como baixar, instalar e usar o Grin num projeto: arquivos, HTML mínimo, temas, comportamentos em JavaScript, tokens e uso com frameworks.">
+<script>/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&&t!=='system')r.dataset.theme=t;if(c&&c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&&s!=='100')r.dataset.scale=s;}catch(e){}</script>
+<link rel="preload" href="../assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../styles/fonts.css">
+<link rel="stylesheet" href="../styles/variables.css">
+<link rel="stylesheet" href="../styles/global.css">
+<link rel="stylesheet" href="../styles/components.css">
+<link rel="stylesheet" href="../styles/docs.css">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<script type="module" src="../scripts/docs-shell.js"></script>
+</head>
+<body>
+<div class="app">
+  <nav class="sidebar" data-docs-nav data-base="../" data-here="install"></nav>
+  <div class="app-main">
+    <header class="topbar" data-docs-top data-title="Instalação"></header>
+    <main class="docs-main" id="content">
+      <section class="docs-hero"><span class="overline">Guia</span><h1>Instalação</h1>
+        <p class="lead">HTML, CSS e JavaScript puros, sem dependências e sem etapa de build. Copie as pastas, inclua cinco linhas no <code>&lt;head&gt;</code> e use as classes.</p>
+        <div class="row" style="gap:12px">
+          <a class="btn primary lg" href="https://github.com/saulossorio/grin/archive/refs/heads/main.zip"><i data-icon="download"></i>Baixar .zip</a>
+          <a class="btn lg" href="https://github.com/saulossorio/grin"><i data-icon="external-link"></i>Ver no GitHub</a>
+        </div>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#download">Baixar</a><a href="#requirements">Requisitos</a><a href="#files">Arquivos</a><a href="#head">Incluir na página</a><a href="#minimal">Página mínima</a><a href="#cdn">Sem baixar</a><a href="#behaviors">Comportamentos</a><a href="#theme">Tema e preferências</a><a href="#frameworks">Frameworks</a><a href="#tokens">Mudar um token</a><a href="#structure">Estrutura</a><a href="#conventions">Convenções</a></nav>
+      </section>
+
+      <section class="docs-section" id="download" aria-labelledby="t-download">
+        <header><h2 id="t-download">Baixar</h2></header>
+<pre class="code-block"><code># com git
+git clone https://github.com/saulossorio/grin.git
+
+# ou baixe o .zip pelo botão acima e descompacte</code></pre>
+      </section>
+
+      <section class="docs-section" id="requirements" aria-labelledby="t-requirements">
+        <header><h2 id="t-requirements">Requisitos</h2></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Para</th><th scope="col">Precisa de</th></tr></thead>
+          <tbody>
+            <tr><td>Usar</td><td>Um navegador atual: Chrome e Edge 111+, Safari 16.4+, Firefox 121+. O Grin usa <code>oklch()</code>, <code>:has()</code>, <code>&lt;dialog&gt;</code> e módulos ES.</td></tr>
+            <tr><td>Servir</td><td>Qualquer servidor de arquivos estáticos. Abrir o HTML direto do disco (<code>file://</code>) não carrega os módulos: use, por exemplo, <code>python3 -m http.server</code>.</td></tr>
+            <tr><td>Mudar tokens</td><td>Node.js 18+ (só para as ferramentas em <code>tools/</code>).</td></tr>
+          </tbody></table></div>
+      </section>
+
+      <section class="docs-section" id="files" aria-labelledby="t-files">
+        <header><h2 id="t-files">Arquivos que o projeto precisa</h2></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Pasta</th><th scope="col">Para quê</th><th scope="col">Obrigatória</th></tr></thead>
+          <tbody>
+            <tr><td><code>styles/</code></td><td>Fontes, variáveis, base e todos os componentes. <code>docs.css</code> e <code>home.css</code> são só deste site.</td><td>Sim</td></tr>
+            <tr><td><code>assets/fonts/</code></td><td>Geist e Geist Mono (licença OFL).</td><td>Sim</td></tr>
+            <tr><td><code>components/</code></td><td>O CSS de cada componente (importado por <code>components.css</code>) e o JavaScript dos que têm comportamento.</td><td>Sim</td></tr>
+            <tr><td><code>scripts/</code></td><td><code>theme.js</code> (preferências) e <code>utils.js</code> (ícones, contraste).</td><td>Sim</td></tr>
+            <tr><td><code>tokens/</code>, <code>tools/</code></td><td>Fonte dos valores e as ferramentas que geram e conferem o CSS.</td><td>Só para mudar tokens</td></tr>
+          </tbody></table></div>
+        <p class="text-secondary">Mantenha as pastas juntas, numa pasta <code>grin/</code> do projeto: os caminhos entre os arquivos são relativos.</p>
+      </section>
+
+      <section class="docs-section" id="head" aria-labelledby="t-head">
+        <header><h2 id="t-head">Incluir na página</h2><p>No <code>&lt;head&gt;</code> de cada página, nesta ordem. O primeiro script aplica o tema guardado antes de pintar a tela, para não piscar o tema errado.</p></header>
+<pre class="code-block"><code>&lt;script&gt;/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&amp;&amp;t!=='system')r.dataset.theme=t;if(c&amp;&amp;c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&amp;&amp;s!=='100')r.dataset.scale=s;}catch(e){}&lt;/script&gt;
+&lt;link rel="preload" href="grin/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin&gt;
+&lt;link rel="stylesheet" href="grin/styles/fonts.css"&gt;
+&lt;link rel="stylesheet" href="grin/styles/variables.css"&gt;
+&lt;link rel="stylesheet" href="grin/styles/global.css"&gt;
+&lt;link rel="stylesheet" href="grin/styles/components.css"&gt;
+&lt;script type="module" src="grin/scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
+      </section>
+
+      <section class="docs-section" id="minimal" aria-labelledby="t-minimal">
+        <header><h2 id="t-minimal">Página mínima</h2><p>Uma tela com barra lateral, título, ação e ícones. Daqui em diante, copie o markup dos <a href="components.html">componentes</a>.</p></header>
+<pre class="code-block"><code>&lt;!doctype html&gt;
+&lt;html lang="pt-BR"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Pessoas · Agenda&lt;/title&gt;
+  &lt;script&gt;/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&amp;&amp;t!=='system')r.dataset.theme=t;if(c&amp;&amp;c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&amp;&amp;s!=='100')r.dataset.scale=s;}catch(e){}&lt;/script&gt;
+  &lt;link rel="preload" href="grin/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin&gt;
+  &lt;link rel="stylesheet" href="grin/styles/fonts.css"&gt;
+  &lt;link rel="stylesheet" href="grin/styles/variables.css"&gt;
+  &lt;link rel="stylesheet" href="grin/styles/global.css"&gt;
+  &lt;link rel="stylesheet" href="grin/styles/components.css"&gt;
+  &lt;script type="module" src="grin/scripts/theme.js"&gt;&lt;/script&gt;
+  &lt;script type="module" src="grin/components/sidebar/sidebar.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="app"&gt;
+    &lt;nav class="sidebar" aria-label="Navegação principal"&gt;
+      &lt;a class="app-logo" href="/"&gt;&lt;span&gt;Agenda&lt;/span&gt;&lt;/a&gt;
+      &lt;a class="nav-item" href="/pessoas" aria-current="page"&gt;&lt;i data-icon="users"&gt;&lt;/i&gt;&lt;span class="label"&gt;Pessoas&lt;/span&gt;&lt;/a&gt;
+      &lt;div class="sidebar-footer"&gt;
+        &lt;button type="button" class="nav-item small" data-theme-toggle&gt;&lt;i data-icon="contrast"&gt;&lt;/i&gt;&lt;span class="label"&gt;Tema escuro&lt;/span&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/nav&gt;
+    &lt;div class="app-main"&gt;
+      &lt;div class="page-header"&gt;
+        &lt;div class="page-title-row"&gt;
+          &lt;div&gt;&lt;div class="page-title"&gt;&lt;h1&gt;Pessoas&lt;/h1&gt;&lt;/div&gt;&lt;p class="page-description"&gt;Convidados dos eventos.&lt;/p&gt;&lt;/div&gt;
+          &lt;div class="toolbar"&gt;&lt;button type="button" class="btn primary"&gt;&lt;i data-icon="plus"&gt;&lt;/i&gt;Nova pessoa&lt;/button&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;main class="page-content"&gt;…&lt;/main&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;script type="module"&gt;
+    import { paintIcons } from './grin/scripts/utils.js';
+    paintIcons();
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </section>
+
+      <section class="docs-section" id="cdn" aria-labelledby="t-cdn">
+        <header><h2 id="t-cdn">Sem baixar, para um protótipo</h2><p>Os arquivos publicados neste site podem ser ligados direto. Para um produto, prefira uma cópia no projeto: este endereço muda junto com o Grin.</p></header>
+<pre class="code-block"><code>&lt;link rel="stylesheet" href="https://saulossorio.github.io/grin/styles/fonts.css"&gt;
+&lt;link rel="stylesheet" href="https://saulossorio.github.io/grin/styles/variables.css"&gt;
+&lt;link rel="stylesheet" href="https://saulossorio.github.io/grin/styles/global.css"&gt;
+&lt;link rel="stylesheet" href="https://saulossorio.github.io/grin/styles/components.css"&gt;
+&lt;script type="module" src="https://saulossorio.github.io/grin/scripts/theme.js"&gt;&lt;/script&gt;</code></pre>
+      </section>
+
+      <section class="docs-section" id="behaviors" aria-labelledby="t-behaviors">
+        <header><h2 id="t-behaviors">Comportamentos em JavaScript</h2><p>O CSS funciona sozinho. Estes módulos são opcionais: inclua só os que a tela usa. Todos escutam eventos no <code>document</code>, então funcionam com elementos criados depois.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Arquivo</th><th scope="col">Faz</th><th scope="col">Como usar</th></tr></thead>
+          <tbody>
+            <tr><td><code>scripts/theme.js</code></td><td>Tema, alto contraste, densidade e tamanho da fonte, guardados no navegador.</td><td>Atributos <code>data-theme-select</code>, <code>data-theme-toggle</code>, <code>data-contrast-toggle</code>, <code>data-set-density</code>, <code>data-set-scale</code>, ou as funções abaixo.</td></tr>
+            <tr><td><code>scripts/utils.js</code></td><td>Ícones, contraste WCAG, leitura de tokens.</td><td><code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code> + <code>paintIcons()</code>; <code>icon('search', 16)</code>; <code>contrast(a, b)</code>; <code>token('primary')</code>.</td></tr>
+            <tr><td><code>components/sidebar/sidebar.js</code></td><td>Recolhe e expande a barra lateral; recolhe sozinha abaixo de 1100 px.</td><td>Automático. Botão próprio: <code>[data-sidebar-toggle]</code>.</td></tr>
+            <tr><td><code>components/dialog/dialog.js</code></td><td>Abre e fecha modal e drawer.</td><td><code>data-open="id"</code> e <code>data-close</code>.</td></tr>
+            <tr><td><code>components/tabs/tabs.js</code></td><td>Abas com teclado e indicador que desliza.</td><td><code>role="tablist"</code> + <code>role="tab"</code> + <code>aria-controls</code>.</td></tr>
+            <tr><td><code>components/toast/toast.js</code></td><td>Mensagem temporária com desfazer.</td><td><code>toast('Salvo.', { type: 'ok', action: 'Desfazer', onAction })</code></td></tr>
+            <tr><td><code>components/popover/popover.js</code></td><td>Tooltip, popover, botão de ajuda e termo.</td><td><code>data-tooltip="Texto"</code>; <code>data-popover="id"</code>.</td></tr>
+            <tr><td><code>components/accordion/accordion.js</code></td><td>Anima o acordeão.</td><td>Automático em <code>.accordion details</code>.</td></tr>
+            <tr><td><code>components/slider/slider.js</code></td><td>Preenchimento, valor e marcas do slider.</td><td>Automático em <code>input.slider</code>; marcas com <code>data-stops</code>.</td></tr>
+            <tr><td><code>components/glossary/glossary.js</code></td><td>Filtro por letra e busca no glossário.</td><td>Automático em <code>.glossary</code>.</td></tr>
+            <tr><td><code>components/toc/toc.js</code></td><td>Marca a seção sendo lida no índice.</td><td>Automático em <code>.toc</code>.</td></tr>
+            <tr><td><code>components/tour/tour.js</code></td><td>Tour guiado.</td><td><code>startTour([{ target, title, text }])</code></td></tr>
+          </tbody></table></div>
+      </section>
+
+      <section class="docs-section" id="theme" aria-labelledby="t-theme">
+        <header><h2 id="t-theme">Tema e preferências</h2><p>Sem nenhum atributo, o Grin segue o sistema (claro ou escuro, e mais contraste quando pedido). Os atributos valem na tag <code>&lt;html&gt;</code> ou em qualquer seção.</p></header>
+        <div class="table-wrap"><table class="table docs-table">
+          <thead><tr><th scope="col">Atributo</th><th scope="col">Valores</th><th scope="col">Efeito</th></tr></thead>
+          <tbody>
+            <tr><td><code>data-theme</code></td><td><code>light</code>, <code>dark</code></td><td>Fixa o tema.</td></tr>
+            <tr><td><code>data-contrast</code></td><td><code>more</code>, <code>normal</code></td><td>Alto contraste no claro ou no escuro (texto 7:1); <code>normal</code> desliga mesmo se o sistema pedir.</td></tr>
+            <tr><td><code>data-density</code></td><td><code>compact</code></td><td>Controles de 36 px e texto de 14 px (padrão: 44 px e 16 px).</td></tr>
+            <tr><td><code>data-scale</code></td><td><code>112</code>, <code>125</code></td><td>Fonte em 112,5% ou 125%; tudo em rem cresce junto.</td></tr>
+          </tbody></table></div>
+<pre class="code-block"><code>import { setTheme, setContrast, setDensity, setScale, effectiveTheme, effectiveContrast } from './grin/scripts/theme.js';
+
+setTheme('dark');          // 'system' | 'light' | 'dark'
+setContrast('more');       // 'system' | 'more' | 'normal'
+setDensity('compact');     // 'comfortable' | 'compact'
+setScale('112');           // '100' | '112' | '125'
+
+document.documentElement.addEventListener('grin:theme', (e) =&gt; {
+  console.log(e.detail);   // { theme: 'dark', contrast: 'more' }
+});</code></pre>
+      </section>
+
+      <section class="docs-section" id="frameworks" aria-labelledby="t-frameworks">
+        <header><h2 id="t-frameworks">Com React, Vue ou outro framework</h2><p>O Grin não depende de framework: são classes CSS e módulos ES. Coloque a pasta no projeto (ou em <code>public/</code>) e importe.</p></header>
+<pre class="code-block"><code>// React, Vue, Svelte… : importe o CSS uma vez, na entrada do app
+import 'grin/styles/fonts.css';
+import 'grin/styles/variables.css';
+import 'grin/styles/global.css';
+import 'grin/styles/components.css';
+import 'grin/scripts/theme.js';             // tema, contraste, densidade, fonte
+
+// Comportamentos: só os que a tela usa. Todos escutam no document,
+// então funcionam com elementos criados depois (renderização do framework).
+import 'grin/components/dialog/dialog.js';
+import { toast } from 'grin/components/toast/toast.js';
+import { startTour } from 'grin/components/tour/tour.js';
+
+// JSX: class vira className; o resto do markup é igual ao da documentação
+&lt;button className="btn primary"&gt;Salvar&lt;/button&gt;</code></pre>
+      </section>
+
+      <section class="docs-section" id="tokens" aria-labelledby="t-tokens">
+        <header><h2 id="t-tokens">Mudar um token</h2><p>Os valores vivem em <code>tokens/</code> (JSON) e <code>styles/variables.css</code> é gerado a partir deles: nunca edite o CSS gerado à mão.</p></header>
+<pre class="code-block"><code># 1. edite os valores em tokens/*.json
+# 2. gere o CSS e confira
+node tools/build-tokens.mjs     # escreve styles/variables.css
+node tools/check-contrast.mjs   # contraste nos 4 temas (falha abaixo do mínimo)
+node tools/check-markup.mjs     # toda classe e ícone usados existem</code></pre>
+      </section>
+      <section class="docs-section" id="structure" aria-labelledby="t-structure">
+        <header><h2 id="t-structure">Estrutura do repositório</h2></header>
+<pre class="code-block"><code>index.html              início
+docs/                   overview (resumo), installation, foundations, components, patterns, accessibility
+examples/               telas completas: dashboard, form, tutorial, landing
+tokens/
+  core/                 valores brutos: colors.json (escalas de 12 passos), spacing.json, typography.json
+  semantic/colors.json  o significado de cada cor; os componentes só usam estes
+  themes/               light, dark, high-contrast, high-contrast-dark
+styles/
+  fonts.css             @font-face de Geist e Geist Mono
+  variables.css         todos os tokens em CSS (gerado por tools/build-tokens.mjs)
+  global.css            reset, tipografia, foco, utilitários, animações
+  components.css        importa o CSS de todos os componentes
+  docs.css, home.css    só deste site de documentação
+components/&lt;nome&gt;/      &lt;nome&gt;.html (exemplo comentado), &lt;nome&gt;.css e, se precisar, &lt;nome&gt;.js
+scripts/                theme.js, utils.js (ícones, contraste, tokens), animations.js, docs-shell.js (só do site)
+assets/                 fontes (com a licença OFL) e favicon
+tools/                  build-tokens.mjs, check-contrast.mjs, check-markup.mjs</code></pre>
+      </section>
+
+      <section class="docs-section" id="conventions" aria-labelledby="t-conventions">
+        <header><h2 id="t-conventions">Convenções</h2></header>
+        <ul class="docs-list">
+          <li>Código em inglês, textos em português.</li>
+          <li>Classes: <code>.card</code>, <code>.card-header</code>, <code>.btn.primary</code>.</li>
+          <li>Tons: <code>crit</code>, <code>warn</code>, <code>info</code>, <code>ok</code>, <code>brand</code>.</li>
+          <li>Estados por ARIA: <code>aria-current</code>, <code>aria-selected</code>, <code>aria-invalid</code>.</li>
+          <li>Cor só por token semântico.</li>
+        </ul>
+      </section>
+
+      <footer class="docs-footer"><span>Grin 2.10</span><a href="https://github.com/saulossorio/grin/blob/main/CHANGELOG.md">Mudanças</a><a href="https://github.com/saulossorio/grin">Repositório</a></footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>

@@ -1,5 +1,13 @@
 # Mudanças
 
+## 2.10 · 20/11/2026
+Documentação reorganizada para quem chega pela primeira vez.
+- **Início** vira uma introdução sem jargão: o que é o Grin, para que serve, como ele é, como o site está organizado e por onde começar (designer, desenvolvedor, quem escreve os textos).
+- **Resumo** (`docs/overview.html`, novo): os blocos visuais que estavam no Início.
+- **Instalação** (`docs/installation.html`, substitui "Começar"): botões para baixar o .zip e abrir o GitHub, requisitos e navegadores, pastas necessárias, o que incluir no `<head>`, página mínima completa, uso direto sem baixar, tabela de todos os comportamentos em JavaScript, tema e preferências com a API, uso com React/Vue, como mudar tokens, estrutura e convenções. `docs/getting-started.html` redireciona para ela.
+- Todo bloco de código dos guias tem botão Copiar.
+- A busca inclui Início, Resumo e Instalação.
+
 ## 2.9 · 20/11/2026
 - Barra lateral com dois níveis de importância: os lugares do produto em cima; ajuda, ajustes e conta embaixo, separados por uma linha, em texto menor e mais discreto (`.sidebar-footer` com `.nav-item.small`).
 - Novos: `.nav-divider` (separa grupos sem título) e `.nav-sub` (subitens com trilho fino e o atual marcado em verde, como Tutoriais › Importar convidados).

@@ -66,6 +66,8 @@
 .demo-code-body { position: relative; border-top: 1px solid var(--border-soft); }
 .demo-code-body .copy-code { position: absolute; top: 8px; right: 8px; }
 .demo-code pre, .code-block { margin: 0; padding: 14px 16px; overflow: auto; max-height: 380px; font-size: var(--text-sm); line-height: 1.65; }
+.code-wrap { position: relative; min-width: 0; }
+.code-wrap .copy-code { position: absolute; top: 10px; right: 10px; }
 .code-block { border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); }
 
 /* Usage guidance next to a component */
