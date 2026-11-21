@@ -26,7 +26,7 @@ function apply(sidebar, wanted) {
   });
 }
 
-// Pages that build their sidebar with a script (the documentation) call initSidebar() after building it
+// Pages that build their sidebar with a script call initSidebar() after building it
 let started = false;
 export function initSidebar() {
   const sidebar = document.querySelector('.app > .sidebar');
@@ -51,7 +51,7 @@ export function initSidebar() {
   const saved = read();
   apply(sidebar, saved ? saved === 'collapsed' : matchMedia('(max-width: 1100px)').matches);
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.sidebar-toggle, [data-sidebar-toggle]')) return;
+    if (!e.target.closest?.('.sidebar-toggle, [data-sidebar-toggle]')) return;
     const collapsed = !sidebar.classList.contains('collapsed');
     write(collapsed ? 'collapsed' : 'expanded');
     apply(sidebar, collapsed);
@@ -59,5 +59,6 @@ export function initSidebar() {
   matchMedia('(max-width: 1100px)').addEventListener('change', (m) => { if (!read()) apply(sidebar, m.matches); });
   matchMedia('(max-width: 760px)').addEventListener('change', () => apply(sidebar, read() ? read() === 'collapsed' : matchMedia('(max-width: 1100px)').matches));
 }
-const auto = () => { if (!document.querySelector('[data-docs-nav]')) initSidebar(); };
+// data-sidebar="manual" on the sidebar turns off the automatic start: the page calls initSidebar() (Grin.initSidebar() in dist/grin.js) when it is ready
+const auto = () => { if (!document.querySelector('[data-docs-nav], .sidebar[data-sidebar="manual"]')) initSidebar(); };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', auto, { once: true }); else auto();

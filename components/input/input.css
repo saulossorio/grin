@@ -8,6 +8,9 @@
 }
 .input:hover, .select:hover, .textarea:hover { border-color: var(--muted-foreground); }
 .input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 0; border-color: var(--ring); box-shadow: 0 0 0 4px var(--highlight); }
+.input.sm, .select.sm { height: var(--size-control-sm); font-size: var(--text-sm); }
+.input-group.sm .input, .search.sm .input { height: calc(var(--size-control-sm) - 2px); font-size: var(--text-sm); }
+.search.sm .input { height: var(--size-control-sm); }
 .textarea { height: auto; min-height: 112px; padding: 10px 14px; line-height: var(--leading-body); resize: vertical; }
 .select {
   appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; text-overflow: ellipsis;
@@ -16,6 +19,8 @@
 }
 .input:disabled, .select:disabled, .textarea:disabled { background: var(--muted); color: var(--muted-foreground); cursor: not-allowed; box-shadow: none; }
 .input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--crit-fg); }
+.input[data-state="missing"], .select[data-state="missing"], .textarea[data-state="missing"], .input-group[data-state="missing"] { border-style: dashed; border-color: var(--warn-solid); background: var(--warn-bg); }
+.field:has([data-state="missing"]) .field-label::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 6px; border-radius: var(--radius-pill); background: var(--warn-solid); vertical-align: middle; }
 .input[aria-invalid="true"]:focus-visible, .select[aria-invalid="true"]:focus-visible, .textarea[aria-invalid="true"]:focus-visible { box-shadow: 0 0 0 4px var(--crit-bg); }
 
 /* Field: label on top, control, then hint or message. The label is always visible and tied to the control (for/id). */

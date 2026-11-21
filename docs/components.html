@@ -58,7 +58,7 @@ document.addEventListener('click', (e) => {
 <button type="button" class="btn" aria-busy="true" disabled><span class="spinner" aria-hidden="true"></span>Importando</button>
 <button type="button" class="link">Ver detalhes</button>
         </div></div>
-        <p class="class-list"><code>.btn</code> + <code>primary</code> · <code>aria-pressed="true"</code> (botão de alternar) · <code>danger</code> · <code>ghost</code> · <code>dashed</code> · <code>xs</code> · <code>lg</code> · <code>icon</code> · <code>.btn-group</code> · <code>.link</code> · <code>.spinner</code></p>
+        <p class="class-list"><code>.btn</code> + <code>primary</code> · <code>aria-pressed="true"</code> (botão de alternar) · <code>sm</code> (40 px) · <code>danger</code> · <code>ghost</code> · <code>dashed</code> · <code>xs</code> · <code>lg</code> · <code>icon</code> · <code>.btn-group</code> · <code>.link</code> · <code>.spinner</code></p>
       </section>
 
       <section class="docs-section" id="field" aria-labelledby="t-field">
@@ -86,8 +86,12 @@ document.addEventListener('click', (e) => {
 </div>
 <div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar pessoas" placeholder="Buscar por nome ou e-mail"></div>
 <div class="field-row"><label class="field-label" for="ex-row">Telefone</label><input class="input" id="ex-row" value="(11) 98765-4321"></div>
+<div class="field-grid">
+  <div class="field"><label class="field-label" for="ex-missing">Número de funcionários</label><input class="input" id="ex-missing" data-state="missing" placeholder="Sem dado"><span class="field-message warn"><i data-icon="alert-triangle"></i>Dado que falta. O cálculo usa a média do setor até ele ser preenchido.</span></div>
+  <div class="field"><label class="field-label" for="ex-sm">Campo e botão de 40 px</label><div class="row"><input class="input sm" id="ex-sm" value="Norte Sul" style="flex:1"><button type="button" class="btn sm">Buscar</button></div></div>
+</div>
         </div></div>
-        <p class="class-list"><code>.field</code> · <code>.field-label</code> · <code>.required</code> · <code>.field-hint</code> · <code>.field-message</code> (<code>.warn</code>) · <code>.field-grid</code> · <code>.field-row</code> · <code>.input</code> · <code>.select</code> · <code>.textarea</code> · <code>.search</code></p>
+        <p class="class-list"><code>.field</code> · <code>data-state="missing"</code> (dado que falta, diferente de erro) · <code>.input.sm</code>, <code>.select.sm</code>, <code>.search.sm</code> (40 px) · <code>.field-label</code> · <code>.required</code> · <code>.field-hint</code> · <code>.field-message</code> (<code>.warn</code>) · <code>.field-grid</code> · <code>.field-row</code> · <code>.input</code> · <code>.select</code> · <code>.textarea</code> · <code>.search</code></p>
       </section>
 
       <section class="docs-section" id="choice" aria-labelledby="t-choice">
@@ -183,8 +187,13 @@ document.addEventListener('click', (e) => {
 <div class="tab-panel" role="tabpanel" id="ex-panel-1" aria-labelledby="ex-tab-1">Nome, e-mail, empresa e cargo.</div>
 <div class="tab-panel" role="tabpanel" id="ex-panel-2" aria-labelledby="ex-tab-2" hidden>4 eventos em 2026.</div>
 <div class="tab-panel" role="tabpanel" id="ex-panel-3" aria-labelledby="ex-tab-3" hidden>12 alterações desde março.</div>
+<nav class="tabs" aria-label="Seções da análise">
+  <a class="tab" href="#tabs" aria-current="page">Dados</a>
+  <a class="tab" href="#tabs">Resultado</a>
+  <a class="tab" href="#tabs">Metodologia</a>
+</nav>
         </div></div>
-        <p class="class-list"><code>.tabs</code> · <code>.tab</code> · <code>.tab-panel</code> · <code>components/tabs/tabs.js</code></p>
+        <p class="class-list"><code>.tabs</code> · <code>.tab</code> · <code>.tab-panel</code> · <code>components/tabs/tabs.js</code>. Para navegar entre páginas, use <code>nav.tabs</code> com <code>a.tab</code> e <code>aria-current="page"</code>, sem <code>role</code> nem painéis.</p>
       </section>
 
       <section class="docs-section" id="alert" aria-labelledby="t-alert">
@@ -195,8 +204,9 @@ document.addEventListener('click', (e) => {
 <div class="alert crit" role="alert"><i data-icon="alert-circle"></i><div class="alert-body"><span class="alert-title">Não foi possível salvar agora.</span> Seus dados continuam no formulário. Tente de novo em instantes. Código: ERR-7F3A<div class="alert-actions"><button type="button" class="btn xs">Tentar de novo</button></div></div></div>
 <div class="alert ok" role="status"><i data-icon="check-circle"></i><div class="alert-body">Importação concluída: 1.270 pessoas novas e 14 atualizadas.</div></div>
 <div class="alert neutral"><i data-icon="info"></i><div class="alert-body">Os dados desta tela são fictícios.</div></div>
+<div class="alert brand"><i data-icon="lightbulb"></i><div class="alert-body"><span class="alert-title">Dica.</span> Calibre o modelo com uma empresa que você conhece para estreitar a faixa.</div></div>
         </div></div>
-        <p class="class-list"><code>.alert</code> + <code>warn</code> · <code>crit</code> · <code>ok</code> · <code>neutral</code> · <code>.alert-body</code> · <code>.alert-title</code> · <code>.alert-actions</code></p>
+        <p class="class-list"><code>.alert</code> + <code>brand</code> · <code>warn</code> · <code>crit</code> · <code>ok</code> · <code>neutral</code> · <code>.alert-body</code> · <code>.alert-title</code> · <code>.alert-actions</code></p>
       </section>
 
       <section class="docs-section" id="toast" aria-labelledby="t-toast">
@@ -268,7 +278,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="menu-item" role="menuitemradio" aria-checked="false"><span class="menu-icon crit"><i data-icon="dice"></i></span><span class="menu-label">Palpite<small>Estimativa própria ou de um colega, sem fonte.</small></span></button>
 </div>
         </div></div>
-        <p class="class-list"><code>.menu</code> · <code>.menu-header</code> · <code>.menu-item</code> (<code>.danger</code>; <code>small</code> para a segunda linha; <code>aria-checked</code> em itens de escolha) · <code>.menu-label</code> · <code>.menu-separator</code></p>
+        <p class="class-list"><code>.menu</code> · <code>.menu-header</code> · <code>.menu-item</code> (<code>.danger</code>; <code>small</code> para a segunda linha; <code>aria-checked</code> em itens de escolha) · <code>.menu-label</code> · <code>.menu-separator</code> · <code>.closing</code> para a saída animada, ou <code>closeMenu(el)</code> de <code>scripts/animations.js</code> (<code>Grin.closeMenu</code> em <code>dist/grin.js</code>)</p>
       </section>
 
       <section class="docs-section" id="dialog" aria-labelledby="t-dialog">
@@ -336,7 +346,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <a class="nav-item" href="#shell" aria-label="Revisão, 12 pendências"><i data-icon="clipboard-check"></i><span class="count">12</span></a>
 </nav>
         </div></div>
-        <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.sidebar-toggle</code> ou <code>[data-sidebar-toggle]</code> · <code>components/sidebar/sidebar.js</code> · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-divider</code> · <code>.nav-item</code> (<code>.small</code> no rodapé) · <code>.nav-sub</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> (com <code>.search</code> e <code>.user-button</code>) · <code>.sidebar-menu-button</code> (celular) · <code>.with-aside</code> e <code>.aside-panel</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
+        <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.sidebar-toggle</code> ou <code>[data-sidebar-toggle]</code> · <code>components/sidebar/sidebar.js</code> (com <code>data-sidebar="manual"</code> na barra, não começa sozinho: chame <code>initSidebar()</code>) · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-divider</code> · <code>.nav-item</code> (<code>.small</code> no rodapé) · <code>.nav-sub</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> (com <code>.search</code> e <code>.user-button</code>) · <code>.sidebar-menu-button</code> (celular) · <code>.with-aside</code> e <code>.aside-panel</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
       </section>
 
       <section class="docs-section" id="help" aria-labelledby="t-help">
@@ -414,8 +424,12 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <div class="progress" role="progressbar" aria-label="Importando pessoas" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"><i style="width:40%"></i></div>
 </div>
 <div class="progress indeterminate sm" role="progressbar" aria-label="Lendo a planilha"><i></i></div>
+<div class="progress-field">
+  <div class="progress-label"><span>Receita informada e estimada</span><b>R$ 3,1 bi + R$ 2,1 bi</b></div>
+  <div class="progress stacked" role="img" aria-label="60% informada, 40% estimada"><i style="width:60%"></i><i class="light" style="width:40%"></i></div>
+</div>
         </div></div>
-        <p class="class-list"><code>.loading-overlay</code> com <code>.loading-overlay-card</code> (tela inteira ocupada) · <code>.progress</code> (<code>.sm</code>, <code>.indeterminate</code>) · <code>.progress-field</code> · <code>.progress-label</code></p>
+        <p class="class-list"><code>.progress.stacked</code> com um <code>i</code> por parte (tons <code>light</code>, <code>warn</code>, <code>crit</code>, <code>info</code>, <code>ok</code>) · <code>.loading-overlay</code> com <code>.loading-overlay-card</code> (tela inteira ocupada) · <code>.progress</code> (<code>.sm</code>, <code>.indeterminate</code>) · <code>.progress-field</code> · <code>.progress-label</code></p>
       </section>
 
       <section class="docs-section" id="glossary" aria-labelledby="t-glossary">

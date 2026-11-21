@@ -67,7 +67,7 @@ export function startTour(steps, { onEnd } = {}) {
     else if (e.key === 'ArrowLeft') go(-1);
   }
   root.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-tour]'); if (!b) return;
+    const b = e.target.closest?.('[data-tour]'); if (!b) return;
     ({ end, prev: () => go(-1), next: () => go(1) })[b.dataset.tour]();
   });
   addEventListener('keydown', keys); addEventListener('resize', position); addEventListener('scroll', position, true);

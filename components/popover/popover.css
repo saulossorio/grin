@@ -9,6 +9,7 @@
 .popover { position: fixed; z-index: 95; display: flex; flex-direction: column; gap: 8px; width: max-content; max-width: min(360px, calc(100vw - 24px)); margin: 0; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-md); font-size: var(--text-sm); line-height: var(--leading-body); }
 .popover:not(.open) { display: none; }
 .popover.open { animation: grin-scale-in var(--dur) var(--ease); }
+.popover.closing { display: flex; animation: grin-scale-in var(--dur-fast) var(--ease) reverse forwards; pointer-events: none; }
 .popover-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: var(--leading-tight); }
 .popover-title small { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); }
 .popover p { margin: 0; color: var(--muted-foreground); }

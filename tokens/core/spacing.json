@@ -85,6 +85,10 @@
       "$value": "44px",
       "$description": "Altura de botão e campo na densidade confortável (padrão)."
     },
+    "control-sm": {
+      "$value": "40px",
+      "$description": "Controles .sm: 40 px, entre a densidade compacta e a confortável, para barras de ferramentas e formulários densos."
+    },
     "control-xs": {
       "$value": "32px",
       "$description": "Botão pequeno dentro de tabelas e barras."

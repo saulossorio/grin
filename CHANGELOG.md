@@ -1,5 +1,18 @@
 # Mudanças
 
+## 2.20 · 21/11/2026
+Correções e acréscimos encontrados ao aplicar o Grin no Vezen.
+- Correção: os scripts quebravam quando um evento chegava direto ao `document` (sem elemento de origem). Todos os `closest` e `matches` sobre o alvo do evento passaram a ser seguros.
+- Correção: `grin.css` tinha uma chave `}` sobrando no fim da barra lateral.
+- Correção: nos passos horizontais, a linha entre os passos começava 4 px antes do título.
+- Novo tamanho de controle de 40 px (`--size-control-sm`, classes `.btn.sm`, `.input.sm`, `.select.sm` e `.search.sm`).
+- `sidebar.js` não começa sozinho quando a barra tem `data-sidebar="manual"`. Nesse caso, a página chama `initSidebar()`.
+- Abas que funcionam como links (`nav.tabs` com `a.tab` e `aria-current="page"`), com o mesmo indicador que desliza.
+- Saída animada para popovers (automática) e menus (`.closing` ou `closeMenu()`).
+- Alerta e banner no verde da marca (`.alert.brand`, `.banner.brand`).
+- Barra em partes (`.progress.stacked`), por exemplo valor informado e valor estimado.
+- Estado de campo com dado que falta (`data-state="missing"`), diferente do erro, com borda tracejada em âmbar.
+
 ## 2.19 · 21/11/2026
 - Versões publicadas em GitHub Releases, a partir desta. O botão de Instalação baixa a última versão.
 - Nova pasta `dist/` gerada por `tools/bundle.mjs`, com o Grin em poucos arquivos. `grin.css` traz todo o CSS, e `grin.inline.css` traz o mesmo CSS com as fontes dentro. `grin.js` reúne todos os comportamentos num script comum, com as funções em `window.Grin`. As fontes ficam em `fonts/`.

@@ -96,9 +96,9 @@ function setup(box) {
     else if (e.key === 'Backspace' && multiple && !input.value) { const last = chosen().at(-1); if (last) removeTag(last); }
     else if (readonly && (e.key === ' ' || (e.key === 'Enter' && !box.classList.contains('open')))) { e.preventDefault(); open(true); move(Math.max(0, visible().indexOf(chosen()[0])), true); }
   });
-  list.addEventListener('mousedown', (e) => { const o = e.target.closest('.combobox-option'); if (o) { e.preventDefault(); pick(o); } });
+  list.addEventListener('mousedown', (e) => { const o = e.target.closest?.('.combobox-option'); if (o) { e.preventDefault(); pick(o); } });
   control.addEventListener('click', (e) => {
-    const rm = e.target.closest('.combobox-tag button');
+    const rm = e.target.closest?.('.combobox-tag button');
     if (rm) { const o = options.find((x) => x.dataset.value === rm.parentElement.dataset.value); if (o) removeTag(o); return; }
     if (!readonly) input.focus();
   });

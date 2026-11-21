@@ -1,8 +1,8 @@
-/* Grin 2.19 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.20 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.19';
+Grin.version = '2.20';
 
 // ---------- scripts/utils.js ----------
 {
@@ -219,9 +219,9 @@ document.addEventListener('change', (e) => {
   else if (el.matches('input[data-set-scale]')) setScale(String(Math.floor(+el.value)));
 });
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('[data-contrast-toggle]');
+  const c = e.target.closest?.('[data-contrast-toggle]');
   if (c) { setContrast(effectiveContrast() === 'more' ? 'normal' : 'more'); return; }
-  const el = e.target.closest('button[data-set-theme], [data-theme-toggle]');
+  const el = e.target.closest?.('button[data-set-theme], [data-theme-toggle]');
   if (!el) return;
   setTheme(el.hasAttribute('data-theme-toggle') ? (effectiveTheme() === 'dark' ? 'light' : 'dark') : el.dataset.setTheme);
 });
@@ -256,7 +256,17 @@ function enter(el, { y = 6 } = {}) {
 function scrollToElement(el) {
   el?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
 }
-Object.assign(Grin, { reducedMotion, flash, enter, scrollToElement });
+
+// Closes a menu or any floating layer with the exit animation, then hides or removes it.
+// closeMenu(el) hides it (el.hidden = true); closeMenu(el, { remove: true }) takes it out of the page.
+function closeMenu(el, { remove = false } = {}) {
+  if (!el) return;
+  const done = () => { el.classList.remove('closing'); if (remove) el.remove(); else el.hidden = true; };
+  if (reducedMotion()) { done(); return; }
+  el.classList.add('closing');
+  setTimeout(done, 140);
+}
+Object.assign(Grin, { reducedMotion, flash, enter, scrollToElement, closeMenu });
 }
 
 // ---------- components/popover/popover.js ----------
@@ -284,21 +294,24 @@ function showTip(target) {
   tip.classList.add('show');
 }
 const hideTip = () => tip?.classList.remove('show');
-document.addEventListener('pointerover', (e) => { const t = e.target.closest('[data-tooltip]'); if (t) showTip(t); });
-document.addEventListener('pointerout', (e) => { if (e.target.closest('[data-tooltip]')) hideTip(); });
-document.addEventListener('focusin', (e) => { const t = e.target.closest('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
+document.addEventListener('pointerover', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t) showTip(t); });
+document.addEventListener('pointerout', (e) => { if (e.target.closest?.('[data-tooltip]')) hideTip(); });
+document.addEventListener('focusin', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
 document.addEventListener('focusout', hideTip);
 
 let open = null;
 function close(returnFocus = false) {
   if (!open) return;
-  open.panel.classList.remove('open');
+  // fades out before hiding (instant with reduced motion)
+  const panel = open.panel;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { panel.classList.add('closing'); setTimeout(() => panel.classList.remove('closing'), 140); }
+  panel.classList.remove('open');
   open.button.setAttribute('aria-expanded', 'false');
   if (returnFocus) open.button.focus();
   open = null;
 }
 document.addEventListener('click', (e) => {
-  const button = e.target.closest('[data-popover]');
+  const button = e.target.closest?.('[data-popover]');
   if (button) {
     const panel = document.getElementById(button.dataset.popover);
     const same = open?.button === button;
@@ -410,7 +423,7 @@ function apply(sidebar, wanted) {
   });
 }
 
-// Pages that build their sidebar with a script (the documentation) call initSidebar() after building it
+// Pages that build their sidebar with a script call initSidebar() after building it
 let started = false;
 function initSidebar() {
   const sidebar = document.querySelector('.app > .sidebar');
@@ -435,7 +448,7 @@ function initSidebar() {
   const saved = read();
   apply(sidebar, saved ? saved === 'collapsed' : matchMedia('(max-width: 1100px)').matches);
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.sidebar-toggle, [data-sidebar-toggle]')) return;
+    if (!e.target.closest?.('.sidebar-toggle, [data-sidebar-toggle]')) return;
     const collapsed = !sidebar.classList.contains('collapsed');
     write(collapsed ? 'collapsed' : 'expanded');
     apply(sidebar, collapsed);
@@ -443,7 +456,8 @@ function initSidebar() {
   matchMedia('(max-width: 1100px)').addEventListener('change', (m) => { if (!read()) apply(sidebar, m.matches); });
   matchMedia('(max-width: 760px)').addEventListener('change', () => apply(sidebar, read() ? read() === 'collapsed' : matchMedia('(max-width: 1100px)').matches));
 }
-const auto = () => { if (!document.querySelector('[data-docs-nav]')) initSidebar(); };
+// data-sidebar="manual" on the sidebar turns off the automatic start: the page calls initSidebar() (Grin.initSidebar() in dist/grin.js) when it is ready
+const auto = () => { if (!document.querySelector('[data-docs-nav], .sidebar[data-sidebar="manual"]')) initSidebar(); };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', auto, { once: true }); else auto();
 Object.assign(Grin, { initSidebar });
 }
@@ -453,9 +467,9 @@ Object.assign(Grin, { initSidebar });
 // Grin dialog and drawer behavior, for any <dialog class="dialog|drawer">.
 // [data-open="id"] opens it as modal, [data-close] closes the dialog it is in. Esc and a click on the backdrop also close.
 document.addEventListener('click', (e) => {
-  const opener = e.target.closest('[data-open]');
+  const opener = e.target.closest?.('[data-open]');
   if (opener) { document.getElementById(opener.dataset.open)?.showModal(); return; }
-  const closer = e.target.closest('[data-close]');
+  const closer = e.target.closest?.('[data-close]');
   if (closer) { closer.closest('dialog')?.close(); return; }
   if (e.target.tagName === 'DIALOG') e.target.close(); // click on the backdrop
 });
@@ -465,9 +479,11 @@ document.addEventListener('click', (e) => {
 {
 // Grin tabs. Markup: [role=tablist] > button[role=tab][aria-controls=id]; panels [role=tabpanel][id].
 // Click or Left/Right/Home/End selects a tab and shows its panel. A white piece (.tabs-indicator) slides to the chosen tab.
-document.addEventListener('click', (e) => { const tab = e.target.closest('[role="tab"]'); if (tab) select(tab); });
+// Tabs as links (navigation between pages): <nav class="tabs"><a class="tab" href="…" aria-current="page">. No role, no panels;
+// the indicator marks the current page.
+document.addEventListener('click', (e) => { const tab = e.target.closest?.('[role="tab"]'); if (tab) select(tab); });
 document.addEventListener('keydown', (e) => {
-  const tab = e.target.closest('[role="tab"]');
+  const tab = e.target.closest?.('[role="tab"]');
   if (!tab || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
   const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
   const i = tabs.indexOf(tab);
@@ -485,14 +501,14 @@ function select(tab) {
   place(list);
 }
 function place(list) {
-  const on = list.querySelector('[role="tab"][aria-selected="true"]');
+  const on = list.querySelector('[role="tab"][aria-selected="true"], a.tab[aria-current="page"]');
   let bar = list.querySelector('.tabs-indicator');
   if (!on || !list.classList.contains('tabs')) return;
   if (!bar) { bar = document.createElement('span'); bar.className = 'tabs-indicator'; bar.setAttribute('aria-hidden', 'true'); list.prepend(bar); list.classList.add('tabs-ready'); }
   bar.style.width = `${on.offsetWidth}px`; bar.style.height = `${on.offsetHeight}px`;
   bar.style.transform = `translate(${on.offsetLeft}px, ${on.offsetTop}px)`;
 }
-const placeAll = () => document.querySelectorAll('.tabs[role="tablist"]').forEach(place);
+const placeAll = () => document.querySelectorAll('.tabs').forEach(place);
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', placeAll, { once: true }); else placeAll();
 addEventListener('resize', placeAll);
 document.fonts?.ready.then(placeAll);
@@ -569,7 +585,7 @@ function animate(details, open) {
 }
 
 document.addEventListener('click', (e) => {
-  const summary = e.target.closest('.accordion summary, details.disclosure > summary');
+  const summary = e.target.closest?.('.accordion summary, details.disclosure > summary');
   if (!summary) return;
   const details = summary.parentElement;
   e.preventDefault();
@@ -685,9 +701,9 @@ function setup(box) {
     else if (e.key === 'Backspace' && multiple && !input.value) { const last = chosen().at(-1); if (last) removeTag(last); }
     else if (readonly && (e.key === ' ' || (e.key === 'Enter' && !box.classList.contains('open')))) { e.preventDefault(); open(true); move(Math.max(0, visible().indexOf(chosen()[0])), true); }
   });
-  list.addEventListener('mousedown', (e) => { const o = e.target.closest('.combobox-option'); if (o) { e.preventDefault(); pick(o); } });
+  list.addEventListener('mousedown', (e) => { const o = e.target.closest?.('.combobox-option'); if (o) { e.preventDefault(); pick(o); } });
   control.addEventListener('click', (e) => {
-    const rm = e.target.closest('.combobox-tag button');
+    const rm = e.target.closest?.('.combobox-tag button');
     if (rm) { const o = options.find((x) => x.dataset.value === rm.parentElement.dataset.value); if (o) removeTag(o); return; }
     if (!readonly) input.focus();
   });
@@ -829,7 +845,7 @@ function startTour(steps, { onEnd } = {}) {
     else if (e.key === 'ArrowLeft') go(-1);
   }
   root.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-tour]'); if (!b) return;
+    const b = e.target.closest?.('[data-tour]'); if (!b) return;
     ({ end, prev: () => go(-1), next: () => go(1) })[b.dataset.tour]();
   });
   addEventListener('keydown', keys); addEventListener('resize', position); addEventListener('scroll', position, true);

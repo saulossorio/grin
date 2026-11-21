@@ -3,6 +3,14 @@
 .progress { position: relative; height: 8px; overflow: hidden; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); }
 .progress > i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--primary); transition: width var(--dur-slow) var(--ease); }
 .progress.sm { height: 4px; }
+/* Bar in parts: each <i> is a part with its own width and tone (done and pending, real and estimated).
+   The parts add up from the left; say what each one is in the label or a legend. */
+.progress.stacked { display: flex; }
+.progress.stacked > i { flex: none; border-radius: 0; }
+.progress.stacked > i:first-child { border-radius: var(--radius-pill) 0 0 var(--radius-pill); }
+.progress.stacked > i:last-child { border-radius: 0 var(--radius-pill) var(--radius-pill) 0; }
+.progress > i.warn { background: var(--warn-solid); } .progress > i.crit { background: var(--crit-solid); } .progress > i.info { background: var(--info-fg); } .progress > i.ok { background: var(--ok-solid); }
+.progress > i.light { background: var(--chart-band); }
 .progress.indeterminate > i { width: 40%; animation: grin-progress 1.4s var(--ease-in-out) infinite; }
 @keyframes grin-progress { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
 .progress-field { display: flex; flex-direction: column; gap: 8px; }

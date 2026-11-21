@@ -24,7 +24,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.19';
+export const VERSION = '2.20';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -118,7 +118,7 @@ function ensureSearch() {
     if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); active = (active + (e.key === 'ArrowDown' ? 1 : -1) + results.length) % Math.max(1, results.length); render(); list.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: 'nearest' }); }
     if (e.key === 'Enter' && results[active]) { e.preventDefault(); location.href = results[active].href; dlg.close(); }
   });
-  list.addEventListener('click', (e) => { if (e.target.closest('a')) dlg.close(); });
+  list.addEventListener('click', (e) => { if (e.target.closest?.('a')) dlg.close(); });
   dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
   dlg.render = render;
   return dlg;
@@ -131,9 +131,9 @@ async function openSearch() {
   dlg.render();
   if (!searchIndex) { searchIndex = await buildIndex(base); dlg.render(); }
 }
-document.addEventListener('click', (e) => { if (e.target.closest('#docs-search-open, [data-docs-search]')) openSearch(); });
+document.addEventListener('click', (e) => { if (e.target.closest?.('#docs-search-open, [data-docs-search]')) openSearch(); });
 document.addEventListener('keydown', (e) => {
-  const typing = e.target.closest('input, textarea, select, [contenteditable]');
+  const typing = e.target.closest?.('input, textarea, select, [contenteditable]');
   if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && !typing)) { e.preventDefault(); openSearch(); }
 });
 
@@ -161,7 +161,7 @@ export function showCode(root = document) {
   });
 }
 document.addEventListener('click', async (e) => {
-  const b = e.target.closest('.copy-code');
+  const b = e.target.closest?.('.copy-code');
   if (!b) return;
   const code = b.parentElement.querySelector('code');
   const label = b.querySelector('span');
@@ -180,8 +180,8 @@ function toggleNav(open) {
   button.setAttribute('aria-label', open ? 'Fechar navegação' : 'Abrir navegação');
 }
 document.addEventListener('click', (e) => {
-  if (e.target.closest('#docs-menu-button')) toggleNav(!document.getElementById('docs-nav').classList.contains('open'));
-  else if (document.body.classList.contains('docs-nav-open') && !e.target.closest('#docs-nav')) toggleNav(false);
+  if (e.target.closest?.('#docs-menu-button')) toggleNav(!document.getElementById('docs-nav').classList.contains('open'));
+  else if (document.body.classList.contains('docs-nav-open') && !e.target.closest?.('#docs-nav')) toggleNav(false);
 });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && document.body.classList.contains('docs-nav-open')) { toggleNav(false); document.getElementById('docs-menu-button')?.focus(); } });
 

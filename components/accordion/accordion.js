@@ -34,7 +34,7 @@ function animate(details, open) {
 }
 
 document.addEventListener('click', (e) => {
-  const summary = e.target.closest('.accordion summary, details.disclosure > summary');
+  const summary = e.target.closest?.('.accordion summary, details.disclosure > summary');
   if (!summary) return;
   const details = summary.parentElement;
   e.preventDefault();

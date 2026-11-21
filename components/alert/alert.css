@@ -8,6 +8,7 @@
 .alert.warn { border-color: var(--warn-border); background: var(--warn-bg); } .alert.warn > svg { color: var(--warn-fg); }
 .alert.crit { border-color: var(--crit-border); background: var(--crit-bg); } .alert.crit > svg { color: var(--crit-fg); }
 .alert.ok { border-color: var(--ok-border); background: var(--ok-bg); } .alert.ok > svg { color: var(--ok-fg); }
+.alert.brand { border-color: var(--brand-border); background: var(--brand-bg); } .alert.brand > svg { color: var(--brand-fg); }
 .alert.neutral { border-color: var(--border); background: var(--muted); } .alert.neutral > svg { color: var(--muted-foreground); }
 
 /* Banner: a message about the whole app or page (data saved only in this browser, maintenance, a new version).
@@ -18,3 +19,4 @@
 .banner.warn { border-color: var(--warn-border); background: var(--warn-bg); } .banner.warn > svg { color: var(--warn-fg); }
 .banner.crit { border-color: var(--crit-border); background: var(--crit-bg); } .banner.crit > svg { color: var(--crit-fg); }
 .banner.ok { border-color: var(--ok-border); background: var(--ok-bg); } .banner.ok > svg { color: var(--ok-fg); }
+.banner.brand { border-color: var(--brand-border); background: var(--brand-bg); } .banner.brand > svg { color: var(--brand-fg); }

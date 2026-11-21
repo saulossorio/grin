@@ -16,7 +16,7 @@
 /* Horizontal: a short process seen at a glance (3 to 5 steps), e.g. at the top of a wizard */
 .steps.horizontal { flex-direction: row; gap: 8px; }
 .steps.horizontal .step { flex: 1 1 0; grid-template-columns: 32px minmax(0, 1fr); padding-bottom: 0; }
-.steps.horizontal .step:not(:last-child)::after { left: 44px; right: 8px; top: 15px; bottom: auto; width: auto; height: 2px; }
+.steps.horizontal .step:not(:last-child)::after { left: 48px; right: 8px; top: 15px; bottom: auto; width: auto; height: 2px; }
 .steps.horizontal .step-title { position: relative; z-index: 1; padding-right: 8px; background: var(--background); font-size: var(--text-sm); justify-self: start; }
 .steps.horizontal .step-body { display: none; }
 @media (max-width: 640px) { .steps.horizontal .step-title { display: none; } .steps.horizontal .step { flex: 0 1 auto; } .steps.horizontal .step:not(:last-child)::after { display: none; } }

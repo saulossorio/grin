@@ -21,6 +21,8 @@
 .btn.dashed { border-style: dashed; box-shadow: none; }
 .btn.xs { height: var(--size-control-xs); padding: 0 10px; gap: 6px; border-radius: var(--radius-sm); font-size: var(--text-sm); }
 .btn.xs svg { width: 16px; height: 16px; }
+.btn.sm { height: var(--size-control-sm); padding: 0 14px; font-size: var(--text-sm); }
+.btn.icon.sm { width: var(--size-control-sm); padding: 0; }
 .btn.lg { height: calc(var(--control-h) + 4px); padding: 0 20px; font-size: var(--text-base); }
 .btn.icon { width: var(--control-h); padding: 0; }
 .btn.icon.xs { width: var(--size-control-xs); }

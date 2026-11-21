@@ -21,3 +21,13 @@ export function enter(el, { y = 6 } = {}) {
 export function scrollToElement(el) {
   el?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
 }
+
+// Closes a menu or any floating layer with the exit animation, then hides or removes it.
+// closeMenu(el) hides it (el.hidden = true); closeMenu(el, { remove: true }) takes it out of the page.
+export function closeMenu(el, { remove = false } = {}) {
+  if (!el) return;
+  const done = () => { el.classList.remove('closing'); if (remove) el.remove(); else el.hidden = true; };
+  if (reducedMotion()) { done(); return; }
+  el.classList.add('closing');
+  setTimeout(done, 140);
+}

@@ -1,8 +1,10 @@
 // Grin tabs. Markup: [role=tablist] > button[role=tab][aria-controls=id]; panels [role=tabpanel][id].
 // Click or Left/Right/Home/End selects a tab and shows its panel. A white piece (.tabs-indicator) slides to the chosen tab.
-document.addEventListener('click', (e) => { const tab = e.target.closest('[role="tab"]'); if (tab) select(tab); });
+// Tabs as links (navigation between pages): <nav class="tabs"><a class="tab" href="…" aria-current="page">. No role, no panels;
+// the indicator marks the current page.
+document.addEventListener('click', (e) => { const tab = e.target.closest?.('[role="tab"]'); if (tab) select(tab); });
 document.addEventListener('keydown', (e) => {
-  const tab = e.target.closest('[role="tab"]');
+  const tab = e.target.closest?.('[role="tab"]');
   if (!tab || !['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) return;
   const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"]')];
   const i = tabs.indexOf(tab);
@@ -20,14 +22,14 @@ function select(tab) {
   place(list);
 }
 function place(list) {
-  const on = list.querySelector('[role="tab"][aria-selected="true"]');
+  const on = list.querySelector('[role="tab"][aria-selected="true"], a.tab[aria-current="page"]');
   let bar = list.querySelector('.tabs-indicator');
   if (!on || !list.classList.contains('tabs')) return;
   if (!bar) { bar = document.createElement('span'); bar.className = 'tabs-indicator'; bar.setAttribute('aria-hidden', 'true'); list.prepend(bar); list.classList.add('tabs-ready'); }
   bar.style.width = `${on.offsetWidth}px`; bar.style.height = `${on.offsetHeight}px`;
   bar.style.transform = `translate(${on.offsetLeft}px, ${on.offsetTop}px)`;
 }
-const placeAll = () => document.querySelectorAll('.tabs[role="tablist"]').forEach(place);
+const placeAll = () => document.querySelectorAll('.tabs').forEach(place);
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', placeAll, { once: true }); else placeAll();
 addEventListener('resize', placeAll);
 document.fonts?.ready.then(placeAll);

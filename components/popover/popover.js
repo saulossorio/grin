@@ -21,21 +21,24 @@ function showTip(target) {
   tip.classList.add('show');
 }
 const hideTip = () => tip?.classList.remove('show');
-document.addEventListener('pointerover', (e) => { const t = e.target.closest('[data-tooltip]'); if (t) showTip(t); });
-document.addEventListener('pointerout', (e) => { if (e.target.closest('[data-tooltip]')) hideTip(); });
-document.addEventListener('focusin', (e) => { const t = e.target.closest('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
+document.addEventListener('pointerover', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t) showTip(t); });
+document.addEventListener('pointerout', (e) => { if (e.target.closest?.('[data-tooltip]')) hideTip(); });
+document.addEventListener('focusin', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
 document.addEventListener('focusout', hideTip);
 
 let open = null;
 function close(returnFocus = false) {
   if (!open) return;
-  open.panel.classList.remove('open');
+  // fades out before hiding (instant with reduced motion)
+  const panel = open.panel;
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) { panel.classList.add('closing'); setTimeout(() => panel.classList.remove('closing'), 140); }
+  panel.classList.remove('open');
   open.button.setAttribute('aria-expanded', 'false');
   if (returnFocus) open.button.focus();
   open = null;
 }
 document.addEventListener('click', (e) => {
-  const button = e.target.closest('[data-popover]');
+  const button = e.target.closest?.('[data-popover]');
   if (button) {
     const panel = document.getElementById(button.dataset.popover);
     const same = open?.button === button;

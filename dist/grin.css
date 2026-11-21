@@ -1,4 +1,4 @@
-/* Grin 2.19 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
+/* Grin 2.20 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -49,6 +49,7 @@
   --radius-pill: 999px;
   --size-control-compact: 36px;
   --size-control-comfortable: 44px;
+  --size-control-sm: 40px;
   --size-control-xs: 32px;
   --size-nav-item: 40px;
   --size-topbar: 64px;
@@ -793,6 +794,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 .btn.dashed { border-style: dashed; box-shadow: none; }
 .btn.xs { height: var(--size-control-xs); padding: 0 10px; gap: 6px; border-radius: var(--radius-sm); font-size: var(--text-sm); }
 .btn.xs svg { width: 16px; height: 16px; }
+.btn.sm { height: var(--size-control-sm); padding: 0 14px; font-size: var(--text-sm); }
+.btn.icon.sm { width: var(--size-control-sm); padding: 0; }
 .btn.lg { height: calc(var(--control-h) + 4px); padding: 0 20px; font-size: var(--text-base); }
 .btn.icon { width: var(--control-h); padding: 0; }
 .btn.icon.xs { width: var(--size-control-xs); }
@@ -831,6 +834,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 }
 .input:hover, .select:hover, .textarea:hover { border-color: var(--muted-foreground); }
 .input:focus-visible, .select:focus-visible, .textarea:focus-visible { outline: 0; border-color: var(--ring); box-shadow: 0 0 0 4px var(--highlight); }
+.input.sm, .select.sm { height: var(--size-control-sm); font-size: var(--text-sm); }
+.input-group.sm .input, .search.sm .input { height: calc(var(--size-control-sm) - 2px); font-size: var(--text-sm); }
+.search.sm .input { height: var(--size-control-sm); }
 .textarea { height: auto; min-height: 112px; padding: 10px 14px; line-height: var(--leading-body); resize: vertical; }
 .select {
   appearance: none; -webkit-appearance: none; padding-right: 40px; cursor: pointer; text-overflow: ellipsis;
@@ -839,6 +845,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 }
 .input:disabled, .select:disabled, .textarea:disabled { background: var(--muted); color: var(--muted-foreground); cursor: not-allowed; box-shadow: none; }
 .input[aria-invalid="true"], .select[aria-invalid="true"], .textarea[aria-invalid="true"] { border-color: var(--crit-fg); }
+.input[data-state="missing"], .select[data-state="missing"], .textarea[data-state="missing"], .input-group[data-state="missing"] { border-style: dashed; border-color: var(--warn-solid); background: var(--warn-bg); }
+.field:has([data-state="missing"]) .field-label::after { content: ''; display: inline-block; width: 6px; height: 6px; margin-left: 6px; border-radius: var(--radius-pill); background: var(--warn-solid); vertical-align: middle; }
 .input[aria-invalid="true"]:focus-visible, .select[aria-invalid="true"]:focus-visible, .textarea[aria-invalid="true"]:focus-visible { box-shadow: 0 0 0 4px var(--crit-bg); }
 
 /* Field: label on top, control, then hint or message. The label is always visible and tied to the control (for/id). */
@@ -1041,6 +1049,7 @@ input[type="checkbox"]:disabled, input[type="radio"]:disabled { opacity: 0.5; cu
 .alert.warn { border-color: var(--warn-border); background: var(--warn-bg); } .alert.warn > svg { color: var(--warn-fg); }
 .alert.crit { border-color: var(--crit-border); background: var(--crit-bg); } .alert.crit > svg { color: var(--crit-fg); }
 .alert.ok { border-color: var(--ok-border); background: var(--ok-bg); } .alert.ok > svg { color: var(--ok-fg); }
+.alert.brand { border-color: var(--brand-border); background: var(--brand-bg); } .alert.brand > svg { color: var(--brand-fg); }
 .alert.neutral { border-color: var(--border); background: var(--muted); } .alert.neutral > svg { color: var(--muted-foreground); }
 
 /* Banner: a message about the whole app or page (data saved only in this browser, maintenance, a new version).
@@ -1051,6 +1060,7 @@ input[type="checkbox"]:disabled, input[type="radio"]:disabled { opacity: 0.5; cu
 .banner.warn { border-color: var(--warn-border); background: var(--warn-bg); } .banner.warn > svg { color: var(--warn-fg); }
 .banner.crit { border-color: var(--crit-border); background: var(--crit-bg); } .banner.crit > svg { color: var(--crit-fg); }
 .banner.ok { border-color: var(--ok-border); background: var(--ok-bg); } .banner.ok > svg { color: var(--ok-fg); }
+.banner.brand { border-color: var(--brand-border); background: var(--brand-bg); } .banner.brand > svg { color: var(--brand-fg); }
 
 /* ---------- components/card/card.css ---------- */
 /* Grin card: sets an object apart from the background, with a soft shadow and round corners.
@@ -1227,11 +1237,12 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 .tabs { position: relative; display: flex; flex-wrap: wrap; gap: 4px; width: fit-content; max-width: 100%; padding: 4px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--sidebar); }
 .tab { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; height: calc(var(--control-h) - 4px); padding: 0 14px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--muted-foreground); font-size: var(--control-text); font-weight: var(--weight-semibold); white-space: nowrap; transition: color var(--dur) var(--ease); }
 .tab:hover { color: var(--foreground); }
-.tab[aria-selected="true"] { color: var(--foreground); }
-.tabs:not(.tabs-ready) .tab[aria-selected="true"] { background: var(--surface); box-shadow: var(--shadow-sm); }
+.tab[aria-selected="true"], .tab[aria-current="page"] { color: var(--foreground); }
+a.tab { text-decoration: none; }
+.tabs:not(.tabs-ready) .tab[aria-current="page"], .tabs:not(.tabs-ready) .tab[aria-selected="true"] { background: var(--surface); box-shadow: var(--shadow-sm); }
 .tab:focus-visible { outline-offset: -2px; }
 .tab .nav-count { padding: 0 8px; border-radius: var(--radius-pill); background: var(--accent); font-size: var(--text-sm); transition: background-color var(--dur), color var(--dur); }
-.tab[aria-selected="true"] .nav-count { background: var(--brand-bg); color: var(--brand-fg); }
+.tab[aria-current="page"] .nav-count, .tab[aria-selected="true"] .nav-count { background: var(--brand-bg); color: var(--brand-fg); }
 .tabs-indicator { position: absolute; z-index: 0; top: 0; left: 0; border-radius: var(--radius-sm); background: var(--surface); box-shadow: var(--shadow-sm); transition: transform var(--dur-slow) var(--ease-spring), width var(--dur-slow) var(--ease-spring), height var(--dur-slow) var(--ease-spring); pointer-events: none; }
 .tab-panel { padding-top: 20px; animation: grin-fade var(--dur) var(--ease); }
 @media (max-width: 640px) {
@@ -1243,6 +1254,8 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 /* Grin menu: actions on an item, column choices, user menu. Positioned by the page (absolute or fixed).
    Opens with a short scale from its corner. */
 .menu { z-index: 90; display: flex; flex-direction: column; gap: 2px; min-width: 220px; padding: 6px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); box-shadow: var(--shadow-md); transform-origin: top left; animation: grin-scale-in var(--dur) var(--ease); }
+/* Exit: add .closing, remove the menu when the animation ends (closeMenu() in animations.js does it) */
+.menu.closing { animation: grin-scale-in var(--dur-fast) var(--ease) reverse forwards; pointer-events: none; }
 .menu-header { padding: 8px 10px 4px; font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground); }
 .menu-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--foreground); font-size: var(--control-text); font-weight: var(--weight-medium); text-align: left; text-decoration: none; transition: background-color var(--dur-fast); }
 .menu-item svg { width: 18px; height: 18px; color: var(--muted-foreground); }
@@ -1324,6 +1337,14 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 .progress { position: relative; height: 8px; overflow: hidden; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); }
 .progress > i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--primary); transition: width var(--dur-slow) var(--ease); }
 .progress.sm { height: 4px; }
+/* Bar in parts: each <i> is a part with its own width and tone (done and pending, real and estimated).
+   The parts add up from the left; say what each one is in the label or a legend. */
+.progress.stacked { display: flex; }
+.progress.stacked > i { flex: none; border-radius: 0; }
+.progress.stacked > i:first-child { border-radius: var(--radius-pill) 0 0 var(--radius-pill); }
+.progress.stacked > i:last-child { border-radius: 0 var(--radius-pill) var(--radius-pill) 0; }
+.progress > i.warn { background: var(--warn-solid); } .progress > i.crit { background: var(--crit-solid); } .progress > i.info { background: var(--info-fg); } .progress > i.ok { background: var(--ok-solid); }
+.progress > i.light { background: var(--chart-band); }
 .progress.indeterminate > i { width: 40%; animation: grin-progress 1.4s var(--ease-in-out) infinite; }
 @keyframes grin-progress { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
 .progress-field { display: flex; flex-direction: column; gap: 8px; }
@@ -1357,6 +1378,7 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 .popover { position: fixed; z-index: 95; display: flex; flex-direction: column; gap: 8px; width: max-content; max-width: min(360px, calc(100vw - 24px)); margin: 0; padding: 16px 18px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-md); font-size: var(--text-sm); line-height: var(--leading-body); }
 .popover:not(.open) { display: none; }
 .popover.open { animation: grin-scale-in var(--dur) var(--ease); }
+.popover.closing { display: flex; animation: grin-scale-in var(--dur-fast) var(--ease) reverse forwards; pointer-events: none; }
 .popover-title { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; font-size: var(--text-base); font-weight: var(--weight-semibold); line-height: var(--leading-tight); }
 .popover-title small { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); }
 .popover p { margin: 0; color: var(--muted-foreground); }
@@ -1417,7 +1439,7 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 /* Horizontal: a short process seen at a glance (3 to 5 steps), e.g. at the top of a wizard */
 .steps.horizontal { flex-direction: row; gap: 8px; }
 .steps.horizontal .step { flex: 1 1 0; grid-template-columns: 32px minmax(0, 1fr); padding-bottom: 0; }
-.steps.horizontal .step:not(:last-child)::after { left: 44px; right: 8px; top: 15px; bottom: auto; width: auto; height: 2px; }
+.steps.horizontal .step:not(:last-child)::after { left: 48px; right: 8px; top: 15px; bottom: auto; width: auto; height: 2px; }
 .steps.horizontal .step-title { position: relative; z-index: 1; padding-right: 8px; background: var(--background); font-size: var(--text-sm); justify-self: start; }
 .steps.horizontal .step-body { display: none; }
 @media (max-width: 640px) { .steps.horizontal .step-title { display: none; } .steps.horizontal .step { flex: 0 1 auto; } .steps.horizontal .step:not(:last-child)::after { display: none; } }
@@ -1750,5 +1772,4 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
   .page-header { padding-top: 20px; }
   .page-title h1 { font-size: var(--text-2xl); }
   .page-description { font-size: var(--text-base); }
-}
 }

@@ -85,9 +85,9 @@ document.addEventListener('change', (e) => {
   else if (el.matches('input[data-set-scale]')) setScale(String(Math.floor(+el.value)));
 });
 document.addEventListener('click', (e) => {
-  const c = e.target.closest('[data-contrast-toggle]');
+  const c = e.target.closest?.('[data-contrast-toggle]');
   if (c) { setContrast(effectiveContrast() === 'more' ? 'normal' : 'more'); return; }
-  const el = e.target.closest('button[data-set-theme], [data-theme-toggle]');
+  const el = e.target.closest?.('button[data-set-theme], [data-theme-toggle]');
   if (!el) return;
   setTheme(el.hasAttribute('data-theme-toggle') ? (effectiveTheme() === 'dark' ? 'light' : 'dark') : el.dataset.setTheme);
 });
