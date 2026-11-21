@@ -2,6 +2,7 @@
 
 ## 2.13 · 20/11/2026
 - A estrutura da tela em Padrões separa o cabeçalho, igual em todas as telas, do corpo, que muda com o tipo de tela.
+- O esquema do cabeçalho usa nomes genéricos e diz o que é obrigatório e o que é opcional.
 - Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item e conteúdo e ajuda), cada um com esquema numerado, quando usar e link para o exemplo.
 
 ## 2.12 · 20/11/2026
