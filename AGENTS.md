@@ -4,7 +4,7 @@ Leia este arquivo inteiro antes de mudar qualquer coisa. O README.md explica o p
 
 ## O que é
 
-Grin é um design system independente, feito do zero. HTML, CSS e JavaScript puros, sem framework, sem build além de `tools/build-tokens.mjs`. Publicado no GitHub Pages a partir da branch `main`: https://saulossorio.github.io/grin/
+Grin é um design system independente, feito do zero. Arquivos HTML, CSS e módulos JavaScript; o único passo de geração é `tools/build-tokens.mjs`. Publicado no GitHub Pages a partir da branch `main`: https://saulossorio.github.io/grin/
 
 Textos da documentação: diretos e descritivos, sem frases de marketing nem slogans (títulos são nomes de seção: "Temas", "Cor"). Não cite outras ferramentas ou empresas como origem do Grin na documentação, nos exemplos, nos tokens ou nos comentários. Os exemplos usam produtos e dados fictícios ("Agenda", "Prumo", "Norte Sul").
 
@@ -39,3 +39,7 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 - **Mudar uma cor:** escolha o passo certo da escala em `tokens/core/colors.json` (papéis dos passos na descrição do arquivo), mude o mapeamento em `tokens/semantic/colors.json` e nos dois temas em `tokens/themes/`, gere e confira o contraste.
 - **Novo componente:** siga "Novo componente" em `docs/components.html`.
 - **Novo ícone:** acrescente o desenho (viewBox 24, traço 2, estilo Lucide) em `ICONS` de `scripts/utils.js`.
+
+## Tom dos textos
+
+Textos da documentação: objetivos e diretos, em termos técnicos simples. Sem slogans, metáforas, frases de venda ou ênfases como "puro", "sem etapa de build", "pensado para". Diga o que é e como usar.

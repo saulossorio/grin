@@ -1,6 +1,6 @@
 # Grin
 
-Design system com tokens, componentes, padrões de uso e regras de acessibilidade. HTML, CSS e um pouco de JavaScript, sem framework e sem dependências.
+Design system com tokens, componentes, padrões de uso e regras de acessibilidade. Arquivos CSS e módulos JavaScript.
 
 **Documentação ao vivo:** https://saulossorio.github.io/grin/
 
