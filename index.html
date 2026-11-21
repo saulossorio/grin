@@ -26,58 +26,59 @@
       <section class="home-hero" aria-labelledby="t-hero">
         <span class="overline">Design system · versão 2.10</span>
         <h1 class="home-title" id="t-hero"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>Grin</h1>
-        <p class="lead intro-lead">Design system para interfaces web: tokens, 25 componentes, padrões de uso e regras de acessibilidade, em HTML, CSS e JavaScript.</p>
+        <p class="lead intro-lead">Grin define a aparência e o comportamento de interfaces web.</p>
         <div class="home-actions"><a class="btn primary lg" href="docs/overview.html"><i data-icon="layout-grid"></i>Ver o resumo</a><a class="btn lg" href="docs/installation.html"><i data-icon="download"></i>Instalação</a></div>
       </section>
 
       <section class="docs-section" aria-labelledby="t-what">
         <header><h2 id="t-what">O que é</h2></header>
         <div class="prose">
-          <p>Um design system define as cores, a tipografia, os espaços e os componentes de uma interface, e como usá-los. Com ele, telas feitas por pessoas diferentes ficam iguais na aparência e no funcionamento.</p>
-          <p>No Grin, cada valor é um token (por exemplo, <code>--primary</code>), os componentes usam esses tokens (por exemplo, o botão) e as telas de exemplo mostram os componentes em uso.</p>
+          <p>Um design system reúne as regras visuais e os componentes de uma interface. Com ele, telas feitas por pessoas diferentes ficam consistentes.</p>
+          <p>No Grin, os componentes usam tokens, e as telas de exemplo mostram os componentes em uso.</p>
         </div>
       </section>
 
       <section class="docs-section" aria-labelledby="t-for">
         <header><h2 id="t-for">Para que serve</h2></header>
         <div class="intro-grid">
-          <div class="intro-point"><span class="intro-icon"><i data-icon="table"></i></span><h3>Dados</h3><p>Tabelas, filtros, busca, indicadores e ações em massa.</p></div>
-          <div class="intro-point"><span class="intro-icon"><i data-icon="pencil"></i></span><h3>Formulários</h3><p>Campos com rótulo visível, validação com a correção indicada e confirmação para ações irreversíveis.</p></div>
-          <div class="intro-point"><span class="intro-icon"><i data-icon="book-open"></i></span><h3>Tutoriais e ajuda</h3><p>Texto corrido, stepper, acordeão (FAQ), termos com definição, glossário e tour guiado.</p></div>
-          <div class="intro-point"><span class="intro-icon"><i data-icon="accessibility"></i></span><h3>Acessibilidade</h3><p>Teclado, leitor de tela, alto contraste, fonte até 125% e "reduzir movimento".</p></div>
+          <div class="intro-point"><span class="intro-icon"><i data-icon="table"></i></span><h3>Dados</h3><p>Tabelas com filtros, busca e ações em massa.</p></div>
+          <div class="intro-point"><span class="intro-icon"><i data-icon="pencil"></i></span><h3>Formulários</h3><p>Campos com validação e confirmação de ações irreversíveis.</p></div>
+          <div class="intro-point"><span class="intro-icon"><i data-icon="book-open"></i></span><h3>Tutoriais e ajuda</h3><p>Componentes para explicar o produto, do texto ao tour guiado.</p></div>
+          <div class="intro-point"><span class="intro-icon"><i data-icon="accessibility"></i></span><h3>Acessibilidade</h3><p>Funciona com teclado, leitor de tela e alto contraste.</p></div>
         </div>
       </section>
 
       <section class="docs-section" aria-labelledby="t-how">
         <header><h2 id="t-how">Características</h2></header>
         <ul class="intro-rules">
-          <li><b>Texto de 16 px.</b> Contraste mínimo de 4,5:1 (7:1 no alto contraste), verificado a cada mudança.</li>
-          <li><b>Cor com função definida.</b> Verde: ação principal e item atual. Vermelho, âmbar e azul: estados, sempre com texto.</li>
-          <li><b>Tela de referência de 1200 px.</b> Adaptado de 375 px a 2560 px.</li>
-          <li><b>Quatro temas:</b> claro, escuro, claro com alto contraste e escuro com alto contraste. Duas densidades e três tamanhos de fonte.</li>
-          <li><b>Formato:</b> arquivos CSS e módulos JavaScript. Usável com ou sem framework.</li>
+          <li>O texto tem 16 px e contraste mínimo de 4,5 para 1.</li>
+          <li>O verde indica a ação principal e o item atual.</li>
+          <li>Os estados usam vermelho, âmbar ou azul, sempre com texto.</li>
+          <li>A tela de referência tem 1200 px, e o layout se adapta do celular a monitores grandes.</li>
+          <li>Os temas claro e escuro têm versão de alto contraste.</li>
+          <li>Funciona com ou sem framework.</li>
         </ul>
       </section>
 
       <section class="docs-section" aria-labelledby="t-map">
         <header><h2 id="t-map">Seções</h2></header>
         <div class="intro-cards">
-          <a class="card intro-card" href="docs/overview.html"><span class="intro-icon"><i data-icon="layout-grid"></i></span><span class="card-title">Resumo</span><span class="card-description">Visão geral de todas as partes, com os componentes reais.</span></a>
-          <a class="card intro-card" href="docs/installation.html"><span class="intro-icon"><i data-icon="download"></i></span><span class="card-title">Instalação</span><span class="card-description">Download, arquivos, configuração e uso com ou sem framework.</span></a>
-          <a class="card intro-card" href="docs/foundations.html"><span class="intro-icon"><i data-icon="palette"></i></span><span class="card-title">Fundamentos</span><span class="card-description">Cor, tipografia e hierarquia, espaço, tela e layout, movimento, ícones e temas.</span></a>
-          <a class="card intro-card" href="docs/components.html"><span class="intro-icon"><i data-icon="columns"></i></span><span class="card-title">Componentes</span><span class="card-description">25 componentes com exemplo, código e sinônimos.</span></a>
-          <a class="card intro-card" href="docs/patterns.html"><span class="intro-icon"><i data-icon="workflow"></i></span><span class="card-title">Padrões</span><span class="card-description">Estrutura de tela, filtros, formulários, mensagens e escrita.</span></a>
-          <a class="card intro-card" href="docs/accessibility.html"><span class="intro-icon"><i data-icon="accessibility"></i></span><span class="card-title">Acessibilidade</span><span class="card-description">Checklist por tela e contraste medido de cada par de cores.</span></a>
+          <a class="card intro-card" href="docs/overview.html"><span class="intro-icon"><i data-icon="layout-grid"></i></span><span class="card-title">Resumo</span><span class="card-description">Mostra todas as partes do Grin numa página.</span></a>
+          <a class="card intro-card" href="docs/installation.html"><span class="intro-icon"><i data-icon="download"></i></span><span class="card-title">Instalação</span><span class="card-description">Explica como baixar e configurar.</span></a>
+          <a class="card intro-card" href="docs/foundations.html"><span class="intro-icon"><i data-icon="palette"></i></span><span class="card-title">Fundamentos</span><span class="card-description">Define os valores visuais do Grin.</span></a>
+          <a class="card intro-card" href="docs/components.html"><span class="intro-icon"><i data-icon="columns"></i></span><span class="card-title">Componentes</span><span class="card-description">Mostra os 25 componentes com exemplo e código.</span></a>
+          <a class="card intro-card" href="docs/patterns.html"><span class="intro-icon"><i data-icon="workflow"></i></span><span class="card-title">Padrões</span><span class="card-description">Explica como montar telas e escrever textos.</span></a>
+          <a class="card intro-card" href="docs/accessibility.html"><span class="intro-icon"><i data-icon="accessibility"></i></span><span class="card-title">Acessibilidade</span><span class="card-description">Mostra o que cada tela precisa cumprir.</span></a>
         </div>
-        <p class="text-secondary">Exemplos completos na barra lateral: lista de dados, formulário, tutorial e página de apresentação. Busca: campo no topo ou <kbd>⌘</kbd> <kbd>K</kbd>.</p>
+        <p class="text-secondary">Os exemplos completos estão na barra lateral, e a busca fica no topo.</p>
       </section>
 
       <section class="docs-section" aria-labelledby="t-start">
         <header><h2 id="t-start">Por onde começar</h2></header>
         <div class="intro-grid three">
-          <div class="intro-point"><h3>Design</h3><p><a href="docs/overview.html">Resumo</a>, depois <a href="docs/foundations.html">Fundamentos</a> e <a href="docs/components.html">Componentes</a>.</p></div>
-          <div class="intro-point"><h3>Desenvolvimento</h3><p><a href="docs/installation.html">Instalação</a>, depois <a href="docs/components.html">Componentes</a> para copiar o markup.</p></div>
-          <div class="intro-point"><h3>Textos</h3><p><a href="docs/patterns.html#writing">Padrões › Escrita</a> e as mensagens de erro em <a href="docs/patterns.html#messages">Mensagens</a>.</p></div>
+          <div class="intro-point"><h3>Design</h3><p>Comece pelo <a href="docs/overview.html">Resumo</a> e siga para <a href="docs/foundations.html">Fundamentos</a>.</p></div>
+          <div class="intro-point"><h3>Desenvolvimento</h3><p>Comece pela <a href="docs/installation.html">Instalação</a> e copie o código dos <a href="docs/components.html">Componentes</a>.</p></div>
+          <div class="intro-point"><h3>Textos</h3><p>Leia <a href="docs/patterns.html#writing">Escrita</a>, em Padrões.</p></div>
         </div>
       </section>
 

@@ -42,4 +42,4 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 
 ## Tom dos textos
 
-Textos da documentação: objetivos e diretos, em termos técnicos simples. Sem slogans, metáforas, frases de venda ou ênfases como "puro", "sem etapa de build", "pensado para". Diga o que é e como usar.
+Textos da documentação: objetivos e diretos, em termos técnicos simples. Sem slogans, metáforas, frases de venda ou ênfases como "puro", "sem etapa de build", "pensado para". Diga o que é e como usar. Frases completas e afirmativas, sem dois-pontos para introduzir enumerações e sem listas dentro de uma frase ("1. … 2. …"); se for uma lista de verdade, use uma lista.
