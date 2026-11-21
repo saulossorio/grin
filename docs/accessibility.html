@@ -22,50 +22,58 @@
     <header class="topbar" data-docs-top data-title="Acessibilidade"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Acessibilidade</h1>
+        <p class="lead">O que conferir em cada tela, o contraste medido das cores e o que o Grin já resolve.</p>
         <nav class="docs-toc" aria-label="Nesta página"><a href="#checklist">Checklist</a><a href="#contrast">Contraste</a><a href="#built-in">O que já vem pronto</a></nav>
       </section>
+
       <section class="docs-section" id="checklist" aria-labelledby="t-checklist">
-        <header><h2 id="t-checklist">Checklist por tela</h2></header>
-        <ul class="docs-list plain">
-          <li><label class="checkbox"><input type="checkbox"> Toda ação funciona pelo teclado, numa ordem lógica.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> O foco está sempre visível e nunca fica escondido atrás da barra superior ou de um painel.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Alvos de clique com pelo menos 24 por 24 px.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Contraste AA em texto, ícones e bordas de campo, nos temas claro e escuro.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Nenhuma informação só por cor: estado tem texto, e ícone quando pede atenção.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Campos com rótulo visível e associado; erros ligados ao campo e anunciados.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Tabelas com <code>th scope</code> e ordenação anunciada (<code>aria-sort</code>).</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Botões só de ícone com <code>aria-label</code>.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Atalhos de uma tecla podem ser desligados; os padrão usam Ctrl ou Cmd.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> A tela funciona com zoom de 200% e com a fonte em 125%.</label></li>
-          <li><label class="checkbox"><input type="checkbox"> Com "reduzir movimento", nada se mexe.</label></li>
-        </ul>
+        <header><h2 id="t-checklist">Checklist por tela</h2><p>Marque os itens ao revisar uma tela. As marcações ficam só nesta página e somem ao recarregar.</p></header>
+        <div class="check-progress progress-field"><div class="progress-label"><span>Itens conferidos</span><b id="check-count">0 de 11</b></div><div class="progress" role="progressbar" aria-labelledby="check-count" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0" id="check-bar"><i style="width:0%"></i></div></div>
+        <div class="check-groups"><div class="guide-card"><h3><span class="guide-icon"><i data-icon="keyboard"></i></span>Teclado e foco</h3><ul><li><label class="checkbox"><input type="checkbox" data-check> Toda ação funciona pelo teclado, numa ordem lógica.</label></li><li><label class="checkbox"><input type="checkbox" data-check> O foco está sempre visível e nunca fica atrás da barra superior ou de um painel.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Atalhos de uma tecla podem ser desligados. Os atalhos padrão usam Ctrl ou Cmd.</label></li></ul></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="eye"></i></span>Visual</h3><ul><li><label class="checkbox"><input type="checkbox" data-check> Texto, ícones e bordas de campo passam no contraste, no claro e no escuro.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Nenhuma informação depende só da cor. O estado tem texto, e ícone quando pede atenção.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Alvos de clique têm pelo menos 24 por 24 px.</label></li></ul></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="type"></i></span>Leitor de tela</h3><ul><li><label class="checkbox"><input type="checkbox" data-check> Todo campo tem rótulo visível ligado a ele, e o erro é ligado ao campo e anunciado.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Tabelas usam <code>th scope</code> e anunciam a ordenação com <code>aria-sort</code>.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Botões só de ícone têm <code>aria-label</code>.</label></li></ul></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="zoom-in"></i></span>Zoom e movimento</h3><ul><li><label class="checkbox"><input type="checkbox" data-check> A tela funciona com zoom de 200% e com a fonte em 125%.</label></li><li><label class="checkbox"><input type="checkbox" data-check> Com "reduzir movimento" ligado, nada se mexe.</label></li></ul></div></div>
       </section>
+
       <section class="docs-section" id="contrast" aria-labelledby="t-contrast">
-        <header><h2 id="t-contrast">Contraste medido</h2></header>
-        <div class="table-wrap"><table class="table docs-table" id="contrast-table"><thead><tr><th scope="col">Par</th><th scope="col">Amostra</th><th scope="col" class="numeric">Razão</th><th scope="col">Mínimo</th><th scope="col">Resultado</th></tr></thead><tbody></tbody></table></div>
+        <header><h2 id="t-contrast">Contraste medido</h2><p>Calculado agora, no tema e no contraste escolhidos em Aparência. O mínimo é 4,5 para 1 em texto (7 para 1 no alto contraste) e 3 para 1 em bordas e foco.</p></header>
+        <div class="contrast-grid" id="contrast-grid"></div>
       </section>
+
       <section class="docs-section" id="built-in" aria-labelledby="t-built">
-        <header><h2 id="t-built">O que já vem pronto</h2></header>
-        <ul class="docs-list"><li>Foco visível em todos os controles, com 3 px no alto contraste.</li><li>Diálogo e gaveta com <code>&lt;dialog&gt;</code> nativo: prendem o foco, fecham com Esc e devolvem o foco ao botão que abriu.</li><li>Abas com setas, Home e End.</li><li>Toasts numa região <code>role="status"</code>, anunciada por leitores de tela.</li><li>Temas que seguem <code>prefers-color-scheme</code> e <code>prefers-contrast</code>; animações desligadas com <code>prefers-reduced-motion</code>.</li><li>Tudo em rem: a fonte da pessoa e o zoom aumentam a interface inteira.</li></ul>
+        <header><h2 id="t-built">O que já vem pronto</h2><p>Quem usa os componentes do Grin recebe isto sem trabalho extra.</p></header>
+        <div class="guide-grid"><div class="guide-card"><h3><span class="guide-icon"><i data-icon="pointer"></i></span>Foco visível</h3><p>Todos os controles mostram o foco. No alto contraste, a borda do foco tem 3 px.</p></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="layout-grid"></i></span>Modal e drawer</h3><p>Usam <code>&lt;dialog&gt;</code> nativo. Prendem o foco, fecham com Esc e devolvem o foco ao botão que abriu.</p></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="keyboard"></i></span>Abas e acordeão</h3><p>As abas mudam com as setas, Home e End. O acordeão usa <code>&lt;details&gt;</code> e funciona sem script.</p></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="info"></i></span>Avisos anunciados</h3><p>Os toasts ficam numa região <code>role="status"</code>, que o leitor de tela lê sozinho.</p></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="contrast"></i></span>Preferências do sistema</h3><p>O Grin segue o tema claro ou escuro, o pedido de mais contraste e o "reduzir movimento" do sistema operacional.</p></div><div class="guide-card"><h3><span class="guide-icon"><i data-icon="zoom-in"></i></span>Tamanho da fonte</h3><p>Tudo é medido em rem. A fonte escolhida pela pessoa e o zoom aumentam a interface inteira.</p></div></div>
       </section>
-      <footer class="docs-footer"><span>Grin 2.11</span><a href="../index.html">Voltar à visão geral</a></footer>
+
+      <footer class="docs-footer"><span>Grin 2.12</span><a href="../index.html">Início</a></footer>
     </main>
   </div>
 </div>
 <script type="module">
 import { contrast, token, icon } from '../scripts/utils.js';
-const PAIRS = [['foreground', 'background', 'Texto principal'], ['muted-foreground', 'background', 'Texto secundário'], ['muted-foreground', 'sidebar', 'Texto da barra lateral'], ['link', 'background', 'Link'], ['primary-foreground', 'primary', 'Texto sobre a marca'], ['brand-fg', 'brand-bg', 'Chip de filtro'], ['crit-fg', 'crit-bg', 'Crítico'], ['warn-fg', 'warn-bg', 'Atenção'], ['info-fg', 'info-bg', 'Informação'], ['ok-fg', 'ok-bg', 'Sucesso'], ['crit-on', 'crit-solid', 'Botão de excluir'], ['input', 'background', 'Borda de campo', 3], ['ring', 'background', 'Anel de foco', 3]];
+const PAIRS = [['foreground', 'background', 'Texto principal'], ['muted-foreground', 'background', 'Texto secundário'], ['link', 'background', 'Link'], ['primary-foreground', 'primary', 'Texto sobre a marca'], ['brand-fg', 'brand-bg', 'Chip de filtro'], ['crit-fg', 'crit-bg', 'Crítico'], ['warn-fg', 'warn-bg', 'Atenção'], ['info-fg', 'info-bg', 'Informação'], ['ok-fg', 'ok-bg', 'Sucesso'], ['crit-on', 'crit-solid', 'Botão de excluir'], ['input', 'background', 'Borda de campo', 3], ['ring', 'background', 'Anel de foco', 3]];
 function draw() {
   const root = document.documentElement;
   const hc = root.dataset.contrast ? root.dataset.contrast === 'more' : matchMedia('(prefers-contrast: more)').matches;
-  document.querySelector('#contrast-table tbody').innerHTML = PAIRS.map(([fg, bg, name, ui]) => {
+  document.getElementById('contrast-grid').innerHTML = PAIRS.map(([fg, bg, name, ui]) => {
     const r = contrast(token(fg), token(bg)); const min = ui ?? (hc ? 7 : 4.5); const ok = r >= min;
-    return `<tr><td>${name}<br><code>--${fg}</code> sobre <code>--${bg}</code></td><td><span style="display:inline-flex;padding:4px 10px;border-radius:var(--radius-sm);background:var(--${bg});color:var(--${fg});${ui ? `box-shadow:inset 0 0 0 2px var(--${fg})` : ''}">Aa 123</span></td><td class="numeric">${r.toFixed(2).replace('.', ',')}:1</td><td>${String(min).replace('.', ',')}:1</td><td><span class="badge ${ok ? 'ok' : 'crit'}">${icon(ok ? 'check' : 'x', 12)}${ok ? 'Passa' : 'Não passa'}</span></td></tr>`;
+    const sample = ui ? `<span style="width:48px;height:28px;border-radius:var(--radius-sm);box-shadow:inset 0 0 0 2px var(--${fg})"></span>` : 'Aa';
+    return `<div class="contrast-card"><div class="contrast-sample" style="background:var(--${bg});color:var(--${fg})">${sample}<small>${name}</small></div>
+      <div class="contrast-meta"><div class="row"><span class="contrast-ratio">${r.toFixed(2).replace('.', ',')}:1</span><span class="badge ${ok ? 'ok' : 'crit'}">${icon(ok ? 'check' : 'x', 12)}${ok ? 'Passa' : 'Não passa'}</span></div>
+      <span class="text-secondary text-sm">Mínimo ${String(min).replace('.', ',')}:1</span><code>--${fg} sobre --${bg}</code></div></div>`;
   }).join('');
 }
 draw();
-new MutationObserver(() => requestAnimationFrame(draw)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+new MutationObserver(() => requestAnimationFrame(draw)).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme', 'data-contrast'] });
 document.documentElement.addEventListener('grin:theme', () => requestAnimationFrame(draw));
+// Checklist progress
+const boxes = [...document.querySelectorAll('[data-check]')];
+const bar = document.getElementById('check-bar');
+const update = () => {
+  const n = boxes.filter((b) => b.checked).length;
+  document.getElementById('check-count').textContent = `${n} de ${boxes.length}`;
+  bar.setAttribute('aria-valuenow', n);
+  bar.querySelector('i').style.width = `${(n / boxes.length) * 100}%`;
+};
+boxes.forEach((b) => b.addEventListener('change', update));
+update();
 </script>
 </body>
 </html>

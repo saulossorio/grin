@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.12 · 20/11/2026
+- Padrões refeito com exemplos visuais. A estrutura da tela aparece num esquema numerado, e busca, formulários, mensagens de erro, confirmação, estados da tela, gráficos e escrita aparecem com componentes reais e pares de faça e evite.
+- Números, datas e escrita viram tabelas de "assim" e "não assim".
+- Acessibilidade refeita. O checklist fica dividido em quatro grupos e mostra quantos itens já foram conferidos.
+- O contraste de cada par de cores aparece num cartão com amostra, razão e resultado, e "O que já vem pronto" aparece em cartões.
+
 ## 2.11 · 20/11/2026
 - O Início mostra as novidades da última versão e os blocos visuais de todas as partes do Grin.
 - As novidades vêm do registro de mudanças e se atualizam sozinhas a cada versão.
