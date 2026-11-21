@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.26 · 21/11/2026
+- Padrão Tela inicial (`.start-screen`, `components/start/start.css`), descrito em Padrões. A primeira tela de uma ferramenta usa uma coluna centralizada de 680 px, com o conteúdo no centro vertical da janela e a assinatura no fim, na mesma largura. Opções lado a lado ficam em duas colunas.
+- Token `--size-start` (680 px).
+- O padrão entrou em "Obrigatório em toda ferramenta" e em AGENTS.md.
+
 ## 2.25 · 21/11/2026
 - Posição da assinatura (`.app-footer`). A tela ocupa pelo menos a altura da janela. Com pouco conteúdo, a assinatura fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Antes ela ficava logo abaixo de um conteúdo curto, no meio da tela.
 - `.page-content` que contém a assinatura cresce até o fim da janela, com 20 px de espaço embaixo.

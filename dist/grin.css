@@ -1,4 +1,4 @@
-/* Grin 2.25 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
+/* Grin 2.26 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -60,6 +60,7 @@
   --size-avatar: 40px;
   --size-screen: 1200px;
   --size-content: 1440px;
+  --size-start: 680px;
   --size-prose: 72ch;
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
@@ -1794,3 +1795,18 @@ a.tab { text-decoration: none; }
 .app-footer > :last-child { margin-left: auto; }
 .app-footer a { color: inherit; }
 .app-footer a:hover { color: var(--foreground); }
+
+/* ---------- components/start/start.css ---------- */
+/* Grin start screen (also: tela inicial, home, welcome, primeira tela). The first screen of a tool, before there is data
+   to work on: title, short description, the main actions and the signature. One centered column (--size-start),
+   centered vertically in the window, with the signature at the bottom of the window in the same width.
+   Markup: <main class="page-content start-screen"><div class="start-screen-body">…</div><footer class="app-footer">…</footer></main>
+   Working screens (lists, forms, analyses) use the normal page layout, never this one. */
+.start-screen { align-items: center; padding-top: 0; }
+.start-screen > * { width: min(var(--size-start), 100%); }
+.start-screen-body { display: flex; flex-direction: column; gap: var(--space-4); margin-block: auto; padding-top: 32px; }
+.start-screen-body h1 { font-size: var(--text-3xl); }
+.start-screen-body > .lead, .start-screen-body > header > .lead { margin-top: -8px; }
+.start-screen > .app-footer { margin-top: 32px; }
+.start-screen .action-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 560px) { .start-screen .action-cards { grid-template-columns: 1fr; } }

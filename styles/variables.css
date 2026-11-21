@@ -38,6 +38,7 @@
   --size-avatar: 40px;
   --size-screen: 1200px;
   --size-content: 1440px;
+  --size-start: 680px;
   --size-prose: 72ch;
   --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, monospace;
