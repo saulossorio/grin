@@ -3,6 +3,7 @@
 ## 2.15 · 20/11/2026
 - Select do Grin: um combobox com `input[readonly]` mostra a lista no estilo do Grin no lugar da lista do sistema, com a opção marcada e teclado.
 - Revisão do movimento dos elementos novos. A lista do combobox entra crescendo e sai esmaecendo, e as tags entram com um pequeno salto e saem encolhendo.
+- O ícone da aba do navegador passa a ser pedido com `?v=2`, para os navegadores que guardaram o ícone antigo mostrarem o triângulo.
 - O link "ver mais" abre e fecha com animação de altura. O medidor muda de nível com transição.
 - O arquivo escolhido no upload e o banner aparecem com transição. O item marcado no menu ganha um visto animado.
 
