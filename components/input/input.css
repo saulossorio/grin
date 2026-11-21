@@ -67,3 +67,32 @@ input[type="checkbox"]:disabled, input[type="radio"]:disabled { opacity: 0.5; cu
 .choice input { margin-top: 1px; }
 .choice-title { display: block; font-weight: var(--weight-semibold); font-size: var(--text-base); }
 .choice-description { display: block; margin-top: 2px; color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }
+
+/* Input group: a field with a fixed prefix or suffix (R$, %, kg) and, optionally, an action inside it (search a CNPJ, copy).
+   The addon is text, not part of the value. */
+.input-group { display: flex; align-items: stretch; width: 100%; min-width: 0; border: 1px solid var(--input); border-radius: var(--radius-md); background: var(--field); box-shadow: var(--shadow-xs); transition: border-color var(--dur-fast), box-shadow var(--dur-fast); }
+.input-group:hover { border-color: var(--muted-foreground); }
+.input-group:focus-within { border-color: var(--ring); box-shadow: 0 0 0 4px var(--highlight); }
+.input-group:has([aria-invalid="true"]) { border-color: var(--crit-fg); }
+.input-group .input { flex: 1 1 auto; min-width: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.input-group .input:focus-visible { box-shadow: none; }
+.input-addon { display: inline-flex; align-items: center; flex-shrink: 0; padding: 0 12px; color: var(--muted-foreground); font-size: var(--control-text); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.input-addon:first-child { padding-right: 0; }
+.input-addon:last-child { padding-left: 0; }
+.input-group > .btn { align-self: center; margin-right: 4px; flex-shrink: 0; }
+
+/* Original value: what the field had before an edit, shown under it */
+.field-original { display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); color: var(--muted-foreground); }
+.field-original s { color: var(--muted-foreground); text-decoration-color: var(--border-strong); }
+
+/* Form footer: the save/cancel row stays visible at the bottom while a long form scrolls */
+.form-footer { position: sticky; bottom: 0; z-index: 5; display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; margin-top: 8px; padding: 12px 0; border-top: 1px solid var(--border); background: var(--background); }
+.form-footer .form-footer-status { margin-right: auto; font-size: var(--text-sm); color: var(--muted-foreground); }
+
+/* Repeater: a list of rows the person adds and removes (years of revenue, contacts, rules) */
+.repeater { display: flex; flex-direction: column; gap: 8px; }
+.repeater-head, .repeater-row { display: grid; grid-template-columns: var(--repeater-cols, repeat(3, minmax(0, 1fr)) auto); gap: 8px; align-items: center; }
+.repeater-head { font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground); }
+.repeater-row { animation: grin-rise var(--dur) var(--ease); }
+.repeater-add { align-self: flex-start; }
+@media (max-width: 640px) { .repeater-head { display: none; } .repeater-row { grid-template-columns: 1fr auto; } .repeater-row > :not(:last-child) { grid-column: 1; } }

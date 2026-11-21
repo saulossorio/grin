@@ -9,3 +9,12 @@
 .alert.crit { border-color: var(--crit-border); background: var(--crit-bg); } .alert.crit > svg { color: var(--crit-fg); }
 .alert.ok { border-color: var(--ok-border); background: var(--ok-bg); } .alert.ok > svg { color: var(--ok-fg); }
 .alert.neutral { border-color: var(--border); background: var(--muted); } .alert.neutral > svg { color: var(--muted-foreground); }
+
+/* Banner: a message about the whole app or page (data saved only in this browser, maintenance, a new version).
+   Full width at the top of the content, above the page header. Tones as in .alert. */
+.banner { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--info-border); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); }
+.banner > svg { width: 18px; height: 18px; color: var(--info-fg); }
+.banner .banner-text { flex: 1 1 auto; min-width: 0; }
+.banner.warn { border-color: var(--warn-border); background: var(--warn-bg); } .banner.warn > svg { color: var(--warn-fg); }
+.banner.crit { border-color: var(--crit-border); background: var(--crit-bg); } .banner.crit > svg { color: var(--crit-fg); }
+.banner.ok { border-color: var(--ok-border); background: var(--ok-bg); } .banner.ok > svg { color: var(--ok-fg); }

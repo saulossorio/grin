@@ -1,0 +1,18 @@
+/* Grin timeline (also: histórico, log de atividades, changelog, auditoria). Events in order, newest first:
+   what happened, when, who or where, and, for edits, the value before and after. */
+.timeline { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.timeline li { position: relative; display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 12px; padding-bottom: 20px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li:not(:last-child)::before { content: ''; position: absolute; left: 15px; top: 34px; bottom: 4px; width: 2px; border-radius: 2px; background: var(--border); }
+.timeline-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: var(--radius-pill); background: var(--muted); color: var(--muted-foreground); }
+.timeline-icon svg { width: 16px; height: 16px; }
+.timeline-icon.ok { background: var(--ok-bg); color: var(--ok-fg); } .timeline-icon.crit { background: var(--crit-bg); color: var(--crit-fg); }
+.timeline-icon.warn { background: var(--warn-bg); color: var(--warn-fg); } .timeline-icon.brand { background: var(--brand-bg); color: var(--brand-fg); }
+.timeline-body { display: flex; flex-direction: column; gap: 4px; min-width: 0; padding-top: 5px; }
+.timeline-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.timeline-head b { font-weight: var(--weight-semibold); }
+.timeline-head time { color: var(--muted-foreground); font-size: var(--text-sm); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.timeline-body p { color: var(--muted-foreground); font-size: var(--text-sm); }
+.timeline-change { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; font-size: var(--text-sm); }
+.timeline-change s { color: var(--muted-foreground); text-decoration-color: var(--crit-border); }
+.timeline-change ins { text-decoration: none; color: var(--foreground); font-weight: var(--weight-medium); background: var(--ok-bg); padding: 0 4px; border-radius: 3px; }

@@ -19,6 +19,8 @@
 <script type="module" src="../components/popover/popover.js"></script>
 <script type="module" src="../components/glossary/glossary.js"></script>
 <script type="module" src="../components/accordion/accordion.js"></script>
+<script type="module" src="../components/combobox/combobox.js"></script>
+<script type="module" src="../components/dropzone/dropzone.js"></script>
 <script type="module">
 import { startTour } from '../components/tour/tour.js';
 document.addEventListener('click', (e) => {
@@ -38,7 +40,7 @@ document.addEventListener('click', (e) => {
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#input-group">Prefixo e sufixo</a><a href="#combobox">Combobox</a><a href="#dropzone">Upload</a><a href="#banner">Banner</a><a href="#action-card">Card de ação</a><a href="#meter">Medidor</a><a href="#chart">Gráfico</a><a href="#formula">Fórmula</a><a href="#timeline">Histórico</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
@@ -55,7 +57,7 @@ document.addEventListener('click', (e) => {
 <button type="button" class="btn" aria-busy="true" disabled><span class="spinner" aria-hidden="true"></span>Importando</button>
 <button type="button" class="link">Ver detalhes</button>
         </div></div>
-        <p class="class-list"><code>.btn</code> + <code>primary</code> · <code>danger</code> · <code>ghost</code> · <code>dashed</code> · <code>xs</code> · <code>lg</code> · <code>icon</code> · <code>.btn-group</code> · <code>.link</code> · <code>.spinner</code></p>
+        <p class="class-list"><code>.btn</code> + <code>primary</code> · <code>aria-pressed="true"</code> (botão de alternar) · <code>danger</code> · <code>ghost</code> · <code>dashed</code> · <code>xs</code> · <code>lg</code> · <code>icon</code> · <code>.btn-group</code> · <code>.link</code> · <code>.spinner</code></p>
       </section>
 
       <section class="docs-section" id="field" aria-labelledby="t-field">
@@ -241,7 +243,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </section>
 <div class="bulk-bar" role="toolbar" aria-label="Ações para 1 linha marcada"><span class="bulk-bar-count">1 marcada</span><span class="divider-v"></span><button type="button" class="btn xs"><i data-icon="pencil"></i>Editar</button><button type="button" class="btn xs"><i data-icon="download"></i>Exportar</button><button type="button" class="btn xs danger"><i data-icon="trash"></i>Excluir 1</button></div>
         </div></div>
-        <p class="class-list"><code>.table-wrap</code> (<code>.table-cards</code>: lista de cartões no celular, com <code>data-label</code> nas células) · <code>.table-header</code> · <code>.table-toolbar</code> · <code>.table</code> (<code>.compact</code>) · <code>.cell-main</code> · <code>.numeric</code> · <code>.select-col</code> · <code>.cell-crit</code> · <code>.cell-warn</code> · <code>.cell-edited</code> · <code>.cell-empty</code> · <code>.pagination</code> · <code>.pages</code> · <code>.bulk-bar</code></p>
+        <p class="class-list"><code>.table-wrap</code> (<code>.table-cards</code>: lista de cartões no celular, com <code>data-label</code> nas células) · <code>.table-header</code> · <code>.table-toolbar</code> · <code>.table</code> (<code>.compact</code>) · <code>.cell-main</code> · <code>.numeric</code> · <code>.select-col</code> · <code>.cell-crit</code> · <code>.cell-warn</code> · <code>.cell-edited</code> · <code>.cell-empty</code> · <code>.cell-derived</code> · <code>.cell-diff</code> · <code>.cell-link</code> · <code>tr.row-deleted</code> · <code>tr.row-current</code> · <code>.sticky-col</code> (<code>.last</code>) · <code>th[scope=row]</code> · <code>.th-filter</code> · <code>.col-resize</code> · <code>.table-wrap.scroll</code> · <code>.select-all-banner</code> · <code>.rows-per-page</code> · <code>.pagination</code> · <code>.pages</code> · <code>.bulk-bar</code></p>
       </section>
 
       <section class="docs-section" id="menu" aria-labelledby="t-menu">
@@ -255,8 +257,13 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <div class="menu-separator" role="separator"></div>
   <button type="button" class="menu-item danger" role="menuitem"><i data-icon="trash"></i><span class="menu-label">Excluir</span></button>
 </div>
+<div class="menu" role="menu" aria-label="Origem do dado">
+  <div class="menu-header">Origem do dado</div>
+  <button type="button" class="menu-item" role="menuitemradio" aria-checked="true"><span class="menu-label">Oficial<small>Balanço publicado pela empresa</small></span></button>
+  <button type="button" class="menu-item" role="menuitemradio" aria-checked="false"><span class="menu-label">Terceiros<small>Relatório de mercado</small></span></button>
+</div>
         </div></div>
-        <p class="class-list"><code>.menu</code> · <code>.menu-header</code> · <code>.menu-item</code> (<code>.danger</code>) · <code>.menu-label</code> · <code>.menu-separator</code></p>
+        <p class="class-list"><code>.menu</code> · <code>.menu-header</code> · <code>.menu-item</code> (<code>.danger</code>; <code>small</code> para a segunda linha; <code>aria-checked</code> em itens de escolha) · <code>.menu-label</code> · <code>.menu-separator</code></p>
       </section>
 
       <section class="docs-section" id="dialog" aria-labelledby="t-dialog">
@@ -283,7 +290,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <div class="drawer-footer"><button type="button" class="btn" data-close>Cancelar</button><button type="button" class="btn primary" data-close>Salvar</button></div>
 </dialog>
         </div></div>
-        <p class="class-list"><code>dialog.dialog</code> · <code>.dialog-header</code> · <code>.dialog-icon</code> + tom · <code>.dialog-body</code> · <code>.dialog-footer</code> · <code>dialog.drawer</code> · <code>.drawer-header</code> · <code>.drawer-heading</code> · <code>.drawer-body</code> · <code>.facts</code> · <code>.drawer-footer</code> · <code>[data-open]</code> · <code>[data-close]</code></p>
+        <p class="class-list"><code>dialog.dialog</code> (<code>.wide</code> até 880 px) · <code>.dialog-header</code> · <code>.dialog-icon</code> + tom · <code>.dialog-body</code> · <code>.dialog-footer</code> · <code>dialog.drawer</code> · <code>.drawer-header</code> · <code>.drawer-heading</code> · <code>.drawer-body</code> · <code>.facts</code> · <code>.drawer-footer</code> · <code>[data-open]</code> · <code>[data-close]</code></p>
       </section>
 
       <section class="docs-section" id="empty" aria-labelledby="t-empty">
@@ -324,7 +331,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <a class="nav-item" href="#shell" aria-label="Revisão, 12 pendências"><i data-icon="clipboard-check"></i><span class="count">12</span></a>
 </nav>
         </div></div>
-        <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.sidebar-toggle</code> ou <code>[data-sidebar-toggle]</code> · <code>components/sidebar/sidebar.js</code> · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-divider</code> · <code>.nav-item</code> (<code>.small</code> no rodapé) · <code>.nav-sub</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
+        <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.sidebar-toggle</code> ou <code>[data-sidebar-toggle]</code> · <code>components/sidebar/sidebar.js</code> · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-divider</code> · <code>.nav-item</code> (<code>.small</code> no rodapé) · <code>.nav-sub</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> (com <code>.search</code> e <code>.user-button</code>) · <code>.sidebar-menu-button</code> (celular) · <code>.with-aside</code> e <code>.aside-panel</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
       </section>
 
       <section class="docs-section" id="help" aria-labelledby="t-help">
@@ -389,8 +396,9 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <details><summary>O que acontece com linhas sem e-mail?</summary><div class="accordion-body"><p>Entram como pendência crítica e só vão para a agenda depois de corrigidas.</p></div></details>
   <details><summary>Posso desfazer uma importação?</summary><div class="accordion-body"><p>Sim, por 30 dias, em Importações.</p></div></details>
 </div>
+<details class="disclosure"><summary>Ver os dados do gráfico</summary><p class="text-secondary">2022 · 300 · 2023 · 340 · 2024 · 371 · 2025 · 398 · 2026 · 412</p></details>
         </div></div>
-        <p class="class-list"><code>.accordion</code> com <code>details</code> e <code>summary</code> · <code>.accordion-body</code> · <code>details[name]</code> para abrir um por vez · <code>components/accordion/accordion.js</code></p>
+        <p class="class-list"><code>details.disclosure</code> (link "ver mais", sem caixa) · <code>.accordion</code> com <code>details</code> e <code>summary</code> · <code>.accordion-body</code> · <code>details[name]</code> para abrir um por vez · <code>components/accordion/accordion.js</code></p>
       </section>
 
       <section class="docs-section" id="progress" aria-labelledby="t-progress">
@@ -402,7 +410,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </div>
 <div class="progress indeterminate sm" role="progressbar" aria-label="Lendo a planilha"><i></i></div>
         </div></div>
-        <p class="class-list"><code>.progress</code> (<code>.sm</code>, <code>.indeterminate</code>) · <code>.progress-field</code> · <code>.progress-label</code></p>
+        <p class="class-list"><code>.loading-overlay</code> com <code>.loading-overlay-card</code> (tela inteira ocupada) · <code>.progress</code> (<code>.sm</code>, <code>.indeterminate</code>) · <code>.progress-field</code> · <code>.progress-label</code></p>
       </section>
 
       <section class="docs-section" id="glossary" aria-labelledby="t-glossary">
@@ -445,6 +453,140 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <p class="class-list"><code>startTour(steps)</code> de <code>components/tour/tour.js</code> · <code>.tour</code> · <code>.tour-spot</code> · <code>.tour-card</code> · <code>.tour-count</code> · <code>.tour-actions</code></p>
       </section>
 
+      <section class="docs-section" id="input-group" aria-labelledby="t-input-group">
+        <header><h2 id="t-input-group">Campo com prefixo e sufixo</h2><p class="aka">Também chamado: input group, addon, unidade, campo de valor, campo com botão</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="field-grid">
+  <div class="field"><label class="field-label" for="ig-1">Receita anual</label><div class="input-group"><span class="input-addon">R$</span><input class="input" id="ig-1" value="5.200.000.000" inputmode="decimal"></div></div>
+  <div class="field"><label class="field-label" for="ig-2">Parcela em TI</label><div class="input-group"><input class="input" id="ig-2" value="7,9" inputmode="decimal"><span class="input-addon">%</span></div></div>
+  <div class="field"><label class="field-label" for="ig-3">CNPJ</label><div class="input-group"><input class="input" id="ig-3" value="12.345.678/0001-90"><button type="button" class="btn xs">Buscar</button></div><span class="field-original">Antes <s>12345678000190</s></span></div>
+</div>
+<div class="repeater" style="--repeater-cols: 100px minmax(0, 1fr) minmax(0, 1fr) auto">
+  <div class="repeater-head"><span>Ano</span><span>Receita</span><span>Origem</span><span></span></div>
+  <div class="repeater-row"><input class="input" value="2025" aria-label="Ano"><div class="input-group"><span class="input-addon">R$</span><input class="input" value="5,2 bi" aria-label="Receita de 2025"></div><select class="select" aria-label="Origem de 2025"><option>Oficial</option><option>Terceiros</option></select><button type="button" class="btn icon ghost" aria-label="Remover 2025"><i data-icon="trash"></i></button></div>
+  <div class="repeater-row"><input class="input" value="2024" aria-label="Ano"><div class="input-group"><span class="input-addon">R$</span><input class="input" value="4,8 bi" aria-label="Receita de 2024"></div><select class="select" aria-label="Origem de 2024"><option>Oficial</option><option>Terceiros</option></select><button type="button" class="btn icon ghost" aria-label="Remover 2024"><i data-icon="trash"></i></button></div>
+  <button type="button" class="btn dashed repeater-add"><i data-icon="plus"></i>Adicionar ano</button>
+</div>
+<div class="form-footer"><span class="form-footer-status">Alterações não salvas</span><button type="button" class="btn">Cancelar</button><button type="button" class="btn primary">Salvar análise</button></div>
+        </div></div>
+        <p class="class-list"><code>.input-group</code> · <code>.input-addon</code> · botão dentro do grupo · <code>.field-original</code> · <code>.repeater</code> (<code>--repeater-cols</code>) · <code>.repeater-head</code> · <code>.repeater-row</code> · <code>.repeater-add</code> · <code>.form-footer</code> · <code>.form-footer-status</code></p>
+      </section>
+
+      <section class="docs-section" id="combobox" aria-labelledby="t-combobox">
+        <header><h2 id="t-combobox">Combobox</h2><p class="aka">Também chamado: autocomplete, select com busca, multiselect, campo de tags, typeahead</p></header>
+        <div class="demo" data-code><div class="demo-stage column" style="min-height:420px;align-items:flex-start">
+<div class="field" style="width:min(420px,100%)">
+  <label class="field-label" for="cb-tech">Tecnologias usadas</label>
+  <div class="combobox multiple">
+    <div class="combobox-control"><input class="combobox-input" id="cb-tech" aria-controls="cb-tech-list" placeholder="Buscar tecnologia"></div>
+    <ul class="combobox-list" id="cb-tech-list">
+      <li class="combobox-group">Nuvem</li>
+      <li class="combobox-option" data-value="aws" aria-selected="true">AWS<small>Amazon Web Services</small></li>
+      <li class="combobox-option" data-value="azure">Azure<small>Microsoft</small></li>
+      <li class="combobox-option" data-value="gcp">Google Cloud</li>
+      <li class="combobox-group">Dados</li>
+      <li class="combobox-option" data-value="snowflake" aria-selected="true">Snowflake</li>
+      <li class="combobox-option" data-value="databricks">Databricks</li>
+    </ul>
+  </div>
+</div>
+        </div></div>
+        <p class="class-list"><code>.combobox</code> (<code>.multiple</code>) · <code>.combobox-control</code> · <code>.combobox-input</code> · <code>.combobox-list</code> · <code>.combobox-group</code> · <code>.combobox-option</code> (<code>small</code>) · <code>.combobox-tag</code> · evento <code>grin:change</code> · <code>components/combobox/combobox.js</code></p>
+      </section>
+
+      <section class="docs-section" id="dropzone" aria-labelledby="t-dropzone">
+        <header><h2 id="t-dropzone">Upload de arquivo</h2><p class="aka">Também chamado: dropzone, arrastar e soltar, drag and drop, file input, importar arquivo</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<label class="dropzone"><i data-icon="upload"></i><b>Arraste um arquivo CSV ou XLSX para cá</b><small>ou</small><span class="btn">Escolher arquivo</span><input type="file" accept=".csv,.xlsx"></label>
+<div class="dropzone-file"><i data-icon="table"></i><div><b>convidados-novembro.xlsx</b><small>1.284 linhas · 3 planilhas</small></div><button type="button" class="btn xs">Trocar</button></div>
+        </div></div>
+        <p class="class-list"><code>label.dropzone</code> com <code>input[type=file]</code> · <code>.over</code> ao arrastar · <code>.dropzone-file</code> · evento <code>grin:files</code> · <code>components/dropzone/dropzone.js</code></p>
+      </section>
+
+      <section class="docs-section" id="banner" aria-labelledby="t-banner">
+        <header><h2 id="t-banner">Banner</h2><p class="aka">Também chamado: faixa de aviso, aviso global, system banner, announcement bar</p></header>
+        <div class="demo" data-code><div class="demo-stage column" style="padding:0;gap:0">
+<div class="banner warn" role="status"><i data-icon="alert-triangle"></i><span class="banner-text">Os dados ficam só neste navegador. Exporte antes de limpar o histórico.</span><button type="button" class="btn xs">Exportar</button><button type="button" class="btn icon xs ghost" aria-label="Fechar aviso"><i data-icon="x"></i></button></div>
+<div class="banner" role="status"><i data-icon="info"></i><span class="banner-text">Nova versão dos parâmetros de 2026.</span><a class="link" href="#banner">Ver mudanças</a></div>
+        </div></div>
+        <p class="class-list"><code>.banner</code> + <code>warn</code> · <code>crit</code> · <code>ok</code> · <code>.banner-text</code>. Vale para o app ou a página inteira; para uma seção, use o alerta.</p>
+      </section>
+
+      <section class="docs-section" id="action-card" aria-labelledby="t-action-card">
+        <header><h2 id="t-action-card">Card de ação</h2><p class="aka">Também chamado: action card, opções de início, atalho, escolha inicial</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="action-cards">
+  <button type="button" class="action-card primary"><i data-icon="upload"></i><b>Importar planilha</b><span>CSV ou XLSX com uma linha por empresa.</span></button>
+  <button type="button" class="action-card"><i data-icon="plus"></i><b>Começar em branco</b><span>Preencha os dados de uma empresa.</span></button>
+  <button type="button" class="action-card"><i data-icon="table"></i><b>Usar um exemplo</b><span>Dados fictícios para conhecer a ferramenta.</span></button>
+</div>
+        </div></div>
+        <p class="class-list"><code>.action-cards</code> · <code>.action-card</code> (<code>.primary</code>, <code>:disabled</code>). É um botão; para escolher uma opção num formulário, use <code>.choice</code>.</p>
+      </section>
+
+      <section class="docs-section" id="meter" aria-labelledby="t-meter">
+        <header><h2 id="t-meter">Medidor</h2><p class="aka">Também chamado: meter, nível, confiança, rating, escala</p></header>
+        <div class="demo" data-code><div class="demo-stage">
+<span class="meter" data-level="3"><span class="meter-track" aria-hidden="true"><i></i><i></i><i></i></span>Confiança alta</span>
+<span class="meter" data-level="2"><span class="meter-track" aria-hidden="true"><i></i><i></i><i></i></span>Confiança média</span>
+<span class="meter" data-level="1"><span class="meter-track" aria-hidden="true"><i></i><i></i><i></i></span>Confiança baixa</span>
+        </div></div>
+        <p class="class-list"><code>.meter[data-level="1|2|3"]</code> · <code>.meter-track</code> com três <code>i</code>. O nível sempre aparece escrito.</p>
+      </section>
+
+      <section class="docs-section" id="chart" aria-labelledby="t-chart">
+        <header><h2 id="t-chart">Gráfico</h2><p class="aka">Também chamado: chart, data viz, legenda, gráfico de barras, bar list</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<figure class="chart" style="margin:0;max-width:560px">
+  <span class="chart-title">Investimento estimado, em R$ mi</span>
+  <svg viewBox="0 0 320 120" role="img" aria-label="Linha subindo de 300 em 2022 para 412 em 2026">
+    <line class="grid-line" x1="0" y1="20" x2="320" y2="20"/><line class="grid-line" x1="0" y1="60" x2="320" y2="60"/><line class="grid-line" x1="0" y1="100" x2="320" y2="100"/>
+    <polygon class="band" points="0,80 80,68 160,52 240,40 320,28 320,52 240,64 160,76 80,92 0,104"/>
+    <polyline class="series-2" points="0,100 80,94 160,86 240,80 320,74"/>
+    <polyline class="series-1" points="0,92 80,80 160,64 240,52 320,40"/><circle class="point" cx="320" cy="40" r="4"/>
+  </svg>
+  <ul class="chart-legend"><li><i class="line"></i>Estimativa</li><li><i class="series-2"></i>Média do setor</li><li><i class="band"></i>Faixa provável</li></ul>
+</figure>
+<ul class="bar-list">
+  <li><span class="bar-label">Sem e-mail</span><span class="bar-track"><i class="crit" style="--value:62%"></i></span><span class="bar-value">48</span></li>
+  <li><span class="bar-label">Telefone incompleto</span><span class="bar-track"><i class="warn" style="--value:25%"></i></span><span class="bar-value">19</span></li>
+  <li><span class="bar-label">Cargo novo</span><span class="bar-track"><i style="--value:13%"></i></span><span class="bar-value">10</span></li>
+</ul>
+        </div></div>
+        <p class="class-list"><code>.chart</code> · <code>.chart-title</code> · <code>.chart-note</code> · no SVG <code>.grid-line</code>, <code>.axis</code>, <code>.series-1</code>, <code>.series-2</code>, <code>.band</code>, <code>.point</code> · <code>.chart-legend</code> · <code>.bar-list</code> · <code>.bar-label</code> · <code>.bar-track</code> (<code>--value</code>, tons) · <code>.bar-value</code></p>
+      </section>
+
+      <section class="docs-section" id="formula" aria-labelledby="t-formula">
+        <header><h2 id="t-formula">Fórmula e cálculo</h2><p class="aka">Também chamado: equação, metodologia, memória de cálculo, passo a passo do cálculo</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<div class="formula"><var>I</var><span class="op">=</span><var>R</var><span class="op">×</span><var>p</var><sub>setor</sub><span class="op">×</span><var>a</var><span class="op">=</span><span class="result">R$ 412 mi</span></div>
+<dl class="symbols">
+  <dt>R</dt><dd>Receita anual</dd><dd class="value">R$ 5,2 bi</dd>
+  <dt>p</dt><dd>Parcela da receita investida em TI no setor</dd><dd class="value">7,9%</dd>
+  <dt>a</dt><dd>Ajuste pelo porte da empresa</dd><dd class="value">1,00</dd>
+</dl>
+<ol class="breakdown">
+  <li><div>Receita anual<small>Balanço de 2025</small></div><span class="breakdown-value">R$ 5,2 bi</span></li>
+  <li><div>× parcela do setor<small>Bancos, 2026</small></div><span class="breakdown-value">7,9%</span></li>
+  <li><div>× ajuste pelo porte</div><span class="breakdown-value">1,00</span></li>
+  <li class="total"><div>Investimento estimado</div><span class="breakdown-value">R$ 412 mi</span></li>
+</ol>
+        </div></div>
+        <p class="class-list"><code>.formula</code> com <code>var</code>, <code>sub</code>, <code>.op</code> e <code>.result</code> · <code>dl.symbols</code> (<code>dd.value</code>) · <code>ol.breakdown</code> (<code>.breakdown-value</code>, <code>li.total</code>)</p>
+      </section>
+
+      <section class="docs-section" id="timeline" aria-labelledby="t-timeline">
+        <header><h2 id="t-timeline">Histórico</h2><p class="aka">Também chamado: timeline, log de atividades, auditoria, registro de alterações</p></header>
+        <div class="demo" data-code><div class="demo-stage column">
+<ol class="timeline">
+  <li><span class="timeline-icon brand"><i data-icon="pencil"></i></span><div class="timeline-body"><div class="timeline-head"><b>E-mail corrigido</b><time datetime="2026-11-20T14:05">há 5 min</time></div><span class="timeline-change"><s>ana@gmail.com</s><i data-icon="arrow-right" data-size="14"></i><ins>ana.lima@nortesul.com.br</ins></span><p>Pessoas · linha 12 · Marina Costa</p></div></li>
+  <li><span class="timeline-icon crit"><i data-icon="trash"></i></span><div class="timeline-body"><div class="timeline-head"><b>3 linhas excluídas</b><time datetime="2026-11-20T14:01">14:01</time></div><p>Duplicados de Bruno Reis</p></div></li>
+  <li><span class="timeline-icon ok"><i data-icon="upload"></i></span><div class="timeline-body"><div class="timeline-head"><b>Planilha importada</b><time datetime="2026-11-20T13:50">13:50</time></div><p>convidados-novembro.xlsx · 1.284 linhas</p></div></li>
+</ol>
+        </div></div>
+        <p class="class-list"><code>ol.timeline</code> · <code>.timeline-icon</code> + tom · <code>.timeline-body</code> · <code>.timeline-head</code> com <code>time</code> · <code>.timeline-change</code> com <code>s</code> e <code>ins</code></p>
+      </section>
+
       <section class="docs-section" id="new" aria-labelledby="t-new">
         <header><h2 id="t-new">Novo componente</h2></header>
         <ol class="docs-list">
@@ -456,7 +598,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.13</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.14</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

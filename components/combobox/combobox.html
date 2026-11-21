@@ -1,0 +1,16 @@
+<!-- Grin combobox. Single choice: .combobox. Several: .combobox.multiple (choices become tags). Load combobox.js. -->
+<div class="field">
+  <label class="field-label" for="tech-input">Tecnologias</label>
+  <div class="combobox multiple">
+    <div class="combobox-control"><input class="combobox-input" id="tech-input" aria-controls="tech-list" placeholder="Buscar tecnologia"></div>
+    <ul class="combobox-list" id="tech-list">
+      <li class="combobox-group">Nuvem</li>
+      <li class="combobox-option" data-value="aws" aria-selected="true">AWS<small>Amazon Web Services</small></li>
+      <li class="combobox-option" data-value="azure">Azure<small>Microsoft</small></li>
+      <li class="combobox-group">Dados</li>
+      <li class="combobox-option" data-value="snowflake">Snowflake</li>
+    </ul>
+    <input type="hidden" name="tecnologias">
+  </div>
+</div>
+<script type="module" src="combobox.js"></script>

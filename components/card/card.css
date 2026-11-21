@@ -39,3 +39,14 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
   .stat-value { font-size: var(--text-3xl); }
   .stat-delta { font-size: var(--text-sm); }
 }
+
+/* Action card: a big choice that starts something (import a file, start blank, use an example). A button, not a radio. */
+.action-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: var(--space-3); }
+.action-card { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); color: var(--foreground); font: inherit; text-align: left; text-decoration: none; cursor: pointer; transition: border-color var(--dur-fast), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.action-card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.action-card:active { transform: scale(0.99); }
+.action-card > svg { box-sizing: content-box; width: 20px; height: 20px; padding: 10px; border-radius: var(--radius-md); background: var(--brand-bg); color: var(--brand-fg); }
+.action-card b { font-size: var(--text-base); }
+.action-card span { color: var(--muted-foreground); font-size: var(--text-sm); line-height: var(--leading-ui); }
+.action-card.primary { border-color: var(--primary); background: var(--brand-bg); }
+.action-card:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }

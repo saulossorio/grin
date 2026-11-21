@@ -23,4 +23,9 @@
 @import url('../components/glossary/glossary.css');
 @import url('../components/toc/toc.css');
 @import url('../components/tour/tour.css');
+@import url('../components/combobox/combobox.css');
+@import url('../components/dropzone/dropzone.css');
+@import url('../components/chart/chart.css');
+@import url('../components/formula/formula.css');
+@import url('../components/timeline/timeline.css');
 @import url('../components/sidebar/sidebar.css');

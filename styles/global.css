@@ -75,3 +75,14 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Print: only the content, without navigation, toolbars and floating layers ---------- */
+@media print {
+  :root { color-scheme: light; }
+  .sidebar, .sidebar-toggle, .sidebar-menu-button, .topbar, .toolbar, .tabs, .bulk-bar, .toasts, .tour, .tooltip, .popover, .pagination .pages, .docs-toc, .toc { display: none !important; }
+  .app, .app-main { display: block; }
+  .page-header, .page-content, .docs-main { max-width: none; padding: 0; }
+  .card, .stat, .table-wrap, .alert { box-shadow: none !important; break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+

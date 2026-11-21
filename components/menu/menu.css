@@ -10,3 +10,8 @@
 .menu-item.danger, .menu-item.danger svg { color: var(--crit-fg); }
 .menu-item.danger:hover { background: var(--crit-bg); }
 .menu-separator { height: 1px; margin: 4px -6px; background: var(--border-soft); }
+/* Item with a second line, and items that work as a choice (role="menuitemradio" or "menuitemcheckbox") */
+.menu-item:has(small) { align-items: flex-start; padding-top: 8px; padding-bottom: 8px; }
+.menu-item small { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); white-space: normal; }
+.menu-item[aria-checked="true"] { background: var(--row-selected); }
+.menu-item[aria-checked="true"]::after { content: ''; width: 5px; height: 10px; margin-left: auto; border: solid var(--brand-fg); border-width: 0 2px 2px 0; transform: rotate(45deg); }

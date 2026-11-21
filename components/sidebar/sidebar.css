@@ -77,15 +77,34 @@
 /* Wider than the reference screen (1200 px): content grows up to --size-content, then stays centered */
 .page-header, .page-content { width: 100%; max-width: calc(var(--size-content) + 64px); margin-inline: auto; }
 
+/* Top bar parts: a search for the whole app and the account button (avatar, name, role) */
+.topbar .search { width: min(480px, 100%); }
+.user-button { display: inline-flex; align-items: center; gap: 10px; height: 44px; padding: 0 8px 0 4px; border: 0; border-radius: var(--radius-md); background: transparent; color: var(--foreground); text-align: left; transition: background-color var(--dur-fast); }
+.user-button:hover { background: var(--accent); }
+.user-button b { display: block; font-size: var(--text-sm); }
+.user-button small { display: block; font-size: var(--text-xs); color: var(--muted-foreground); }
+.user-button > svg { width: 16px; height: 16px; color: var(--muted-foreground); }
+
+/* Side panel: a summary that follows the scroll next to a long form (result of a calculation, totals).
+   It never grows taller than the screen; what does not fit scrolls inside it. Below 1000 px it goes under the content. */
+.with-aside { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+.aside-panel { position: sticky; top: 24px; display: flex; flex-direction: column; gap: 16px; max-height: calc(100vh - 48px); overflow: auto; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
+@media (max-width: 1000px) { .with-aside { grid-template-columns: minmax(0, 1fr); } .aside-panel { position: static; max-height: none; } }
+
+/* Phones: the sidebar becomes a drawer, opened by the menu button that sidebar.js adds at the top left */
+.sidebar-menu-button { display: none; }
 @media (max-width: 760px) {
-  .sidebar-toggle { display: none; }
+  .sidebar-toggle, [data-sidebar-toggle] { display: none !important; }
   .app { flex-direction: column; }
-  .sidebar { position: static; flex-direction: row; flex-wrap: wrap; align-items: center; width: 100%; height: auto; padding: 10px 16px; border-right: 0; border-bottom: 1px solid var(--border); }
-  .sidebar .app-logo { margin: 0 8px 0 0; padding: 6px 4px; }
-  .sidebar .nav-item { width: auto; }
-  .sidebar .nav-heading, .sidebar .sidebar-footer { display: none; }
+  .app > .sidebar:not([data-docs-nav]) { position: fixed; inset: 0 auto 0 0; z-index: 60; width: min(300px, 86vw); height: 100vh; padding: 20px 16px; border-right: 1px solid var(--border); box-shadow: var(--shadow-lg); transform: translateX(-102%); transition: transform var(--dur-slow) var(--ease); }
+  .app > .sidebar.open { transform: none; }
+  .sidebar-menu-button { position: fixed; top: 12px; left: 12px; z-index: 50; display: inline-grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-sm); }
+  .sidebar-menu-button svg { width: 20px; height: 20px; }
+  .app:has(.sidebar-menu-button) .app-main { padding-top: 52px; }
+  body.sidebar-open::after { content: ''; position: fixed; inset: 0; z-index: 55; background: var(--overlay); backdrop-filter: blur(2px); animation: grin-fade var(--dur) ease-out; }
   .topbar, .page-header, .page-content { padding-left: 16px; padding-right: 16px; }
   .page-header { padding-top: 20px; }
   .page-title h1 { font-size: var(--text-2xl); }
   .page-description { font-size: var(--text-base); }
+}
 }

@@ -1,0 +1,22 @@
+/* Grin formula (also: equação, cálculo, metodologia). How a number is calculated, for method and help pages.
+   .formula shows the equation; .symbols explains each symbol with its current value; .breakdown lists the steps
+   of the calculation with the value of each one and the total. */
+.formula { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px; padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--sidebar); font-family: var(--font-mono); font-size: var(--text-lg); overflow-x: auto; }
+.formula var { font-family: var(--font-sans); font-style: italic; font-weight: var(--weight-semibold); color: var(--brand-fg); }
+.formula sub { font-size: 0.7em; }
+.formula .op { color: var(--muted-foreground); }
+.formula .result { font-family: var(--font-sans); font-weight: var(--weight-semibold); }
+
+.symbols { display: grid; grid-template-columns: max-content minmax(0, 1fr) max-content; gap: 8px 16px; margin: 0; align-items: baseline; }
+.symbols dt { font-style: italic; font-weight: var(--weight-semibold); color: var(--brand-fg); }
+.symbols dd { margin: 0; color: var(--muted-foreground); }
+.symbols dd.value { color: var(--foreground); font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; text-align: right; }
+
+.breakdown { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; counter-reset: grin-breakdown; border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+.breakdown li { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border-soft); counter-increment: grin-breakdown; }
+.breakdown li::before { content: counter(grin-breakdown); display: grid; place-items: center; width: 24px; height: 24px; border-radius: var(--radius-pill); background: var(--muted); color: var(--muted-foreground); font-size: var(--text-xs); font-weight: var(--weight-semibold); }
+.breakdown li small { display: block; color: var(--muted-foreground); font-size: var(--text-sm); }
+.breakdown .breakdown-value { font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; text-align: right; }
+.breakdown li.total { counter-increment: none; border-bottom: 0; background: var(--brand-bg); }
+.breakdown li.total::before { content: '='; background: var(--primary); color: var(--primary-foreground); }
+.breakdown li.total .breakdown-value { font-size: var(--text-lg); color: var(--brand-fg); }

@@ -1,0 +1,15 @@
+<!-- Grin chart parts. Draw the chart in SVG with the classes grid-line, axis, series-1, series-2, band and point.
+     Always add a legend (.chart-legend) or direct labels; never rely on color alone. -->
+<figure class="chart">
+  <span class="chart-title">Investimento estimado, em R$ mi</span>
+  <svg viewBox="0 0 320 120" role="img" aria-label="Linha subindo de 300 em 2022 para 412 em 2026">
+    <line class="grid-line" x1="0" y1="20" x2="320" y2="20"/><line class="grid-line" x1="0" y1="60" x2="320" y2="60"/><line class="grid-line" x1="0" y1="100" x2="320" y2="100"/>
+    <polygon class="band" points="0,80 80,68 160,52 240,40 320,28 320,52 240,64 160,76 80,92 0,104"/>
+    <polyline class="series-1" points="0,92 80,80 160,64 240,52 320,40"/><circle class="point" cx="320" cy="40" r="4"/>
+  </svg>
+  <ul class="chart-legend"><li><i class="line"></i>Estimativa</li><li><i class="band"></i>Faixa provável</li></ul>
+</figure>
+<ul class="bar-list">
+  <li><span class="bar-label">Sem e-mail</span><span class="bar-track"><i class="crit" style="--value:62%"></i></span><span class="bar-value">48</span></li>
+  <li><span class="bar-label">Telefone incompleto</span><span class="bar-track"><i class="warn" style="--value:25%"></i></span><span class="bar-value">19</span></li>
+</ul>

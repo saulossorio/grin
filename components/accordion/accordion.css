@@ -13,3 +13,12 @@
 .accordion-body { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; color: var(--muted-foreground); line-height: var(--leading-body); }
 .accordion-body > * { margin: 0; }
 .accordion summary:active { background: var(--accent); }
+
+/* Disclosure: a "show more" link that opens extra detail in place (data table behind a chart, technical notes).
+   Native <details class="disclosure">; lighter than the accordion, with no box. */
+.disclosure > summary { display: inline-flex; align-items: center; gap: 6px; color: var(--link); font-size: var(--text-sm); font-weight: var(--weight-semibold); cursor: pointer; list-style: none; }
+.disclosure > summary::-webkit-details-marker { display: none; }
+.disclosure > summary::after { content: ''; width: 6px; height: 6px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); transition: transform var(--dur) var(--ease); }
+.disclosure[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
+.disclosure > summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.disclosure > :not(summary) { margin-top: 12px; animation: grin-rise var(--dur) var(--ease); }

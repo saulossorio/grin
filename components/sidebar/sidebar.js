@@ -2,6 +2,7 @@
 // Markup: <div class="app"><nav class="sidebar">…</nav>…</div>. The script adds a round toggle on the sidebar edge
 // (or uses any [data-sidebar-toggle] button), remembers the choice (localStorage "grin-sidebar"), and collapses on its
 // own below 1100 px when the person never chose. Collapsed, each item shows its name as a tooltip (popover.js).
+// On phones (760 px and below) it becomes a drawer opened by a menu button at the top left.
 import '../popover/popover.js';
 import { icon } from '../../scripts/utils.js';
 
@@ -36,6 +37,16 @@ export function initSidebar() {
     b.innerHTML = icon('chevron-left', 16);
     b.setAttribute('aria-controls', sidebar.id || (sidebar.id = 'app-sidebar'));
     sidebar.after(b);
+  }
+  // Phones: a menu button opens the sidebar as a drawer (the documentation has its own button)
+  if (!sidebar.matches('[data-docs-nav]')) {
+    const m = Object.assign(document.createElement('button'), { type: 'button', className: 'sidebar-menu-button' });
+    m.innerHTML = icon('sidebar', 20); m.setAttribute('aria-label', 'Abrir menu'); m.setAttribute('aria-expanded', 'false'); m.setAttribute('aria-controls', sidebar.id || (sidebar.id = 'app-sidebar'));
+    sidebar.before(m);
+    const openMenu = (on) => { sidebar.classList.toggle('open', on); document.body.classList.toggle('sidebar-open', on); m.setAttribute('aria-expanded', String(on)); m.setAttribute('aria-label', on ? 'Fechar menu' : 'Abrir menu'); };
+    m.addEventListener('click', () => openMenu(!sidebar.classList.contains('open')));
+    document.addEventListener('click', (e) => { if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && !m.contains(e.target)) openMenu(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && sidebar.classList.contains('open')) { openMenu(false); m.focus(); } });
   }
   const saved = read();
   apply(sidebar, saved ? saved === 'collapsed' : matchMedia('(max-width: 1100px)').matches);

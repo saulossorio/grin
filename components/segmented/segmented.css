@@ -8,3 +8,5 @@
 .segmented label:hover span { color: var(--foreground); }
 .segmented input:checked + span { background: var(--surface); color: var(--foreground); box-shadow: var(--shadow-sm); }
 .segmented input:focus-visible + span { outline: 2px solid var(--ring); outline-offset: 1px; }
+.segmented input:disabled + span { opacity: 0.45; cursor: not-allowed; }
+.segmented input:disabled { cursor: not-allowed; }

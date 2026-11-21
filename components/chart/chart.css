@@ -1,0 +1,33 @@
+/* Grin chart (also: gráfico, data viz, bar list, legenda). Styles for charts drawn in SVG by the product,
+   plus two ready parts: a legend that names every series, and a list of horizontal bars for "how much of each".
+   Colors come only from --chart-1, --chart-2, --chart-band and --chart-grid, plus the state tones. */
+.chart { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid-line { stroke: var(--chart-grid); stroke-width: 1; }
+.chart .axis { stroke: var(--border-strong); stroke-width: 1; }
+.chart text { fill: var(--muted-foreground); font-family: var(--font-sans); font-size: 12px; font-variant-numeric: tabular-nums; }
+.chart .series-1 { fill: none; stroke: var(--chart-1); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart .series-2 { fill: none; stroke: var(--chart-2); stroke-width: 2; stroke-dasharray: 5 4; }
+.chart .band { fill: var(--chart-band); }
+.chart .point { fill: var(--chart-1); }
+.chart-title { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+.chart-note { font-size: var(--text-sm); color: var(--muted-foreground); }
+
+/* Legend: a swatch and a name for each series, in the order they appear */
+.chart-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0; padding: 0; list-style: none; font-size: var(--text-sm); color: var(--muted-foreground); }
+.chart-legend li { display: inline-flex; align-items: center; gap: 6px; }
+.chart-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--chart-1); }
+.chart-legend i.series-2 { background: none; border-top: 2px dashed var(--chart-2); border-radius: 0; height: 0; width: 16px; }
+.chart-legend i.band { background: var(--chart-band); }
+.chart-legend i.line { height: 3px; border-radius: 2px; width: 16px; }
+
+/* Bar list: a label, a horizontal bar and the value, one per row. Use for shares and counts by category. */
+.bar-list { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.bar-list li { display: grid; grid-template-columns: minmax(120px, 34%) minmax(0, 1fr) auto; gap: 12px; align-items: center; font-size: var(--text-sm); }
+.bar-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--foreground); }
+.bar-label small { display: block; color: var(--muted-foreground); }
+.bar-track { height: 8px; border-radius: var(--radius-pill); background: var(--muted); overflow: hidden; }
+.bar-track i { display: block; height: 100%; width: var(--value, 0%); border-radius: inherit; background: var(--chart-1); transition: width var(--dur-slow) var(--ease); }
+.bar-track i.crit { background: var(--crit-solid); } .bar-track i.warn { background: var(--warn-solid); } .bar-track i.ok { background: var(--ok-solid); }
+.bar-value { min-width: 48px; text-align: right; font-weight: var(--weight-semibold); font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) { .bar-list li { grid-template-columns: minmax(0, 1fr) auto; } .bar-track { grid-column: 1 / -1; grid-row: 2; } }

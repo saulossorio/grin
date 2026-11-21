@@ -1,5 +1,15 @@
 # Mudanças
 
+## 2.14 · 20/11/2026
+Revisão dos elementos usados nas ferramentas que vão adotar o Grin. Os que faltavam foram criados ou viraram variantes.
+- Novos componentes: campo com prefixo e sufixo, combobox (com busca, grupos e várias escolhas em tags), upload de arquivo, banner, card de ação, medidor, gráfico (legenda e lista de barras), fórmula e cálculo e histórico. Total de 35.
+- Campo de formulário com valor original (`.field-original`), lista editável (`.repeater`) e rodapé fixo (`.form-footer`).
+- Tabela com coluna fixa ao rolar de lado, indicador de ordenação, contagem de filtro no cabeçalho, alça para redimensionar, cabeçalho de linha, célula derivada, célula com diferença, link na célula, linha excluída, linha aberta, rolagem com altura fixa, aviso para marcar todos os resultados e linhas por página.
+- Menu com segunda linha e itens de escolha. Modal largo (`.dialog.wide`). Botão de alternar (`aria-pressed`). Opção desativada no controle segmentado. Link "ver mais" (`details.disclosure`). Tela de carregamento (`.loading-overlay`).
+- Barra superior com busca e botão da conta (`.user-button`). Painel lateral fixo ao lado de um formulário (`.with-aside`).
+- No celular, a barra lateral vira um drawer com botão de menu.
+- Estilos de impressão que escondem a navegação e as camadas flutuantes.
+
 ## 2.13 · 20/11/2026
 - Estrutura da tela em Padrões dividida em cabeçalho e corpo.
 - Esquema do cabeçalho com nomes genéricos, indicando o que é obrigatório e o que é opcional.
