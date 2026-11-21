@@ -14,4 +14,5 @@
 .menu-item:has(small) { align-items: flex-start; padding-top: 8px; padding-bottom: 8px; }
 .menu-item small { display: block; margin-top: 2px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); white-space: normal; }
 .menu-item[aria-checked="true"] { background: var(--row-selected); }
+.menu-item[aria-checked="true"]::after { animation: grin-scale-in var(--dur) var(--ease-spring); }
 .menu-item[aria-checked="true"]::after { content: ''; width: 5px; height: 10px; margin-left: auto; border: solid var(--brand-fg); border-width: 0 2px 2px 0; transform: rotate(45deg); }

@@ -17,7 +17,8 @@
 /* Meter: a level on a short fixed scale (confidence low / medium / high), with the level written next to it */
 .meter { display: inline-flex; align-items: center; gap: 10px; font-size: var(--text-sm); font-weight: var(--weight-semibold); }
 .meter-track { display: inline-grid; grid-template-columns: repeat(3, 18px); gap: 3px; }
-.meter-track i { height: 6px; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); }
+.meter-track i { height: 6px; border-radius: var(--radius-pill); background: var(--muted); box-shadow: inset 0 0 0 1px var(--border-soft); transition: background-color var(--dur-slow) var(--ease); }
+.meter { transition: color var(--dur-slow) var(--ease); }
 .meter[data-level="1"] .meter-track i:nth-child(-n+1), .meter[data-level="2"] .meter-track i:nth-child(-n+2), .meter[data-level="3"] .meter-track i { box-shadow: none; }
 .meter[data-level="1"] { color: var(--crit-fg); } .meter[data-level="1"] .meter-track i:nth-child(-n+1) { background: var(--crit-solid); }
 .meter[data-level="2"] { color: var(--warn-fg); } .meter[data-level="2"] .meter-track i:nth-child(-n+2) { background: var(--warn-solid); }

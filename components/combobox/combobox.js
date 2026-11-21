@@ -2,6 +2,8 @@
 // and ul.combobox-list#list-id > li.combobox-option[data-value] (optional <small> second line, li.combobox-group titles).
 // Typing filters and highlights; arrows move; Enter picks; Esc closes. In .multiple each pick becomes a tag, and
 // Backspace on an empty field removes the last tag. A hidden input[name] (optional) receives the value(s), comma-separated.
+// Select (no typing): add readonly to the input. The list opens on click, Enter or the arrows, and the field shows the choice.
+// Motion: the list scales in and fades out; tags spring in and shrink out. All of it is off with reduced motion.
 const fold = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -24,12 +26,32 @@ function setup(box) {
   const chosen = () => options.filter((o) => o.getAttribute('aria-selected') === 'true');
   const sync = () => {
     if (hidden) hidden.value = chosen().map((o) => o.dataset.value).join(',');
+    if (!multiple && chosen()[0]) input.value = chosen()[0].dataset.label;
     if (multiple) {
       control.querySelectorAll('.combobox-tag').forEach((t) => t.remove());
       chosen().forEach((o) => input.insertAdjacentHTML('beforebegin', `<span class="combobox-tag" data-value="${esc(o.dataset.value)}">${esc(o.dataset.label)}<button type="button" aria-label="Remover ${esc(o.dataset.label)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></span>`));
     }
   };
-  const open = (on) => { box.classList.toggle('open', on); input.setAttribute('aria-expanded', String(on)); if (!on) { active = -1; input.removeAttribute('aria-activedescendant'); } };
+  const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const readonly = input.readOnly;
+  if (readonly) box.classList.add('select');
+  let closeTimer;
+  const open = (on) => {
+    if (on === box.classList.contains('open')) return;
+    clearTimeout(closeTimer);
+    input.setAttribute('aria-expanded', String(on));
+    if (on) { box.classList.remove('closing'); box.classList.add('open'); return; }
+    active = -1; input.removeAttribute('aria-activedescendant');
+    box.classList.remove('open');
+    if (!reduce()) { box.classList.add('closing'); closeTimer = setTimeout(() => box.classList.remove('closing'), 140); }
+  };
+  // A tag shrinks out before the choice is removed
+  const removeTag = (o) => {
+    const tag = [...control.querySelectorAll('.combobox-tag')].find((t) => t.dataset.value === o.dataset.value);
+    if (!tag || reduce()) { pick(o); return; }
+    tag.classList.add('leaving');
+    setTimeout(() => pick(o), 140);
+  };
   const filter = () => {
     const q = fold(input.value.trim());
     options.forEach((o) => {
@@ -55,20 +77,22 @@ function setup(box) {
     if (multiple) { input.value = ''; filter(); }
     sync(); box.dispatchEvent(new CustomEvent('grin:change', { bubbles: true, detail: chosen().map((x) => x.dataset.value) }));
   };
-  input.addEventListener('focus', () => { open(true); filter(); });
+  input.addEventListener('focus', () => { if (!readonly) { open(true); filter(); } });
   input.addEventListener('input', () => { open(true); filter(); });
+  if (readonly) input.addEventListener('click', () => { const on = !box.classList.contains('open'); open(on); if (on) move(Math.max(0, visible().indexOf(chosen()[0])), true); });
   input.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown') { e.preventDefault(); open(true); move(1); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
     else if (e.key === 'Enter' && box.classList.contains('open')) { e.preventDefault(); const o = visible()[active]; if (o) pick(o); }
     else if (e.key === 'Escape') open(false);
-    else if (e.key === 'Backspace' && multiple && !input.value) { const last = chosen().at(-1); if (last) pick(last); }
+    else if (e.key === 'Backspace' && multiple && !input.value) { const last = chosen().at(-1); if (last) removeTag(last); }
+    else if (readonly && (e.key === ' ' || (e.key === 'Enter' && !box.classList.contains('open')))) { e.preventDefault(); open(true); move(Math.max(0, visible().indexOf(chosen()[0])), true); }
   });
   list.addEventListener('mousedown', (e) => { const o = e.target.closest('.combobox-option'); if (o) { e.preventDefault(); pick(o); } });
   control.addEventListener('click', (e) => {
     const rm = e.target.closest('.combobox-tag button');
-    if (rm) { const o = options.find((x) => x.dataset.value === rm.parentElement.dataset.value); if (o) pick(o); return; }
-    input.focus();
+    if (rm) { const o = options.find((x) => x.dataset.value === rm.parentElement.dataset.value); if (o) removeTag(o); return; }
+    if (!readonly) input.focus();
   });
   document.addEventListener('click', (e) => { if (!box.contains(e.target)) open(false); });
   sync();

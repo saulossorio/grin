@@ -7,7 +7,7 @@
 .dropzone input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .dropzone.over { border-color: var(--primary); background: var(--brand-bg); transform: scale(1.01); }
 .dropzone:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
-.dropzone-file { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
+.dropzone-file { animation: grin-rise var(--dur) var(--ease); display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); }
 .dropzone-file > svg { width: 20px; height: 20px; color: var(--muted-foreground); }
 .dropzone-file b { display: block; } .dropzone-file small { color: var(--muted-foreground); font-size: var(--text-sm); }
 .dropzone-file .btn { margin-left: auto; }

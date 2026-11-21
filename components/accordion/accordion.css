@@ -21,4 +21,6 @@
 .disclosure > summary::after { content: ''; width: 6px; height: 6px; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-2px) rotate(45deg); transition: transform var(--dur) var(--ease); }
 .disclosure[open] > summary::after { transform: translateY(1px) rotate(-135deg); }
 .disclosure > summary:hover { text-decoration: underline; text-underline-offset: 3px; }
-.disclosure > :not(summary) { margin-top: 12px; animation: grin-rise var(--dur) var(--ease); }
+.disclosure > :not(summary) { margin-top: 12px; }
+/* the triangle turns at the start of closing, like the accordion chevron */
+.disclosure[data-closing="1"] > summary::after { transform: translateY(-2px) rotate(45deg); }

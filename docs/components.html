@@ -40,7 +40,7 @@ document.addEventListener('click', (e) => {
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#input-group">Prefixo e sufixo</a><a href="#combobox">Combobox</a><a href="#dropzone">Upload</a><a href="#banner">Banner</a><a href="#action-card">Card de ação</a><a href="#meter">Medidor</a><a href="#chart">Gráfico</a><a href="#formula">Fórmula</a><a href="#timeline">Histórico</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#input-group">Prefixo e sufixo</a><a href="#combobox">Combobox e select</a><a href="#dropzone">Upload</a><a href="#banner">Banner</a><a href="#action-card">Card de ação</a><a href="#meter">Medidor</a><a href="#chart">Gráfico</a><a href="#formula">Fórmula</a><a href="#timeline">Histórico</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
@@ -473,8 +473,8 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="combobox" aria-labelledby="t-combobox">
-        <header><h2 id="t-combobox">Combobox</h2><p class="aka">Também chamado: autocomplete, select com busca, multiselect, campo de tags, typeahead</p></header>
-        <div class="demo" data-code><div class="demo-stage column" style="min-height:420px;align-items:flex-start">
+        <header><h2 id="t-combobox">Combobox e select</h2><p class="aka">Também chamado: autocomplete, select com busca, multiselect, campo de tags, typeahead, dropdown, droplist, lista suspensa</p></header>
+        <div class="demo" data-code><div class="demo-stage" style="min-height:420px;align-items:flex-start;gap:24px">
 <div class="field" style="width:min(420px,100%)">
   <label class="field-label" for="cb-tech">Tecnologias usadas</label>
   <div class="combobox multiple">
@@ -490,8 +490,19 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
     </ul>
   </div>
 </div>
+<div class="field" style="width:min(320px,100%)">
+  <label class="field-label" for="cb-origin">Origem do dado</label>
+  <div class="combobox">
+    <div class="combobox-control"><input class="combobox-input" id="cb-origin" aria-controls="cb-origin-list" readonly></div>
+    <ul class="combobox-list" id="cb-origin-list">
+      <li class="combobox-option" data-value="oficial" aria-selected="true">Oficial<small>Balanço publicado pela empresa</small></li>
+      <li class="combobox-option" data-value="terceiros">Terceiros<small>Relatório de mercado</small></li>
+      <li class="combobox-option" data-value="estimado">Estimado<small>Calculado pelo modelo</small></li>
+    </ul>
+  </div>
+</div>
         </div></div>
-        <p class="class-list"><code>.combobox</code> (<code>.multiple</code>) · <code>.combobox-control</code> · <code>.combobox-input</code> · <code>.combobox-list</code> · <code>.combobox-group</code> · <code>.combobox-option</code> (<code>small</code>) · <code>.combobox-tag</code> · evento <code>grin:change</code> · <code>components/combobox/combobox.js</code></p>
+        <p class="class-list"><code>.combobox</code> (<code>.multiple</code>; com <code>input[readonly]</code> vira um select com a lista do Grin no lugar da lista do sistema) · <code>.combobox-control</code> · <code>.combobox-input</code> · <code>.combobox-list</code> · <code>.combobox-group</code> · <code>.combobox-option</code> (<code>small</code>) · <code>.combobox-tag</code> · evento <code>grin:change</code> · <code>components/combobox/combobox.js</code></p>
       </section>
 
       <section class="docs-section" id="dropzone" aria-labelledby="t-dropzone">
@@ -598,7 +609,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.14</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.15</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>
