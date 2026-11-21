@@ -50,7 +50,7 @@ examples/               dashboard, form, tutorial, landing
 tokens/
   core/                 colors.json (escalas), spacing.json (espaço, raio, medidas, sombras), typography.json (fontes, tipos, movimento)
   semantic/colors.json  o papel de cada cor; os componentes só usam estes
-  themes/               light.json, dark.json, high-contrast.json
+  themes/               dark.json, high-contrast.json, high-contrast-dark.json (o tema claro é o valor padrão de semantic/)
 styles/
   fonts.css             @font-face de Geist e Geist Mono
   variables.css         GERADO a partir de tokens/; não edite
@@ -63,7 +63,6 @@ components/<nome>/      <nome>.html (exemplo comentado), <nome>.css, <nome>.js q
 scripts/                theme.js, utils.js (ícones, contraste), animations.js, docs-shell.js (só documentação)
 assets/                 fonts/ (Geist, Geist Mono, OFL.txt) e favicon.svg
 tools/                  build-tokens.mjs, check-contrast.mjs, check-markup.mjs
-design/figma-link.txt   link do Figma, quando existir
 ```
 
 ## Convenções

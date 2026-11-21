@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.18 · 21/11/2026
+- Arquivos sem uso removidos. Saíram `docs/getting-started.html` e `docs/overview.html`, que só redirecionavam, `tokens/themes/light.json`, que estava vazio, e `design/figma-link.txt`, porque ainda não há arquivo no Figma.
+
 ## 2.17 · 20/11/2026
 - O Início e o README dizem para que tipo de ferramenta o Grin serve, com exemplos concretos.
 - Assinatura em todas as páginas da documentação, no mesmo rodapé, com a versão, o autor e os links. Também no README e na meta "author" das páginas.
