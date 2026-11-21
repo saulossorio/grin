@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.22 · 21/11/2026
+- Correção: ao carregar, `theme.js` apagava o `data-theme` quando não havia escolha guardada no Grin. Uma ferramenta com controle de tema próprio, aplicado antes do Grin carregar, voltava para o tema do sistema. Agora o `theme.js` só aplica uma escolha guardada.
+
 ## 2.21 · 21/11/2026
 Partes obrigatórias em toda ferramenta feita com o Grin, para que todas tenham o mesmo comportamento básico.
 - Nova lista "Obrigatório em toda ferramenta" em Instalação, também em AGENTS.md. Ela pede barra lateral do Grin, versão no logo, botão de tema, painel Aparência, assinatura, ícones do Grin, Geist e tokens.

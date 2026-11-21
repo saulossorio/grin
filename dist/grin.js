@@ -1,8 +1,8 @@
-/* Grin 2.21 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.22 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.21';
+Grin.version = '2.22';
 
 // ---------- scripts/utils.js ----------
 {
@@ -213,7 +213,9 @@ const fromUrl = params.get('theme');
 if (fromUrl === 'hc') { write('theme', 'light'); write('contrast', 'more'); } else if (['light', 'dark', 'system'].includes(fromUrl)) write('theme', fromUrl);
 if (['more', 'normal', 'system'].includes(params.get('contrast'))) write('contrast', params.get('contrast'));
 if (getTheme() === 'hc') { write('theme', 'light'); write('contrast', 'more'); }
-const t0 = getTheme(); if (t0 !== 'system') root.setAttribute('data-theme', t0); else root.removeAttribute('data-theme');
+// Only applies a saved choice. With no choice it leaves data-theme as it is, so a tool that set its own theme
+// before this script ran keeps it.
+const t0 = getTheme(); if (t0 !== 'system') root.setAttribute('data-theme', t0);
 const c0 = getContrast(); if (c0 !== 'system') root.setAttribute('data-contrast', c0);
 if (read('density', 'comfortable') === 'compact') root.setAttribute('data-density', 'compact');
 const s0 = read('scale', '100'); if (s0 !== '100') root.setAttribute('data-scale', s0);
