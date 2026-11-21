@@ -1,10 +1,11 @@
 # Mudanças
 
 ## 2.13 · 20/11/2026
-- A estrutura da tela em Padrões separa o cabeçalho, igual em todas as telas, do corpo, que muda com o tipo de tela.
-- O checklist de acessibilidade fala com quem desenha e programa a tela. Cada item diz o que garantir e, embaixo, como fazer ou testar.
-- O esquema do cabeçalho usa nomes genéricos e diz o que é obrigatório e o que é opcional.
-- Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item e conteúdo e ajuda), cada um com esquema numerado, quando usar e link para o exemplo.
+- Estrutura da tela em Padrões dividida em cabeçalho e corpo.
+- Esquema do cabeçalho com nomes genéricos, indicando o que é obrigatório e o que é opcional.
+- Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item, conteúdo e ajuda), cada um com esquema numerado, uso e exemplo.
+- Checklist de acessibilidade com o requisito e, abaixo, como implementar ou testar.
+- Revisão do tom dos textos de Início, Instalação, Fundamentos, Padrões e Acessibilidade.
 
 ## 2.12 · 20/11/2026
 - Padrões refeito com exemplos visuais. A estrutura da tela aparece num esquema numerado, e busca, formulários, mensagens de erro, confirmação, estados da tela, gráficos e escrita aparecem com componentes reais e pares de faça e evite.

@@ -64,7 +64,7 @@ git clone https://github.com/saulossorio/grin.git
       </section>
 
       <section class="docs-section" id="head" aria-labelledby="t-head">
-        <header><h2 id="t-head">Incluir na página</h2><p>No <code>&lt;head&gt;</code> de cada página, nesta ordem. O primeiro script aplica o tema guardado antes de pintar a tela, para não piscar o tema errado.</p></header>
+        <header><h2 id="t-head">Incluir na página</h2><p>No <code>&lt;head&gt;</code> de cada página, nesta ordem. O primeiro script aplica o tema salvo antes da primeira renderização.</p></header>
 <pre class="code-block"><code>&lt;script&gt;/* Grin: apply the saved theme, density and font size before the first paint */try{var r=document.documentElement,p=new URLSearchParams(location.search),t=p.get('theme')||localStorage.getItem('grin-theme'),c=p.get('contrast')||localStorage.getItem('grin-contrast');if(t==='hc'){t='light';c='more';}if(t&amp;&amp;t!=='system')r.dataset.theme=t;if(c&amp;&amp;c!=='system')r.dataset.contrast=c;if(localStorage.getItem('grin-density')==='compact')r.dataset.density='compact';var s=localStorage.getItem('grin-scale');if(s&amp;&amp;s!=='100')r.dataset.scale=s;}catch(e){}&lt;/script&gt;
 &lt;link rel="preload" href="grin/assets/fonts/geist.woff2" as="font" type="font/woff2" crossorigin&gt;
 &lt;link rel="stylesheet" href="grin/styles/fonts.css"&gt;
@@ -128,13 +128,13 @@ git clone https://github.com/saulossorio/grin.git
       </section>
 
       <section class="docs-section" id="behaviors" aria-labelledby="t-behaviors">
-        <header><h2 id="t-behaviors">Comportamentos em JavaScript</h2><p>O CSS funciona sozinho. Estes módulos são opcionais: inclua só os que a tela usa. Todos escutam eventos no <code>document</code>, então funcionam com elementos criados depois.</p></header>
+        <header><h2 id="t-behaviors">Comportamentos em JavaScript</h2><p>Os módulos abaixo são opcionais. Inclua apenas os usados na tela. Todos registram os eventos no <code>document</code> e funcionam com elementos criados depois.</p></header>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Arquivo</th><th scope="col">Faz</th><th scope="col">Como usar</th></tr></thead>
           <tbody>
             <tr><td><code>scripts/theme.js</code></td><td>Tema, alto contraste, densidade e tamanho da fonte, guardados no navegador.</td><td>Atributos <code>data-theme-select</code>, <code>data-theme-toggle</code>, <code>data-contrast-toggle</code>, <code>data-set-density</code>, <code>data-set-scale</code>, ou as funções abaixo.</td></tr>
             <tr><td><code>scripts/utils.js</code></td><td>Ícones, contraste WCAG, leitura de tokens.</td><td><code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code> + <code>paintIcons()</code>; <code>icon('search', 16)</code>; <code>contrast(a, b)</code>; <code>token('primary')</code>.</td></tr>
-            <tr><td><code>components/sidebar/sidebar.js</code></td><td>Recolhe e expande a barra lateral; recolhe sozinha abaixo de 1100 px.</td><td>Automático. Botão próprio: <code>[data-sidebar-toggle]</code>.</td></tr>
+            <tr><td><code>components/sidebar/sidebar.js</code></td><td>Recolhe e expande a barra lateral. Abaixo de 1100 px, recolhe automaticamente.</td><td>Automático. Botão próprio: <code>[data-sidebar-toggle]</code>.</td></tr>
             <tr><td><code>components/dialog/dialog.js</code></td><td>Abre e fecha modal e drawer.</td><td><code>data-open="id"</code> e <code>data-close</code>.</td></tr>
             <tr><td><code>components/tabs/tabs.js</code></td><td>Abas com teclado e indicador que desliza.</td><td><code>role="tablist"</code> + <code>role="tab"</code> + <code>aria-controls</code>.</td></tr>
             <tr><td><code>components/toast/toast.js</code></td><td>Mensagem temporária com desfazer.</td><td><code>toast('Salvo.', { type: 'ok', action: 'Desfazer', onAction })</code></td></tr>
@@ -148,14 +148,14 @@ git clone https://github.com/saulossorio/grin.git
       </section>
 
       <section class="docs-section" id="theme" aria-labelledby="t-theme">
-        <header><h2 id="t-theme">Tema e preferências</h2><p>Sem nenhum atributo, o Grin segue o sistema (claro ou escuro, e mais contraste quando pedido). Os atributos valem na tag <code>&lt;html&gt;</code> ou em qualquer seção.</p></header>
+        <header><h2 id="t-theme">Tema e preferências</h2><p>Sem atributos, o Grin usa o tema e o contraste do sistema operacional. Os atributos valem na tag <code>&lt;html&gt;</code> ou em qualquer seção.</p></header>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Atributo</th><th scope="col">Valores</th><th scope="col">Efeito</th></tr></thead>
           <tbody>
             <tr><td><code>data-theme</code></td><td><code>light</code>, <code>dark</code></td><td>Fixa o tema.</td></tr>
             <tr><td><code>data-contrast</code></td><td><code>more</code>, <code>normal</code></td><td>Alto contraste no claro ou no escuro (texto 7:1); <code>normal</code> desliga mesmo se o sistema pedir.</td></tr>
             <tr><td><code>data-density</code></td><td><code>compact</code></td><td>Controles de 36 px e texto de 14 px (padrão: 44 px e 16 px).</td></tr>
-            <tr><td><code>data-scale</code></td><td><code>112</code>, <code>125</code></td><td>Fonte em 112,5% ou 125%; tudo em rem cresce junto.</td></tr>
+            <tr><td><code>data-scale</code></td><td><code>112</code>, <code>125</code></td><td>Fonte em 112,5% ou 125%. Os tamanhos em rem acompanham.</td></tr>
           </tbody></table></div>
 <pre class="code-block"><code>import { setTheme, setContrast, setDensity, setScale, effectiveTheme, effectiveContrast } from './grin/scripts/theme.js';
 

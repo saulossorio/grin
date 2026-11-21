@@ -50,13 +50,13 @@
               <ol class="legend"><li><span class="wire-num">1</span><div><b>Resumo de erros</b><span>Aparece no topo só depois de tentar salvar, com link para cada campo.</span></div></li><li><span class="wire-num">2</span><div><b>Título da seção</b><span>À esquerda, com uma frase sobre o que a seção pede.</span></div></li><li><span class="wire-num">3</span><div><b>Campos</b><span>À direita, com rótulo em cima. Os obrigatórios levam asterisco.</span></div></li><li><span class="wire-num">4</span><div><b>Ações</b><span>No fim do formulário. Cancelar primeiro, salvar por último.</span></div></li></ol>
             </div>
           </div><div class="tab-panel" role="tabpanel" id="sp-dash" aria-labelledby="st-dash" hidden>
-            <p class="guide-note screen-when"><b>Quando usar.</b> Para acompanhar a situação de algo num relance, sem precisar buscar item por item. <span class="text-secondary">Ainda sem exemplo completo.</span></p>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para acompanhar indicadores e a evolução de um conjunto de dados. <span class="text-secondary">Ainda sem exemplo completo.</span></p>
             <div class="anatomy">
               <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block "><span class="wire-num">1</span>Período: Mês · Trimestre · Ano</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">2</span>1.284</span><span class="wire-block grow">1.207</span><span class="wire-block grow">8</span><span class="wire-block grow">69</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">3</span>Gráfico de evolução</span><span class="wire-block grow tall">Gráfico por grupo</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">4</span>Os 5 itens que pedem atenção</span></div></div>
               <ol class="legend"><li><span class="wire-num">1</span><div><b>Período</b><span>Um controle segmentado que muda todos os números juntos.</span></div></li><li><span class="wire-num">2</span><div><b>Indicadores</b><span>Até quatro, com a comparação ao lado do número.</span></div></li><li><span class="wire-num">3</span><div><b>Gráficos</b><span>Em cards de duas colunas, cada um com título e legenda escrita.</span></div></li><li><span class="wire-num">4</span><div><b>Lista curta</b><span>Os itens que pedem ação, com link para a lista completa.</span></div></li></ol>
             </div>
           </div><div class="tab-panel" role="tabpanel" id="sp-detail" aria-labelledby="st-detail" hidden>
-            <p class="guide-note screen-when"><b>Quando usar.</b> Para ver tudo sobre um item e editá-lo. Use um drawer quando a pessoa precisa voltar logo à lista, e uma tela própria quando o item tem muito conteúdo. <a class="link" href="../examples/dashboard.html">Abrir uma pessoa no exemplo de lista</a></p>
+            <p class="guide-note screen-when"><b>Quando usar.</b> Para consultar e editar um item. Use um drawer quando a pessoa precisa voltar logo à lista, e uma tela própria quando o item tem muito conteúdo. <a class="link" href="../examples/dashboard.html">Abrir uma pessoa no exemplo de lista</a></p>
             <div class="anatomy">
               <div class="wire" aria-hidden="true"><div class="wire-row"><span class="wire-block "><span class="wire-num">1</span>AL</span><span class="wire-block title">Ana Lima</span><span class="spacer"></span><span class="wire-block ">Editar</span></div><div class="wire-row"><span class="wire-block grow"><span class="wire-num">2</span>Eventos 4</span><span class="wire-block grow">Atualizado há 5 min</span></div><div class="wire-row"><span class="wire-block "><span class="wire-num">3</span>Dados</span><span class="wire-block ">Eventos</span><span class="wire-block ">Histórico</span></div><div class="wire-row"><span class="wire-block grow tall"><span class="wire-num">4</span>Conteúdo da aba escolhida</span></div></div>
               <ol class="legend"><li><span class="wire-num">1</span><div><b>Identificação</b><span>Avatar, nome e a ação principal sobre o item.</span></div></li><li><span class="wire-num">2</span><div><b>Resumo</b><span>Dois a quatro números ou datas que importam.</span></div></li><li><span class="wire-num">3</span><div><b>Abas</b><span>Separam os assuntos do item, sem trocar de tela.</span></div></li><li><span class="wire-num">4</span><div><b>Conteúdo</b><span>Campos em linhas com o rótulo à esquerda (.field-row).</span></div></li></ol>
@@ -74,7 +74,7 @@
         <header><h2 id="t-filters">Busca e filtros</h2><p>Vale para telas de lista e para qualquer busca dentro de outra tela, como num glossário ou num drawer.</p></header>
         <div class="guide-grid two">
           <div class="guide-card">
-            <h3><span class="guide-icon"><i data-icon="search"></i></span>A busca filtra enquanto a pessoa digita</h3>
+            <h3><span class="guide-icon"><i data-icon="search"></i></span>A busca filtra durante a digitação</h3>
             <div class="guide-stage">
               <div class="search" style="width:100%"><i data-icon="search"></i><input class="input" value="lima" aria-label="Buscar (exemplo)"></div>
               <span>Ana <mark>Lima</mark> · ana.<mark>lima</mark>@nortesul.com.br</span>
@@ -82,7 +82,7 @@
             <p>O trecho encontrado aparece destacado com <code>&lt;mark&gt;</code>.</p>
           </div>
           <div class="guide-card">
-            <h3><span class="guide-icon"><i data-icon="filter"></i></span>Cada filtro ativo vira um chip</h3>
+            <h3><span class="guide-icon"><i data-icon="filter"></i></span>Cada filtro ativo aparece como chip</h3>
             <div class="guide-stage">
               <div class="chip-group"><span class="chip"><span class="chip-label">Situação: Crítico</span><span class="chip-remove"><i data-icon="x"></i></span></span><span class="chip"><span class="chip-label">Empresa: Norte Sul</span><span class="chip-remove"><i data-icon="x"></i></span></span><span class="link">Limpar filtros</span></div>
             </div>
@@ -98,13 +98,13 @@
             <span class="dodont-label"><i data-icon="check-circle"></i>Faça</span>
             <div class="field"><label class="field-label" for="pf-1">E-mail corporativo <span class="required">*</span></label><input class="input" id="pf-1" value="ana@gmail.com" aria-invalid="true"><span class="field-message"><i data-icon="alert-circle"></i>Use o e-mail da empresa.</span></div>
             <div class="row"><button type="button" class="btn primary">Salvar pessoa</button></div>
-            <p>Rótulo sempre visível em cima do campo, asterisco nos obrigatórios, erro embaixo do campo e botão com verbo e objeto.</p>
+            <p>Rótulo visível acima do campo e asterisco nos obrigatórios. O erro fica abaixo do campo. O botão tem verbo e objeto.</p>
           </div>
           <div class="avoid">
             <span class="dodont-label"><i data-icon="alert-circle"></i>Evite</span>
             <div class="field"><input class="input" placeholder="E-mail" aria-label="E-mail (exemplo a evitar)"></div>
             <div class="row"><button type="button" class="btn primary">OK</button></div>
-            <p>O texto de exemplo some ao digitar e a pessoa esquece o que o campo pede. "OK" não diz o que vai acontecer.</p>
+            <p>O placeholder desaparece ao digitar e o campo fica sem identificação. "OK" não descreve a ação.</p>
           </div>
         </div>
         <div class="guide-grid">
@@ -139,23 +139,23 @@
         <div class="guide-grid two">
           <div class="guide-card">
             <h3><span class="guide-icon"><i data-icon="undo"></i></span>Ação reversível</h3>
-            <p>Acontece na hora e um toast oferece "Desfazer".</p>
+            <p>Executar na hora e mostrar um toast com "Desfazer".</p>
             <div class="guide-stage"><div class="toast ok" style="animation:none"><i data-icon="check-circle"></i><div class="toast-text">3 pessoas arquivadas.</div><span class="link">Desfazer</span></div></div>
           </div>
           <div class="guide-card">
             <h3><span class="guide-icon"><i data-icon="trash"></i></span>Ação irreversível ou em massa</h3>
-            <p>Pede confirmação num modal, com o número no título e no botão.</p>
+            <p>Pedir confirmação num modal, com a quantidade no título e no botão.</p>
             <div class="guide-stage"><div class="dialog" style="position:static;width:100%;display:flex;flex-direction:column;box-shadow:var(--shadow-md)"><div class="dialog-header" style="padding:16px 16px 0;align-items:center"><span class="dialog-icon crit" style="width:40px;height:40px"><i data-icon="trash"></i></span><h3>Excluir 3 pessoas?</h3></div><div class="dialog-body" style="padding:8px 16px 16px;font-size:var(--text-sm)"><p>Elas saem das listas e dos eventos.</p></div><div class="dialog-footer" style="padding:12px 16px"><span class="btn xs">Cancelar</span><span class="btn xs danger">Excluir 3 pessoas</span></div></div></div>
           </div>
         </div>
       </section>
 
       <section class="docs-section" id="states" aria-labelledby="t-states">
-        <header><h2 id="t-states">Estados da tela</h2><p>Além do conteúdo, toda tela precisa prever estes quatro momentos.</p></header>
+        <header><h2 id="t-states">Estados da tela</h2><p>Estados que toda tela precisa tratar além do conteúdo.</p></header>
         <div class="guide-grid two">
-          <div class="guide-card"><h3>Vazio</h3><div class="guide-stage"><div class="empty-state" style="padding:20px 12px;gap:6px"><span class="empty-state-icon" style="width:44px;height:44px"><i data-icon="users"></i></span><b>Nenhuma pessoa ainda</b><span class="text-secondary text-sm">Importe uma planilha para começar.</span><span class="btn xs primary">Importar</span></div></div><p>Diz o que vai aparecer ali e qual é o primeiro passo.</p></div>
+          <div class="guide-card"><h3>Vazio</h3><div class="guide-stage"><div class="empty-state" style="padding:20px 12px;gap:6px"><span class="empty-state-icon" style="width:44px;height:44px"><i data-icon="users"></i></span><b>Nenhuma pessoa ainda</b><span class="text-secondary text-sm">Importe uma planilha para começar.</span><span class="btn xs primary">Importar</span></div></div><p>Informa o que vai aparecer e qual é a primeira ação.</p></div>
           <div class="guide-card"><h3>Vazio por filtro</h3><div class="guide-stage"><div class="empty-state" style="padding:20px 12px;gap:6px"><span class="empty-state-icon" style="width:44px;height:44px"><i data-icon="search"></i></span><b>Nenhum resultado</b><span class="text-secondary text-sm">Nenhuma pessoa com esses filtros.</span><span class="btn xs">Limpar filtros</span></div></div><p>Oferece "Limpar filtros".</p></div>
-          <div class="guide-card"><h3>Carregando</h3><div class="guide-stage"><div class="progress-field"><div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div><div class="progress"><i style="width:40%"></i></div></div></div><p>Depois de 1 segundo, mostra o que está acontecendo e quanto falta.</p></div>
+          <div class="guide-card"><h3>Carregando</h3><div class="guide-stage"><div class="progress-field"><div class="progress-label"><span>Importando pessoas</span><b>512 de 1.284</b></div><div class="progress"><i style="width:40%"></i></div></div></div><p>Após 1 segundo, mostra a operação em andamento e o progresso.</p></div>
           <div class="guide-card"><h3>Erro</h3><div class="guide-stage"><div class="alert crit"><i data-icon="alert-circle"></i><div class="alert-body"><span class="alert-title">A lista não carregou.</span><div class="alert-actions"><span class="btn xs">Tentar de novo</span></div></div></div></div><p>Alerta crítico com "Tentar de novo".</p></div>
         </div>
       </section>
