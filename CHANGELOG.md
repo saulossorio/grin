@@ -6,6 +6,7 @@
 - Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item, conteúdo e ajuda), cada um com esquema numerado, uso e exemplo.
 - Checklist de acessibilidade com o requisito e, abaixo, como implementar ou testar.
 - Revisão do tom dos textos de Início, Instalação, Fundamentos, Padrões e Acessibilidade.
+- Seção Linguagem em AGENTS.md, com regras e exemplos recusados. CLAUDE.md, README, Instalação, Padrões e Componentes apontam para ela.
 
 ## 2.12 · 20/11/2026
 - Padrões refeito com exemplos visuais. A estrutura da tela aparece num esquema numerado, e busca, formulários, mensagens de erro, confirmação, estados da tela, gráficos e escrita aparecem com componentes reais e pares de faça e evite.

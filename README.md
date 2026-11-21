@@ -7,12 +7,12 @@ Design system com tokens, componentes, padrões de uso e regras de acessibilidad
 ## O que tem
 
 - **Tokens** em três camadas (core, semântica, temas), em JSON, com gerador de CSS.
-- **Temas** claro, escuro e alto contraste; **densidades** confortável (44 px, padrão) e compacta (36 px); fonte em 100%, 112,5% e 125%.
+- **Temas** claro e escuro, cada um com alto contraste; **densidades** confortável (44 px, padrão) e compacta (36 px); fonte em 100%, 112,5% e 125%.
 - **Cor:** seis escalas de 12 passos em OKLCH (gray, green, teal, blue, amber, red), em claro e escuro. Marca: `#8dc63f`, usada só como acento.
 - **Tipografia:** Geist e Geist Mono, servidas pelo próprio repositório (`assets/fonts`, licença OFL).
 - **25 componentes:** botão, campo de formulário, checkbox, rádio e interruptor, controle segmentado, slider, chip de filtro, badge, status e avatar, alerta, toast, card e indicador, tabela, abas, menu, modal e drawer, estado vazio, navegação; e, para tutoriais e ajuda: texto corrido, stepper, acordeão (FAQ), barra de progresso, tooltip, popover e termo, glossário, índice da página e tour guiado. Cada um traz na documentação os outros nomes pelos quais é conhecido, e a busca acha por qualquer um deles.
-- **Guias:** começar, fundamentos, componentes, padrões e acessibilidade. **Exemplos:** lista de dados, formulário e página de apresentação.
-- **Verificações:** contraste nos três temas e coerência entre HTML, CSS e ícones.
+- **Guias:** instalação, fundamentos, componentes, padrões e acessibilidade. **Exemplos:** lista de dados, formulário, tutorial e página de apresentação.
+- **Verificações:** contraste nos quatro temas e coerência entre HTML, CSS e ícones.
 
 ## Usar numa ferramenta
 
@@ -97,3 +97,7 @@ e abra http://localhost:8000. Para abrir num tema: `?theme=dark` (ou `light`) e,
 ## Licença das fontes
 
 Geist e Geist Mono: SIL Open Font License 1.1, em `assets/fonts/OFL.txt`.
+
+## Contribuir
+
+Antes de mudar código ou texto, leia `AGENTS.md`. A seção "Linguagem" define como escrever qualquer texto do Grin, e vale para pessoas e para agentes de IA.

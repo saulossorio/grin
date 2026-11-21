@@ -1,12 +1,54 @@
 # Grin: instruções para agentes de IA
 
-Leia este arquivo inteiro antes de mudar qualquer coisa. O README.md explica o projeto para pessoas; aqui estão as regras de trabalho.
+Leia este arquivo inteiro antes de mudar qualquer coisa. O README.md explica o projeto para pessoas; aqui estão as regras de trabalho. A seção **Linguagem** vale para qualquer texto que você escrever.
 
 ## O que é
 
 Grin é um design system independente, feito do zero. Arquivos HTML, CSS e módulos JavaScript; o único passo de geração é `tools/build-tokens.mjs`. Publicado no GitHub Pages a partir da branch `main`: https://saulossorio.github.io/grin/
 
-Textos da documentação: diretos e descritivos, sem frases de marketing nem slogans (títulos são nomes de seção: "Temas", "Cor"). Não cite outras ferramentas ou empresas como origem do Grin na documentação, nos exemplos, nos tokens ou nos comentários. Os exemplos usam produtos e dados fictícios ("Agenda", "Prumo", "Norte Sul").
+Os exemplos usam produtos e dados fictícios ("Agenda", "Prumo", "Norte Sul"). Todo texto segue a seção **Linguagem**, logo abaixo.
+
+## Linguagem (obrigatório)
+
+Leia esta seção antes de escrever qualquer texto. Ela vale para a documentação, o README, o CHANGELOG, os comentários no código, os textos alternativos e as descrições de componentes. O dono rejeitou várias vezes textos fora destas regras.
+
+### Regras
+
+1. Diga o que a coisa é, o que faz e como usar. Nada além disso.
+2. Use termos técnicos simples e os nomes que designers e desenvolvedores já conhecem (modal, tooltip, acordeão, stepper).
+3. Escreva frases completas, curtas e afirmativas, em voz ativa.
+4. Não use linguagem de marketing. Isso inclui slogans, promessas, benefícios ("sem trabalho extra", "pronto para usar", "pensado para quem…") e ênfases ("puro", "simples", "poderoso", "elegante", "moderno").
+5. Não use metáforas nem figuras ("peças", "telas de trabalho", "num relance", "se recolhe sozinha", "a pessoa esquece").
+6. Não use tom de conversa nem de vendedor. Sem "você vai…", "Quem usa X recebe Y", exclamações ou perguntas retóricas.
+7. Não use dois-pontos para abrir uma enumeração dentro da frase, nem listas numeradas dentro de uma frase ("1. … 2. …"). Uma lista de verdade vai num `<ul>`, `<ol>` ou numa tabela.
+8. Não enumere o que a pessoa não precisa. Cite só o necessário.
+9. Títulos são nomes de seção ("Temas", "Recursos dos componentes"), nunca frases de efeito.
+10. Instruções e checklists falam com quem desenha ou programa a tela. Cada item diz o requisito e, se ajudar, como implementar ou testar. Não escreva como instrução para o usuário final.
+11. Documentação em português do Brasil, código em inglês. Maiúscula só no início da frase e em nomes próprios.
+12. Não cite outras ferramentas ou empresas como origem do Grin.
+
+### Exemplos reais já recusados
+
+| Evite | Use |
+|---|---|
+| Clareza para telas cheias de dados. | (sem slogan; título "Grin" e uma frase descritiva) |
+| Um conjunto de regras, peças e exemplos para construir telas de trabalho… | Grin é um design system para interfaces web. |
+| Design system para interfaces web: tokens, 25 componentes, padrões… | Ele reúne os tokens de estilo, os componentes e as regras de uso e de acessibilidade. |
+| HTML, CSS e JavaScript puros, sem dependências e sem etapa de build. | (remover; dizer só o necessário para instalar) |
+| 1. Baixe os arquivos. 2. Copie as pastas. 3. Adicione… | Como baixar o Grin e usá-lo num projeto. |
+| O que já vem pronto | Recursos dos componentes |
+| Quem usa os componentes do Grin recebe isto sem trabalho extra. | Comportamentos de acessibilidade implementados nos componentes do Grin. |
+| Seções que abrem | Acordeão |
+| A barra se recolhe sozinha abaixo de 1100 px. | Abaixo de 1100 px, a barra recolhe automaticamente. |
+| Toda ação funciona pelo teclado, numa ordem lógica. (checklist) | Garanta que todas as ações funcionem pelo teclado, com o foco na ordem de leitura. |
+
+### Exceção
+
+Os textos de interface dentro dos exemplos fictícios (por exemplo, os botões e mensagens do produto "Agenda") seguem a seção Escrita de `docs/patterns.html`, porque simulam o texto de um produto.
+
+### Antes de commitar texto
+
+Releia cada frase nova contra as regras acima. Se uma frase tiver dois-pontos seguidos de lista, um adjetivo de valor, uma metáfora ou falar com o usuário final, reescreva.
 
 ## Fontes de verdade
 
@@ -20,7 +62,7 @@ Textos da documentação: diretos e descritivos, sem frases de marketing nem slo
 - Nomes: classes, variáveis CSS, ícones e funções JS em inglês. Textos de interface e documentação em português do Brasil.
 - Classes: bloco, partes com hífen (`.card-header`), variações como classe extra (`.btn.primary`). Tons: `crit`, `warn`, `info`, `ok`, `brand`. Estados por atributos ARIA, não por classe.
 - Nenhuma informação só por cor. Texto a 4,5:1 (7:1 no alto contraste), interface a 3:1.
-- Movimento só como resposta a uma ação, de 120 a 220 ms, sempre desligado por `prefers-reduced-motion`.
+- Movimento só como resposta a uma ação, de 140 a 320 ms, sempre desligado por `prefers-reduced-motion`.
 - Não apague nem renomeie arquivos: o repositório tem um hook que bloqueia commits com remoções (proteção da cópia no Proton Drive do dono). Se precisar remover, pergunte ao dono.
 - Não troque a fonte, a cor da marca (`#8dc63f`) ou o nome sem o dono pedir.
 
@@ -28,7 +70,7 @@ Textos da documentação: diretos e descritivos, sem frases de marketing nem slo
 
 ```
 node tools/build-tokens.mjs      # se mexeu em tokens/
-node tools/check-contrast.mjs    # contraste nos três temas
+node tools/check-contrast.mjs    # contraste nos quatro temas
 node tools/check-markup.mjs      # toda classe usada existe no CSS e todo ícone existe
 ```
 
@@ -39,7 +81,3 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 - **Mudar uma cor:** escolha o passo certo da escala em `tokens/core/colors.json` (papéis dos passos na descrição do arquivo), mude o mapeamento em `tokens/semantic/colors.json` e nos dois temas em `tokens/themes/`, gere e confira o contraste.
 - **Novo componente:** siga "Novo componente" em `docs/components.html`.
 - **Novo ícone:** acrescente o desenho (viewBox 24, traço 2, estilo Lucide) em `ICONS` de `scripts/utils.js`.
-
-## Tom dos textos
-
-Textos da documentação: objetivos e diretos, em termos técnicos simples. Sem slogans, metáforas, frases de venda ou ênfases como "puro", "sem etapa de build", "pensado para". Diga o que é e como usar. Frases completas e afirmativas, sem dois-pontos para introduzir enumerações e sem listas dentro de uma frase ("1. … 2. …"); se for uma lista de verdade, use uma lista.
