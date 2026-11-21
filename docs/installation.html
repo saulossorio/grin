@@ -207,6 +207,7 @@ node tools/check-markup.mjs     # toda classe e ícone usados existem</code></pr
         <ul class="docs-list">
           <li>Barra lateral do Grin com <code>sidebar.js</code>. O botão redondo na borda recolhe e expande a barra, e no celular ela vira um drawer. Não crie outro botão de recolher.</li>
           <li>Logo com o nome e a versão da ferramenta numa <code>.tag</code> ao lado, como "Vezen 4.0.1".</li>
+          <li>O desenho do logo cabe num quadrado de 24 × 24 px. Um desenho mais largo ou mais alto que o quadrado é reduzido até caber, mantém a proporção e fica centralizado. Use <code>width</code> e <code>height</code> de 24 px no SVG, com o <code>viewBox</code> do desenho.</li>
           <li>Botão de tema com <code>data-theme-toggle</code> no rodapé da barra lateral. O <code>theme.js</code> mostra o sol com "Tema claro" no tema escuro e a lua com "Tema escuro" no tema claro.</li>
           <li>Painel Aparência (<code>data-appearance</code>) com tema, alto contraste, densidade e tamanho da fonte. O botão fica na barra superior ou no rodapé da barra lateral, logo abaixo do botão de tema.</li>
           <li>Assinatura (<code>.app-footer</code>) com o nome e a versão da ferramenta, o autor e a versão do Grin usada. Ela fica só na tela inicial e nas páginas de documentação ou ajuda, nunca nas telas de trabalho (listas, tabelas, formulários, análises). Ela segue o fluxo da página, no fim do conteúdo, e rola com ele. Nunca use <code>position: fixed</code> ou <code>sticky</code>, nem uma faixa presa embaixo da janela.</li>

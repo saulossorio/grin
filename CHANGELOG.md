@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.24 · 21/11/2026
+- Regra do logo em "Obrigatório em toda ferramenta" e em AGENTS.md. O desenho do logo cabe num quadrado de 24 × 24 px, mantém a proporção e fica centralizado, para que todas as ferramentas tenham o logo do mesmo tamanho na barra lateral.
+
 ## 2.23 · 21/11/2026
 - Regra da assinatura (`.app-footer`). Ela fica só na tela inicial e nas páginas de documentação ou ajuda, nunca nas telas de trabalho. Fica no fim do conteúdo e rola com ele, e nunca é fixa. A regra está em Instalação, em Componentes, em AGENTS.md e no CSS do componente.
 - A assinatura saiu dos exemplos de lista e de formulário, que são telas de trabalho. Continua no tutorial, que é uma página de ajuda.
