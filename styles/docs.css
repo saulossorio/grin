@@ -7,11 +7,6 @@
 .docs-search-button:hover { border-color: var(--border-strong); background: var(--surface); }
 .docs-search-button svg { width: 18px; height: 18px; }
 .docs-search-button span { flex: 1 1 auto; }
-.docs-appearance { width: max-content; min-width: 288px; gap: 16px; }
-.docs-appearance .select { width: 100%; }
-.docs-appearance .segmented { width: 100%; flex-wrap: nowrap; }
-.docs-appearance .segmented label { flex: 1 1 0; }
-.docs-appearance .segmented span { width: 100%; justify-content: center; padding: 0 8px; }
 
 /* Search dialog */
 .docs-search { width: min(640px, calc(100vw - 32px)); margin-top: 12vh; }

@@ -33,7 +33,7 @@ const MODULES = [
   'scripts/utils.js', 'scripts/theme.js', 'scripts/animations.js',
   'components/popover/popover.js', 'components/slider/slider.js', 'components/sidebar/sidebar.js',
   'components/dialog/dialog.js', 'components/tabs/tabs.js', 'components/toast/toast.js', 'components/accordion/accordion.js',
-  'components/combobox/combobox.js', 'components/dropzone/dropzone.js', 'components/glossary/glossary.js',
+  'components/appearance/appearance.js', 'components/combobox/combobox.js', 'components/dropzone/dropzone.js', 'components/glossary/glossary.js',
   'components/toc/toc.js', 'components/tour/tour.js',
 ];
 const blocks = MODULES.map((p) => {

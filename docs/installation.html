@@ -133,7 +133,7 @@ git clone https://github.com/saulossorio/grin.git
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Arquivo</th><th scope="col">Faz</th><th scope="col">Como usar</th></tr></thead>
           <tbody>
-            <tr><td><code>scripts/theme.js</code></td><td>Tema, alto contraste, densidade e tamanho da fonte, guardados no navegador.</td><td>Atributos <code>data-theme-select</code>, <code>data-theme-toggle</code>, <code>data-contrast-toggle</code>, <code>data-set-density</code>, <code>data-set-scale</code>, ou as funções abaixo.</td></tr>
+            <tr><td><code>scripts/theme.js</code></td><td>Tema, alto contraste, densidade e tamanho da fonte, guardados no navegador. Troca o ícone do botão de tema entre sol e lua.</td><td>Atributos <code>data-theme-select</code>, <code>data-theme-toggle</code>, <code>data-contrast-toggle</code>, <code>data-set-density</code>, <code>data-set-scale</code>, ou as funções abaixo.</td></tr>
             <tr><td><code>scripts/utils.js</code></td><td>Ícones, contraste WCAG, leitura de tokens.</td><td><code>&lt;i data-icon="search"&gt;&lt;/i&gt;</code> + <code>paintIcons()</code>; <code>icon('search', 16)</code>; <code>contrast(a, b)</code>; <code>token('primary')</code>.</td></tr>
             <tr><td><code>components/sidebar/sidebar.js</code></td><td>Recolhe e expande a barra lateral. Abaixo de 1100 px, recolhe automaticamente. No celular, vira um drawer aberto pelo botão de menu.</td><td>Automático. Botão próprio: <code>[data-sidebar-toggle]</code>.</td></tr>
             <tr><td><code>components/dialog/dialog.js</code></td><td>Abre e fecha modal e drawer.</td><td><code>data-open="id"</code> e <code>data-close</code>.</td></tr>
@@ -144,6 +144,7 @@ git clone https://github.com/saulossorio/grin.git
             <tr><td><code>components/slider/slider.js</code></td><td>Preenchimento, valor e marcas do slider.</td><td>Automático em <code>input.slider</code>; marcas com <code>data-stops</code>.</td></tr>
             <tr><td><code>components/glossary/glossary.js</code></td><td>Filtro por letra e busca no glossário.</td><td>Automático em <code>.glossary</code>.</td></tr>
             <tr><td><code>components/toc/toc.js</code></td><td>Marca a seção sendo lida no índice.</td><td>Automático em <code>.toc</code>.</td></tr>
+            <tr><td><code>components/appearance/appearance.js</code></td><td>Preenche o painel Aparência com tema, alto contraste, densidade e tamanho da fonte.</td><td>Automático em <code>[data-appearance]</code>; <code>mountAppearance()</code> para painéis criados depois.</td></tr>
             <tr><td><code>components/combobox/combobox.js</code></td><td>Filtra opções, teclado e tags do combobox.</td><td>Automático em <code>.combobox</code>; evento <code>grin:change</code>.</td></tr>
             <tr><td><code>components/dropzone/dropzone.js</code></td><td>Estado ao arrastar e leitura dos arquivos.</td><td>Automático em <code>.dropzone</code>; evento <code>grin:files</code>.</td></tr>
             <tr><td><code>components/tour/tour.js</code></td><td>Tour guiado.</td><td><code>startTour([{ target, title, text }])</code></td></tr>
@@ -201,6 +202,17 @@ node tools/check-markup.mjs     # toda classe e ícone usados existem</code></pr
       </section>
       <section class="docs-section" id="adopt" aria-labelledby="t-adopt">
         <header><h2 id="t-adopt">Adotar o Grin num projeto existente</h2><p>Para ferramentas que já existem e vão trocar o próprio estilo pelo Grin.</p></header>
+        <h3 id="required">Obrigatório em toda ferramenta</h3>
+        <p class="text-secondary">Toda ferramenta feita com o Grin tem estas partes, iguais às dos <a href="../examples/dashboard.html">exemplos</a>. Não substitua nenhuma por uma versão própria.</p>
+        <ul class="docs-list">
+          <li>Barra lateral do Grin com <code>sidebar.js</code>. O botão redondo na borda recolhe e expande a barra, e no celular ela vira um drawer. Não crie outro botão de recolher.</li>
+          <li>Logo com o nome e a versão da ferramenta numa <code>.tag</code> ao lado, como "Vezen 4.0.1".</li>
+          <li>Botão de tema com <code>data-theme-toggle</code> no rodapé da barra lateral. O <code>theme.js</code> mostra o sol com "Tema claro" no tema escuro e a lua com "Tema escuro" no tema claro.</li>
+          <li>Painel Aparência (<code>data-appearance</code>) com tema, alto contraste, densidade e tamanho da fonte. O botão fica na barra superior ou no rodapé da barra lateral, logo abaixo do botão de tema.</li>
+          <li>Assinatura no fim de cada tela (<code>.app-footer</code>), com o nome e a versão da ferramenta, o autor e a versão do Grin usada.</li>
+          <li>Ícones do Grin para tudo o que é interface (navegação, ações, estados). Ícones próprios só para conceitos da ferramenta que o Grin não tem.</li>
+          <li>Fontes Geist e Geist Mono, só tokens semânticos de cor e os quatro temas funcionando.</li>
+        </ul>
         <h3>Copiar ou ligar</h3>
         <div class="table-wrap"><table class="table docs-table">
           <thead><tr><th scope="col">Forma</th><th scope="col">Quando usar</th><th scope="col">O que acontece quando o Grin muda</th></tr></thead>
@@ -237,6 +249,7 @@ Grin.paintIcons(novoTrecho);   // depois de inserir HTML com &lt;i data-icon&gt;
           <li class="step"><span class="step-title">Faça a tabela de equivalências</span><div class="step-body"><p>Liste cada classe própria da ferramenta e a classe do Grin que a substitui. A busca desta documentação acha o componente pelo nome comum (modal, dropdown, tooltip).</p></div></li>
           <li class="step"><span class="step-title">Troque as cores pelos tokens</span><div class="step-body"><p>Toda cor escrita direto vira um token semântico, como <code>var(--crit-fg)</code>. Nenhuma cor literal fica no CSS da ferramenta.</p></div></li>
           <li class="step"><span class="step-title">Troque o markup, tela por tela</span><div class="step-body"><p>Copie a estrutura de cada componente desta documentação. Mantenha os atributos ARIA, porque o estilo dos estados depende deles.</p></div></li>
+          <li class="step"><span class="step-title">Monte as partes obrigatórias</span><div class="step-body"><p>Barra lateral do Grin, versão no logo, botão de tema, painel Aparência e assinatura, como em <a href="#required">Obrigatório em toda ferramenta</a>.</p></div></li>
           <li class="step"><span class="step-title">Apague o CSS antigo que sobrou</span><div class="step-body"><p>Fica só o CSS específico da ferramenta, como uma visualização própria, sempre com tokens do Grin.</p></div></li>
           <li class="step"><span class="step-title">Confira nos quatro temas</span><div class="step-body"><p>Claro e escuro, cada um com e sem alto contraste, na tela de 1200 px e no celular, com o checklist de <a href="accessibility.html#checklist">Acessibilidade</a>.</p></div></li>
         </ol>

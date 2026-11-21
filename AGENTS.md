@@ -81,6 +81,7 @@ Depois confira as páginas num servidor local (`python3 -m http.server`) nos tem
 
 - **Mudar uma cor:** escolha o passo certo da escala em `tokens/core/colors.json` (papéis dos passos na descrição do arquivo), mude o mapeamento em `tokens/semantic/colors.json` e nos dois temas em `tokens/themes/`, gere e confira o contraste.
 - **Novo componente:** siga "Novo componente" em `docs/components.html`. Se tiver JavaScript, inclua o arquivo em `MODULES` de `tools/bundle.mjs`.
+- **Partes obrigatórias em toda ferramenta feita com o Grin:** barra lateral do Grin com `sidebar.js` e o botão redondo de recolher (nunca um botão próprio), versão no logo (`.tag`), botão de tema com sol e lua (`data-theme-toggle`), painel Aparência (`data-appearance`: tema, alto contraste, densidade e fonte), assinatura `.app-footer` no fim de cada tela, ícones do Grin para a interface, Geist e tokens. Lista completa em "Obrigatório em toda ferramenta", em `docs/installation.html`.
 - **Adotar o Grin em outra ferramenta:** siga "Adotar o Grin num projeto existente" em `docs/installation.html`. Copie os arquivos de `dist/` de uma versão publicada em Releases, nunca do ramo principal.
 - **Publicar uma versão:** depois do commit e do build do Pages, crie a tag e a release: `git tag vX.Y && git push origin vX.Y && gh release create vX.Y --notes "…"` (as notas são a entrada do CHANGELOG).
 - **Novo ícone:** acrescente o desenho (viewBox 24, traço 2, estilo Lucide) em `ICONS` de `scripts/utils.js`.

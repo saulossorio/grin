@@ -4,13 +4,15 @@
 // Markup hooks (no extra JS needed):
 //   <select data-theme-select>               options: system, light, dark
 //   <button data-set-theme="dark">           sets a theme
-//   <button data-theme-toggle>               toggles light/dark; updates its .label text
+//   <button data-theme-toggle>               toggles light/dark; shows a sun ("Tema claro") in the dark theme and a moon ("Tema escuro") in the light theme
 //   <button data-contrast-toggle>            turns high contrast on/off; aria-pressed shows the state (or a checkbox switch: checked)
 //   <input type="radio" data-set-density value="comfortable|compact">
 //   <input type="radio" data-set-scale value="100|112|125">  or  <input type="range" class="slider" data-set-scale min="100" max="125" data-stops="100,112.5,125">
 //   (the slider moves freely while dragged and the font size changes once, on release, after it settles on a stop)
 // ?theme=dark and ?contrast=more in the URL set them on load (handy to share a preview). ?theme=hc = high contrast.
 // To avoid a flash of the wrong theme, also put the inline snippet from README.md in <head>.
+
+import { icon } from './utils.js';
 
 const KEY = 'grin';
 const read = (k, fallback) => { try { return localStorage.getItem(`${KEY}-${k}`) ?? fallback; } catch { return fallback; } };
@@ -63,7 +65,13 @@ export function sync() {
     // 'input' only repaints the slider; a 'change' here would call setScale again, in a loop
     if (el.type === 'range') { el.value = s === '112' ? '112.5' : s; el.dispatchEvent(new Event('input', { bubbles: true })); } else el.checked = el.value === s;
   });
-  document.querySelectorAll('[data-theme-toggle] .label').forEach((el) => { el.textContent = effectiveTheme() === 'dark' ? 'Tema claro' : 'Tema escuro'; });
+  const dark = effectiveTheme() === 'dark';
+  document.querySelectorAll('[data-theme-toggle]').forEach((el) => {
+    const label = dark ? 'Tema claro' : 'Tema escuro';
+    const text = el.querySelector('.label'); if (text) text.textContent = label; else el.setAttribute('aria-label', label);
+    const ic = el.querySelector('svg, i[data-icon]');
+    if (ic) { const size = +(ic.getAttribute('width') || ic.dataset.size || 16); ic.outerHTML = icon(dark ? 'sun' : 'moon', size); }
+  });
 }
 
 // Apply on load. The old 'hc' theme value becomes light + high contrast.

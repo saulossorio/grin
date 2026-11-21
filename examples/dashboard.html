@@ -25,11 +25,14 @@
 <script type="module" src="../components/dialog/dialog.js"></script>
 <script type="module" src="../components/tabs/tabs.js"></script>
 <script type="module" src="../components/sidebar/sidebar.js"></script>
+<script type="module" src="../components/popover/popover.js"></script>
+<script type="module" src="../components/appearance/appearance.js"></script>
+<script type="module" src="../components/slider/slider.js"></script>
 </head>
 <body>
 <div class="app">
   <nav class="sidebar" id="sidebar" aria-label="Navegação principal">
-    <a class="app-logo" href="../index.html"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
+    <a class="app-logo" href="../index.html"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">1.2</span></a>
     <div class="search"><i data-icon="search"></i><input class="input" type="search" aria-label="Buscar no aplicativo" placeholder="Buscar"></div>
     <a class="nav-item" href="#"><i data-icon="layout-grid"></i><span class="label">Painel</span></a>
     <a class="nav-item" href="#" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
@@ -40,12 +43,13 @@
     <div class="sidebar-footer">
       <div>
         <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
-        <button type="button" class="nav-item small" data-theme-toggle><i data-icon="contrast"></i><span class="label">Tema escuro</span></button>
-        <button type="button" class="nav-item small" data-sidebar-toggle aria-expanded="true"><i data-icon="sidebar"></i><span class="label">Recolher barra</span></button>
+        <button type="button" class="nav-item small" data-theme-toggle><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
+        <button type="button" class="nav-item small" aria-expanded="false" data-popover="appearance"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
       </div>
       <a class="account" href="#"><span class="avatar ok">MC</span><div><b>Marina Costa</b><small>marina@nortesul.com.br</small></div></a>
     </div>
   </nav>
+  <div class="popover appearance" id="appearance" data-appearance></div>
   <div class="app-main">
     <div class="page-header">
       <nav class="breadcrumb" aria-label="Você está em"><i data-icon="users"></i><a href="#">Pessoas</a><i data-icon="chevron-right"></i><span aria-current="page">Importação de novembro</span></nav>
@@ -82,6 +86,7 @@
         <div class="pagination"><span id="summary"></span><div class="pages"><button type="button" aria-current="page">1</button><button type="button" disabled>2</button></div></div>
       </section>
       <div class="bulk-bar-wrap" id="bulk" hidden><div class="bulk-bar" role="toolbar" aria-label="Ações para as linhas marcadas"><span class="bulk-bar-count" id="bulk-count"></span><span class="divider-v"></span><button type="button" class="btn xs"><i data-icon="pencil"></i>Editar em massa</button><button type="button" class="btn xs"><i data-icon="download"></i>Exportar</button><button type="button" class="btn xs danger" data-open="confirm-delete"><i data-icon="trash"></i><span id="bulk-delete">Excluir</span></button></div></div>
+      <footer class="app-footer"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.21</a></span></footer>
     </main>
   </div>
 </div>

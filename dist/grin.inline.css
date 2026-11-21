@@ -1,4 +1,4 @@
-/* Grin 2.20 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.21 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1773,3 +1773,20 @@ a.tab { text-decoration: none; }
   .page-title h1 { font-size: var(--text-2xl); }
   .page-description { font-size: var(--text-base); }
 }
+
+/* ---------- components/appearance/appearance.css ---------- */
+/* Grin appearance panel: theme, high contrast, density and font size. Filled by appearance.js. */
+.appearance { width: max-content; min-width: 288px; gap: 16px; }
+.appearance .select { width: 100%; }
+.appearance .segmented { width: 100%; flex-wrap: nowrap; }
+.appearance .segmented label { flex: 1 1 0; }
+.appearance .segmented span { width: 100%; justify-content: center; padding: 0 8px; }
+.appearance .slider-end.small { font-size: 12px; }
+.appearance .slider-end.large { font-size: 18px; }
+
+/* Signature at the end of every page of a tool: name, version and author, and the Grin version it uses */
+.app-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); color: var(--muted-foreground); font-size: var(--text-sm); }
+.app-footer b { color: var(--foreground); font-weight: var(--weight-semibold); }
+.app-footer > :last-child { margin-left: auto; }
+.app-footer a { color: inherit; }
+.app-footer a:hover { color: var(--foreground); }

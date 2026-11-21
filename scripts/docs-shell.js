@@ -5,6 +5,7 @@ import { icon, paintIcons } from './utils.js';
 import { sync } from './theme.js';
 import '../components/popover/popover.js';
 import '../components/slider/slider.js';
+import { mountAppearance } from '../components/appearance/appearance.js';
 import { initSidebar } from '../components/sidebar/sidebar.js';
 
 const PAGES = [
@@ -24,7 +25,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.20';
+export const VERSION = '2.21';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';
@@ -35,7 +36,7 @@ function buildNav(nav) {
     + PAGES.map(({ heading, items }) => (heading ? `<div class="nav-heading">${heading}</div>` : '') + items.map(([id, href, label, ic]) =>
       `<a class="nav-item" href="${base}${href}"${id === here ? ' aria-current="page"' : ''}>${icon(ic)}<span class="label">${label}</span></a>`).join('')).join('')
     + `<div class="sidebar-footer"><a class="nav-item small" href="https://github.com/saulossorio/grin">${icon('external-link')}<span class="label">Repositório</span></a>`
-    + `<button type="button" class="nav-item small" data-theme-toggle>${icon('contrast')}<span class="label">Tema escuro</span></button></div>`;
+    + `<button type="button" class="nav-item small" data-theme-toggle>${icon('moon')}<span class="label">Tema escuro</span></button></div>`;
 }
 
 function buildTop(top) {
@@ -43,20 +44,7 @@ function buildTop(top) {
   top.innerHTML = `<button type="button" class="btn icon ghost docs-menu-button" id="docs-menu-button" aria-expanded="false" aria-controls="docs-nav" aria-label="Abrir navegação">${icon('sidebar')}</button><span class="docs-crumb">${top.dataset.title ?? ''}</span><span class="spacer"></span>
     <button type="button" class="docs-search-button" id="docs-search-open" data-base="${base}">${icon('search')}<span>Buscar no Grin</span><kbd>⌘K</kbd></button>
     <button type="button" class="btn icon" aria-label="Aparência" data-tooltip="Aparência" aria-expanded="false" data-popover="docs-appearance">${icon('sliders')}</button>
-    <div class="popover docs-appearance" id="docs-appearance" role="dialog" aria-label="Aparência">
-      <span class="popover-title">Aparência</span>
-      <div class="field"><label class="field-label" for="docs-theme">Tema</label><select class="select" id="docs-theme" data-theme-select><option value="system">Do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select></div>
-      <label class="switch"><input type="checkbox" role="switch" data-contrast-toggle>Alto contraste</label>
-      <div class="field"><span class="field-label" id="docs-density-label">Densidade</span><div class="segmented" role="radiogroup" aria-labelledby="docs-density-label">
-        <label><input type="radio" name="docs-density" value="comfortable" data-set-density><span>Confortável</span></label>
-        <label><input type="radio" name="docs-density" value="compact" data-set-density><span>Compacta</span></label>
-      </div></div>
-      <div class="slider-field">
-        <div class="slider-head"><label class="field-label" for="docs-scale">Tamanho da fonte</label><output for="docs-scale" data-format="percent">100%</output></div>
-        <div class="slider-row"><span class="slider-end" style="font-size:12px" aria-hidden="true">A</span><input class="slider" type="range" id="docs-scale" min="100" max="125" step="any" data-stops="100,112.5,125" value="100" data-set-scale><span class="slider-end" style="font-size:18px" aria-hidden="true">A</span></div>
-        <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
-      </div>
-    </div>`;
+    <div class="popover appearance" id="docs-appearance" data-appearance></div>`;
 }
 
 /* Search: ⌘K or "/" opens it. The index is read from the documentation pages themselves (every section with an id,
@@ -201,6 +189,7 @@ function init() {
   const nav = document.querySelector('[data-docs-nav]'); if (nav) buildNav(nav);
   const top = document.querySelector('[data-docs-top]'); if (top) buildTop(top);
   buildFooter();
+  mountAppearance();
   paintIcons();
   sync();
   initSidebar();

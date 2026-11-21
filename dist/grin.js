@@ -1,8 +1,8 @@
-/* Grin 2.20 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.21 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.20';
+Grin.version = '2.21';
 
 // ---------- scripts/utils.js ----------
 {
@@ -138,7 +138,7 @@ Object.assign(Grin, { ICONS, icon, paintIcons, parseColor, contrast, toHex, toke
 // Markup hooks (no extra JS needed):
 //   <select data-theme-select>               options: system, light, dark
 //   <button data-set-theme="dark">           sets a theme
-//   <button data-theme-toggle>               toggles light/dark; updates its .label text
+//   <button data-theme-toggle>               toggles light/dark; shows a sun ("Tema claro") in the dark theme and a moon ("Tema escuro") in the light theme
 //   <button data-contrast-toggle>            turns high contrast on/off; aria-pressed shows the state (or a checkbox switch: checked)
 //   <input type="radio" data-set-density value="comfortable|compact">
 //   <input type="radio" data-set-scale value="100|112|125">  or  <input type="range" class="slider" data-set-scale min="100" max="125" data-stops="100,112.5,125">
@@ -146,6 +146,7 @@ Object.assign(Grin, { ICONS, icon, paintIcons, parseColor, contrast, toHex, toke
 // ?theme=dark and ?contrast=more in the URL set them on load (handy to share a preview). ?theme=hc = high contrast.
 // To avoid a flash of the wrong theme, also put the inline snippet from README.md in <head>.
 
+const { icon } = Grin;
 const KEY = 'grin';
 const read = (k, fallback) => { try { return localStorage.getItem(`${KEY}-${k}`) ?? fallback; } catch { return fallback; } };
 const write = (k, v) => { try { localStorage.setItem(`${KEY}-${k}`, v); } catch { /* private mode: lasts for this visit */ } };
@@ -197,7 +198,13 @@ function sync() {
     // 'input' only repaints the slider; a 'change' here would call setScale again, in a loop
     if (el.type === 'range') { el.value = s === '112' ? '112.5' : s; el.dispatchEvent(new Event('input', { bubbles: true })); } else el.checked = el.value === s;
   });
-  document.querySelectorAll('[data-theme-toggle] .label').forEach((el) => { el.textContent = effectiveTheme() === 'dark' ? 'Tema claro' : 'Tema escuro'; });
+  const dark = effectiveTheme() === 'dark';
+  document.querySelectorAll('[data-theme-toggle]').forEach((el) => {
+    const label = dark ? 'Tema claro' : 'Tema escuro';
+    const text = el.querySelector('.label'); if (text) text.textContent = label; else el.setAttribute('aria-label', label);
+    const ic = el.querySelector('svg, i[data-icon]');
+    if (ic) { const size = +(ic.getAttribute('width') || ic.dataset.size || 16); ic.outerHTML = icon(dark ? 'sun' : 'moon', size); }
+  });
 }
 
 // Apply on load. The old 'hc' theme value becomes light + high contrast.
@@ -599,6 +606,41 @@ document.addEventListener('click', (e) => {
   }
   animate(details, opening);
 });
+}
+
+// ---------- components/appearance/appearance.js ----------
+{
+// Grin appearance panel (also: acessibilidade, preferências de tela, settings). The same four controls in every tool:
+// theme, high contrast, density and font size. Markup: an empty <div class="popover appearance" id="…" data-appearance>
+// opened by a button with data-popover="…" (popover.js). This script fills it; theme.js and slider.js make it work.
+// Every tool built with Grin has this panel, in the top bar or in the sidebar footer next to the theme button.
+const { paintSliders } = Grin;
+const { sync } = Grin;
+let n = 0;
+function mountAppearance(root = document) {
+  root.querySelectorAll('[data-appearance]:not([data-ready])').forEach((panel) => {
+    const k = `grin-ap${n++}`;
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-label', 'Aparência');
+    panel.innerHTML = `<span class="popover-title">Aparência</span>
+      <div class="field"><label class="field-label" for="${k}-theme">Tema</label><select class="select" id="${k}-theme" data-theme-select><option value="system">Do sistema</option><option value="light">Claro</option><option value="dark">Escuro</option></select></div>
+      <label class="switch"><input type="checkbox" role="switch" data-contrast-toggle>Alto contraste</label>
+      <div class="field"><span class="field-label" id="${k}-dl">Densidade</span><div class="segmented" role="radiogroup" aria-labelledby="${k}-dl">
+        <label><input type="radio" name="${k}-density" value="comfortable" data-set-density><span>Confortável</span></label>
+        <label><input type="radio" name="${k}-density" value="compact" data-set-density><span>Compacta</span></label>
+      </div></div>
+      <div class="slider-field">
+        <div class="slider-head"><label class="field-label" for="${k}-scale">Tamanho da fonte</label><output for="${k}-scale" data-format="percent">100%</output></div>
+        <div class="slider-row"><span class="slider-end small" aria-hidden="true">A</span><input class="slider" type="range" id="${k}-scale" min="100" max="125" step="any" data-stops="100,112.5,125" value="100" data-set-scale><span class="slider-end large" aria-hidden="true">A</span></div>
+        <div class="slider-ticks" aria-hidden="true"><span data-value="100">100%</span><span data-value="112.5">112,5%</span><span data-value="125">125%</span></div>
+      </div>`;
+    panel.dataset.ready = '';
+  });
+  sync();
+  paintSliders(root);
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => mountAppearance(), { once: true }); else mountAppearance();
+Object.assign(Grin, { mountAppearance });
 }
 
 // ---------- components/combobox/combobox.js ----------

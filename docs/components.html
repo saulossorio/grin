@@ -41,7 +41,7 @@ document.addEventListener('click', (e) => {
     <header class="topbar" data-docs-top data-title="Componentes"></header>
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Componentes</h1>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#input-group">Prefixo e sufixo</a><a href="#combobox">Combobox e select</a><a href="#dropzone">Upload</a><a href="#banner">Banner</a><a href="#action-card">Card de ação</a><a href="#meter">Medidor</a><a href="#chart">Gráfico</a><a href="#formula">Fórmula</a><a href="#timeline">Histórico</a><a href="#new">Novo componente</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#button">Botão</a><a href="#field">Campo</a><a href="#choice">Checkbox e rádio</a><a href="#badge">Badge</a><a href="#chip">Chip</a><a href="#segmented">Segmentado</a><a href="#slider">Slider</a><a href="#tabs">Abas</a><a href="#alert">Alerta</a><a href="#toast">Toast</a><a href="#card">Card</a><a href="#table">Tabela</a><a href="#menu">Menu</a><a href="#dialog">Modal e drawer</a><a href="#empty">Estado vazio</a><a href="#shell">Navegação</a><a href="#appearance">Aparência e assinatura</a><a href="#help">Tooltip e popover</a><a href="#prose">Texto corrido</a><a href="#steps">Stepper</a><a href="#accordion">Acordeão</a><a href="#progress">Progresso</a><a href="#glossary">Glossário</a><a href="#toc">Índice</a><a href="#tour">Tour</a><a href="#input-group">Prefixo e sufixo</a><a href="#combobox">Combobox e select</a><a href="#dropzone">Upload</a><a href="#banner">Banner</a><a href="#action-card">Card de ação</a><a href="#meter">Medidor</a><a href="#chart">Gráfico</a><a href="#formula">Fórmula</a><a href="#timeline">Histórico</a><a href="#new">Novo componente</a></nav>
       </section>
 
       <section class="docs-section" id="button" aria-labelledby="t-button">
@@ -347,6 +347,19 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </nav>
         </div></div>
         <p class="class-list"><code>.app</code> · <code>.sidebar</code> (<code>.collapsed</code>) · <code>.sidebar-toggle</code> ou <code>[data-sidebar-toggle]</code> · <code>components/sidebar/sidebar.js</code> (com <code>data-sidebar="manual"</code> na barra, não começa sozinho: chame <code>initSidebar()</code>) · <code>.app-logo</code> · <code>.app-logo-mark</code> · <code>.nav-heading</code> · <code>.nav-divider</code> · <code>.nav-item</code> (<code>.small</code> no rodapé) · <code>.nav-sub</code> · <code>.nav-count</code> · <code>.sidebar-footer</code> · <code>.account</code> · <code>.app-main</code> · <code>.topbar</code> (com <code>.search</code> e <code>.user-button</code>) · <code>.sidebar-menu-button</code> (celular) · <code>.with-aside</code> e <code>.aside-panel</code> · <code>.page-header</code> · <code>.breadcrumb</code> · <code>.page-title-row</code> · <code>.page-title</code> · <code>.page-description</code> · <code>.toolbar</code> · <code>.page-content</code></p>
+      </section>
+
+      <section class="docs-section" id="appearance" aria-labelledby="t-appearance">
+        <header><h2 id="t-appearance">Aparência, tema e assinatura</h2><p class="aka">Também chamado: acessibilidade, preferências de tela, settings, modo escuro, dark mode, rodapé, assinatura, versão</p></header>
+        <div class="demo" data-code><div class="demo-stage column" style="align-items:flex-start;min-height:380px">
+<div class="row" style="gap:8px">
+  <button type="button" class="nav-item small" data-theme-toggle style="width:auto"><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
+  <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
+</div>
+<div class="popover appearance" id="ex-appearance" data-appearance></div>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.21</a></span></footer>
+        </div></div>
+        <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta: veja <a href="installation.html#required">Instalação</a>.</p>
       </section>
 
       <section class="docs-section" id="help" aria-labelledby="t-help">

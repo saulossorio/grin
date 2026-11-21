@@ -1,5 +1,13 @@
 # Mudanças
 
+## 2.21 · 21/11/2026
+Partes obrigatórias em toda ferramenta feita com o Grin, para que todas tenham o mesmo comportamento básico.
+- Nova lista "Obrigatório em toda ferramenta" em Instalação, também em AGENTS.md. Ela pede barra lateral do Grin, versão no logo, botão de tema, painel Aparência, assinatura, ícones do Grin, Geist e tokens.
+- Botão de tema com sol e lua. O `theme.js` mostra o sol com "Tema claro" no tema escuro e a lua com "Tema escuro" no tema claro. Antes era um ícone de contraste fixo.
+- Painel Aparência como componente (`components/appearance/appearance.js`, `[data-appearance]`), com tema, alto contraste, densidade e tamanho da fonte. Antes existia só na documentação.
+- Assinatura no fim de cada tela de uma ferramenta (`.app-footer`).
+- Exemplos de lista, formulário e tutorial com as partes obrigatórias. Saiu o botão próprio de recolher a barra do exemplo de lista.
+
 ## 2.20 · 21/11/2026
 Correções e acréscimos encontrados ao aplicar o Grin no Vezen.
 - Correção: os scripts quebravam quando um evento chegava direto ao `document` (sem elemento de origem). Todos os `closest` e `matches` sobre o alvo do evento passaram a ser seguros.
