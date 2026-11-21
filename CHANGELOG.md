@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.23 · 21/11/2026
+- Regra da assinatura (`.app-footer`). Ela fica só na tela inicial e nas páginas de documentação ou ajuda, nunca nas telas de trabalho. Fica no fim do conteúdo e rola com ele, e nunca é fixa. A regra está em Instalação, em Componentes, em AGENTS.md e no CSS do componente.
+- A assinatura saiu dos exemplos de lista e de formulário, que são telas de trabalho. Continua no tutorial, que é uma página de ajuda.
+
 ## 2.22 · 21/11/2026
 - Correção: ao carregar, `theme.js` apagava o `data-theme` quando não havia escolha guardada no Grin. Uma ferramenta com controle de tema próprio, aplicado antes do Grin carregar, voltava para o tema do sistema. Agora o `theme.js` só aplica uma escolha guardada.
 

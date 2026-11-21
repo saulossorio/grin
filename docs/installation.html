@@ -209,7 +209,7 @@ node tools/check-markup.mjs     # toda classe e ícone usados existem</code></pr
           <li>Logo com o nome e a versão da ferramenta numa <code>.tag</code> ao lado, como "Vezen 4.0.1".</li>
           <li>Botão de tema com <code>data-theme-toggle</code> no rodapé da barra lateral. O <code>theme.js</code> mostra o sol com "Tema claro" no tema escuro e a lua com "Tema escuro" no tema claro.</li>
           <li>Painel Aparência (<code>data-appearance</code>) com tema, alto contraste, densidade e tamanho da fonte. O botão fica na barra superior ou no rodapé da barra lateral, logo abaixo do botão de tema.</li>
-          <li>Assinatura no fim de cada tela (<code>.app-footer</code>), com o nome e a versão da ferramenta, o autor e a versão do Grin usada.</li>
+          <li>Assinatura (<code>.app-footer</code>) com o nome e a versão da ferramenta, o autor e a versão do Grin usada. Ela fica só na tela inicial e nas páginas de documentação ou ajuda, nunca nas telas de trabalho (listas, tabelas, formulários, análises). Ela segue o fluxo da página, no fim do conteúdo, e rola com ele. Nunca use <code>position: fixed</code> ou <code>sticky</code>, nem uma faixa presa embaixo da janela.</li>
           <li>Ícones do Grin para tudo o que é interface (navegação, ações, estados). Ícones próprios só para conceitos da ferramenta que o Grin não tem.</li>
           <li>Fontes Geist e Geist Mono, só tokens semânticos de cor e os quatro temas funcionando.</li>
         </ul>
@@ -249,7 +249,7 @@ Grin.paintIcons(novoTrecho);   // depois de inserir HTML com &lt;i data-icon&gt;
           <li class="step"><span class="step-title">Faça a tabela de equivalências</span><div class="step-body"><p>Liste cada classe própria da ferramenta e a classe do Grin que a substitui. A busca desta documentação acha o componente pelo nome comum (modal, dropdown, tooltip).</p></div></li>
           <li class="step"><span class="step-title">Troque as cores pelos tokens</span><div class="step-body"><p>Toda cor escrita direto vira um token semântico, como <code>var(--crit-fg)</code>. Nenhuma cor literal fica no CSS da ferramenta.</p></div></li>
           <li class="step"><span class="step-title">Troque o markup, tela por tela</span><div class="step-body"><p>Copie a estrutura de cada componente desta documentação. Mantenha os atributos ARIA, porque o estilo dos estados depende deles.</p></div></li>
-          <li class="step"><span class="step-title">Monte as partes obrigatórias</span><div class="step-body"><p>Barra lateral do Grin, versão no logo, botão de tema, painel Aparência e assinatura, como em <a href="#required">Obrigatório em toda ferramenta</a>.</p></div></li>
+          <li class="step"><span class="step-title">Monte as partes obrigatórias</span><div class="step-body"><p>Barra lateral do Grin, versão no logo, botão de tema e painel Aparência em todas as telas, e assinatura só na tela inicial e na documentação, como em <a href="#required">Obrigatório em toda ferramenta</a>.</p></div></li>
           <li class="step"><span class="step-title">Apague o CSS antigo que sobrou</span><div class="step-body"><p>Fica só o CSS específico da ferramenta, como uma visualização própria, sempre com tokens do Grin.</p></div></li>
           <li class="step"><span class="step-title">Confira nos quatro temas</span><div class="step-body"><p>Claro e escuro, cada um com e sem alto contraste, na tela de 1200 px e no celular, com o checklist de <a href="accessibility.html#checklist">Acessibilidade</a>.</p></div></li>
         </ol>

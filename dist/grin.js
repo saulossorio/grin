@@ -1,8 +1,8 @@
-/* Grin 2.22 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.23 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.22';
+Grin.version = '2.23';
 
 // ---------- scripts/utils.js ----------
 {
@@ -615,7 +615,7 @@ document.addEventListener('click', (e) => {
 // Grin appearance panel (also: acessibilidade, preferências de tela, settings). The same four controls in every tool:
 // theme, high contrast, density and font size. Markup: an empty <div class="popover appearance" id="…" data-appearance>
 // opened by a button with data-popover="…" (popover.js). This script fills it; theme.js and slider.js make it work.
-// Every tool built with Grin has this panel, in the top bar or in the sidebar footer next to the theme button.
+// Every tool built with Grin has this panel on every screen, in the top bar or in the sidebar footer next to the theme button.
 const { paintSliders } = Grin;
 const { sync } = Grin;
 let n = 0;

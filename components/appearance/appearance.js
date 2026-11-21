@@ -1,7 +1,7 @@
 // Grin appearance panel (also: acessibilidade, preferências de tela, settings). The same four controls in every tool:
 // theme, high contrast, density and font size. Markup: an empty <div class="popover appearance" id="…" data-appearance>
 // opened by a button with data-popover="…" (popover.js). This script fills it; theme.js and slider.js make it work.
-// Every tool built with Grin has this panel, in the top bar or in the sidebar footer next to the theme button.
+// Every tool built with Grin has this panel on every screen, in the top bar or in the sidebar footer next to the theme button.
 import { paintSliders } from '../slider/slider.js';
 import { sync } from '../../scripts/theme.js';
 

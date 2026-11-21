@@ -7,7 +7,9 @@
 .appearance .slider-end.small { font-size: 12px; }
 .appearance .slider-end.large { font-size: 18px; }
 
-/* Signature at the end of every page of a tool: name, version and author, and the Grin version it uses */
+/* Signature: name, version and author of the tool, and the Grin version it uses. Only on the start screen and on
+   documentation or help pages, never on working screens. Last element of the page content, scrolling with it:
+   never position: fixed or sticky, never a strip pinned to the bottom of the window. */
 .app-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); color: var(--muted-foreground); font-size: var(--text-sm); }
 .app-footer b { color: var(--foreground); font-weight: var(--weight-semibold); }
 .app-footer > :last-child { margin-left: auto; }
