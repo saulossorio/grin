@@ -118,6 +118,9 @@ document.addEventListener('click', (e) => {
 <span class="count">12</span>
 <span class="status"><span class="dot ok"></span>Salvo agora</span>
 <span class="status"><span class="dot warn"></span>Com pendências</span>
+<span class="badge ok"><i data-icon="shield-check"></i>Oficial</span>
+<span class="badge warn"><i data-icon="approx"></i>Estimativa de terceiros</span>
+<span class="badge crit"><i data-icon="dice"></i>Palpite</span>
 <span class="delta ok">+46</span>
 <span class="delta crit">8 críticas</span>
 <span class="avatar ok">AL</span>
@@ -259,8 +262,9 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </div>
 <div class="menu" role="menu" aria-label="Origem do dado">
   <div class="menu-header">Origem do dado</div>
-  <button type="button" class="menu-item" role="menuitemradio" aria-checked="true"><span class="menu-label">Oficial<small>Balanço publicado pela empresa</small></span></button>
-  <button type="button" class="menu-item" role="menuitemradio" aria-checked="false"><span class="menu-label">Terceiros<small>Relatório de mercado</small></span></button>
+  <button type="button" class="menu-item" role="menuitemradio" aria-checked="true"><span class="menu-icon ok"><i data-icon="shield-check"></i></span><span class="menu-label">Oficial<small>Documento oficial, como balanço publicado ou CVM.</small></span></button>
+  <button type="button" class="menu-item" role="menuitemradio" aria-checked="false"><span class="menu-icon warn"><i data-icon="approx"></i></span><span class="menu-label">Estimativa de terceiros<small>Número calculado por outra empresa, sem documento oficial.</small></span></button>
+  <button type="button" class="menu-item" role="menuitemradio" aria-checked="false"><span class="menu-icon crit"><i data-icon="dice"></i></span><span class="menu-label">Palpite<small>Estimativa própria ou de um colega, sem fonte.</small></span></button>
 </div>
         </div></div>
         <p class="class-list"><code>.menu</code> · <code>.menu-header</code> · <code>.menu-item</code> (<code>.danger</code>; <code>small</code> para a segunda linha; <code>aria-checked</code> em itens de escolha) · <code>.menu-label</code> · <code>.menu-separator</code></p>
@@ -495,14 +499,16 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <div class="combobox">
     <div class="combobox-control"><input class="combobox-input" id="cb-origin" aria-controls="cb-origin-list" readonly></div>
     <ul class="combobox-list" id="cb-origin-list">
-      <li class="combobox-option" data-value="oficial" aria-selected="true">Oficial<small>Balanço publicado pela empresa</small></li>
-      <li class="combobox-option" data-value="terceiros">Terceiros<small>Relatório de mercado</small></li>
-      <li class="combobox-option" data-value="estimado">Estimado<small>Calculado pelo modelo</small></li>
+      <li class="combobox-option" data-value="oficial" aria-selected="true"><span class="combobox-icon ok"><i data-icon="shield-check"></i></span>Oficial<small>Documento oficial, como balanço publicado ou CVM.</small></li>
+      <li class="combobox-option" data-value="terceiros"><span class="combobox-icon warn"><i data-icon="approx"></i></span>Estimativa de terceiros<small>Número calculado por outra empresa, sem documento oficial.</small></li>
+      <li class="combobox-option" data-value="palpite"><span class="combobox-icon crit"><i data-icon="dice"></i></span>Palpite<small>Estimativa própria ou de um colega, sem fonte.</small></li>
+      <li class="combobox-option" data-value="enquadramento"><span class="combobox-icon info"><i data-icon="ruler"></i></span>Faixa legal do enquadramento<small>Limites de receita do porte da empresa.</small></li>
+      <li class="combobox-option" data-value="estimado"><span class="combobox-icon info"><i data-icon="calculator"></i></span>Estimada pela ferramenta<small>Calculada pelo modelo a partir de outros dados.</small></li>
     </ul>
   </div>
 </div>
         </div></div>
-        <p class="class-list"><code>.combobox</code> (<code>.multiple</code>; com <code>input[readonly]</code> vira um select com a lista do Grin no lugar da lista do sistema) · <code>.combobox-control</code> · <code>.combobox-input</code> · <code>.combobox-list</code> · <code>.combobox-group</code> · <code>.combobox-option</code> (<code>small</code>) · <code>.combobox-tag</code> · evento <code>grin:change</code> · <code>components/combobox/combobox.js</code></p>
+        <p class="class-list"><code>.combobox</code> (<code>.multiple</code>; com <code>input[readonly]</code> vira um select com a lista do Grin no lugar da lista do sistema) · <code>.combobox-control</code> · <code>.combobox-input</code> · <code>.combobox-list</code> · <code>.combobox-group</code> · <code>.combobox-option</code> (<code>small</code>; <code>.combobox-icon</code> + tom para ícone) · <code>.combobox-tag</code> · evento <code>grin:change</code> · <code>components/combobox/combobox.js</code></p>
       </section>
 
       <section class="docs-section" id="dropzone" aria-labelledby="t-dropzone">
@@ -609,7 +615,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </ol>
       </section>
 
-      <footer class="docs-footer"><span>Grin 2.15</span><a href="../index.html">Voltar à visão geral</a></footer>
+      <footer class="docs-footer"><span>Grin 2.16</span><a href="../index.html">Voltar à visão geral</a></footer>
     </main>
   </div>
 </div>

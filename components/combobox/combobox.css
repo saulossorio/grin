@@ -14,10 +14,10 @@
 .combobox-tag button:hover { background: var(--hover); }
 .combobox-tag.leaving { animation: grin-scale-in var(--dur-fast) var(--ease) reverse forwards; }
 /* Select: the same list without typing; the field shows the choice and the whole control opens it */
-.combobox.select .combobox-input { cursor: pointer; caret-color: transparent; }
-.combobox.select .combobox-control { cursor: pointer; }
-.combobox.select .combobox-option[aria-selected="true"]::after { content: ''; position: absolute; right: 14px; top: 50%; width: 5px; height: 10px; margin-top: -7px; border: solid var(--brand-fg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
-.combobox.select .combobox-option { position: relative; padding-right: 36px; }
+.combobox.listbox .combobox-input { cursor: pointer; caret-color: transparent; }
+.combobox.listbox .combobox-control { cursor: pointer; }
+.combobox.listbox .combobox-option[aria-selected="true"]::after { content: ''; position: absolute; right: 14px; top: 50%; width: 5px; height: 10px; margin-top: -7px; border: solid var(--brand-fg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
+.combobox.listbox .combobox-option { position: relative; padding-right: 36px; }
 .combobox-tag svg { width: 12px; height: 12px; }
 .combobox-list { position: absolute; z-index: 80; top: calc(100% + 6px); left: 0; right: 0; display: none; flex-direction: column; gap: 2px; max-height: 320px; overflow: auto; margin: 0; padding: 6px; list-style: none; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--popover); box-shadow: var(--shadow-md); }
 .combobox.open .combobox-list { display: flex; animation: grin-scale-in var(--dur) var(--ease); transform-origin: top; }
@@ -25,6 +25,14 @@
 .combobox-group { padding: 8px 10px 4px; font-size: var(--text-xs); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--muted-foreground); }
 .combobox-option { display: flex; flex-direction: column; gap: 2px; padding: 8px 10px; border-radius: var(--radius-sm); cursor: pointer; transition: background-color var(--dur-fast), color var(--dur-fast); }
 .combobox-option small { font-size: var(--text-sm); color: var(--muted-foreground); }
+/* Option with an icon: the icon on the left, label and second line beside it. The tone colors the icon only. */
+.combobox-option.has-icon { display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 10px; align-items: start; }
+.combobox-option.has-icon > .combobox-icon { grid-row: 1 / span 2; margin-top: 1px; }
+.combobox-option.has-icon > small { grid-column: 2; }
+.combobox-icon { display: inline-grid; place-items: center; width: 20px; height: 20px; flex-shrink: 0; color: var(--muted-foreground); }
+.combobox-icon svg { width: 18px; height: 18px; }
+.combobox-icon.ok { color: var(--ok-fg); } .combobox-icon.warn { color: var(--warn-fg); } .combobox-icon.crit { color: var(--crit-fg); } .combobox-icon.info { color: var(--info-fg); } .combobox-icon.brand { color: var(--brand-fg); }
+.combobox-control > .combobox-icon { margin-left: 4px; }
 .combobox-option[aria-selected="true"] { background: var(--row-selected); color: var(--brand-fg); font-weight: var(--weight-medium); }
 .combobox-option.active, .combobox-option:hover { background: var(--accent); }
 .combobox-option mark { padding: 0; }

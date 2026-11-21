@@ -4,6 +4,9 @@
 .menu-header { padding: 8px 10px 4px; font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground); }
 .menu-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--foreground); font-size: var(--control-text); font-weight: var(--weight-medium); text-align: left; text-decoration: none; transition: background-color var(--dur-fast); }
 .menu-item svg { width: 18px; height: 18px; color: var(--muted-foreground); }
+.menu-item:has(small) svg { margin-top: 2px; }
+.menu-item .ok svg, .menu-item svg.ok { color: var(--ok-fg); } .menu-item .warn svg { color: var(--warn-fg); } .menu-item .crit svg { color: var(--crit-fg); } .menu-item .info svg { color: var(--info-fg); }
+.menu-item > .menu-icon { display: inline-grid; place-items: center; flex-shrink: 0; }
 .menu-item:hover, .menu-item:focus-visible { background: var(--accent); outline: none; }
 .menu-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .menu-item kbd { margin-left: auto; }

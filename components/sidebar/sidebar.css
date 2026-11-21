@@ -3,6 +3,9 @@
 .app { display: flex; min-height: 100vh; }
 .sidebar { position: sticky; top: 0; flex: 0 0 auto; display: flex; flex-direction: column; gap: 2px; width: var(--size-sidebar); height: 100vh; overflow-x: hidden; overflow-y: auto; padding: 20px 12px; transition: width var(--dur-slow) var(--ease), padding var(--dur-slow) var(--ease); background: var(--sidebar); border-right: 1px solid var(--border); }
 
+/* In a short window the items keep their height and the sidebar scrolls */
+.sidebar > * { flex-shrink: 0; }
+
 /* Logo: the green triangle is 2/3 of the cap height of the name and centered on it */
 .app-logo { display: flex; align-items: baseline; gap: 0.45em; margin-bottom: 16px; padding: 6px 10px; color: var(--foreground); font-size: var(--text-xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1; text-decoration: none; }
 .app-logo .tag { align-self: center; margin-left: 2px; letter-spacing: 0; }

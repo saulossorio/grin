@@ -16,8 +16,10 @@ function setup(box) {
   options.forEach((o, i) => {
     o.id ||= `${list.id}-o${i}`; o.setAttribute('role', 'option');
     const span = document.createElement('span'); span.className = 'combobox-label';
-    while (o.firstChild && o.firstChild.nodeName !== 'SMALL') span.append(o.firstChild);
-    o.prepend(span); o.dataset.label = span.textContent.trim();
+    const icon = o.querySelector(':scope > .combobox-icon');
+    [...o.childNodes].filter((n) => n !== icon && n.nodeName !== 'SMALL').forEach((n) => span.append(n));
+    o.insertBefore(span, o.querySelector(':scope > small')); o.dataset.label = span.textContent.trim();
+    if (icon) o.classList.add('has-icon');
   });
   input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-expanded', 'false');
   list.setAttribute('role', 'listbox'); if (multiple) list.setAttribute('aria-multiselectable', 'true');
@@ -26,7 +28,13 @@ function setup(box) {
   const chosen = () => options.filter((o) => o.getAttribute('aria-selected') === 'true');
   const sync = () => {
     if (hidden) hidden.value = chosen().map((o) => o.dataset.value).join(',');
-    if (!multiple && chosen()[0]) input.value = chosen()[0].dataset.label;
+    if (!multiple && chosen()[0]) {
+      input.value = chosen()[0].dataset.label;
+      // the chosen option's icon also shows in the field
+      control.querySelector(':scope > .combobox-icon')?.remove();
+      const ic = chosen()[0].querySelector(':scope > .combobox-icon');
+      if (ic) control.prepend(ic.cloneNode(true));
+    }
     if (multiple) {
       control.querySelectorAll('.combobox-tag').forEach((t) => t.remove());
       chosen().forEach((o) => input.insertAdjacentHTML('beforebegin', `<span class="combobox-tag" data-value="${esc(o.dataset.value)}">${esc(o.dataset.label)}<button type="button" aria-label="Remover ${esc(o.dataset.label)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></span>`));
@@ -34,7 +42,7 @@ function setup(box) {
   };
   const reduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
   const readonly = input.readOnly;
-  if (readonly) box.classList.add('select');
+  if (readonly) box.classList.add('listbox');
   let closeTimer;
   const open = (on) => {
     if (on === box.classList.contains('open')) return;

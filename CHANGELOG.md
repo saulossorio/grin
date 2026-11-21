@@ -1,5 +1,12 @@
 # Mudanças
 
+## 2.16 · 20/11/2026
+- Ícones da origem do dado: `shield-check` (oficial), `approx` (estimativa de terceiros), `dice` (palpite), `ruler` (faixa legal do enquadramento) e `calculator` (estimada pela ferramenta), com o tom de cada origem.
+- Opções do combobox e do select com ícone (`.combobox-icon` + tom). No select, o ícone da opção escolhida aparece também no campo.
+- Itens de menu com ícone colorido pelo tom (`.menu-icon`).
+- Correção: em janelas baixas, os itens da barra lateral encolhiam. Agora mantêm a altura e a barra rola.
+- Correção: o select do combobox usava a classe `.select` e herdava a borda e a seta do select nativo. Agora a classe é `.listbox`, aplicada sozinha pelo script.
+
 ## 2.15 · 20/11/2026
 - Select do Grin: um combobox com `input[readonly]` mostra a lista no estilo do Grin no lugar da lista do sistema, com a opção marcada e teclado.
 - Revisão do movimento dos elementos novos. A lista do combobox entra crescendo e sai esmaecendo, e as tags entram com um pequeno salto e saem encolhendo.
