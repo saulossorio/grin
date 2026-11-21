@@ -2,7 +2,7 @@
 
 ## 2.13 · 20/11/2026
 - A estrutura da tela em Padrões separa o cabeçalho, igual em todas as telas, do corpo, que muda com o tipo de tela.
-- Os itens do checklist de acessibilidade viram instruções de verificação, como "Teste a tela com zoom de 200%".
+- O checklist de acessibilidade fala com quem desenha e programa a tela. Cada item diz o que garantir e, embaixo, como fazer ou testar.
 - O esquema do cabeçalho usa nomes genéricos e diz o que é obrigatório e o que é opcional.
 - Cinco tipos de tela em abas (lista, formulário, painel de números, detalhe de um item e conteúdo e ajuda), cada um com esquema numerado, quando usar e link para o exemplo.
 

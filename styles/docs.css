@@ -152,6 +152,9 @@
 @media (max-width: 1100px) { .guide-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .guide-grid.four { grid-template-columns: 1fr; } }
 .check-groups code { white-space: nowrap; }
+.check-groups .checkbox > span { display: flex; flex-direction: column; gap: 4px; }
+.check-how { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
+.check-groups .checkbox:has(input:checked) .check-how { text-decoration: none; }
 .guide-card { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
 .guide-card > h3 { display: flex; align-items: center; gap: 10px; font-size: var(--text-base); }
 .guide-card > p, .guide-card li { color: var(--muted-foreground); line-height: var(--leading-body); }
