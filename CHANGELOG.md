@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.25 · 21/11/2026
+- Posição da assinatura (`.app-footer`). A tela ocupa pelo menos a altura da janela. Com pouco conteúdo, a assinatura fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Antes ela ficava logo abaixo de um conteúdo curto, no meio da tela.
+- `.page-content` que contém a assinatura cresce até o fim da janela, com 20 px de espaço embaixo.
+
 ## 2.24 · 21/11/2026
 - Regra do logo em "Obrigatório em toda ferramenta" e em AGENTS.md. O desenho do logo cabe num quadrado de 24 × 24 px, mantém a proporção e fica centralizado, para que todas as ferramentas tenham o logo do mesmo tamanho na barra lateral.
 

@@ -1,4 +1,4 @@
-/* Grin 2.24 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.25 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1785,8 +1785,10 @@ a.tab { text-decoration: none; }
 .appearance .slider-end.large { font-size: 18px; }
 
 /* Signature: name, version and author of the tool, and the Grin version it uses. Only on the start screen and on
-   documentation or help pages, never on working screens. Last element of the page content, scrolling with it:
-   never position: fixed or sticky, never a strip pinned to the bottom of the window. */
+   documentation or help pages, never on working screens. Last element of the page content. The page is at least as tall
+   as the window, so with little content the signature sits at the bottom of the window; with more content it follows the
+   content and scrolls with it. Never position: fixed or sticky. */
+.page-content:has(> .app-footer) { flex: 1 0 auto; padding-bottom: 20px; }
 .app-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); color: var(--muted-foreground); font-size: var(--text-sm); }
 .app-footer b { color: var(--foreground); font-weight: var(--weight-semibold); }
 .app-footer > :last-child { margin-left: auto; }
