@@ -101,6 +101,16 @@ document.addEventListener('click', (e) => {
   if (!el) return;
   setTheme(el.hasAttribute('data-theme-toggle') ? (effectiveTheme() === 'dark' ? 'light' : 'dark') : el.dataset.setTheme);
 });
+// Controls drawn later by a script (a redrawn sidebar, a dialog) get the current state as soon as they appear.
+// sync() replaces only the icon inside the button, which never matches the selector, so it does not loop.
+const CONTROLS = '[data-theme-toggle], [data-theme-select], button[data-set-theme], [data-contrast-toggle], input[data-set-density], input[data-set-scale]';
+let syncQueued = false;
+const startObserver = () => new MutationObserver((list) => {
+  if (syncQueued || !list.some((r) => [...r.addedNodes].some((n) => n.nodeType === 1 && (n.matches(CONTROLS) || n.querySelector(CONTROLS))))) return;
+  syncQueued = true;
+  queueMicrotask(() => { syncQueued = false; sync(); });
+}).observe(document.body, { childList: true, subtree: true });
+if (document.body) startObserver(); else document.addEventListener('DOMContentLoaded', startObserver, { once: true });
 for (const q of ['(prefers-color-scheme: dark)', '(prefers-contrast: more)']) {
   matchMedia(q).addEventListener('change', () => { sync(); announce(); });
 }

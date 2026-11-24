@@ -205,9 +205,10 @@ node tools/check-markup.mjs     # toda classe e ícone usados existem</code></pr
         <h3 id="required">Obrigatório em toda ferramenta</h3>
         <p class="text-secondary">Toda ferramenta feita com o Grin tem estas partes, iguais às dos <a href="../examples/dashboard.html">exemplos</a>. Não substitua nenhuma por uma versão própria.</p>
         <ul class="docs-list">
-          <li>Barra lateral do Grin com <code>sidebar.js</code>. O botão redondo na borda recolhe e expande a barra, e no celular ela vira um drawer. Não crie outro botão de recolher.</li>
+          <li>Barra lateral do Grin com <code>sidebar.js</code>. O botão redondo na borda recolhe e expande a barra, e no celular ela vira um drawer. Não crie outro botão de recolher. A ferramenta que redesenha a barra por script continua usando o <code>sidebar.js</code> e não aplica <code>.collapsed</code> por conta própria.</li>
+          <li>Sem barra superior. O cabeçalho da tela (<code>.page-header</code>) é o primeiro elemento de <code>.app-main</code> e começa a 32 px do topo. Ver <a href="patterns.html#screen">Estrutura da tela</a>.</li>
           <li>Logo com o nome e a versão da ferramenta numa <code>.tag</code> ao lado, como "Vezen 4.0.1".</li>
-          <li>O desenho do logo cabe num quadrado de 24 × 24 px. Um desenho mais largo ou mais alto que o quadrado é reduzido até caber, mantém a proporção e fica centralizado. Use <code>width</code> e <code>height</code> de 24 px no SVG, com o <code>viewBox</code> do desenho.</li>
+          <li>O desenho do logo cabe num quadrado de 24 × 24 px. Um desenho mais largo ou mais alto que o quadrado é reduzido até caber, mantém a proporção e fica centralizado. Use a classe <code>.app-logo-mark</code> no SVG, que fixa o quadrado de 24 × 24 px, com o <code>viewBox</code> do desenho.</li>
           <li>Botão de tema com <code>data-theme-toggle</code> no rodapé da barra lateral. O <code>theme.js</code> mostra o sol com "Tema claro" no tema escuro e a lua com "Tema escuro" no tema claro.</li>
           <li>Painel Aparência (<code>data-appearance</code>) com tema, alto contraste, densidade e tamanho da fonte. O botão fica na barra superior ou no rodapé da barra lateral, logo abaixo do botão de tema.</li>
           <li>Tela inicial com o padrão <a href="patterns.html#start">Tela inicial</a> (<code>.start-screen</code>). Ela usa o cabeçalho e as margens das outras telas, sem coluna centralizada, para que o título não mude de lugar entre as telas.</li>

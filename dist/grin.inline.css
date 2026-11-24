@@ -1,4 +1,4 @@
-/* Grin 2.27 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.28 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1669,10 +1669,10 @@ a.tab { text-decoration: none; }
 /* In a short window the items keep their height and the sidebar scrolls */
 .sidebar > * { flex-shrink: 0; }
 
-/* Logo: the green triangle is 2/3 of the cap height of the name and centered on it */
-.app-logo { display: flex; align-items: baseline; gap: 0.45em; margin-bottom: 16px; padding: 6px 10px; color: var(--foreground); font-size: var(--text-xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1; text-decoration: none; }
+/* Logo: the drawing fits a 24 × 24 px square, keeps its proportion and is centered in it (width and height of 24 px on the svg, with the drawing's viewBox) */
+.app-logo { display: flex; align-items: center; gap: 0.45em; margin-bottom: 16px; padding: 6px 10px; color: var(--foreground); font-size: var(--text-xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1; text-decoration: none; }
 .app-logo .tag { align-self: center; margin-left: 2px; letter-spacing: 0; }
-.app-logo-mark { width: 0.5466em; height: 0.4733em; flex-shrink: 0; fill: var(--primary); transform: translateY(-0.1183em); }
+.app-logo-mark { width: 24px; height: 24px; flex-shrink: 0; fill: var(--primary); }
 
 .nav-heading { margin: 20px 0 6px; padding: 0 12px; font-size: var(--text-sm); font-weight: var(--weight-medium); color: var(--muted-foreground); }
 .nav-item { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; height: var(--size-nav-item); padding: 0 12px; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--sidebar-foreground); font-size: var(--text-base); font-weight: var(--weight-medium); text-align: left; text-decoration: none; transition: background-color var(--dur-fast), color var(--dur-fast); }

@@ -1,5 +1,13 @@
 # Mudanças
 
+## 2.28 · 24/11/2026
+- As telas do app não têm barra superior. O cabeçalho é o primeiro elemento de `.app-main`, e começa a 32 px do topo em todas as telas e ferramentas. A trilha, o nome do arquivo aberto e as ações da tela ficam no cabeçalho. `.topbar` fica só para sites de documentação, com a busca global. A regra está em Padrões › Estrutura da tela, em Obrigatório em toda ferramenta e em AGENTS.md.
+- O exemplo de formulário passou a trilha de navegação da barra superior para o cabeçalho.
+- `.app-logo-mark` é um quadrado de 24 × 24 px, e o logo fica centralizado na altura do nome. Antes o desenho media 0,55 × 0,47 em, e cada ferramenta usava uma classe própria para chegar aos 24 px.
+- `sidebar.js` funciona com uma barra lateral desenhada ou redesenhada por script. Ele começa quando a barra aparece, recoloca o botão de recolher e o botão de menu do celular quando somem e aplica o estado atual à barra nova. A ferramenta não aplica `.collapsed` por conta própria.
+- `theme.js` atualiza os controles desenhados depois do carregamento. Um botão `data-theme-toggle` novo mostra logo o sol ou a lua certos, sem chamar `sync()`.
+- O botão do tour guiado usa o ícone `map`, descrito em Componentes › Tour guiado.
+
 ## 2.27 · 21/11/2026
 - Padrão Tela inicial refeito. A coluna centralizada de 680 px da 2.26 mudava a posição do título e do conteúdo ao passar para outra tela. Agora a tela inicial tem o mesmo cabeçalho, no mesmo lugar, e as mesmas margens das outras telas, e o conteúdo usa a largura da página. Só a descrição fica limitada a `--size-prose`. A assinatura continua no fim da janela.
 - Saiu o token `--size-start`.
