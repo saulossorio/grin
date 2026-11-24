@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.38 · 24/11/2026
+- Regras de uso do estado vazio em Componentes › Estado vazio. Com a tela vazia, a primeira ação fica só no estado vazio, e o cabeçalho não repete o botão. Uma tela de escolha usa `.action-card` na Tela inicial, sem `.empty-state`.
+
 ## 2.37 · 24/11/2026
 - Modal: o foco começa em Cancelar nos diálogos de confirmação e no primeiro campo nos diálogos com campos. A 2.36 dizia só Cancelar.
 
