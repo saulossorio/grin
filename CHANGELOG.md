@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.39 · 24/11/2026
+- `.dialog-veil` e a regra do diálogo desenhado, em Componentes › Modal e drawer. Uma ferramenta que redesenha a tela inteira a cada mudança desenha o diálogo com `open`, sem `showModal()`, com `.dialog-veil` antes dele, e marca o resto da tela com `inert`. O véu e o diálogo ficam na mesma camada: o último desenhado fica por cima. Os toasts, menus e tooltips continuam visíveis.
+
 ## 2.38 · 24/11/2026
 - Regras de uso do estado vazio em Componentes › Estado vazio. Com a tela vazia, a primeira ação fica só no estado vazio, e o cabeçalho não repete o botão. Uma tela de escolha usa `.action-card` na Tela inicial, sem `.empty-state`.
 

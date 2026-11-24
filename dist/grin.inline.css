@@ -1,4 +1,4 @@
-/* Grin 2.38 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.39 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1291,6 +1291,12 @@ a.tab { text-decoration: none; }
 @media (max-width: 520px) { .dialog-footer > .btn { flex: 1 1 auto; } }
 /* Wide dialog: comparisons, previews, tables (up to 880 px) */
 .dialog.wide { width: min(880px, calc(100vw - 32px)); }
+/* Dialog drawn by a tool that redraws the whole screen on every change: <div class="dialog-veil"></div><dialog class="dialog|drawer" open>.
+   It is not modal (no showModal), so the tool marks the rest of the screen inert while it is open. Veil and dialog share one layer:
+   the one drawn last stays on top, so a confirmation over a drawer needs no extra z-index. Above the phone sidebar (60), below menus, toasts and tooltips. */
+.dialog-veil { position: fixed; inset: 0; z-index: 70; background: var(--overlay); backdrop-filter: blur(2px); animation: grin-fade var(--dur) ease-out; }
+.dialog[open]:not(:modal), .drawer[open]:not(:modal) { z-index: 70; }
+.dialog[open]:not(:modal) { position: fixed; inset: 0; height: fit-content; margin: auto; }
 
 /* ---------- components/drawer/drawer.css ---------- */
 /* Grin drawer: view and edit a record without leaving the list. A floating panel that slides in from the right,
