@@ -237,6 +237,11 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 </div>
         </div></div>
         <p class="class-list"><code>.card</code> · <code>.card-header</code> · <code>.card-title</code> · <code>.card-description</code> · <code>.card-body</code> · <code>.card-footer</code> · <code>.stat-grid</code> · <code>.stat</code> · <code>.stat-label</code> · <code>.stat-icon</code> + tom · <code>.stat-value</code> · <code>.stat-delta</code> · <code>.severity</code> + tom</p>
+        <ul class="docs-list">
+          <li>O <code>.severity</code> filtra a lista pelo nível e mostra quantos problemas há em cada um. Os tipos de problema não aparecem soltos embaixo dele: com vários tipos, cada nível abre um menu de escolha múltipla com caixas de seleção (<code>label.menu-item</code> com <code>input type="checkbox"</code>): "Todos" no topo, que fica indeterminado com parte dos tipos marcada, e um item por tipo, com a quantidade. O menu fica aberto enquanto a pessoa marca, e vale combinar tipos de níveis diferentes.</li>
+          <li>Com parte dos tipos marcada, o botão diz quantos (<code>Crítico 9 · 2 de 4 tipos</code>) e fica com <code>aria-pressed="true"</code>. Nada marcado em nenhum nível mostra todos os problemas.</li>
+          <li>Ações que corrigem vários problemas de uma vez ficam num único botão de menu ao lado dos níveis, não numa fileira de botões.</li>
+        </ul>
       </section>
 
       <section class="docs-section" id="table" aria-labelledby="t-table">
@@ -373,7 +378,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.40</a></span></footer>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.41</a></span></footer>
         </div></div>
         <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>

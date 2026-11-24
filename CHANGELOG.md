@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.41 · 24/11/2026
+- Regra do filtro por nível, em Componentes › Card: cada `.severity` abre um menu de escolha múltipla, com caixas de seleção (`label.menu-item` + checkbox), "Todos" e os tipos de problema daquele nível, em vez de uma fileira de botões por tipo. As correções em lote ficam num único botão de menu.
+- Planilha no celular: a página inteira rola e a tabela cresce com as linhas; a rolagem própria da tabela fica só na horizontal.
+- Menu de escolha múltipla: `label.menu-item` com uma caixa de seleção.
+
 ## 2.40 · 24/11/2026
 - Nível informativo: `.table td.cell-info` (sublinhado pontilhado, sem fundo) e `.field-message.info`. A regra dos três níveis (crítico, atenção, informação) está em Componentes › Tabela. Só o erro muda a borda do campo.
 - A densidade fica só no painel Aparência; a barra de busca e filtros da lista não repete o controle (Padrões › Estrutura da tela).
