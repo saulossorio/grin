@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.40 · 24/11/2026
+- Nível informativo: `.table td.cell-info` (sublinhado pontilhado, sem fundo) e `.field-message.info`. A regra dos três níveis (crítico, atenção, informação) está em Componentes › Tabela. Só o erro muda a borda do campo.
+- A densidade fica só no painel Aparência; a barra de busca e filtros da lista não repete o controle (Padrões › Estrutura da tela).
+- O rodapé do drawer segue a regra do modal: só botões, sem dicas de teclado. O atalho vai no `title` do botão.
+- Regra da barra de ações em massa: flutua centralizada no pé da lista enquanto há linhas marcadas, com botões `.btn.xs` e a ação destrutiva em `.btn.xs.danger`.
+
 ## 2.39 · 24/11/2026
 - `.dialog-veil` e a regra do diálogo desenhado, em Componentes › Modal e drawer. Uma ferramenta que redesenha a tela inteira a cada mudança desenha o diálogo com `open`, sem `showModal()`, com `.dialog-veil` antes dele, e marca o resto da tela com `inert`. O véu e o diálogo ficam na mesma camada: o último desenhado fica por cima. Os toasts, menus e tooltips continuam visíveis.
 

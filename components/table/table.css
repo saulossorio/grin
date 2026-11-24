@@ -96,6 +96,8 @@
 
 /* More cell and row states */
 .table td.cell-derived { color: var(--muted-foreground); font-style: italic; }
+/* Info: a suggestion about the value (not a problem), so no background: only a dotted underline */
+.table td.cell-info { text-decoration: underline dotted var(--info-fg); text-underline-offset: 3px; }
 .table td.cell-diff { background: var(--warn-bg); box-shadow: inset 3px 0 0 var(--warn-solid); }
 .table td.cell-link a { font-weight: var(--weight-medium); text-decoration: none; }
 .table td.cell-link a:hover { text-decoration: underline; }

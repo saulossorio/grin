@@ -1,4 +1,4 @@
-/* Grin 2.39 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
+/* Grin 2.40 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -856,6 +856,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 .field-hint { font-size: var(--text-sm); color: var(--muted-foreground); line-height: var(--leading-ui); }
 .field-message { display: flex; gap: 6px; align-items: flex-start; font-size: var(--text-sm); line-height: var(--leading-ui); color: var(--crit-fg); animation: grin-rise var(--dur) var(--ease); }
 .field-message.warn { color: var(--warn-fg); }
+.field-message.info { color: var(--info-fg); } /* a suggestion, not a problem: the field keeps its normal border */
 .field-message svg { width: 16px; height: 16px; margin-top: 2px; }
 .field-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--space-5); }
 
@@ -1215,6 +1216,8 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 
 /* More cell and row states */
 .table td.cell-derived { color: var(--muted-foreground); font-style: italic; }
+/* Info: a suggestion about the value (not a problem), so no background: only a dotted underline */
+.table td.cell-info { text-decoration: underline dotted var(--info-fg); text-underline-offset: 3px; }
 .table td.cell-diff { background: var(--warn-bg); box-shadow: inset 3px 0 0 var(--warn-solid); }
 .table td.cell-link a { font-weight: var(--weight-medium); text-decoration: none; }
 .table td.cell-link a:hover { text-decoration: underline; }
