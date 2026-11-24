@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.33 · 24/11/2026
+- Tipo de tela Planilha, em Padrões › Estrutura da tela, para conferir e editar uma tabela grande célula por célula. A tabela vai de uma borda à outra da área principal, sem margens nem largura máxima, com rolagem própria. O cabeçalho da tela segue a largura e as margens das outras telas.
+- A regra da largura está em Estrutura da tela. O cabeçalho e o corpo crescem até `--size-content` e depois ficam centralizados, com 32 px de margem. A tabela da Planilha é a única exceção.
+
 ## 2.32 · 24/11/2026
 - `.sidebar-action`, a ação principal da ferramenta na barra lateral, como "Nova análise". É um `.btn.primary` logo abaixo do logo, na largura da barra. Com a barra recolhida, vira um botão de 48 px só com o ícone e mostra o nome no tooltip.
 
