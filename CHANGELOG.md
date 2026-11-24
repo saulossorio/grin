@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.36 · 24/11/2026
+- Regras de uso do modal em Componentes › Modal e drawer. O cabeçalho tem o título e o botão Fechar. O rodapé tem só botões, com Cancelar primeiro e a ação por último, sem dicas de teclado. O foco começa em Cancelar. Esc e o clique fora fecham como Cancelar.
+
 ## 2.35 · 24/11/2026
 - As ações da tela ficam alinhadas pelo topo com o título (`.page-title-row`, `align-items: flex-start`). Antes ficavam alinhadas pela base, e a posição dos botões mudava com o tamanho da descrição. A regra está em Padrões › Cabeçalho.
 
