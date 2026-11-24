@@ -1,8 +1,8 @@
-/* Grin 2.31 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.32 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.31';
+Grin.version = '2.32';
 
 // ---------- scripts/utils.js ----------
 {
@@ -473,7 +473,7 @@ function apply() {
   sidebar.classList.toggle('collapsed', collapsed);
   sidebar.classList.toggle('open', menuOpen);
   sidebar.closest('.app')?.classList.toggle('sidebar-collapsed', collapsed);
-  sidebar.querySelectorAll('.nav-item, .account').forEach((el) => {
+  sidebar.querySelectorAll('.nav-item, .account, .sidebar-action').forEach((el) => {
     const name = el.querySelector('.label, b, span')?.textContent.trim() || el.getAttribute('aria-label');
     if (collapsed && name) { el.dataset.tooltip = name; if (!el.textContent.trim() || el.querySelector('.label')) el.setAttribute('aria-label', name); } else delete el.dataset.tooltip;
   });

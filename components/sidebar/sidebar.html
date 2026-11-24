@@ -1,9 +1,10 @@
-<!-- Grin app shell. The current page uses aria-current="page". Product places go at the top (sub-places in .nav-sub,
+<!-- Grin app shell. The current page uses aria-current="page". The main action of the tool, if any, is a .btn.primary.sidebar-action right below the logo. Product places go at the top (sub-places in .nav-sub,
      groups split by .nav-heading or .nav-divider); help, settings and account go in .sidebar-footer, as .nav-item.small. Collapsed: add .collapsed to the sidebar
      and an aria-label to each item (the label is hidden). -->
 <div class="app">
   <nav class="sidebar" aria-label="Navegação principal">
     <a class="app-logo" href="#"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">Beta</span></a>
+    <button type="button" class="btn primary sidebar-action"><i data-icon="plus"></i><span class="label">Nova pessoa</span></button>
     <a class="nav-item" href="#"><i data-icon="users"></i><span class="label">Pessoas</span><span class="nav-count">1.284</span></a>
     <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span></a>
     <div class="nav-sub"><a class="nav-item" href="#" aria-current="page"><span class="label">Nova análise</span><span class="dot warn" aria-label="Não salva"></span></a></div>

@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.32 · 24/11/2026
+- `.sidebar-action`, a ação principal da ferramenta na barra lateral, como "Nova análise". É um `.btn.primary` logo abaixo do logo, na largura da barra. Com a barra recolhida, vira um botão de 48 px só com o ícone e mostra o nome no tooltip.
+
 ## 2.31 · 24/11/2026
 - O tooltip (`data-tooltip`) some também com um clique e com a rolagem da página. Antes ficava na tela quando a ferramenta redesenhava o elemento embaixo do ponteiro. `hideTip()` fica disponível para a página esconder o tooltip ao redesenhar (`Grin.hideTip()` em `dist/grin.js`).
 

@@ -1,4 +1,4 @@
-/* Grin 2.31 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
+/* Grin 2.32 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1685,6 +1685,9 @@ a.tab { text-decoration: none; }
 /* Two levels of importance: the product's places above; help, settings and account at the bottom, smaller,
    quieter and set apart by a line. Inside the main list, .nav-divider separates groups without a title. */
 .nav-divider { height: 1px; margin: 12px 8px; background: var(--border); }
+/* Main action of the tool (optional), a .btn.primary right below the logo, as "Nova análise" */
+.sidebar-action { width: 100%; margin: 0 0 14px; }
+.sidebar.collapsed .sidebar-action { width: 48px; align-self: center; padding: 0; justify-content: center; }
 .nav-item.small { height: 36px; gap: 10px; font-size: var(--text-sm); font-weight: var(--weight-regular); color: var(--muted-foreground); }
 .nav-item.small svg { width: 18px; height: 18px; }
 .nav-item.small:hover { color: var(--foreground); }
