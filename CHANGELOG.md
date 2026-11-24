@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.30 · 24/11/2026
+- No celular, o drawer da barra lateral fecha quando a pessoa escolhe um item de navegação, a conta ou o logo. Os botões pequenos do rodapé, como tema e Aparência, mantêm o drawer aberto. Antes fechava só com um clique fora dele ou com Esc, e numa ferramenta de uma página só ficava aberto sobre a tela nova.
+
 ## 2.29 · 24/11/2026
 - 27 ícones novos, no desenho do Lucide, para ações e objetos comuns de interface: `redo`, `arrow-up`, `arrow-down`, `arrow-up-down`, `arrow-right-left`, `arrow-up-right`, `rows`, `rotate-ccw`, `history`, `refresh`, `wand`, `sparkles`, `inbox`, `file`, `file-text`, `save`, `unlink`, `menu`, `more-vertical`, `calendar`, `globe`, `lock`, `message`, `list`, `database`, `ban` e `layers`.
 - Regra dos ícones em Fundamentos › Ícones. A ferramenta usa o ícone do Grin sempre que ele existe. Ícones próprios são só para conceitos da ferramenta, no mesmo estilo.

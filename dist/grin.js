@@ -1,8 +1,8 @@
-/* Grin 2.29 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.30 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.29';
+Grin.version = '2.30';
 
 // ---------- scripts/utils.js ----------
 {
@@ -447,7 +447,7 @@ Object.assign(Grin, { nearestStop, paintSliders });
 // Markup: <div class="app"><nav class="sidebar">…</nav>…</div>. The script adds a round toggle on the sidebar edge
 // (or uses any [data-sidebar-toggle] button), remembers the choice (localStorage "grin-sidebar"), and collapses on its
 // own below 1100 px when the person never chose. Collapsed, each item shows its name as a tooltip (popover.js).
-// On phones (760 px and below) it becomes a drawer opened by a menu button at the top left.
+// On phones (760 px and below) it becomes a drawer opened by a menu button at the top left; choosing an item closes it.
 // A tool that redraws the sidebar (or the whole .app) with a script keeps all of this: the script watches the page,
 // puts the toggle and the menu button back when they are gone, and applies the current state to the new sidebar.
 // The tool does not set .collapsed itself.
@@ -514,7 +514,8 @@ function initSidebar() {
       apply(); return;
     }
     if (t.closest?.('.sidebar-menu-button')) { openMenu(!menuOpen); return; }
-    if (menuOpen && !t.closest?.('.sidebar')) openMenu(false);
+    // The drawer closes when the person clicks outside it or chooses a place in it (the small footer buttons, such as theme and Aparência, keep it open)
+    if (menuOpen && (!t.closest?.('.sidebar') || t.closest('.sidebar .nav-item:not(.small), .sidebar .account, .sidebar .app-logo'))) openMenu(false);
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && menuOpen) { openMenu(false); document.querySelector('.sidebar-menu-button')?.focus(); }
