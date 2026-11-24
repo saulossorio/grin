@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.29 · 24/11/2026
+- 27 ícones novos, no desenho do Lucide, para ações e objetos comuns de interface: `redo`, `arrow-up`, `arrow-down`, `arrow-up-down`, `arrow-right-left`, `arrow-up-right`, `rows`, `rotate-ccw`, `history`, `refresh`, `wand`, `sparkles`, `inbox`, `file`, `file-text`, `save`, `unlink`, `menu`, `more-vertical`, `calendar`, `globe`, `lock`, `message`, `list`, `database`, `ban` e `layers`.
+- Regra dos ícones em Fundamentos › Ícones. A ferramenta usa o ícone do Grin sempre que ele existe. Ícones próprios são só para conceitos da ferramenta, no mesmo estilo.
+
 ## 2.28 · 24/11/2026
 - As telas do app não têm barra superior. O cabeçalho é o primeiro elemento de `.app-main`, e começa a 32 px do topo em todas as telas e ferramentas. A trilha, o nome do arquivo aberto e as ações da tela ficam no cabeçalho. `.topbar` fica só para sites de documentação, com a busca global. A regra está em Padrões › Estrutura da tela, em Obrigatório em toda ferramenta e em AGENTS.md.
 - O exemplo de formulário passou a trilha de navegação da barra superior para o cabeçalho.
