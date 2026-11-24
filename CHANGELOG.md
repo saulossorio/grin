@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.37 · 24/11/2026
+- Modal: o foco começa em Cancelar nos diálogos de confirmação e no primeiro campo nos diálogos com campos. A 2.36 dizia só Cancelar.
+
 ## 2.36 · 24/11/2026
 - Regras de uso do modal em Componentes › Modal e drawer. O cabeçalho tem o título e o botão Fechar. O rodapé tem só botões, com Cancelar primeiro e a ação por último, sem dicas de teclado. O foco começa em Cancelar. Esc e o clique fora fecham como Cancelar.
 
