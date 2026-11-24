@@ -25,7 +25,7 @@
     <main class="docs-main" id="content">
       <section class="docs-hero"><span class="overline">Guia</span><h1>Padrões</h1>
         <p class="lead">Como combinar os componentes numa tela e como escrever os textos dela.</p>
-        <nav class="docs-toc" aria-label="Nesta página"><a href="#screen">Estrutura da tela</a><a href="#filters">Busca e filtros</a><a href="#forms">Formulários</a><a href="#messages">Mensagens de erro</a><a href="#confirm">Confirmar ou desfazer</a><a href="#states">Estados da tela</a><a href="#numbers">Números e datas</a><a href="#charts">Gráficos</a><a href="#writing">Escrita</a></nav>
+        <nav class="docs-toc" aria-label="Nesta página"><a href="#screen">Estrutura da tela</a><a href="#filters">Busca e filtros</a><a href="#forms">Formulários</a><a href="#messages">Mensagens de erro</a><a href="#confirm">Confirmar ou desfazer</a><a href="#import">Importar arquivo</a><a href="#states">Estados da tela</a><a href="#numbers">Números e datas</a><a href="#charts">Gráficos</a><a href="#writing">Escrita</a></nav>
       </section>
 
       <section class="docs-section" id="screen" aria-labelledby="t-screen">
@@ -157,6 +157,16 @@
             <div class="guide-stage"><div class="dialog" style="position:static;width:100%;display:flex;flex-direction:column;box-shadow:var(--shadow-md)"><div class="dialog-header" style="padding:16px 16px 0;align-items:center"><span class="dialog-icon crit" style="width:40px;height:40px"><i data-icon="trash"></i></span><h3>Excluir 3 pessoas?</h3></div><div class="dialog-body" style="padding:8px 16px 16px;font-size:var(--text-sm)"><p>Elas saem das listas e dos eventos.</p></div><div class="dialog-footer" style="padding:12px 16px"><span class="btn xs">Cancelar</span><span class="btn xs danger">Excluir 3 pessoas</span></div></div></div>
           </div>
         </div>
+      </section>
+
+      <section class="docs-section" id="import" aria-labelledby="t-import">
+        <header><h2 id="t-import">Importar arquivo</h2><p class="aka">Também chamado: upload, carregar planilha, mapear colunas, import wizard</p></header>
+        <ol class="docs-list">
+          <li><b>Arquivo.</b> A tela inicial pede só o arquivo, num <code>.dropzone</code>. Os dados de exemplo, quando existem, abrem direto no resultado, sem passar pelas outras perguntas.</li>
+          <li><b>Formato.</b> Depois do arquivo, a ferramenta pergunta só o que ela não consegue descobrir sozinha, como o tipo de planilha, em <code>.choices</code>, já com a opção provável marcada. Ela diz quantas colunas reconheceu pelo nome. Separador, codificação e linha do cabeçalho são detectados; ficam fechados em "Opções do arquivo", para quando a detecção errar.</li>
+          <li><b>Colunas.</b> As colunas reconhecidas já vêm ligadas aos campos. A tela de mapear colunas só aparece quando sobra coluna sem campo, ou quando a pessoa pede para conferir. Se todas foram reconhecidas, a ação principal é carregar.</li>
+          <li>Cada passo é uma tela com o cabeçalho de sempre: título, o nome do arquivo na descrição, Cancelar e a ação do passo à direita. Voltar leva ao passo anterior sem perder as escolhas.</li>
+        </ol>
       </section>
 
       <section class="docs-section" id="states" aria-labelledby="t-states">

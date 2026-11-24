@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.42 · 24/11/2026
+- Padrão Importar arquivo, em Padrões: primeiro o arquivo, depois só o formato que a ferramenta não descobre sozinha, e a tela de mapear colunas só quando sobra coluna sem campo. Os dados de exemplo abrem direto no resultado.
+
 ## 2.41 · 24/11/2026
 - Regra do filtro por nível, em Componentes › Card: cada `.severity` abre um menu de escolha múltipla, com caixas de seleção (`label.menu-item` + checkbox), "Todos" e os tipos de problema daquele nível, em vez de uma fileira de botões por tipo. As correções em lote ficam num único botão de menu.
 - Planilha no celular: a página inteira rola e a tabela cresce com as linhas; a rolagem própria da tabela fica só na horizontal.
