@@ -73,7 +73,8 @@
 .breadcrumb svg { width: 16px; height: 16px; color: var(--border-strong); }
 .breadcrumb [aria-current="page"] { color: var(--foreground); }
 .page-header { display: flex; flex-direction: column; gap: 20px; padding: 32px 32px 0; }
-.page-title-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; }
+/* Actions line up with the top of the title, so they stay in the same place whatever the description length */
+.page-title-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px 24px; flex-wrap: wrap; }
 .page-title-row > :first-child { flex: 1 1 320px; min-width: 0; }
 .page-title { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .page-title h1 { font-size: var(--text-3xl); }

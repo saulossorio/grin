@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.35 · 24/11/2026
+- As ações da tela ficam alinhadas pelo topo com o título (`.page-title-row`, `align-items: flex-start`). Antes ficavam alinhadas pela base, e a posição dos botões mudava com o tamanho da descrição. A regra está em Padrões › Cabeçalho.
+
 ## 2.34 · 24/11/2026
 - Regra das classes de tom. O CSS de uma ferramenta não cria regras para `.ok`, `.crit`, `.warn`, `.info` ou `.brand` soltas, porque elas mudam os componentes do Grin que usam o tom, como o toast. A regra está em Instalação › Passos da migração e em AGENTS.md.
 - Fundamentos › Medidas. O limite de 1120 px vale só para o site de documentação do Grin. Nas ferramentas, o texto corrido fica limitado por `--size-prose`.
