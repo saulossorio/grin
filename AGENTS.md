@@ -60,7 +60,7 @@ Releia cada frase nova contra as regras acima. Se uma frase tiver dois-pontos se
 
 - Componentes usam só tokens semânticos (`var(--crit-fg)`), nunca cor literal nem token de escala.
 - Nomes: classes, variáveis CSS, ícones e funções JS em inglês. Textos de interface e documentação em português do Brasil.
-- Classes: bloco, partes com hífen (`.card-header`), variações como classe extra (`.btn.primary`). Tons: `crit`, `warn`, `info`, `ok`, `brand`. Estados por atributos ARIA, não por classe.
+- Classes: bloco, partes com hífen (`.card-header`), variações como classe extra (`.btn.primary`). Tons: `crit`, `warn`, `info`, `ok`, `brand`. Estados por atributos ARIA, não por classe. Uma ferramenta não cria regras para essas classes soltas (`.ok { … }`), porque elas mudariam os componentes do Grin que usam o tom; a regra vai com o bloco antes (`.estado.ok`).
 - Nenhuma informação só por cor. Texto a 4,5:1 (7:1 no alto contraste), interface a 3:1.
 - Movimento só como resposta a uma ação, de 140 a 320 ms, sempre desligado por `prefers-reduced-motion`.
 - Não apague nem renomeie arquivos: o repositório tem um hook que bloqueia commits com remoções (proteção da cópia no Proton Drive do dono). Se precisar remover, pergunte ao dono.

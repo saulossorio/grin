@@ -127,7 +127,7 @@
     },
     "content": {
       "$value": "1440px",
-      "$description": "Largura máxima do conteúdo das telas do app. Cresce com a tela até aqui e depois fica centralizado. Texto de documentação para em 1120 px."
+      "$description": "Largura máxima do conteúdo das telas do app. Cresce com a tela até aqui e depois fica centralizado. Só o site de documentação do Grin para em 1120 px."
     },
     "prose": {
       "$value": "72ch",

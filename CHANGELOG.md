@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.34 · 24/11/2026
+- Regra das classes de tom. O CSS de uma ferramenta não cria regras para `.ok`, `.crit`, `.warn`, `.info` ou `.brand` soltas, porque elas mudam os componentes do Grin que usam o tom, como o toast. A regra está em Instalação › Passos da migração e em AGENTS.md.
+- Fundamentos › Medidas. O limite de 1120 px vale só para o site de documentação do Grin. Nas ferramentas, o texto corrido fica limitado por `--size-prose`.
+
 ## 2.33 · 24/11/2026
 - Tipo de tela Planilha, em Padrões › Estrutura da tela, para conferir e editar uma tabela grande célula por célula. A tabela vai de uma borda à outra da área principal, sem margens nem largura máxima, com rolagem própria. O cabeçalho da tela segue a largura e as margens das outras telas.
 - A regra da largura está em Estrutura da tela. O cabeçalho e o corpo crescem até `--size-content` e depois ficam centralizados, com 32 px de margem. A tabela da Planilha é a única exceção.
