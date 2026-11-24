@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.31 · 24/11/2026
+- O tooltip (`data-tooltip`) some também com um clique e com a rolagem da página. Antes ficava na tela quando a ferramenta redesenhava o elemento embaixo do ponteiro. `hideTip()` fica disponível para a página esconder o tooltip ao redesenhar (`Grin.hideTip()` em `dist/grin.js`).
+
 ## 2.30 · 24/11/2026
 - No celular, o drawer da barra lateral fecha quando a pessoa escolhe um item de navegação, a conta ou o logo. Os botões pequenos do rodapé, como tema e Aparência, mantêm o drawer aberto. Antes fechava só com um clique fora dele ou com Esc, e numa ferramenta de uma página só ficava aberto sobre a tela nova.
 

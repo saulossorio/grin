@@ -1,8 +1,8 @@
-/* Grin 2.30 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.31 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.30';
+Grin.version = '2.31';
 
 // ---------- scripts/utils.js ----------
 {
@@ -320,6 +320,7 @@ Object.assign(Grin, { reducedMotion, flash, enter, scrollToElement, closeMenu })
 {
 // Grin tooltip, popover and term.
 // Tooltip: any element with data-tooltip="text" (usually an icon button that already has the same aria-label).
+//   It hides on pointer out, focus out, click and scroll; a page that redraws under the pointer can call hideTip().
 // Popover: <button data-popover="id" aria-expanded="false"> opens <div class="popover" id="id" role="dialog" aria-label="…">.
 //   Click outside or Esc closes it; focus goes back to the button. The .term and .help-button use the same hook.
 const GAP = 8;
@@ -345,6 +346,9 @@ document.addEventListener('pointerover', (e) => { const t = e.target.closest?.('
 document.addEventListener('pointerout', (e) => { if (e.target.closest?.('[data-tooltip]')) hideTip(); });
 document.addEventListener('focusin', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
 document.addEventListener('focusout', hideTip);
+// A click, a scroll or a redraw that removes the element also hides the tooltip
+document.addEventListener('pointerdown', hideTip);
+window.addEventListener('scroll', hideTip, { passive: true, capture: true });
 
 let open = null;
 function close(returnFocus = false) {
@@ -375,6 +379,7 @@ document.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { hideTip(); close(true); } });
 addEventListener('scroll', () => { if (open) place(open.panel, open.button); }, true);
 addEventListener('resize', () => { if (open) place(open.panel, open.button); });
+Object.assign(Grin, { hideTip });
 }
 
 // ---------- components/slider/slider.js ----------

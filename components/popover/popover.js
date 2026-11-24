@@ -1,5 +1,6 @@
 // Grin tooltip, popover and term.
 // Tooltip: any element with data-tooltip="text" (usually an icon button that already has the same aria-label).
+//   It hides on pointer out, focus out, click and scroll; a page that redraws under the pointer can call hideTip().
 // Popover: <button data-popover="id" aria-expanded="false"> opens <div class="popover" id="id" role="dialog" aria-label="…">.
 //   Click outside or Esc closes it; focus goes back to the button. The .term and .help-button use the same hook.
 const GAP = 8;
@@ -20,11 +21,14 @@ function showTip(target) {
   place(tip, target);
   tip.classList.add('show');
 }
-const hideTip = () => tip?.classList.remove('show');
+export const hideTip = () => tip?.classList.remove('show');
 document.addEventListener('pointerover', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t) showTip(t); });
 document.addEventListener('pointerout', (e) => { if (e.target.closest?.('[data-tooltip]')) hideTip(); });
 document.addEventListener('focusin', (e) => { const t = e.target.closest?.('[data-tooltip]'); if (t && t.matches(':focus-visible')) showTip(t); });
 document.addEventListener('focusout', hideTip);
+// A click, a scroll or a redraw that removes the element also hides the tooltip
+document.addEventListener('pointerdown', hideTip);
+window.addEventListener('scroll', hideTip, { passive: true, capture: true });
 
 let open = null;
 function close(returnFocus = false) {
