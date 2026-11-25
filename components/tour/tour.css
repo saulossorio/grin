@@ -2,13 +2,37 @@
    the point shown; the cut-out and the card slide from one step to the next. Created by tour.js. */
 .tour { position: fixed; inset: 0; z-index: 120; pointer-events: none; opacity: 0; transition: opacity var(--dur) var(--ease); }
 .tour.show { opacity: 1; }
-.tour-spot { position: fixed; border-radius: var(--radius-md); box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), width var(--dur-slow) var(--ease), height var(--dur-slow) var(--ease); }
+/* strips around the cut-out hold the clicks; the cut-out lets them through while the step waits for an action */
+.tour-block { position: fixed; pointer-events: auto; }
+.tour-spot { position: fixed; pointer-events: none; border-radius: var(--radius-md); box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), width var(--dur-slow) var(--ease), height var(--dur-slow) var(--ease); }
 .tour-spot.none { box-shadow: 0 0 0 200vmax var(--overlay); }
+.tour-spot.pulse { animation: tour-pulse 1.6s var(--ease-in-out) infinite; }
+@keyframes tour-pulse { 0%, 100% { box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); } 50% { box-shadow: 0 0 0 7px var(--highlight), 0 0 0 200vmax var(--overlay); } }
 .tour-card { position: fixed; display: flex; flex-direction: column; gap: 10px; width: min(360px, calc(100vw - 32px)); padding: 18px 20px 16px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); pointer-events: auto; transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), opacity var(--dur-fast), transform var(--dur-fast) var(--ease); }
+.tour-card.sheet { width: auto; }
 .tour-card.swap { opacity: 0; transform: translateY(6px); }
+.tour-card.nudge { animation: tour-nudge var(--dur-slow) var(--ease); }
+@keyframes tour-nudge { 20% { transform: translateX(-6px); } 45% { transform: translateX(5px); } 70% { transform: translateX(-3px); } 100% { transform: none; } }
 .tour-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -6px -8px 0 0; }
 .tour-count { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-fg); font-variant-numeric: tabular-nums; }
 .tour-card h2 { font-size: var(--text-lg); outline: none; }
 .tour-card p { margin: 0; color: var(--muted-foreground); line-height: var(--leading-body); }
+/* what the person does on the screen */
+.tour-card .tour-action { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--brand-border); border-radius: var(--radius-sm); background: var(--brand-bg); color: var(--foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.tour-action[hidden] { display: none; }
+.tour-action svg { flex: none; color: var(--brand-fg); }
+/* the answer to each attempt: info (how to go on), ok (task done), crit (the point is not on the screen) */
+.tour-msg { display: grid; grid-template-rows: 0fr; margin-top: -10px; opacity: 0; transition: grid-template-rows var(--dur) var(--ease), opacity var(--dur) var(--ease), margin var(--dur) var(--ease); }
+.tour-msg > div { overflow: hidden; }
+.tour-msg.show { grid-template-rows: 1fr; margin-top: 0; opacity: 1; }
+.tour-card .tour-msg p { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border: 1px solid var(--info-border); border-radius: var(--radius-sm); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); }
+.tour-msg svg { flex: none; margin-top: 2px; color: var(--info-fg); }
+.tour-card .tour-msg.ok p { border-color: var(--ok-border); background: var(--ok-bg); } .tour-msg.ok svg { color: var(--ok-fg); }
+.tour-card .tour-msg.crit p { border-color: var(--crit-border); background: var(--crit-bg); } .tour-msg.crit svg { color: var(--crit-fg); }
 .tour-actions { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .tour-actions .spacer { flex: 1 1 auto; }
+.tour-actions .link { color: var(--muted-foreground); font-size: var(--text-sm); }
+.tour-actions .btn[hidden] { display: none; }
+.tour-actions .btn.waiting { opacity: .5; }
+/* menus the person opens during the tour stay above the veil */
+body.tour-open .menu, body.tour-open .popover { z-index: 125; }

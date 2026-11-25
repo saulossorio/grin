@@ -1,4 +1,4 @@
-/* Grin 2.42 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
+/* Grin 2.43 · CSS; fontes em fonts/ · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1080,12 +1080,15 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 /* Four stats never break 3 + 1: one row of four, or two rows of two when the screen is narrower than the reference */
 .stat-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1100px) { .stat-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.stat { display: flex; flex-direction: column; gap: 14px; min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
+.stat { display: flex; flex-direction: column; gap: 14px; min-width: 0; container-type: inline-size; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
 .stat-label { display: flex; align-items: center; gap: 12px; font-size: var(--text-base); color: var(--muted-foreground); font-weight: var(--weight-medium); }
+/* without an icon the label is running text: inline terms and links stay in the line */
+.stat-label:not(:has(> .stat-icon)) { display: block; }
 .stat-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius-md); background: var(--brand-bg); color: var(--brand-fg); }
 .stat-icon svg { width: 20px; height: 20px; }
 .stat-icon.crit { background: var(--crit-bg); color: var(--crit-fg); } .stat-icon.warn { background: var(--warn-bg); color: var(--warn-fg); } .stat-icon.info { background: var(--info-bg); color: var(--info-fg); }
-.stat-value { font-size: var(--text-4xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
+/* the value stays on one line and shrinks with the card, down to text-xl */
+.stat-value { font-size: clamp(var(--text-xl), 14cqi, var(--text-4xl)); white-space: nowrap; font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .stat-delta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font-size: var(--text-base); color: var(--muted-foreground); }
 .stat-delta > svg { width: 16px; height: 16px; }
 
@@ -1102,7 +1105,7 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
   .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
   .stat { gap: 10px; padding: 16px; }
   .stat-label { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .stat-value { font-size: var(--text-3xl); }
+  .stat-value { font-size: clamp(var(--text-xl), 14cqi, var(--text-3xl)); }
   .stat-delta { font-size: var(--text-sm); }
 }
 
@@ -1525,16 +1528,40 @@ a.tab { text-decoration: none; }
    the point shown; the cut-out and the card slide from one step to the next. Created by tour.js. */
 .tour { position: fixed; inset: 0; z-index: 120; pointer-events: none; opacity: 0; transition: opacity var(--dur) var(--ease); }
 .tour.show { opacity: 1; }
-.tour-spot { position: fixed; border-radius: var(--radius-md); box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), width var(--dur-slow) var(--ease), height var(--dur-slow) var(--ease); }
+/* strips around the cut-out hold the clicks; the cut-out lets them through while the step waits for an action */
+.tour-block { position: fixed; pointer-events: auto; }
+.tour-spot { position: fixed; pointer-events: none; border-radius: var(--radius-md); box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), width var(--dur-slow) var(--ease), height var(--dur-slow) var(--ease); }
 .tour-spot.none { box-shadow: 0 0 0 200vmax var(--overlay); }
+.tour-spot.pulse { animation: tour-pulse 1.6s var(--ease-in-out) infinite; }
+@keyframes tour-pulse { 0%, 100% { box-shadow: 0 0 0 3px var(--primary), 0 0 0 200vmax var(--overlay); } 50% { box-shadow: 0 0 0 7px var(--highlight), 0 0 0 200vmax var(--overlay); } }
 .tour-card { position: fixed; display: flex; flex-direction: column; gap: 10px; width: min(360px, calc(100vw - 32px)); padding: 18px 20px 16px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--popover); color: var(--foreground); box-shadow: var(--shadow-lg); pointer-events: auto; transition: top var(--dur-slow) var(--ease), left var(--dur-slow) var(--ease), opacity var(--dur-fast), transform var(--dur-fast) var(--ease); }
+.tour-card.sheet { width: auto; }
 .tour-card.swap { opacity: 0; transform: translateY(6px); }
+.tour-card.nudge { animation: tour-nudge var(--dur-slow) var(--ease); }
+@keyframes tour-nudge { 20% { transform: translateX(-6px); } 45% { transform: translateX(5px); } 70% { transform: translateX(-3px); } 100% { transform: none; } }
 .tour-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: -6px -8px 0 0; }
 .tour-count { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-fg); font-variant-numeric: tabular-nums; }
 .tour-card h2 { font-size: var(--text-lg); outline: none; }
 .tour-card p { margin: 0; color: var(--muted-foreground); line-height: var(--leading-body); }
+/* what the person does on the screen */
+.tour-card .tour-action { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--brand-border); border-radius: var(--radius-sm); background: var(--brand-bg); color: var(--foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.tour-action[hidden] { display: none; }
+.tour-action svg { flex: none; color: var(--brand-fg); }
+/* the answer to each attempt: info (how to go on), ok (task done), crit (the point is not on the screen) */
+.tour-msg { display: grid; grid-template-rows: 0fr; margin-top: -10px; opacity: 0; transition: grid-template-rows var(--dur) var(--ease), opacity var(--dur) var(--ease), margin var(--dur) var(--ease); }
+.tour-msg > div { overflow: hidden; }
+.tour-msg.show { grid-template-rows: 1fr; margin-top: 0; opacity: 1; }
+.tour-card .tour-msg p { display: flex; align-items: flex-start; gap: 8px; padding: 8px 10px; border: 1px solid var(--info-border); border-radius: var(--radius-sm); background: var(--info-bg); color: var(--foreground); font-size: var(--text-sm); }
+.tour-msg svg { flex: none; margin-top: 2px; color: var(--info-fg); }
+.tour-card .tour-msg.ok p { border-color: var(--ok-border); background: var(--ok-bg); } .tour-msg.ok svg { color: var(--ok-fg); }
+.tour-card .tour-msg.crit p { border-color: var(--crit-border); background: var(--crit-bg); } .tour-msg.crit svg { color: var(--crit-fg); }
 .tour-actions { display: flex; align-items: center; gap: 8px; margin-top: 6px; }
 .tour-actions .spacer { flex: 1 1 auto; }
+.tour-actions .link { color: var(--muted-foreground); font-size: var(--text-sm); }
+.tour-actions .btn[hidden] { display: none; }
+.tour-actions .btn.waiting { opacity: .5; }
+/* menus the person opens during the tour stay above the veil */
+body.tour-open .menu, body.tour-open .popover { z-index: 125; }
 
 /* ---------- components/combobox/combobox.css ---------- */
 /* Grin combobox (also: autocomplete, select with search, multiselect, tag input).

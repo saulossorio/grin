@@ -27,9 +27,11 @@ import { startTour } from '../components/tour/tour.js';
 document.addEventListener('click', (e) => {
   if (!e.target.closest('#ex-tour-start')) return;
   startTour([
-    { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê onde buscar, onde importar e como sair do tour.' },
-    { target: '#ex-tour-search', title: 'Busque qualquer pessoa', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.' },
-    { target: '#ex-tour-import', title: 'Importe uma planilha', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.' },
+    { title: 'Agenda', text: 'O tour mostra onde buscar e onde importar. Cada passo pede uma ação na tela.' },
+    { target: '#ex-tour-search', title: 'Busca', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.',
+      action: 'Digite um nome na busca', done: () => !!document.querySelector('#ex-tour-search input').value.trim() },
+    { target: '#ex-tour-import', title: 'Importação', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.', action: 'Clique em Importar', click: true },
+    { target: '#ex-tour-start', title: 'Fim do tour', text: 'O tour pode ser repetido por este botão.' },
   ]);
 });
 </script>
@@ -238,6 +240,9 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         </div></div>
         <p class="class-list"><code>.card</code> · <code>.card-header</code> · <code>.card-title</code> · <code>.card-description</code> · <code>.card-body</code> · <code>.card-footer</code> · <code>.stat-grid</code> · <code>.stat</code> · <code>.stat-label</code> · <code>.stat-icon</code> + tom · <code>.stat-value</code> · <code>.stat-delta</code> · <code>.severity</code> + tom</p>
         <ul class="docs-list">
+          <li>O <code>.stat-value</code> fica numa linha só e diminui com a largura do card, até <code>--text-xl</code>. Valores longos, como "R$ 253,70 mi", cabem em quatro colunas sem quebrar. A ferramenta não muda o tamanho do valor.</li>
+          <li>Sem <code>.stat-icon</code>, o <code>.stat-label</code> é texto corrido: termos do glossário e links ficam na mesma linha do texto.</li>
+          <li>O texto abaixo do valor usa <code>.stat-delta</code>, com ou sem <code>.delta</code>.</li>
           <li>O <code>.severity</code> filtra a lista pelo nível e mostra quantos problemas há em cada um. Os tipos de problema não aparecem soltos embaixo dele: com vários tipos, cada nível abre um menu de escolha múltipla com caixas de seleção (<code>label.menu-item</code> com <code>input type="checkbox"</code>): "Todos" no topo, que fica indeterminado com parte dos tipos marcada, e um item por tipo, com a quantidade. O menu fica aberto enquanto a pessoa marca, e vale combinar tipos de níveis diferentes.</li>
           <li>Com parte dos tipos marcada, o botão diz quantos (<code>Crítico 9 · 2 de 4 tipos</code>) e fica com <code>aria-pressed="true"</code>. Nada marcado em nenhum nível mostra todos os problemas.</li>
           <li>Ações que corrigem vários problemas de uma vez ficam num único botão de menu ao lado dos níveis, não numa fileira de botões.</li>
@@ -378,7 +383,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.42</a></span></footer>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.43</a></span></footer>
         </div></div>
         <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>
@@ -503,8 +508,18 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
 <span class="spacer"></span>
 <button type="button" class="btn primary" id="ex-tour-start"><i data-icon="map"></i>Fazer o tour</button>
         </div></div>
-        <p class="class-list"><code>startTour(steps)</code> de <code>components/tour/tour.js</code> · <code>.tour</code> · <code>.tour-spot</code> · <code>.tour-card</code> · <code>.tour-count</code> · <code>.tour-actions</code></p>
+        <p class="class-list"><code>startTour(steps, { onEnd })</code> de <code>components/tour/tour.js</code> · <code>.tour</code> · <code>.tour-spot</code> · <code>.tour-card</code> · <code>.tour-count</code> · <code>.tour-action</code> · <code>.tour-msg</code> · <code>.tour-actions</code></p>
         <p>O botão que abre o tour fica no rodapé da barra lateral, como <code>.nav-item.small</code> com o ícone <code>map</code> e o texto "Tour guiado".</p>
+        <ul class="docs-list">
+          <li>Cada passo tem <code>title</code>, <code>text</code> e, se aponta para algo na tela, <code>target</code>. O alvo é um seletor, uma função que devolve o elemento ou uma lista deles em ordem de preferência. O tour espera o alvo aparecer por até 3 segundos; se ele não aparece, o cartão oferece "Tentar de novo".</li>
+          <li>O primeiro passo sem alvo é a apresentação. Ele não entra na contagem, mostra "Tour guiado" no lugar de "Passo 1 de N" e oferece "Começar" e "Agora não".</li>
+          <li>O passo com <code>action</code> diz o que a pessoa faz na tela, num quadro abaixo do texto. Com <code>click: true</code>, o tour espera o clique no alvo e avança; o clique segue para a própria tela. Com <code>done</code>, uma função que devolve <code>true</code> quando a tarefa está feita, o tour confere a tela a cada 250 ms, confirma e avança. Enquanto o passo espera, o recorte pulsa e "Próximo" fica esmaecido.</li>
+          <li>O tour não troca de tela sozinho. Quem navega e preenche é a pessoa. "Voltar" só aparece quando o passo anterior está na tela de agora.</li>
+          <li>Fora do recorte, o clique é segurado. O cartão balança e diz o que fazer. Dentro do recorte, o clique só passa nos passos que esperam uma ação.</li>
+          <li>Um alvo dentro da barra lateral abre a gaveta da barra no celular e a fecha no passo seguinte. Em tela estreita (abaixo de 600 px), o cartão vira uma folha presa embaixo ou em cima, e a página rola para o alvo ficar no espaço livre.</li>
+          <li>As setas avançam e voltam, Esc sai e Tab circula entre os botões do cartão. Num passo com <code>done</code>, o teclado dentro do alvo é da pessoa. Um menu ou diálogo aberto pela pessoa fecha com Esc antes do tour.</li>
+          <li><code>onEnd</code> é chamado ao concluir e ao pular. A ferramenta usa esse retorno para lembrar que o tour foi visto e não abri-lo sozinho de novo.</li>
+        </ul>
       </section>
 
       <section class="docs-section" id="input-group" aria-labelledby="t-input-group">

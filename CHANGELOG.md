@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.43 · 24/11/2026
+- Tour guiado com passos que esperam a pessoa agir. Com `action`, o cartão diz o que fazer na tela; com `click: true`, o tour avança pelo clique no alvo; com `done`, avança quando a tarefa fica feita. Fora do recorte, o clique é segurado e o cartão explica o que fazer. O alvo aceita seletor, função ou lista de alternativas, e o tour espera ele aparecer. O primeiro passo sem alvo é a apresentação, com "Começar" e "Agora não". Alvo na barra lateral abre a gaveta no celular, e em tela estreita o cartão vira uma folha embaixo ou em cima. `startTour` devolve `{ end, go, target }`.
+- Indicador: o `.stat-value` fica numa linha e diminui com a largura do card, até `--text-xl`. Sem `.stat-icon`, o `.stat-label` é texto corrido, com termos e links na mesma linha.
+
 ## 2.42 · 24/11/2026
 - Padrão Importar arquivo, em Padrões: primeiro o arquivo, depois só o formato que a ferramenta não descobre sozinha, e a tela de mapear colunas só quando sobra coluna sem campo. Os dados de exemplo abrem direto no resultado.
 

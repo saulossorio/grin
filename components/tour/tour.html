@@ -3,8 +3,9 @@
 <script type="module">
   import { startTour } from './tour.js';
   document.getElementById('start-tour').addEventListener('click', () => startTour([
-    { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê onde ficam as pessoas, os filtros e a importação.' },
-    { target: '#search', title: 'Busque qualquer pessoa', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.' },
-    { target: '#import', title: 'Importe uma planilha', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.' },
+    { title: 'Agenda', text: 'O tour mostra onde buscar e onde importar. Cada passo pede uma ação na tela.' },
+    { target: '#search', title: 'Busca', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.',
+      action: 'Digite um nome na busca', done: () => !!document.querySelector('#search input')?.value.trim() },
+    { target: '#import', title: 'Importação', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.', action: 'Clique em Importar', click: true },
   ]));
 </script>

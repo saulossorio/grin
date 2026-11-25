@@ -14,12 +14,15 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
 /* Four stats never break 3 + 1: one row of four, or two rows of two when the screen is narrower than the reference */
 .stat-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 1100px) { .stat-grid:has(> :nth-child(4):last-child) { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.stat { display: flex; flex-direction: column; gap: 14px; min-width: 0; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
+.stat { display: flex; flex-direction: column; gap: 14px; min-width: 0; container-type: inline-size; padding: 20px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--surface); box-shadow: var(--shadow-sm); }
 .stat-label { display: flex; align-items: center; gap: 12px; font-size: var(--text-base); color: var(--muted-foreground); font-weight: var(--weight-medium); }
+/* without an icon the label is running text: inline terms and links stay in the line */
+.stat-label:not(:has(> .stat-icon)) { display: block; }
 .stat-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius-md); background: var(--brand-bg); color: var(--brand-fg); }
 .stat-icon svg { width: 20px; height: 20px; }
 .stat-icon.crit { background: var(--crit-bg); color: var(--crit-fg); } .stat-icon.warn { background: var(--warn-bg); color: var(--warn-fg); } .stat-icon.info { background: var(--info-bg); color: var(--info-fg); }
-.stat-value { font-size: var(--text-4xl); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
+/* the value stays on one line and shrinks with the card, down to text-xl */
+.stat-value { font-size: clamp(var(--text-xl), 14cqi, var(--text-4xl)); white-space: nowrap; font-weight: var(--weight-semibold); letter-spacing: var(--tracking-display); line-height: 1.1; font-variant-numeric: tabular-nums; }
 .stat-delta { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 8px; font-size: var(--text-base); color: var(--muted-foreground); }
 .stat-delta > svg { width: 16px; height: 16px; }
 
@@ -36,7 +39,7 @@ a.card:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md);
   .stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
   .stat { gap: 10px; padding: 16px; }
   .stat-label { flex-direction: column; align-items: flex-start; gap: 10px; }
-  .stat-value { font-size: var(--text-3xl); }
+  .stat-value { font-size: clamp(var(--text-xl), 14cqi, var(--text-3xl)); }
   .stat-delta { font-size: var(--text-sm); }
 }
 
