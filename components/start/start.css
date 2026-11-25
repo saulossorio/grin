@@ -7,3 +7,8 @@
            <main class="page-content start-screen"><div class="start-screen-body">…</div><footer class="app-footer">…</footer></main> */
 .start-screen-body { display: flex; flex-direction: column; gap: var(--space-4); }
 .page-header .page-description, .start-screen-body .lead { max-width: var(--size-prose); }
+/* A start screen that only asks for a file: the dropzone takes the free height down to the signature, with its content
+   in the middle, so the empty part of the screen is also where the file can be dropped. The title stays in place. */
+.start-screen:has(> .start-screen-body > .dropzone) { display: flex; flex-direction: column; }
+.start-screen-body:has(> .dropzone) { flex: 1 1 auto; padding-bottom: var(--space-6); }
+.start-screen-body > .dropzone { flex: 1 1 auto; justify-content: center; min-height: 280px; }
