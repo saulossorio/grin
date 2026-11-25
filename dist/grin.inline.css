@@ -1,4 +1,4 @@
-/* Grin 2.43 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.44 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -823,6 +823,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 .btn[aria-pressed="true"] { background: var(--brand-bg); border-color: var(--brand-border); color: var(--brand-fg); }
 .btn[aria-pressed="true"] svg { color: currentColor; }
 
+/* Phones: in a filter row or toolbar, .btn-text hides the text of a button that has an icon, leaving the icon and the
+   count. The text stays for screen readers; the full name also goes in data-tooltip. */
+@media (max-width: 760px) {
+  .btn-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+
 /* ---------- components/input/input.css ---------- */
 /* Grin fields: text input, select, textarea, search, checkbox, choice cards and the label + control + message group.
    Focus shows a soft ring around the field; an invalid field turns red and says what to fix. */
@@ -867,6 +873,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 
 /* Search: leading icon and optional clear button */
 .search { position: relative; width: min(320px, 100%); }
+/* in a toolbar the search shrinks to 200 px before the toolbar wraps */
+.toolbar > .search { flex: 10 1 200px; max-width: 320px; }
 .search > svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted-foreground); pointer-events: none; }
 .search .input { padding: 0 40px 0 44px; }
 .search .btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }

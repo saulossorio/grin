@@ -1,5 +1,10 @@
 # Mudanças
 
+## 2.44 · 25/11/2026
+- Busca e filtros: no máximo duas linhas de filtros acima de uma lista. Grupo de escolha secundário vira botões só com ícone e contagem, com o nome no tooltip. No celular, `.btn-text` esconde o texto dos botões com ícone nas linhas de filtros. Na barra, a busca diminui até 200 px antes de a barra quebrar linha.
+- Importar arquivo: a tela inicial não tem descrição nem avisos; o link para os dados de exemplo fica dentro do dropzone.
+- Padrão Resumo, em Padrões: uma seção por assunto na largura da página; números de vários grupos num `.stat-grid` ou numa tabela com uma coluna por grupo, sem cartões estreitos lado a lado.
+
 ## 2.43 · 24/11/2026
 - Tour guiado com passos que esperam a pessoa agir. Com `action`, o cartão diz o que fazer na tela; com `click: true`, o tour avança pelo clique no alvo; com `done`, avança quando a tarefa fica feita. Fora do recorte, o clique é segurado e o cartão explica o que fazer. O alvo aceita seletor, função ou lista de alternativas, e o tour espera ele aparecer. O primeiro passo sem alvo é a apresentação, com "Começar" e "Agora não". Alvo na barra lateral abre a gaveta no celular, e em tela estreita o cartão vira uma folha embaixo ou em cima. `startTour` devolve `{ end, go, target }`.
 - Indicador: o `.stat-value` fica numa linha e diminui com a largura do card, até `--text-xl`. Sem `.stat-icon`, o `.stat-label` é texto corrido, com termos e links na mesma linha.

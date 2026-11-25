@@ -41,6 +41,8 @@
 
 /* Search: leading icon and optional clear button */
 .search { position: relative; width: min(320px, 100%); }
+/* in a toolbar the search shrinks to 200 px before the toolbar wraps */
+.toolbar > .search { flex: 10 1 200px; max-width: 320px; }
 .search > svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted-foreground); pointer-events: none; }
 .search .input { padding: 0 40px 0 44px; }
 .search .btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }
