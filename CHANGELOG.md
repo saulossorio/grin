@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.46 · 25/11/2026
+- Filtro por nível: a linha dos níveis não tem mais o botão de correções em lote (regra da 2.41). Mudanças em várias linhas ficam nas ferramentas da tabela, por coluna e com prévia.
+
 ## 2.45 · 25/11/2026
 - Tela inicial que só pede um arquivo: o `.dropzone` ocupa a altura livre até a assinatura, com o conteúdo no meio. O título continua no lugar de sempre.
 
