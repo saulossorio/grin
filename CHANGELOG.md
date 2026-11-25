@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.50 · 25/11/2026
+- Tour no celular: o lado da folha (em cima ou embaixo) só é escolhido depois que o alvo aparece. Antes, um redesenho durante a espera prendia a folha embaixo e ela podia cobrir um alvo no pé da tela, como o rodapé de uma gaveta.
+
 ## 2.49 · 25/11/2026
 - Tela inicial: o dropzone volta à altura própria (desfaz a 2.45). Regra nova: o espaço livre abaixo do conteúdo fica vazio; nada é esticado nem acrescentado para preenchê-lo.
 

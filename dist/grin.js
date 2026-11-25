@@ -1,8 +1,8 @@
-/* Grin 2.49 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.50 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.49';
+Grin.version = '2.50';
 
 // ---------- scripts/utils.js ----------
 {
@@ -991,7 +991,8 @@ function startTour(steps, { onEnd } = {}) {
     if (sheet) { card.style.left = `${m}px`; card.style.right = `${m}px`; } else card.style.right = 'auto';
     const cw = card.offsetWidth, ch = card.offsetHeight, clamp = (v, a, b) => Math.min(Math.max(v, a), Math.max(a, b));
     let x, y;
-    if (sheet) { if (!T.side) T.side = r && f.y + f.h / 2 > vh / 2 ? 'top' : 'bottom'; x = m; y = T.side === 'top' ? m : vh - ch - m; } // the side stays fixed for the step
+    // the side is chosen once the target is found, and stays fixed for the step
+    if (sheet) { if (!T.side && r) T.side = f.y + f.h / 2 > vh / 2 ? 'top' : 'bottom'; x = m; y = T.side === 'top' ? m : vh - ch - m; }
     else if (!r) { x = (vw - cw) / 2; y = (vh - ch) / 2; }
     else if (vh - (f.y + f.h) >= ch + 2 * m) { x = clamp(f.x + f.w / 2 - cw / 2, m, vw - cw - m); y = f.y + f.h + 14; }
     else if (f.y >= ch + 2 * m) { x = clamp(f.x + f.w / 2 - cw / 2, m, vw - cw - m); y = f.y - ch - 14; }
