@@ -271,6 +271,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <ul class="docs-list">
           <li>Três níveis de problema num valor: <code>.cell-crit</code> (impede o uso do dado), <code>.cell-warn</code> (pede atenção) e <code>.cell-info</code> (sugestão, sem fundo, só um sublinhado pontilhado). No campo, a mensagem usa o mesmo tom: <code>.field-message</code>, <code>.field-message.warn</code> ou <code>.field-message.info</code>. Só o erro muda a borda do campo (<code>aria-invalid="true"</code>); o dado que falta usa <code>data-state="missing"</code>.</li>
           <li>A barra de ações em massa (<code>.bulk-bar</code>) aparece só enquanto há linhas marcadas. Ela flutua centralizada no pé da lista, por cima do conteúdo, para não empurrar a tabela: numa página que rola, <code>position: sticky; bottom: 24px; margin-inline: auto</code>. Os botões são <code>.btn.xs</code>, e a ação destrutiva é <code>.btn.xs.danger</code>. "Limpar seleção" pode vir por último, como <code>.link</code>.</li>
+          <li>O botão Colunas abre um menu com uma linha por coluna (<code>.menu-item.sortable</code>): a alça <code>.drag-handle</code> com o ícone <code>grip-vertical</code>, a caixa que mostra ou esconde a coluna e o botão <code>.btn.icon.xs.ghost</code> com o ícone <code>pin</code> e <code>aria-pressed</code>, que fixa a coluna à esquerda. As colunas fixas ficam num grupo no topo do menu, na mesma ordem da tabela. A ordem muda arrastando a alça ou com Alt e as setas para cima e para baixo; durante o arraste, o item fica esmaecido (<code>.dragging</code>) e uma linha marca o destino (<code>.drop-before</code>, <code>.drop-after</code>). Com mais de 12 colunas, o menu tem uma busca no topo. "Restaurar" volta à ordem e às colunas da importação. Um diálogo só é usado se o menu não couber na tela.</li>
         </ul>
       </section>
 
@@ -383,7 +384,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.46</a></span></footer>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.47</a></span></footer>
         </div></div>
         <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>

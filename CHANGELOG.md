@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.47 · 25/11/2026
+- Configurar colunas, em Componentes › Tabela: menu com alça para arrastar, caixa para mostrar ou esconder e alfinete para fixar à esquerda; colunas fixas em grupo no topo; Alt e setas para mover; busca com mais de 12 colunas; "Restaurar".
+- Ícones `grip-vertical` e `pin`.
+
 ## 2.46 · 25/11/2026
 - Filtro por nível: a linha dos níveis não tem mais o botão de correções em lote (regra da 2.41). Mudanças em várias linhas ficam nas ferramentas da tabela, por coluna e com prévia.
 

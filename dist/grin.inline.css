@@ -1,4 +1,4 @@
-/* Grin 2.46 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.47 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -1290,6 +1290,17 @@ a.tab { text-decoration: none; }
 .menu-item[aria-checked="true"]::after { content: ''; width: 5px; height: 10px; margin-left: auto; border: solid var(--brand-fg); border-width: 0 2px 2px 0; transform: rotate(45deg); }
 /* Multiple choice: <label class="menu-item"><input type="checkbox"><span class="menu-label">…</span></label> */
 .menu-item > input[type="checkbox"] { flex: none; }
+
+/* Column settings in a menu: a handle to drag, the checkbox that shows the column and a pin that fixes it on the left.
+   The item being dragged fades, and a line marks where it will land. */
+.menu-item.sortable { gap: 6px; }
+.menu-item .drag-handle { flex: none; display: inline-grid; place-items: center; width: 20px; color: var(--muted-foreground); cursor: grab; }
+.menu-item .drag-handle svg { width: 16px; height: 16px; }
+.menu-item.sortable > .btn { margin-left: auto; }
+.menu-item.sortable > .btn[aria-pressed="false"] { color: var(--muted-foreground); }
+.menu-item.dragging { opacity: .45; }
+.menu-item.drop-before { box-shadow: inset 0 2px 0 var(--primary); }
+.menu-item.drop-after { box-shadow: inset 0 -2px 0 var(--primary); }
 
 /* ---------- components/dialog/dialog.css ---------- */
 /* Grin dialog: short decisions and destructive confirmations. Native <dialog> traps focus and closes with Esc.
