@@ -25,7 +25,7 @@ const PAGES = [
 ];
 // Grin mark: an equilateral triangle, 2/3 of the cap height of the word (Geist cap height = 0.71em), sitting on the baseline
 export const GRIN_MARK = '<svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true" focusable="false"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg>';
-export const VERSION = '2.48';
+export const VERSION = '2.49';
 
 function buildNav(nav) {
   const base = nav.dataset.base ?? '';

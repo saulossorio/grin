@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.49 · 25/11/2026
+- Tela inicial: o dropzone volta à altura própria (desfaz a 2.45). Regra nova: o espaço livre abaixo do conteúdo fica vazio; nada é esticado nem acrescentado para preenchê-lo.
+
 ## 2.48 · 25/11/2026
 - Tour: feita a ação do passo (clique ou tarefa), o cartão não avança mais sozinho. Mostra "Feito. Clique em Próximo para continuar." e libera "Próximo".
 
