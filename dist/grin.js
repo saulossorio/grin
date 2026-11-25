@@ -1,8 +1,8 @@
-/* Grin 2.47 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.48 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.47';
+Grin.version = '2.48';
 
 // ---------- scripts/utils.js ----------
 {
@@ -906,6 +906,7 @@ document.querySelectorAll('.toc').forEach((toc) => {
 //   target: selector, function returning an element, or a list of them in order of preference; none = card in the center.
 //   action: what the person does on the screen ("Clique em Empresas"). With it, the step can wait:
 //   click: true waits for a click on the target, which goes on to the page; done: () => true when the task is done.
+//   A finished task shows a done message and turns Próximo on; the person moves on.
 // A first step without target is the presentation: it is not counted and offers Começar and Agora não.
 // The tour never changes the screen by itself. Outside the cut-out, clicks are held: the card shakes and says what to do.
 // A target in the sidebar opens the sidebar drawer on a phone. On a narrow screen the card is a sheet at the bottom or top.
@@ -1055,8 +1056,7 @@ function startTour(steps, { onEnd } = {}) {
   function finish(seq) {
     T.done = true;
     spot.classList.remove('pulse'); $('[data-tour="next"]').classList.remove('waiting');
-    message('Isso mesmo. Seguindo para o próximo passo…', 'ok');
-    setTimeout(() => { if (live(seq)) show(T.i + 1); }, reduce() ? 600 : 1100);
+    message('Feito. Clique em Próximo para continuar.', 'ok'); // the tour waits for the person: it never moves on by itself
   }
   function next() { if (T.i >= steps.length - 1) return end(); if (waiting()) return nudge(); show(T.i + 1); }
 
@@ -1071,11 +1071,11 @@ function startTour(steps, { onEnd } = {}) {
     (before?.isConnected ? before : document.body).focus?.({ preventScroll: true });
     onEnd?.();
   }
-  // on a click step, the click on the target goes on to the page and moves the tour forward
+  // on a click step, the click on the target goes on to the page and marks the step done
   function onClick(e) {
     const s = steps[T.i];
     if (!s.click || !T.el || !T.el.contains(e.target)) return;
-    const seq = T.seq; setTimeout(() => { if (live(seq)) show(T.i + 1); }, 0);
+    const seq = T.seq; setTimeout(() => { if (live(seq) && !T.done) finish(seq); }, 0);
   }
   function keys(e) {
     if (document.querySelector('dialog[open]:modal, .dialog[open]')) return; // a dialog the person opened keeps its keys

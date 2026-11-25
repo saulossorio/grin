@@ -384,7 +384,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.47</a></span></footer>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.48</a></span></footer>
         </div></div>
         <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>
@@ -514,7 +514,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <ul class="docs-list">
           <li>Cada passo tem <code>title</code>, <code>text</code> e, se aponta para algo na tela, <code>target</code>. O alvo é um seletor, uma função que devolve o elemento ou uma lista deles em ordem de preferência. O tour espera o alvo aparecer por até 3 segundos; se ele não aparece, o cartão oferece "Tentar de novo".</li>
           <li>O primeiro passo sem alvo é a apresentação. Ele não entra na contagem, mostra "Tour guiado" no lugar de "Passo 1 de N" e oferece "Começar" e "Agora não".</li>
-          <li>O passo com <code>action</code> diz o que a pessoa faz na tela, num quadro abaixo do texto. Com <code>click: true</code>, o tour espera o clique no alvo e avança; o clique segue para a própria tela. Com <code>done</code>, uma função que devolve <code>true</code> quando a tarefa está feita, o tour confere a tela a cada 250 ms, confirma e avança. Enquanto o passo espera, o recorte pulsa e "Próximo" fica esmaecido.</li>
+          <li>O passo com <code>action</code> diz o que a pessoa faz na tela, num quadro abaixo do texto. Com <code>click: true</code>, o tour espera o clique no alvo; o clique segue para a própria tela. Com <code>done</code>, uma função que devolve <code>true</code> quando a tarefa está feita, o tour confere a tela a cada 250 ms. Enquanto o passo espera, o recorte pulsa e "Próximo" fica esmaecido. Feita a ação, o cartão continua aberto, mostra "Feito. Clique em Próximo para continuar." e libera "Próximo". O tour nunca avança sozinho: quem lê devagar ou ainda está digitando não perde o passo.</li>
           <li>O tour não troca de tela sozinho. Quem navega e preenche é a pessoa. "Voltar" só aparece quando o passo anterior está na tela de agora.</li>
           <li>Fora do recorte, o clique é segurado. O cartão balança e diz o que fazer. Dentro do recorte, o clique só passa nos passos que esperam uma ação.</li>
           <li>Um alvo dentro da barra lateral abre a gaveta da barra no celular e a fecha no passo seguinte. Em tela estreita (abaixo de 600 px), o cartão vira uma folha presa embaixo ou em cima, e a página rola para o alvo ficar no espaço livre.</li>

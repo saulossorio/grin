@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.48 · 25/11/2026
+- Tour: feita a ação do passo (clique ou tarefa), o cartão não avança mais sozinho. Mostra "Feito. Clique em Próximo para continuar." e libera "Próximo".
+
 ## 2.47 · 25/11/2026
 - Configurar colunas, em Componentes › Tabela: menu com alça para arrastar, caixa para mostrar ou esconder e alfinete para fixar à esquerda; colunas fixas em grupo no topo; Alt e setas para mover; busca com mais de 12 colunas; "Restaurar".
 - Ícones `grip-vertical` e `pin`.
