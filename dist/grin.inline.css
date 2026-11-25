@@ -1,4 +1,4 @@
-/* Grin 2.50 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
+/* Grin 2.51 · CSS com as fontes dentro (Geist e Geist Mono, licença SIL OFL 1.1) · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 /* ---------- styles/fonts.css ---------- */
 /* Grin: fonts. Geist and Geist Mono, variable weight 100 to 900, from the official release
@@ -875,6 +875,16 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px
 .search { position: relative; width: min(320px, 100%); }
 /* in a toolbar the search shrinks to 200 px before the toolbar wraps */
 .toolbar > .search { flex: 10 1 200px; max-width: 320px; }
+/* Filters folded on a phone: inside .filters-fold, the parts marked .filters-extra (the row of choice groups and the
+   filter buttons) hide at 760 px or less, behind the .filters-toggle button (icon, active count, aria-expanded).
+   .filters-fold.open shows them again. Above 760 px the toggle does not show and nothing is folded. */
+.filters-toggle { display: none; }
+@media (max-width: 760px) {
+  .filters-fold .filters-toggle { display: inline-flex; }
+  .filters-fold .toolbar { gap: 8px; }
+  .filters-fold .toolbar > .search { flex-basis: 140px; }
+  .filters-fold:not(.open) .filters-extra { display: none; }
+}
 .search > svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; color: var(--muted-foreground); pointer-events: none; }
 .search .input { padding: 0 40px 0 44px; }
 .search .btn { position: absolute; right: 4px; top: 50%; transform: translateY(-50%); }

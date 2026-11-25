@@ -103,6 +103,7 @@
           <li>Um grupo de escolha secundário que não cabe vira botões só com ícone e contagem. O nome fica em <code>aria-label</code> e em <code>data-tooltip</code>. Uma linha vertical (<code>.divider-v</code>) separa os grupos.</li>
           <li>Na barra, a busca diminui até 200 px antes de a barra quebrar linha.</li>
           <li>No celular, os botões com ícone das linhas de filtros mostram só o ícone e a contagem. O texto fica em <code>.btn-text</code>, que some da tela abaixo de 760 px e continua para leitores de tela.</li>
+          <li>Se mesmo assim as linhas de filtros passam de duas no celular, elas se recolhem: o contêiner leva <code>.filters-fold</code>, e a linha dos grupos e os botões de filtro levam <code>.filters-extra</code>. Fica uma linha só, com a busca, o botão <code>.btn.filters-toggle</code> (ícone <code>filter</code> e, com filtros ligados, a contagem em <code>.count-inline</code>; o nome "Filtros" em <code>aria-label</code>; <code>aria-expanded</code>) e os botões de visualização. O botão abre e fecha os filtros (<code>.filters-fold.open</code>). Nessa linha, a busca diminui até 140 px e o espaço entre os botões é de 8 px, para caber num celular de 360 px. Acima de 760 px nada se recolhe e o botão não aparece.</li>
         </ul>
       </section>
 

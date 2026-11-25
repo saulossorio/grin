@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.51 · 25/11/2026
+- Filtros recolhidos no celular: `.filters-fold`, `.filters-extra` e `.filters-toggle`. Abaixo de 760 px, quando as linhas de filtros passariam de duas, sobra uma linha com a busca, o botão Filtros (ícone e contagem) e os botões de visualização; o botão abre os filtros.
+
 ## 2.50 · 25/11/2026
 - Tour no celular: o lado da folha (em cima ou embaixo) só é escolhido depois que o alvo aparece. Antes, um redesenho durante a espera prendia a folha embaixo e ela podia cobrir um alvo no pé da tela, como o rodapé de uma gaveta.
 
