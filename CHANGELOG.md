@@ -1,5 +1,9 @@
 # Mudanças
 
+## 2.52 · 25/11/2026
+- Tour: o primeiro passo sem alvo virou a boas-vindas, um cartão maior no centro da tela, também no celular, com o logo da ferramenta (`mark`), até dois parágrafos (`text` aceita uma lista) e as tarefas do tour (`list`). O botão diz "Começar o tour".
+- Regras de texto do tour em Componentes › Tour: a boas-vindas fala com a pessoa a partir do problema que a ferramenta resolve; os passos seguintes têm uma ou duas frases.
+
 ## 2.51 · 25/11/2026
 - Filtros recolhidos no celular: `.filters-fold`, `.filters-extra` e `.filters-toggle`. Abaixo de 760 px, quando as linhas de filtros passariam de duas, sobra uma linha com a busca, o botão Filtros (ícone e contagem) e os botões de visualização; o botão abre os filtros.
 

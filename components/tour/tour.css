@@ -17,6 +17,20 @@
 .tour-count { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--brand-fg); font-variant-numeric: tabular-nums; }
 .tour-card h2 { font-size: var(--text-lg); outline: none; }
 .tour-card p { margin: 0; color: var(--muted-foreground); line-height: var(--leading-body); }
+.tour-text { display: flex; flex-direction: column; gap: 8px; }
+/* welcome: the first step, larger and in the center, with the tool's logo and what the tour covers */
+.tour-card.welcome { width: min(480px, calc(100vw - 32px)); gap: 14px; padding: 24px 28px 22px; }
+.tour-card.welcome .tour-top { position: absolute; top: 14px; right: 14px; margin: 0; }
+.tour-card.welcome .tour-count, .tour-card.welcome .progress { display: none; }
+.tour-card.welcome h2 { font-size: var(--text-2xl); }
+.tour-card.welcome .tour-text p { color: var(--foreground); }
+.tour-mark { display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--radius-lg); background: var(--brand-bg); color: var(--brand-fg); }
+.tour-mark svg { width: 32px; height: 32px; fill: currentColor; }
+.tour-mark[hidden], .tour-list[hidden] { display: none; }
+.tour-list { display: flex; flex-direction: column; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tour-list li { display: flex; align-items: flex-start; gap: 8px; color: var(--foreground); line-height: var(--leading-body); }
+.tour-list svg { flex: none; margin-top: 3px; color: var(--brand-fg); }
+.tour-card.welcome .tour-actions { margin-top: 10px; }
 /* what the person does on the screen */
 .tour-card .tour-action { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--brand-border); border-radius: var(--radius-sm); background: var(--brand-bg); color: var(--foreground); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
 .tour-action[hidden] { display: none; }

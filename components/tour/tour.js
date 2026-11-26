@@ -1,10 +1,11 @@
 // Grin tour. startTour(steps, { onEnd }) → { end, go, target }
-// Each step: { title, text, target, action, click, done }.
+// Each step: { title, text, target, action, click, done }. text can be a list of paragraphs.
 //   target: selector, function returning an element, or a list of them in order of preference; none = card in the center.
 //   action: what the person does on the screen ("Clique em Empresas"). With it, the step can wait:
 //   click: true waits for a click on the target, which goes on to the page; done: () => true when the task is done.
 //   A finished task shows a done message and turns Próximo on; the person moves on.
-// A first step without target is the presentation: it is not counted and offers Começar and Agora não.
+// A first step without target is the welcome: a larger card in the center, also on a phone, that is not counted and offers
+//   Começar o tour and Agora não. It can also take mark (the tool's logo, as SVG markup) and list (what the tour covers).
 // The tour never changes the screen by itself. Outside the cut-out, clicks are held: the card shakes and says what to do.
 // A target in the sidebar opens the sidebar drawer on a phone. On a narrow screen the card is a sheet at the bottom or top.
 // The cut-out follows the page while the person works. Arrow keys move, Esc leaves, Tab stays in the card.
@@ -29,7 +30,9 @@ export function startTour(steps, { onEnd } = {}) {
     <section class="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-title" aria-describedby="tour-text">
       <div class="tour-top"><span class="tour-count"></span><button type="button" class="btn icon xs ghost" data-tour="end" aria-label="Sair do tour">${icon('x', 16)}</button></div>
       <div class="progress sm" aria-hidden="true"><i></i></div>
-      <h2 id="tour-title" tabindex="-1"></h2><p id="tour-text"></p>
+      <div class="tour-mark" aria-hidden="true" hidden></div>
+      <h2 id="tour-title" tabindex="-1"></h2><div id="tour-text" class="tour-text"></div>
+      <ul class="tour-list" hidden></ul>
       <p class="tour-action" hidden></p>
       <div class="tour-msg" aria-live="polite"><div><p></p></div></div>
       <div class="tour-actions"><button type="button" class="link" data-tour="skip"></button><span class="spacer"></span>
@@ -85,7 +88,7 @@ export function startTour(steps, { onEnd } = {}) {
     px('top', 0, 0, vw, f.y); px('bottom', 0, f.y + f.h, vw, vh - f.y - f.h); px('left', 0, f.y, f.x, f.h); px('right', f.x + f.w, f.y, vw - f.x - f.w, f.h);
     if ((s.click || s.done) && r) px('hole', 0, 0, 0, 0); else px('hole', f.x, f.y, f.w, f.h);
     // card: below, above, right or left of the target, where it fits; on a narrow screen, a sheet at the bottom or top
-    const sheet = vw < 600; card.classList.toggle('sheet', sheet);
+    const sheet = vw < 600 && !card.classList.contains('welcome'); card.classList.toggle('sheet', sheet);
     if (sheet) { card.style.left = `${m}px`; card.style.right = `${m}px`; } else card.style.right = 'auto';
     const cw = card.offsetWidth, ch = card.offsetHeight, clamp = (v, a, b) => Math.min(Math.max(v, a), Math.max(a, b));
     let x, y;
@@ -124,13 +127,19 @@ export function startTour(steps, { onEnd } = {}) {
     const n = steps.length - (intro ? 1 : 0), k = i + (intro ? 0 : 1), last = i === steps.length - 1, failed = !!s.target && !el;
     $('.tour-count').textContent = intro && i === 0 ? 'Tour guiado' : `Passo ${k} de ${n}`;
     $('.progress i').style.width = `${(intro ? i / (steps.length - 1) : k / n) * 100}%`;
-    $('#tour-title').textContent = s.title; $('#tour-text').textContent = s.text || '';
+    const welcome = intro && i === 0; card.classList.toggle('welcome', welcome);
+    const mark = $('.tour-mark'); mark.hidden = !(welcome && s.mark); mark.innerHTML = welcome && s.mark ? s.mark : '';
+    $('#tour-title').textContent = s.title;
+    $('#tour-text').replaceChildren(...[].concat(s.text || []).map((t) => Object.assign(document.createElement('p'), { textContent: t })));
+    const ul = $('.tour-list'), items = welcome && s.list ? s.list : [];
+    ul.hidden = !items.length; ul.replaceChildren(...items.map((t) => { const li = document.createElement('li'); li.innerHTML = icon('check', 16); li.append(t); return li; }));
     const ac = $('.tour-action'); ac.hidden = !(s.action && el); ac.innerHTML = s.action ? icon('pointer', 16) : ''; if (s.action) ac.append(s.action);
     // Voltar only when the previous step is on the screen now: the tour does not undo what the person navigated
     $('[data-tour="prev"]').hidden = i === 0 || (!!steps[i - 1].target && !find(steps[i - 1]));
     $('[data-tour="retry"]').hidden = !failed;
     const next = $('[data-tour="next"]');
-    next.innerHTML = intro && i === 0 ? `Começar${icon('arrow-right', 16)}` : last ? `${icon('check', 16)}Concluir` : `Próximo${icon('arrow-right', 16)}`;
+    next.classList.toggle('xs', !welcome);
+    next.innerHTML = welcome ? `Começar o tour${icon('arrow-right', 16)}` : last ? `${icon('check', 16)}Concluir` : `Próximo${icon('arrow-right', 16)}`;
     next.classList.toggle('waiting', waiting());
     $('[data-tour="skip"]').textContent = intro && i === 0 ? 'Agora não' : 'Pular tour';
     if (failed) message('Não foi possível mostrar esta parte agora. Clique em Tentar de novo ou siga para o próximo passo.', 'crit');
