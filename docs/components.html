@@ -28,8 +28,7 @@ document.addEventListener('click', (e) => {
   if (!e.target.closest('#ex-tour-start')) return;
   startTour([
     { title: 'Boas-vindas à Agenda', mark: '<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="3"/></svg>',
-      text: ['A Agenda reúne os contatos da equipe num lugar só.', 'Neste tour, você faz duas tarefas na tela.'],
-      list: ['Busca um contato pelo nome', 'Encontra o botão de importar uma planilha'] },
+      text: ['A Agenda reúne os contatos da equipe num lugar só, com busca e importação de planilhas.', 'Quer conhecer o básico? O tour leva menos de um minuto.'] },
     { target: '#ex-tour-search', title: 'Busca', text: 'Por nome, e-mail ou empresa. A lista filtra enquanto você digita.',
       action: 'Digite um nome na busca', done: () => !!document.querySelector('#ex-tour-search input').value.trim() },
     { target: '#ex-tour-import', title: 'Importação', text: 'Linhas com problema aparecem primeiro, para corrigir antes de entrar na agenda.', action: 'Clique em Importar', click: true },
@@ -386,7 +385,7 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.52</a></span></footer>
+<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.53</a></span></footer>
         </div></div>
         <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>
@@ -516,8 +515,8 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
         <ul class="docs-list">
           <li>Cada passo tem <code>title</code>, <code>text</code> e, se aponta para algo na tela, <code>target</code>. O alvo é um seletor, uma função que devolve o elemento ou uma lista deles em ordem de preferência. O tour espera o alvo aparecer por até 3 segundos; se ele não aparece, o cartão oferece "Tentar de novo".</li>
           <li>O primeiro passo sem alvo é a boas-vindas. Ele aparece como um cartão maior, de até 480 px, no centro da tela, também no celular. Não entra na contagem e oferece "Começar o tour" e "Agora não".</li>
-          <li>A boas-vindas apresenta a ferramenta e o que a pessoa faz no tour. O título é "Boas-vindas a" e o nome da ferramenta. O texto tem até dois parágrafos (<code>text</code> aceita uma lista) e fala com a pessoa em segunda pessoa, a partir do problema que a ferramenta resolve. <code>list</code> mostra de três a cinco tarefas do tour, cada uma começando por um verbo. <code>mark</code> recebe o desenho do logo da ferramenta em SVG.</li>
-          <li>Os passos seguintes são curtos. O texto tem uma ou duas frases e diz para que serve o que está destacado. <code>action</code> diz o que a pessoa faz, começando por um verbo.</li>
+          <li>A boas-vindas tem o título "Boas-vindas a" e o nome da ferramenta e dois parágrafos curtos (<code>text</code> aceita uma lista). O primeiro diz o que a ferramenta faz e com quais dados. O segundo oferece o tour, diz quanto tempo leva e qual exemplo ele usa. <code>mark</code> recebe o desenho do logo da ferramenta em SVG. <code>list</code> é opcional.</li>
+          <li>Os passos seguintes têm uma ou duas frases que dizem o que é a parte destacada e para que serve. <code>action</code> diz o que fazer, começando por um verbo.</li>
           <li>O passo com <code>action</code> diz o que a pessoa faz na tela, num quadro abaixo do texto. Com <code>click: true</code>, o tour espera o clique no alvo; o clique segue para a própria tela. Com <code>done</code>, uma função que devolve <code>true</code> quando a tarefa está feita, o tour confere a tela a cada 250 ms. Enquanto o passo espera, o recorte pulsa e "Próximo" fica esmaecido. Feita a ação, o cartão continua aberto, mostra "Feito. Clique em Próximo para continuar." e libera "Próximo". O tour nunca avança sozinho: quem lê devagar ou ainda está digitando não perde o passo.</li>
           <li>O tour não troca de tela sozinho. Quem navega e preenche é a pessoa. "Voltar" só aparece quando o passo anterior está na tela de agora.</li>
           <li>Fora do recorte, o clique é segurado. O cartão balança e diz o que fazer. Dentro do recorte, o clique só passa nos passos que esperam uma ação.</li>

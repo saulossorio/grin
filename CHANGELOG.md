@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.53 · 25/11/2026
+- Regra de texto da boas-vindas do tour: dois parágrafos curtos, o que a ferramenta faz e a oferta do tour com a duração e o exemplo. A lista de tarefas ficou opcional.
+
 ## 2.52 · 25/11/2026
 - Tour: o primeiro passo sem alvo virou a boas-vindas, um cartão maior no centro da tela, também no celular, com o logo da ferramenta (`mark`), até dois parágrafos (`text` aceita uma lista) e as tarefas do tour (`list`). O botão diz "Começar o tour".
 - Regras de texto do tour em Componentes › Tour: a boas-vindas fala com a pessoa a partir do problema que a ferramenta resolve; os passos seguintes têm uma ou duas frases.
