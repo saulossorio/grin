@@ -1,5 +1,8 @@
 # Mudanças
 
+## 2.54 · 25/11/2026
+- Tour: quando a ação do passo abre algo por cima do alvo, como uma gaveta ou um diálogo, o recorte some. Antes ele continuava aberto e deixava uma faixa clara atravessando a gaveta.
+
 ## 2.53 · 25/11/2026
 - Regra de texto da boas-vindas do tour: dois parágrafos curtos, o que a ferramenta faz e a oferta do tour com a duração e o exemplo. A lista de tarefas ficou opcional.
 

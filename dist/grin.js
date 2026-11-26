@@ -1,8 +1,8 @@
-/* Grin 2.53 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
+/* Grin 2.54 · comportamentos em JavaScript; inclua com <script src="grin.js" defer> · https://github.com/saulossorio/grin
    Gerado por tools/bundle.mjs a partir dos arquivos do repositório. Não edite à mão. */
 'use strict';
 const Grin = (window.Grin = window.Grin || {});
-Grin.version = '2.53';
+Grin.version = '2.54';
 
 // ---------- scripts/utils.js ----------
 {
@@ -980,7 +980,9 @@ function startTour(steps, { onEnd } = {}) {
   function place() {
     const s = steps[T.i], vw = document.documentElement.clientWidth, vh = innerHeight, m = 16, pad = 8;
     if (T.el && !T.el.isConnected) T.el = find(s); // the page may have been redrawn
-    const r = T.el ? T.el.getBoundingClientRect() : null;
+    let r = T.el ? T.el.getBoundingClientRect() : null;
+    // something the person opened (a drawer, a dialog) now covers the target: the cut-out goes away instead of showing a strip through it
+    if (r && covered(T.el, r)) r = null;
     const f = r ? { x: r.left - pad, y: r.top - pad, w: r.width + 2 * pad, h: r.height + 2 * pad } : { x: vw / 2, y: vh / 2, w: 0, h: 0 };
     if (r) { const x2 = Math.min(vw - 4, f.x + f.w), y2 = Math.min(vh - 4, f.y + f.h); f.x = Math.max(4, f.x); f.y = Math.max(4, f.y); f.w = Math.max(0, x2 - f.x); f.h = Math.max(0, y2 - f.y); }
     spot.classList.toggle('none', !r);
@@ -1003,6 +1005,11 @@ function startTour(steps, { onEnd } = {}) {
     else if (f.x >= cw + 2 * m) { x = f.x - cw - 14; y = clamp(f.y + f.h / 2 - ch / 2, m, vh - ch - m); }
     else { x = vw - cw - m; y = vh - ch - m; }
     card.style.left = `${x}px`; card.style.top = `${y}px`;
+  }
+  function covered(el, r) {
+    const x = Math.min(Math.max(r.left + r.width / 2, 1), innerWidth - 1), y = Math.min(Math.max(r.top + r.height / 2, 1), innerHeight - 1);
+    const top = document.elementsFromPoint(x, y).find((n) => !root.contains(n));
+    return !!top && top !== el && !el.contains(top) && !top.contains(el);
   }
   function replace() { cancelAnimationFrame(T.frame); T.frame = requestAnimationFrame(place); }
   // the sheet covers part of a phone screen: scroll so the target sits in the space left
