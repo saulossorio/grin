@@ -41,13 +41,18 @@
     <a class="nav-item" href="#glossario"><i data-icon="book"></i><span class="label">Glossário</span></a>
     <div class="sidebar-footer">
       <div>
-        <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
+        <button type="button" class="nav-item small" aria-expanded="false" data-popover="help"><i data-icon="help-circle"></i><span class="label">Ajuda</span></button>
         <button type="button" class="nav-item small" data-theme-toggle><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
         <button type="button" class="nav-item small" aria-expanded="false" data-popover="appearance"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
       </div>
     </div>
   </nav>
   <div class="popover appearance" id="appearance" data-appearance></div>
+  <div class="popover help-menu" id="help" role="dialog" aria-label="Ajuda">
+    <button type="button" class="menu-item" id="help-tour"><i data-icon="map"></i><span class="menu-label">Tour guiado</span></button>
+    <a class="menu-item" href="../index.html"><i data-icon="book"></i><span class="menu-label">Design system</span></a>
+    <div class="help-about"><b>Agenda 1.2</b><span>por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.55</a></span></div>
+  </div>
   <div class="app-main">
     <div class="page-header">
       <nav class="breadcrumb" aria-label="Você está em"><i data-icon="book-open"></i><a href="#">Tutoriais</a><i data-icon="chevron-right"></i><span aria-current="page">Importar convidados</span></nav>
@@ -107,7 +112,6 @@
         </article>
         <nav class="toc" aria-label="Nesta página"><span class="toc-title">Nesta página</span><a href="#antes">Antes de começar</a><a href="#passos">Passo a passo</a><a href="#pendencias">Entender as pendências</a><a class="sub" href="#criticas">Críticas</a><a class="sub" href="#atencao">Atenção</a><a href="#perguntas">Perguntas frequentes</a><a href="#glossario">Glossário</a></nav>
       </div>
-      <footer class="app-footer"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.54</a></span></footer>
     </main>
   </div>
 </div>
@@ -115,12 +119,13 @@
 import '../scripts/theme.js';
 import { paintIcons } from '../scripts/utils.js';
 import { startTour } from '../components/tour/tour.js';
-document.getElementById('start-tour').addEventListener('click', () => startTour([
+const tour = () => startTour([
   { target: null, title: 'Boas-vindas', text: 'Em 3 passos você vê como seguir este tutorial.' },
   { target: '.toc', title: 'Índice', text: 'Mostra a seção que você está lendo. Clique para pular para outra.' },
   { target: '.step[data-state="current"]', title: 'Onde você parou', text: 'O passo atual fica marcado. Os feitos aparecem com um visto.' },
   { target: '#tour-import', title: 'Importar', text: 'Quando estiver pronto, este é o botão que abre a importação.' },
-]));
+]);
+for (const id of ['start-tour', 'help-tour']) document.getElementById(id).addEventListener('click', tour);
 paintIcons();
 </script>
 </body>

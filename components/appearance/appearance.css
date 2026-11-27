@@ -7,10 +7,18 @@
 .appearance .slider-end.small { font-size: 12px; }
 .appearance .slider-end.large { font-size: 18px; }
 
-/* Signature: name, version and author of the tool, and the Grin version it uses. Only on the start screen and on
-   documentation or help pages, never on working screens. Last element of the page content. The page is at least as tall
-   as the window, so with little content the signature sits at the bottom of the window; with more content it follows the
-   content and scrolls with it. Never position: fixed or sticky. */
+/* Help panel: the Ajuda button in the sidebar footer opens a popover with the help items (.menu-item: tour, documentation)
+   and, at the end, the "Sobre" block with the name, version and author of the tool and the Grin version it uses.
+   A tool shows its signature only here. Choosing an item closes the panel (popover.js). */
+.help-menu { min-width: 248px; gap: 2px; padding: 6px; }
+.help-menu .menu-item { width: 100%; }
+.help-about { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; padding: 10px 10px 6px; border-top: 1px solid var(--border-soft); color: var(--muted-foreground); font-size: var(--text-sm); }
+.help-about b { color: var(--foreground); font-weight: var(--weight-semibold); }
+.help-about a { color: inherit; }
+.help-about a:hover { color: var(--foreground); }
+
+/* Signature at the end of the page: only on documentation sites, such as the Grin site. Tools use the help panel.
+   Last element of the page content; with little content it sits at the bottom of the window. Never fixed or sticky. */
 .page-content:has(> .app-footer) { flex: 1 0 auto; padding-bottom: 20px; }
 .app-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 8px 24px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-soft); color: var(--muted-foreground); font-size: var(--text-sm); }
 .app-footer b { color: var(--foreground); font-weight: var(--weight-semibold); }

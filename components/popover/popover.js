@@ -54,7 +54,8 @@ document.addEventListener('click', (e) => {
     hideTip();
     return;
   }
-  if (open && !open.panel.contains(e.target)) close();
+  // a click outside closes the panel, and so does choosing an item of a menu inside it (help panel)
+  if (open && (!open.panel.contains(e.target) || e.target.closest('.menu-item'))) close();
 });
 document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { hideTip(); close(true); } });
 addEventListener('scroll', () => { if (open) place(open.panel, open.button); }, true);

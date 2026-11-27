@@ -1,16 +1,20 @@
 <!-- Grin: the parts every tool built with Grin must have, in the sidebar.
-     Logo with the version, theme button (sun or moon, set by theme.js), Aparência panel, and the signature at the end of the page.
+     Logo with the version, Ajuda button with the help panel (help items and the signature), theme button (sun or moon,
+     set by theme.js) and Aparência panel.
      Load scripts/theme.js, components/popover/popover.js, components/slider/slider.js and components/appearance/appearance.js
      (all included in dist/grin.js). -->
 <nav class="sidebar" aria-label="Navegação principal">
   <a class="app-logo" href="#"><svg class="app-logo-mark" viewBox="0 0 100 86.6025" aria-hidden="true"><path d="M0 86.6025 50 0 100 86.6025Z"/></svg><span>Agenda</span><span class="tag">1.2</span></a>
   …
   <div class="sidebar-footer">
+    <button type="button" class="nav-item small" aria-expanded="false" data-popover="help"><i data-icon="help-circle"></i><span class="label">Ajuda</span></button>
     <button type="button" class="nav-item small" data-theme-toggle><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
     <button type="button" class="nav-item small" aria-expanded="false" data-popover="appearance"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
   </div>
 </nav>
 <div class="popover appearance" id="appearance" data-appearance></div>
-
-<!-- Only on the start screen and on documentation or help pages: last element of .page-content, scrolling with it, never fixed -->
-<footer class="app-footer"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="https://saulossorio.github.io/grin/">Grin 2.54</a></span></footer>
+<!-- Help panel: help items first, the signature (.help-about) last. Without other help, the tour is the only item. -->
+<div class="popover help-menu" id="help" role="dialog" aria-label="Ajuda">
+  <button type="button" class="menu-item"><i data-icon="map"></i><span class="menu-label">Tour guiado</span></button>
+  <div class="help-about"><b>Agenda 1.2</b><span>por Saúl Ossorio</span><span>Feito com <a href="https://saulossorio.github.io/grin/">Grin 2.55</a></span></div>
+</div>

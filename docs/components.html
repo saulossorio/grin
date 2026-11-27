@@ -378,16 +378,20 @@ toast('Não foi possível exportar.', { type: 'crit' });</code></pre>
       </section>
 
       <section class="docs-section" id="appearance" aria-labelledby="t-appearance">
-        <header><h2 id="t-appearance">Aparência, tema e assinatura</h2><p class="aka">Também chamado: acessibilidade, preferências de tela, settings, modo escuro, dark mode, rodapé, assinatura, versão</p></header>
+        <header><h2 id="t-appearance">Ajuda, aparência e tema</h2><p class="aka">Também chamado: acessibilidade, preferências de tela, settings, modo escuro, dark mode, menu de ajuda, sobre, about, rodapé, assinatura, versão</p></header>
         <div class="demo" data-code><div class="demo-stage column" style="align-items:flex-start;min-height:380px">
 <div class="row" style="gap:8px">
+  <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-help" style="width:auto"><i data-icon="help-circle"></i><span class="label">Ajuda</span></button>
   <button type="button" class="nav-item small" data-theme-toggle style="width:auto"><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
   <button type="button" class="nav-item small" aria-expanded="false" data-popover="ex-appearance" style="width:auto"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
 </div>
 <div class="popover appearance" id="ex-appearance" data-appearance></div>
-<footer class="app-footer" style="width:100%"><span><b>Agenda 1.2</b> · por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.54</a></span></footer>
+<div class="popover help-menu" id="ex-help" role="dialog" aria-label="Ajuda">
+  <button type="button" class="menu-item"><i data-icon="map"></i><span class="menu-label">Tour guiado</span></button>
+  <div class="help-about"><b>Agenda 1.2</b><span>por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.55</a></span></div>
+</div>
         </div></div>
-        <p class="class-list"><code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code> · <code>.app-footer</code>. As três partes são obrigatórias em toda ferramenta. O botão de tema e o painel Aparência ficam em todas as telas. A assinatura fica só na tela inicial e nas páginas de documentação ou ajuda. Com pouco conteúdo, fica no fim da janela. Com mais conteúdo, fica depois dele e rola junto. Nunca é fixa. Veja <a href="installation.html#required">Instalação</a>.</p>
+        <p class="class-list"><code>[data-popover="help"]</code> com <code>.popover.help-menu</code> · <code>.menu-item</code> · <code>.help-about</code> · <code>[data-theme-toggle]</code> (sol ou lua, colocado pelo <code>theme.js</code>) · <code>.popover.appearance[data-appearance]</code> com <code>components/appearance/appearance.js</code>. As três partes são obrigatórias em toda ferramenta e ficam no rodapé da barra lateral, em todas as telas, nesta ordem: Ajuda, tema, Aparência. O painel Ajuda tem os itens de ajuda da ferramenta (tour guiado, documentação) e, no fim, o bloco Sobre (<code>.help-about</code>) com o nome, a versão e o autor da ferramenta e a versão do Grin. A assinatura da ferramenta fica só ali. Escolher um item fecha o painel. A assinatura no fim da página (<code>.app-footer</code>) fica só em sites de documentação, como o do Grin. Veja <a href="installation.html#required">Instalação</a>.</p>
       </section>
 
       <section class="docs-section" id="help" aria-labelledby="t-help">

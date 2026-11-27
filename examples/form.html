@@ -36,12 +36,16 @@
     <a class="nav-item" href="dashboard.html" aria-current="page"><i data-icon="users"></i><span class="label">Pessoas</span></a>
     <a class="nav-item" href="#"><i data-icon="building"></i><span class="label">Empresas</span></a>
     <div class="sidebar-footer">
-      <a class="nav-item small" href="../index.html"><i data-icon="book"></i><span class="label">Design system</span></a>
+      <button type="button" class="nav-item small" aria-expanded="false" data-popover="help"><i data-icon="help-circle"></i><span class="label">Ajuda</span></button>
       <button type="button" class="nav-item small" data-theme-toggle><i data-icon="moon"></i><span class="label">Tema escuro</span></button>
         <button type="button" class="nav-item small" aria-expanded="false" data-popover="appearance"><i data-icon="sliders"></i><span class="label">Aparência</span></button>
     </div>
   </nav>
   <div class="popover appearance" id="appearance" data-appearance></div>
+  <div class="popover help-menu" id="help" role="dialog" aria-label="Ajuda">
+    <a class="menu-item" href="../index.html"><i data-icon="book"></i><span class="menu-label">Design system</span></a>
+    <div class="help-about"><b>Agenda 1.2</b><span>por Saúl Ossorio</span><span>Feito com <a href="../index.html">Grin 2.55</a></span></div>
+  </div>
   <div class="app-main">
     <div class="page-header"><nav class="breadcrumb" aria-label="Você está em"><a href="dashboard.html">Pessoas</a><i data-icon="chevron-right"></i><span aria-current="page">Nova pessoa</span></nav><div class="page-title-row"><div><h1>Nova pessoa</h1><p class="text-secondary" style="margin-top:4px">Campos com <span class="text-crit">*</span> são obrigatórios. Exemplo com dados fictícios: nada é enviado.</p></div></div></div>
     <main class="page-content">

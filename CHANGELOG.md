@@ -1,5 +1,11 @@
 # Mudanças
 
+## 2.55 · 26/11/2026
+- Painel Ajuda: botão Ajuda (ícone `help-circle`) no rodapé da barra lateral, acima do tema e da Aparência, que abre `.popover.help-menu` com os itens de ajuda da ferramenta (`.menu-item`: tour guiado, documentação) e, no fim, o bloco Sobre (`.help-about`) com o nome, a versão e o autor da ferramenta e a versão do Grin.
+- A assinatura da ferramenta sai do fim da tela inicial e das páginas de ajuda e fica só no painel Ajuda. `.app-footer` continua só para sites de documentação.
+- Popover: escolher um `.menu-item` dentro do painel fecha o painel.
+- Exemplos com o painel Ajuda; o link Design system foi para dentro dele.
+
 ## 2.54 · 25/11/2026
 - Tour: quando a ação do passo abre algo por cima do alvo, como uma gaveta ou um diálogo, o recorte some. Antes ele continuava aberto e deixava uma faixa clara atravessando a gaveta.
 
